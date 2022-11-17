@@ -1,0 +1,17 @@
+{
+  "content_tags" : [ {
+    "name" : "NONPROFIT",
+    "source" : "MARKETPLACE"
+  }, {
+    "name" : "COMPATIBLE_ANY",
+    "source" : "MARKETPLACE"
+  } ],
+  "extra_classes" : "widget-type-linked_image",
+  "global" : false,
+  "master_language" : "en",
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Image.svg",
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 55274958151,
+  "label" : "Image",
+  "is_available_for_new_content" : true
+}

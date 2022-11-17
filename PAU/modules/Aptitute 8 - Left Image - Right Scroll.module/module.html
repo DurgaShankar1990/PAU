@@ -1,0 +1,229 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  background-color: {{ module.module_styles.background_color.color }};
+  width: 100%;
+  border-radius: {{ module.module_styles.border_radius }}px;
+{% endmacro %}
+
+{% macro buildLeftContentStyles() %}
+  padding-top: {{ module.paddings.desktop.left_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.left_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.left_content.left }}px;
+  padding-right: {{ module.paddings.desktop.left_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentTextStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content_text.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content_text.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content_text.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content_text.right }}px;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;
+{% endmacro %}
+
+{% macro buildButtonStyles() %}
+ {% if module.right_content.button.button_style == "elements-btn-custom--li-rs" %}
+  font-family: {{ module.right_content.button.font.font }}; {{ module.right_content.button.font.style }};
+  color: {{ module.right_content.button.font.color }}; 
+  font-size: {{ module.right_content.button.font.size }}{{module.right_content.button.font.size_unit }};
+  background-color: {{ module.right_content.button.background_color.color }};
+ {% endif %}
+{% endmacro %}
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}"  style="{{ buildModuleStyles() }}">
+    <div class="row-fluid-wrapper visible-phone">
+         <div class="row-fluid">
+              <div class="span12 widget-span widget-type-cell elements-sticky-div_{{ name }}" data-widget-type="cell" data-x="0" data-w="12">
+                        
+            <div class="elements-module-content_right_text_{{ name }}" style="{{ buildRightContentTextStyles() }}">
+              {% inline_rich_text field="right_content.text" value="{{ module.right_content.text }}" %}
+            </div>
+                {% if module.right_content.button.enable_button %}
+             {% set href = module.right_content.button.link_field.url.href %}
+            {% if module.right_content.button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+            {% endif %}
+            {% set rel = [] %}
+            {% if module.right_content.button.link_field.no_follow %}
+              {% do rel.append("nofollow") %}
+            {% endif %}
+            {% if module.right_content.button.link_field.open_in_new_tab %}
+              {% do rel.append("noopener") %}
+            {% endif %}
+            <a href="{{ href }}"
+              {% if module.right_content.button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+              {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+              >
+              <button class="{{ module.right_content.button.button_style }}" style="{{ buildButtonStyles() }}">{{ module.right_content.button.button_text }}</button>
+            </a>
+                {% endif %}
+          </div>
+        </div>
+     </div>
+     <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+          
+  
+          
+          <div class="span7 widget-span widget-type-cell elements-module-content_left_{{ name }}" style="{{ buildLeftContentStyles() }}" data-widget-type="cell" data-x="0" data-w="7">
+            
+            {% for item in module.left_content.image %}
+              <div class="elements-module-image_{{ name }}" style="{{ buildImageStyles() }}" {% if module.animation.left_content.enable_animation %}data-aos="{{ module.animation.left_content.animation }}-{% if module.animation.left_content.animation == "fade" %}{{ module.animation.left_content.direction_fade }}{% elif module.animation.left_content.animation == "flip" %}{{ module.animation.left_content.direction_flip }}{% elif module.animation.left_content.animation == "slide" %}{{ module.animation.left_content.direction_slide }}{% elif module.animation.left_content.animation == "zoom" %}{{ module.animation.left_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.left_content.frecuency }}" data-aos-duration="{{ module.animation.left_content.duration }}" data-aos-delay="{{ module.animation.left_content.delay }}">
+                {% if item.src %}
+                  {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
+                  {% if item.size_type == 'auto' %}
+                    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                  {% elif item.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.max_width }}px; max-height: {{ item.max_height }}px"' %}
+                  {% endif %}
+                   {% set loadingAttr = item.loading != 'disabled' ? 'loading="{{ item.loading }}"' : '' %}
+                  <img src="{{ item.src }}" alt="{{ item.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+              </div>
+            {% endfor %}
+            
+          </div>
+
+          
+          <div class="span5 widget-span widget-type-cell elements-sticky-div_{{ name }} elements-module-content_right_{{ name }} hidden-phone" style="{{ buildRightContentStyles() }}" data-widget-type="cell" data-x="7" data-w="5" {% if module.animation.right_content.enable_animation %}data-aos="{{ module.animation.right_content.animation }}-{% if module.animation.right_content.animation == "fade" %}{{ module.animation.right_content.direction_fade }}{% elif module.animation.right_content.animation == "flip" %}{{ module.animation.right_content.direction_flip }}{% elif module.animation.right_content.animation == "slide" %}{{ module.animation.right_content.direction_slide }}{% elif module.animation.right_content.animation == "zoom" %}{{ module.animation.right_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.right_content.frecuency }}" data-aos-duration="{{ module.animation.right_content.duration }}" data-aos-delay="{{ module.animation.right_content.delay }}">
+            
+            <div class="elements-module-content_right_text_{{ name }}" style="{{ buildRightContentTextStyles() }}">
+              {% inline_rich_text field="right_content.text" value="{{ module.right_content.text }}" %}
+            </div>
+            
+            {% if module.right_content.button.enable_button %}
+              {% set href = module.right_content.button.link_field.url.href %}
+              {% if module.right_content.button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+              {% set rel = [] %}
+              {% if module.right_content.button.link_field.no_follow %}
+                {% do rel.append("nofollow") %}
+              {% endif %}
+              {% if module.right_content.button.link_field.open_in_new_tab %}
+                {% do rel.append("noopener") %}
+              {% endif %}
+              <a href="{{ href }}"
+                {% if module.right_content.button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                >
+                <button class="{{ module.right_content.button.button_style }}" style="{{ buildButtonStyles() }}">{{ module.right_content.button.button_text }}</button>
+              </a>
+         	  {% endif %}
+            
+            
+          </div>
+          
+
+        </div>
+    </div>
+</div>
+
+{% require_css %}
+<style>
+  
+  
+  .elements-module-content_left_{{ name }} .elements-module-image_{{ name }}:last-child {
+    padding-bottom: 0px !important;
+  }
+  
+  .elements-module-image_{{ name }} img {
+    border-radius: {{ module.module_styles.image_border_radius }}px;
+    {% if module.module_styles.enable_shadow_image %}
+      -webkit-filter: drop-shadow(0px 24px 34px rgba(31, 47, 89, 0.09));
+      filter:         drop-shadow(0px 24px 34px rgba(31, 47, 89, 0.09));
+    {% endif %}
+     
+  }
+  
+  
+@media(min-width: 768px) {
+ 
+  
+  .elements-sticky-div_{{ name }} {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 24px;
+  }
+  
+  
+}
+
+@media(max-width: 767px) {
+  
+  .elements-module-image_{{ name }} img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: {{ module.module_styles.image_border_radius_mobile }}px;
+  }
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    display: table-cell;
+  }
+     
+  .elements-module-content_left_{{ name }} {
+    padding-top: {{ module.paddings.mobile.left_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.left_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.left_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.left_content.right }}px !important;
+  } 
+  
+  .elements-module-content_right_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content.right }}px !important;
+  }
+    
+  .elements-module-image_{{ name }} {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+  
+  .elements-module-content_right_text_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content_text.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content_text.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content_text.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content_text.right }}px !important;
+  }
+  
+
+
+}
+  
+</style>
+{% end_require_css %}

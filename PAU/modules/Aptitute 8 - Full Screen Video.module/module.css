@@ -1,0 +1,37 @@
+
+.htmlvid {
+  cursor: pointer;
+}
+
+
+#bp_aud, #bp_container img, #bp_sv, #bp_vid {
+  max-height: auto !important;
+ max-width: 90% !important;
+}
+
+#videoBackground {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+@media(max-width: 978px) {
+  
+  .elements-template--card-contact__full-mobile form fieldset.form-columns-2 .hs-form-field {
+    float: none !important;
+    width: 100% !important;
+  }
+  
+  .elements-template--card-contact__full-mobile form fieldset.form-columns-2 .input, 
+  .elements-template--card-contact__full-mobile form fieldset.form-columns-1 .input {
+    margin-right: 0px !important;
+  }
+  
+  .elements-template--card-contact__full-mobile form .form-columns-2 .hs-form-field .hs-input {
+    width: 100% !important;
+  }
+}

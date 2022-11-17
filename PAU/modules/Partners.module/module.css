@@ -1,0 +1,22 @@
+.partners-wrap .row-2 {
+    margin: 0 -14px;
+}
+.partners-wrap .course-item h3.title{
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.partners-wrap .course-item .image img{
+    display:none;
+}
+.partners-wrap .course-item .image {
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+    min-height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

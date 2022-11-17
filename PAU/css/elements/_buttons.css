@@ -1,0 +1,37 @@
+button,
+.button {
+  background-color: {{ theme.global_colors.primary_colors.primary_color_1.color }};
+  border: 1px solid {{ theme.global_colors.primary_colors.primary_color_1.color }};
+  border-radius: 6px;
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.92rem;
+  font-weight: normal;
+  height: auto;
+  line-height: 1.1;
+  margin: 0;
+  padding: 20px 28px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  white-space: normal;
+  width: auto;
+  word-break: break-word;
+}
+
+button:disabled,
+.button:disabled {
+  background-color: #D0D0D0;
+  border-color: #D0D0D0;
+  color: #E6E6E6;
+}
+
+.button.white,
+button.white{
+    color: #2488cd;
+    background: #fff;
+    font-weight: bold;
+    border: 1px solid #fff;
+}

@@ -1,0 +1,444 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Video Landing Page - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/video-landing-page.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block header %}
+  {% global_partial path='./partials/header-no-navigation.html' %}
+{% endblock header %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1' class='elements-template--span6__full-mobile elements-template--card-contact__full-mobile', label='section-1' %}
+  
+    {% dnd_section
+      background_color={
+        r: 31,
+        g: 37,
+        b: 89,
+        a: 1.0
+      },
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 96, 'bottom': 80 },
+        'mobile': { 'top': 32, 'bottom': 32 }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=7
+      %}
+        {% dnd_row %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+              <p style="margin-bottom: 16px; color: #ffffff; font-size: 18px; font-weight: 400; display: flex;">
+                <img src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/video.svg" alt="video" width="46" style="width: 46px;">
+                <span style="margin-top: 3px; margin-left: 12px;">Video</span>
+              </p>
+              <h1 style="color: #FFFFFF; max-width: 631px; ">
+                Get our free Email Marketing Masterclass!
+              </h1>
+              <p style="margin-bottom: 0px; color: #FFFFFF; max-width: 614px;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra phasellus lorem aliquam quis pellentesque urna, diam porttito.
+              </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        
+        {% dnd_row
+          padding={
+            'default': { 'top': 32  },
+            'mobile': { 'top': 24 }
+          }
+        %}
+          {% dnd_module "module_16135826920816" path='/Aptitude 8 Theme/modules/Aptitute 8 - Video', label="Aptitute 8 - Video" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+      {% end_dnd_column  %}
+       
+      {% dnd_column
+        offset=7,
+        width=5
+       %}
+        {% dnd_row
+          padding={
+            'mobile': { 'top': 32, 'bottom': 32 }
+          }
+        %}
+          {% dnd_module "module_161169799437319" path='/Aptitude 8 Theme/modules/Aptitute 8 - Card - Form', label="Aptitute 8 - Card - Form",
+            content= { enable_top_text: true },
+            paddings={ 
+              desktop: { content: { top: 24 }, module: { left: 32, right: 32 } },
+              mobile: { content: { top: 24 } } 
+            },
+            module_styles= { button_full_width: true } 
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+  
+  
+
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+  
+  
+  {# 2 Section - Chapter 1 #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+   
+  
+    {% dnd_section
+      padding={
+        'default': { 'top': 132, 'bottom': 32 },
+        'mobile': { 'top': 64, 'bottom': 0 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+  
+  
+      {# Left Content #} 
+    
+      {% dnd_module  path='../modules/Aptitute 8 - Image', 
+        horizontal_alignment='LEFT',
+        img={
+          'alt': 'Elements Image',
+          'width': 669,
+          'height': auto,
+          'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/chapter_1.svg',
+          'margin':'0'
+        },
+        offset=0,
+        width=7,
+        margin={
+         'mobile': { 'top': 180 }
+        }
+       %}
+       {% end_dnd_module %}
+  
+      {# Right Content #}
+    
+
+      {% dnd_column 
+        offset=7, 
+        width=5,
+      %}
+
+        {% dnd_row 
+          margin={
+           'default': { 'top': 0 }
+          },
+          padding={
+           'default': { 'left': 32 },
+           'mobile': { 'left': 0 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Chapter 1
+                </p>
+                <h2 style="max-width: 464px;">
+                  Grow your Email List
+                </h2>
+                <p style="margin-bottom: 15px; max-width: 449px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in amet elementum aliquam quis sit. Tempor, aliquam lectu.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row 
+          padding={
+           'default': { 'left': 32 },
+           'mobile': { 'left': 0 }
+          }
+        %}
+          {% dnd_module "module_161343401667031" path='/Aptitude 8 Theme/modules/Aptitute 8 - List Items', label="Aptitute 8 - List Items",
+            items = [
+              {
+                text: '<p>Create an email list funnel</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              },
+              {
+                text: '<p>Analyze your email newsletter stats</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              },
+              {
+                text: '<p>Crafting an effective email series</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 16 }
+          },
+          padding={
+           'default': { 'left': 32 },
+           'mobile': { 'left': 0 }
+          } 
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              horizontal_alignment='LEFT',
+            %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+
+       {% end_dnd_column  %}
+  
+       
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - Chapter 1 #}
+  
+  
+    
+  
+  {# 3 Section - Chapter 2 #}
+  
+  <section id="section-3">
+     
+  {% dnd_area 'section-3', label='section-3' %}  
+   
+  
+    {% dnd_section
+      padding={
+        'default': { 'top': 16, 'bottom': 120 },
+        'mobile': { 'top': 40, 'bottom': 56 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+  
+  
+     {# Left Content #}
+  
+     {% dnd_column 
+        offset=0, 
+        width=5,
+      %}
+
+        {% dnd_row 
+          margin={
+           'default': { 'top': 0 }
+          },
+          padding={
+           'default': { 'right': 48 },
+           'mobile': { 'right': 0 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Chapter 2
+                </p>
+                <h2 style="max-width: 464px;">
+                  Monetize your Email List
+                </h2>
+                <p style="margin-bottom: 15px; max-width: 449px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in amet elementum aliquam quis sit. Tempor, aliquam lectu.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row %}
+          {% dnd_module "module_161343401667031" path='/Aptitude 8 Theme/modules/Aptitute 8 - List Items', label="Aptitute 8 - List Items",
+            items = [
+              {
+                text: '<p>Create your paid product</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              },
+              {
+                text: '<p>Analyze your audience value</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              },
+              {
+                text: '<p>Launch your paid product</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 16 }
+          }
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              horizontal_alignment='LEFT',
+            %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+
+       {% end_dnd_column  %}
+      
+
+      {# Right Content #}
+      
+    
+       {% dnd_module  path='../modules/Aptitute 8 - Image', 
+        horizontal_alignment='LEFT',
+        img={
+          'alt': 'Elements Image',
+          'width': 655,
+          'height': auto,
+          'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/chapter_2.svg',
+          'margin':'0'
+        },
+        offset=5,
+        width=7,
+        margin={
+         'mobile': { 'top': 180 }
+        }
+       %}
+       {% end_dnd_module %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - Chapter 2 #}
+  
+  
+  
+  
+  {# 4 Section - Testimonials #}
+  
+  <section id="section-4">
+    
+  {% dnd_area 'section-4' , label='section-4' %} 
+
+      
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 96, 'bottom': 116 },
+        'mobile': { 'top': 64, 'bottom': 64 }
+      }
+    %}
+      {% dnd_column %}
+    
+       {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Testimonials
+                </p>
+                <h2 style="text-align: center; max-width: 535px;">
+                  What are users saying about our masterclass?
+                </h2>   
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row %}
+
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=0,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+            
+          %}
+          {% end_dnd_module %}
+  
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=4,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+          %}
+          {% end_dnd_module %}
+    
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=8,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+          %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+       {# Buttons #}
+    
+        {% dnd_row 
+          margin={
+            'default': { 'top': 32 },
+            'mobile': { 'top': 24 }
+          }
+        %}
+         {% dnd_module path='../modules/Aptitute 8 - Buttons',
+           horizontal_alignment='CENTER',
+         %}
+         {% end_dnd_module %}
+
+       {% end_dnd_row %}
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 4 Section - Testimonials #}
+  
+
+
+  
+</main>
+{% endblock body %}

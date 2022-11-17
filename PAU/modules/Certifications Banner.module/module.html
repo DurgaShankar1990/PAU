@@ -1,0 +1,31 @@
+<div class="banner" style="background-image:url({{ module.background_image.src }})">
+    <div class="content-wrapper text-center">
+        <h1 class="white-color">{{ module.banner_title }}</h1>
+        <h4 class="white-color">{{ module.sub_title }}</h4>
+        <div class="btn-wrap">
+            {% set href = module.button.link_field.url.href %}
+            {% if module.button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}" class="button white"
+               {% if module.button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+               {% if module.button.link_field.rel %}rel="{{ module.button.link_field.rel }}"{% endif %}
+               >
+                {{ module.button.button_text }}
+            </a>
+        </div>
+    </div>
+</div>
+<style>
+    {% scope_css %}
+    .banner{
+        {{ module.style.desktop.spacing_field.css }};
+    }
+    
+    @media(max-width:767px){
+        .banner{
+            {{ module.style.mobile.spacing_field.css }};
+        }
+    }
+    {% end_scope_css %}
+</style>

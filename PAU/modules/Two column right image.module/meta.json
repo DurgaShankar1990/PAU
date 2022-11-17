@@ -1,0 +1,7 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 62741767569,
+  "label" : "Two Column Right Image",
+  "is_available_for_new_content" : true
+}

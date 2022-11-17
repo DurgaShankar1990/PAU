@@ -1,0 +1,262 @@
+[ {
+  "id" : "6352b9ca-789f-d3c1-2c3e-e49684b648ae",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "psychology CERTIFICATES OFFERED"
+}, {
+  "id" : "0d013563-bb86-671a-809e-3fdb01a1a8e8",
+  "name" : "certificate",
+  "display_width" : null,
+  "label" : "Certificate",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "af1f66e1-acf1-c834-365d-48e94a2fac3b",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "08d763f8-db50-04a0-3a52-7dfb4d6e15ac",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Certificate Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Silver.jpg",
+      "alt" : "Silver",
+      "loading" : "lazy",
+      "width" : 600,
+      "height" : 600,
+      "max_width" : 600,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "ff989746-37f8-745c-02bd-60637aac3f3f",
+    "name" : "text_field",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Certification in Dialectical Behavior Therapy (DBT)"
+  }, {
+    "id" : "af1f66e1-acf1-c834-365d-48e94a2fac3b",
+    "name" : "certificate_name",
+    "display_width" : null,
+    "label" : "Certificate Name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "DIALECTICAL BEHAVIOR THERAPY"
+  }, {
+    "id" : "f68988f8-6017-772f-b692-b7add1ad8830",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Develop the theoretical, empirical, & practical knowledge and skills to reliably deliver DBT in adherence to its model.\t\t\t\t\t\t\t"
+  }, {
+    "id" : "d23e8e60-7b4e-5025-c877-9e72f37b45cf",
+    "name" : "time_to_completion_content",
+    "display_width" : null,
+    "label" : "Time to completion content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Time to Completion: 80 hours + 6 consultation sessions over 6 months with a certified DBT therapist to assess implementation and adherence\t\t\t\t\t\t"
+  }, {
+    "id" : "ae78a02c-ec7e-cbce-5ce8-05cfb6d77390",
+    "name" : "button",
+    "display_width" : null,
+    "label" : "Button",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "2213bd01-f4d4-5bef-d6fa-28951b145365",
+      "name" : "link_field",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "a56b6a28-26d4-03ac-ba77-da9ded08a262",
+      "name" : "button_text",
+      "display_width" : null,
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "View Coursework\t\t\t\t\t\t"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "link_field" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_text" : "View Coursework\t\t\t\t\t\t"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Silver.jpg",
+      "alt" : "Silver",
+      "loading" : "lazy",
+      "width" : 600,
+      "height" : 600,
+      "max_width" : 600,
+      "max_height" : 600
+    },
+    "text_field" : "Certification in Dialectical Behavior Therapy (DBT)",
+    "certificate_name" : "DIALECTICAL BEHAVIOR THERAPY",
+    "content" : "Develop the theoretical, empirical, & practical knowledge and skills to reliably deliver DBT in adherence to its model.\t\t\t\t\t\t\t",
+    "time_to_completion_content" : "Time to Completion: 80 hours + 6 consultation sessions over 6 months with a certified DBT therapist to assess implementation and adherence\t\t\t\t\t\t",
+    "button" : {
+      "link_field" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_text" : "View Coursework\t\t\t\t\t\t"
+    }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Silver.jpg",
+      "alt" : "Silver",
+      "loading" : "lazy",
+      "width" : 600,
+      "height" : 600,
+      "max_width" : 600,
+      "max_height" : 600
+    },
+    "text_field" : "Certification in Dialectical Behavior Therapy (DBT)",
+    "certificate_name" : "DIALECTICAL BEHAVIOR THERAPY",
+    "content" : "Develop the theoretical, empirical, & practical knowledge and skills to reliably deliver DBT in adherence to its model.\t\t\t\t\t\t\t",
+    "time_to_completion_content" : "Time to Completion: 80 hours + 6 consultation sessions over 6 months with a certified DBT therapist to assess implementation and adherence\t\t\t\t\t\t",
+    "button" : {
+      "link_field" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_text" : "View Coursework\t\t\t\t\t\t"
+    }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Silver.jpg",
+      "alt" : "Silver",
+      "loading" : "lazy",
+      "width" : 600,
+      "height" : 600,
+      "max_width" : 600,
+      "max_height" : 600
+    },
+    "text_field" : "Certification in Dialectical Behavior Therapy (DBT)",
+    "certificate_name" : "DIALECTICAL BEHAVIOR THERAPY",
+    "content" : "Develop the theoretical, empirical, & practical knowledge and skills to reliably deliver DBT in adherence to its model.\t\t\t\t\t\t\t",
+    "time_to_completion_content" : "Time to Completion: 80 hours + 6 consultation sessions over 6 months with a certified DBT therapist to assess implementation and adherence\t\t\t\t\t\t",
+    "button" : {
+      "link_field" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_text" : "View Coursework\t\t\t\t\t\t"
+    }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Silver.jpg",
+      "alt" : "Silver",
+      "loading" : "lazy",
+      "width" : 600,
+      "height" : 600,
+      "max_width" : 600,
+      "max_height" : 600
+    },
+    "text_field" : "Certification in Dialectical Behavior Therapy (DBT)",
+    "certificate_name" : "DIALECTICAL BEHAVIOR THERAPY",
+    "content" : "Develop the theoretical, empirical, & practical knowledge and skills to reliably deliver DBT in adherence to its model.\t\t\t\t\t\t\t",
+    "time_to_completion_content" : "Time to Completion: 80 hours + 6 consultation sessions over 6 months with a certified DBT therapist to assess implementation and adherence\t\t\t\t\t\t",
+    "button" : {
+      "link_field" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_text" : "View Coursework\t\t\t\t\t\t"
+    }
+  } ]
+} ]

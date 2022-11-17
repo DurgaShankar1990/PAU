@@ -1,0 +1,48 @@
+<div class="partners-wrap">
+    <div class="row-1 m-col-6 mb-32">
+        <h2>{{ module.title }}</h2>
+    </div>
+    <div class="row-2 flex-row flex-wrap">
+        {% for item in module.partner %}
+        <div class="course-item">
+            <div class="c-inner">
+                <div class="image" style="background-image:url({{ item.logo.src }})">
+                    {% if item.logo.src %}
+                    {% set sizeAttrs = 'width="{{ item.logo.width }}" height="{{ item.logo.height }}"' %}
+                    {% if item.logo.size_type == 'auto' %}
+                    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                    {% elif item.logo.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ item.logo.max_width }}" height="{{ item.logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = item.logo.loading != 'disabled' ? 'loading="{{ item.logo.loading }}"' : '' %}
+                    <img src="{{ item.logo.src }}" alt="{{ item.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    {% endif %}
+                </div>
+                <div class="c-content pl-32 pr-32 pb-40 pt-40">
+                    <h3 class="title midnight-blue mb-16 name">{{ item.partner_name }}</h3>
+                    <p class="event mb-16">
+                        {{ item.content }}
+                    </p>
+                    <div class="button-wrap">
+                        {% set href = item.button_link.url.href %}
+                        {% if item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        <a href="{{ href }}" class="button"
+                           {% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+                           {% if item.button_link.rel %}rel="{{ item.button_link.rel }}"{% endif %}
+                           >
+                            {{ item.button_text }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+

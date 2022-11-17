@@ -1,0 +1,110 @@
+[ {
+  "id" : "5db4878e-649e-0aee-f12d-e0ad8655436e",
+  "name" : "bookmark_title",
+  "display_width" : null,
+  "label" : "Bookmark Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "In This Post"
+}, {
+  "id" : "c7ce2638-eb1b-f268-e05b-fca654a8d6b2",
+  "name" : "top_content",
+  "display_width" : null,
+  "label" : "Top Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext"
+}, {
+  "id" : "a93b49a2-702d-b438-2385-b92f2a4f0b65",
+  "name" : "content_items",
+  "display_width" : null,
+  "label" : "Content Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "47655fd2-ced0-7475-0e7b-6272e73a4c5f",
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "47655fd2-ced0-7475-0e7b-6272e73a4c5f",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Anchor Link 1"
+  }, {
+    "id" : "99a32a20-943f-92ca-c4f6-e33abad1c2b5",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. Ac malesuada ipsum, tellus vitae odio nulla sociis. Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. Habitant aenean ut turpis lectus pulvinar mattis fames. Suscipit aliquet pellentesque enim, massa vitae pharetra amet.</p>\n<h2>Lorem Ipsum Dolor Sit Amet, Consectur Adipiscing Elit.</h2>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.</p>\n<figure><img src=\"https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Image.png\" alt=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\">\n<figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</figcaption>\n</figure>"
+  }, {
+    "id" : "4c37f7c1-0e24-305a-21fc-d92899c353fa",
+    "name" : "button_text",
+    "display_width" : null,
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "09f78370-bf43-14db-3d6c-8661587eaa50",
+    "name" : "button_link",
+    "display_width" : null,
+    "label" : "Button Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "title" : "Anchor Link 1",
+    "content" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. Ac malesuada ipsum, tellus vitae odio nulla sociis. Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. Habitant aenean ut turpis lectus pulvinar mattis fames. Suscipit aliquet pellentesque enim, massa vitae pharetra amet.</p>\n<h2>Lorem Ipsum Dolor Sit Amet, Consectur Adipiscing Elit.</h2>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.</p>\n<figure><img src=\"https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Image.png\" alt=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\">\n<figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</figcaption>\n</figure>",
+    "link_field" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ]
+}, {
+  "id" : "8449426a-5757-4003-c315-c4faf644f628",
+  "name" : "bottom_content",
+  "display_width" : null,
+  "label" : "Bottom Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext"
+} ]

@@ -1,0 +1,66 @@
+<div class="latest-episode-wrapper">
+    <div class="content-wrapper">
+        <div class="recent-posts-top-content">
+            <div class="recent-post-title">
+                {% if module.title %}
+                <h2>{{ module.title }}</h2>
+                {% endif %}
+            </div>
+            <div class="recent-post-button">
+                <a href="{{ group.absolute_url }}">Browse The Thoughtful Counselor</a>
+            </div>
+        </div>
+        <div class="recent-posts-item-wrapper">
+            {% set max_posts = module.post_count %}
+            {% set rec_posts = [] %}
+            {% set rec_posts = rec_posts + blog_recent_posts(module.blog_field, max_posts + 1) %}
+            {% set i = 0 %}
+            {% for post in rec_posts %}
+            {% if content.absolute_url != post.absolute_url and i < max_posts %}
+            <div class="post-item recent-post-item post-item-{{ loop.index }}">
+                {% if post.featured_image %}
+                <div class="featured-image">
+                    <a href="{{ post.absolute_url }}">
+                        <img src="{{ post.featured_image }}" alt="{{ post.name|striptags }}">
+                    </a>
+                </div>
+                {% endif %}
+                <div class="post-item-content">
+                    <div class="post-item-inner-content">
+                        <h3><a href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
+                        {% if post.widgets.listing_summary.body.value %}
+                        <p>{{ post.widgets.listing_summary.body.value| striptags | truncatehtml(150, '', false) }}</p>
+                        {% endif %}
+                        <div class="latest-podcast-audio">
+                            <ul>
+                                <li class="audio">
+                                    <button type="button" class="audio-btn" data-toggle="modal" data-target="#audioModal-{{ loop.index }}"><span class="play-icon"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Play%20BTN.svg" alt="Play Button"></span>Listen Now</button>
+                                </li>
+                            </ul> 
+                        </div>
+                        <div class="modal fade" id="audioModal-{{ loop.index }}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <audio controls style="width:100%">
+                                            <source src="#" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% set i = i + 1 %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

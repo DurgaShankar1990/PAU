@@ -1,0 +1,342 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+{% endmacro %}
+
+{% macro buildLeftContentStyles() %}
+  padding-top: {{ module.paddings.desktop.left_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.left_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.left_content.left }}px;
+  padding-right: {{ module.paddings.desktop.left_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentTextStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content_text.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content_text.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content_text.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content_text.right }}px;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;
+{% endmacro %}
+
+{% macro buildButtonStyles() %}
+ {% if module.content.button.button_style == "elements-btn-custom--li-rs" %}
+  font-family: {{ module.content.button.font.font }}; {{ module.content.button.font.style }};
+  color: {{ module.content.button.font.color }}; 
+  font-size: {{ module.content.button.font.size }}{{module.content.button.font.size_unit }};
+  background-color: {{ module.content.button.background_color.color }};
+ {% endif %}
+{% endmacro %}
+
+{% set linkStyle = "text-align: center; margin-left: 6px; margin-right: 6px; width: 32px; text-decoration: none; border: 0px; border-width: 0px;" %}
+{% set iconStyle = "text-align: center; margin-bottom: 8px; border-radius: 50%; width: 32px !important; height: 32px !important; border:0px; border-width:0px; " %}
+
+{% macro buildFormContent() %}
+
+ <h2>
+   {{ module.title_copy }}
+</h2>
+
+{% for item in module.right_content %}
+            
+{% macro social_icon(network) %}
+	{% set networkIcon = item.social_card[network] %}
+  {% if  networkIcon.enabled %}
+    {% set logo = network ~'.svg' %}
+    <a href="{{ networkIcon.link }}"  target="_blank" style="{{ linkStyle }}" >
+      <img src="{{ networkIcon.icon.src }}" class="elements-social-links__icon_{{ name }}" style="{{ iconStyle }}" width="44px"  alt='{{ "Visit " ~ network }}' />
+    </a>
+	{% endif %}
+{% endmacro %}
+
+
+
+  <div class="cards__card elements-sticky__social-card_{{ name }}" {% if module.animation.right_content.enable_animation %}data-aos="{{ module.animation.right_content.animation }}-{% if module.animation.right_content.animation == "fade" %}{{ module.animation.right_content.direction_fade }}{% elif module.animation.right_content.animation == "flip" %}{{ module.animation.right_content.direction_flip }}{% elif module.animation.right_content.animation == "slide" %}{{ module.animation.right_content.direction_slide }}{% elif module.animation.right_content.animation == "zoom" %}{{ module.animation.right_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.right_content.frecuency }}" data-aos-duration="{{ module.animation.right_content.duration }}" data-aos-delay="{{ module.animation.right_content.delay }}">
+    <div class="container-fluid my-custom-class">
+        <div class="row-fluid-wrapper">
+            <div class="row-fluid">
+                <div class="span4 widget-span widget-type-cell elements-speakers-image_{{ name }}" style="" data-widget-type="cell" data-x="0" data-w="4">
+                  {% if item.social_card.speaker_picture.src %}
+                    <img src="{{ item.social_card.speaker_picture.src }}" alt="{{ item.social_card.speaker_picture.alt }}" width="126" height="126">
+                  {% endif %}
+
+                </div>
+                <div class="span8 widget-span widget-type-cell elements-speakers-content-text_{{ name }}" style="" data-widget-type="cell" data-x="4" data-w="8">
+                  <h3 class="elements-speakers-name_{{ name }}">{{ item.social_card.speaker_name }}</h3>
+                  <p class="elements-speakers-title_{{ name }}">{{ item.social_card.title }}</p>
+                  <div class="elements-social-links__container_{{ name }}">
+                    {{ social_icon('facebook') }}
+                    {{ social_icon('twitter') }}
+                    {{ social_icon('instagram') }}
+                    {{ social_icon('linkedin') }}
+                    {{ social_icon('web') }}
+                    {{ social_icon('youtube') }}
+                    {{ social_icon('telegram') }}
+                    {{ social_icon('whatsapp') }}
+                    {{ social_icon('pinterest') }}
+                    {{ social_icon('tiktok') }}
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+
+  {% endfor %}
+ 
+{% endmacro %}
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}"  style="{{ buildModuleStyles() }}">
+  
+     <div class="row-fluid-wrapper">
+        
+          
+          {% if module.module_styles.layout_position == "left_content_right_form" %}
+          <div class="row-fluid">
+            
+            <div class="span6 widget-span widget-type-cell elements-module-content_left_{{ name }}" style="{{ buildLeftContentStyles() }}" data-widget-type="cell" data-x="0" data-w="6" {% if module.animation.left_content.enable_animation %}data-aos="{{ module.animation.left_content.animation }}-{% if module.animation.left_content.animation == "fade" %}{{ module.animation.left_content.direction_fade }}{% elif module.animation.left_content.animation == "flip" %}{{ module.animation.left_content.direction_flip }}{% elif module.animation.left_content.animation == "slide" %}{{ module.animation.left_content.direction_slide }}{% elif module.animation.left_content.animation == "zoom" %}{{ module.animation.left_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.left_content.frecuency }}" data-aos-duration="{{ module.animation.left_content.duration }}" data-aos-delay="{{ module.animation.left_content.delay }}">
+              {% inline_rich_text field="left_content.content" value="{{ module.left_content.content }}" %}
+            </div>
+
+            <div class="span6 widget-span widget-type-cell elements-sticky-div_{{ name }} elements-module-content_right_{{ name }}" style="{{ buildRightContentStyles() }}" data-widget-type="cell" data-x="6" data-w="6" >
+              {{ buildFormContent() }}
+            </div>
+            
+          </div>
+                    
+          {% elif module.module_styles.layout_position == "left_form_right_content" %}
+       
+          <div class="row-fluid elements-reverse">
+            
+            <div class="span6 widget-span widget-type-cell elements-sticky-div_{{ name }} elements-module-content_right_{{ name }}" style="{{ buildRightContentStyles() }}" data-widget-type="cell" data-x="0" data-w="6" >
+              {{ buildFormContent() }}
+            </div>
+
+            <div class="span6 widget-span widget-type-cell elements-module-content_left_{{ name }}" style="{{ buildLeftContentStyles() }}" data-widget-type="cell" data-x="6" data-w="6" {% if module.animation.left_content.enable_animation %}data-aos="{{ module.animation.left_content.animation }}-{% if module.animation.left_content.animation == "fade" %}{{ module.animation.left_content.direction_fade }}{% elif module.animation.left_content.animation == "flip" %}{{ module.animation.left_content.direction_flip }}{% elif module.animation.left_content.animation == "slide" %}{{ module.animation.left_content.direction_slide }}{% elif module.animation.left_content.animation == "zoom" %}{{ module.animation.left_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.left_content.frecuency }}" data-aos-duration="{{ module.animation.left_content.duration }}" data-aos-delay="{{ module.animation.left_content.delay }}">
+              {% inline_rich_text field="left_content.content" value="{{ module.left_content.content }}" %}
+            </div>
+            
+          </div>
+
+          {% endif %}
+
+
+        
+
+       
+    </div>
+</div>
+
+{% require_css %}
+<style>
+  
+  .elements-speakers-name_{{ name }} {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  
+  .elements-speakers-title_{{ name }} {
+    color: {{ theme.global_colors.primary_colors.primary_color_1.color }};
+    margin-bottom: 16px;
+  }
+  
+  .elements-speakers-image_{{ name }} {
+   text-align: right; 
+   padding-right: 5%;
+  }
+  
+  .elements-speakers-image_{{ name }} img {
+    border-radius: 50%;
+    border: 6px solid #FFFFFF;
+    filter: drop-shadow(0px 3px 12px rgba(31, 37, 89, 0.05));
+    max-width: 100%;
+    height: auto;
+    
+  }
+  
+  .elements-social-links__container_{{ name }} {
+    margin-right: -6px;
+    margin-left: -6px;
+  }
+  
+  .elements-social-links__icon_{{ name }} {
+    transition: 0.3s ease-in-out;
+    -webkit-filter: drop-shadow(0px 11.89px 16.35px rgba(24, 119, 242, 0.15));
+    filter: drop-shadow(0px 11.89px 16.35px rgba(24, 119, 242, 0.15));
+  }
+  
+   .elements-social-links__icon_{{ name }}:hover {
+      transform: scale(1.1);
+    }
+  
+  .elements-sticky__form-card_{{ name }} {
+    border-radius: 20px;
+    padding: 32px 40px 56px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  
+  .elements-sticky__social-card_{{ name }} {
+    border-radius: 20px;
+    padding: 30px 10px 32px 30px;
+    width: 100%;
+    margin: 18px 0;
+  }
+  
+  .elements-module-container-image_{{ name }} {
+    text-align: center; 
+  }
+  
+
+  .elements-module-image_{{ name }} {
+     text-align: center;
+     max-width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  
+  
+  @media(max-width: 1097px) {
+    .elements-speakers-image_{{ name }} { 
+       padding-right: 0;
+    }
+  }
+  
+  
+@media(min-width: 768px) {
+ 
+  
+  .elements-sticky-div_{{ name }} {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 24px;
+  }
+  
+  
+}
+  
+@media (min-width: 768px) and (max-width: 1080px) {
+
+}
+
+@media(max-width: 767px) {
+  
+  .elements-speakers-content-text_{{ name }} {
+    margin-left: 16px !important;
+  }
+  
+  .elements-sticky__social-card_{{ name }} {
+    padding: 40px 24px 32px 24px;
+    width: 100%;
+  }
+  
+  .elements-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .elements-module-container-image_{{ name }} {
+    text-align: left;  
+  }
+ 
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    display: table-cell;
+  }
+     
+  .elements-module-content_left_{{ name }} {
+    padding-top: {{ module.paddings.mobile.left_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.left_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.left_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.left_content.right }}px !important;
+  } 
+  
+  .elements-module-content_right_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content.right }}px !important;
+    width: 100% !important;
+  }
+    
+  .elements-module-image_{{ name }} {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+  
+  .elements-module-content_right_text_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content_text.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content_text.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content_text.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content_text.right }}px !important;
+  }
+  
+
+}
+  
+  @media(max-width: 487px) { 
+    
+    .elements-speakers-image_{{ name }} {
+      width: 100% !important;
+      text-align: center;
+    }
+    
+    .elements-speakers-content-text_{{ name }} {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+      text-align: center;
+      width: 100% !important;
+    }
+    
+  }
+  
+@media(max-width: 430px) {
+  
+  .elements-sticky__form-card_{{ name }} form .hs-button {
+    width: 100%;
+  }
+  
+  .elements-module-container-image_{{ name }} {
+    text-align: center;  
+  }
+
+}
+  
+  
+  
+</style>
+{% end_require_css %}

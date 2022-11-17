@@ -1,0 +1,50 @@
+<!--
+templateType: "global_partial"
+label: "Website header"
+isAvailableForNewContent: false
+-->
+<header id="header" class="header">
+
+    <a href="#main-content" class="header__skip">Skip to content</a>
+    <div class="header__top">
+        <div class="header__container content-wrapper">
+            <div class="header__top_menu">
+                {% menu "mobile-header__top_menu" id="61620542522", flyouts='false', label='Top Menu' %}
+            </div>
+        </div>
+    </div>
+    <div class="header__bottom">
+        <div class="header__container content-wrapper">
+            {# Header logo column #}
+            <div class="header__logo header__logo--main">
+                {% module 'site_logo' path='@hubspot/logo', link="http://concept.paloalotu.edu/" img= { "override_inherited_src": true, "src": "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/logo.svg", "alt": "Aptitute 8 Logo", "width": 186 } %}
+            </div>
+            {# End header logo column #}
+
+            {# Header navigation column #}
+            <div class="header__column">
+                {# Header navigation row one #}
+                <div class="header__row-1">
+                    <div class="header--toggle header__navigation--toggle"></div>
+                    <div class="header--toggle header__search--toggle" style="display: none;"></div>
+                    <div class="header__close--toggle"></div>
+                    <div class="header__navigation header--element">
+                        {% module 'navigation-primary' path='../../modules/Aptitute 8 - Menu', label='Aptitute 8 - Menu' %}
+                    </div>
+                    <div class="header__cart" onclick="window.location='/shop';">
+                        <img src="{{ get_asset_url('../../images/shopping-cart.svg') }}" alt="shopping cart" >
+                        <div class="total-count">
+                            
+                        </div>
+                    </div>
+                    {% module "module_1611098085088105" path='../../modules/Aptitute 8 - Header Search', label="Aptitute 8 - Header Search" %}
+                </div>
+                {# End header navigation row one #}
+            </div>
+            {# End header navigation column #}
+        </div>
+    </div>
+</header>
+
+<div class="sticky-padding"></div>
+

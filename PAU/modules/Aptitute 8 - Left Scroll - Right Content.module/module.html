@@ -1,0 +1,192 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+
+{% endmacro %}
+
+{% macro buildLeftContentStyles() %}
+  padding-top: {{ module.paddings.desktop.left_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.left_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.left_content.left }}px;
+  padding-right: {{ module.paddings.desktop.left_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentTextStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content_text.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content_text.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content_text.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content_text.right }}px;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;
+{% endmacro %}
+
+{% macro buildButtonStyles() %}
+ {% if module.left_content.button.button_style == "elements-btn-custom" %}
+  font-family: {{ module.left_content.button.font.font }}; {{ module.left_content.button.font.style }};
+  color: {{ module.left_content.button.font.color }}; 
+  font-size: {{ module.left_content.button.font.size }}{{module.left_content.button.font.size_unit }};
+  background-color: {{ module.left_content.button.background_color.color }};
+
+ {% endif %}
+{% endmacro %}
+
+
+{% macro buildLeftContent() %}
+   <div class="elements-module-content_left_{{ name }}" style="{{ buildLeftContentStyles() }}" {% if module.animation.left_content.enable_animation %}data-aos="{{ module.animation.left_content.animation }}-{% if module.animation.left_content.animation == "fade" %}{{ module.animation.left_content.direction_fade }}{% elif module.animation.left_content.animation == "flip" %}{{ module.animation.left_content.direction_flip }}{% elif module.animation.left_content.animation == "slide" %}{{ module.animation.left_content.direction_slide }}{% elif module.animation.left_content.animation == "zoom" %}{{ module.animation.left_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.left_content.frecuency }}" data-aos-duration="{{ module.animation.left_content.duration }}" data-aos-delay="{{ module.animation.left_content.delay }}">
+     {% inline_rich_text field="left_content.content" value="{{ module.left_content.content }}" %}
+    
+     {% set href = module.left_content.button.link_field.url.href %}
+     {% if module.left_content.button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+       {% set href = "mailto:" + href %}
+     {% endif %}
+     {% set rel = [] %}
+     {% if module.left_content.button.link_field.no_follow %}
+       {% do rel.append("nofollow") %}
+     {% endif %}
+     {% if module.left_content.button.link_field.open_in_new_tab %}
+       {% do rel.append("noopener") %}
+     {% endif %}
+      <a href="{{ href }}"
+        {% if module.left_content.button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+        {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+      >
+	      <button class="{{ module.left_content.button.button_style }}" style="{{ buildButtonStyles() }}">{{ module.left_content.button.button_text }}</button>
+      </a>
+     
+  </div>
+{% endmacro %}
+
+{% macro buildRightContent() %}
+  {% for item in module.right_content %}
+    <div  {% if module.animation.right_content.enable_animation %}data-aos="{{ module.animation.right_content.animation }}-{% if module.animation.right_content.animation == "fade" %}{{ module.animation.right_content.direction_fade }}{% elif module.animation.right_content.animation == "flip" %}{{ module.animation.right_content.direction_flip }}{% elif module.animation.right_content.animation == "slide" %}{{ module.animation.right_content.direction_slide }}{% elif module.animation.right_content.animation == "zoom" %}{{ module.animation.right_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.right_content.frecuency }}" data-aos-duration="{{ module.animation.right_content.duration }}" data-aos-delay="{{ module.animation.right_content.delay }}">
+      <div class="row-fluid elements-module-content_right_{{ name }}" style="{{ buildRightContentStyles() }}">
+        <div class="span6 widget-span widget-type-cell" style="" data-widget-type="cell" data-x="0" data-w="6">
+          <div class="elements-module-image_{{ name }}" style="{{ buildImageStyles() }}">
+            {% if item.image.image.src %}
+              {% set sizeAttrs = 'width="{{ item.image.image.width }}" height="{{ item.image.image.height }}"' %}
+              {% if item.image.image.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.image.image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.image.max_width }}px; max-height: {{ item.image.image.max_height }}px"' %}
+              {% endif %}
+              {% set loadingAttr = item.image.image.loading != 'disabled' ? 'loading="{{ item.image.image.loading }}"' : '' %}
+              <img src="{{ item.image.image.src }}" alt="{{ item.image.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+          </div>
+       </div>
+       <div class="span6 widget-span widget-type-cell elements-module-content_right_text_{{ name }}" style="{{ buildRightContentTextStyles() }}" data-widget-type="cell" data-x="6" data-w="6">
+         {% inline_rich_text field="right_text" value="{{ item.right_text }}" %}
+       </div>
+     </div>
+    </div>
+  {% endfor %}
+{% endmacro %}
+
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}"  style="{{ buildModuleStyles() }}">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+          
+            <div class="span5 widget-span widget-type-cell elements-sticky-div_{{ name }}" data-widget-type="cell" data-x="0" data-w="5">
+              {{ buildLeftContent() }}
+            </div>
+          
+            <div class="span7 widget-span widget-type-cell" style="" data-widget-type="cell" data-x="5" data-w="7">
+              {{ buildRightContent() }}
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+{% require_css %}
+<style>
+  
+  
+@media(min-width: 768px) {
+  
+  .elements-sticky-div_{{ name }} {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 24px;
+  }
+  
+  .elements-module-content_right_{{ name }} {
+    display: flex;
+    align-items: center;
+  }
+  
+}
+
+@media(max-width: 767px) {
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    display: table-cell;
+  }
+     
+  .elements-module-content_left_{{ name }} {
+    padding-top: {{ module.paddings.mobile.left_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.left_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.left_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.left_content.right }}px !important;
+  } 
+  
+  .elements-module-content_right_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content.right }}px !important;
+  }
+    
+  .elements-module-image_{{ name }} {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+  
+  .elements-module-content_right_text_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content_text.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content_text.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content_text.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content_text.right }}px !important;
+  }
+  
+
+
+}
+  
+</style>
+{% end_require_css %}

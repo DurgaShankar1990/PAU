@@ -1,0 +1,12 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 63495075156,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/isotope.js",
+    "name" : "isotope.js"
+  } ],
+  "label" : "Course Filter All",
+  "is_available_for_new_content" : true
+}

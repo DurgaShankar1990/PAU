@@ -1,0 +1,13 @@
+.two-col-image-inner.flex-row .m-col-7 {
+    padding-right: 50px;
+}
+.two-col-image-wrapper.right-img {
+    padding: 0;
+}
+
+@media(max-width:767px){
+    .two-col-image-inner.flex-row .m-col-7{
+        padding-right:0;
+        margin-bottom:40px;
+    }
+}

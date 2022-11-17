@@ -1,0 +1,43 @@
+[ {
+  "id" : "primary_menu_field",
+  "name" : "primary_menu_field",
+  "display_width" : null,
+  "label" : "Primary menu field",
+  "required" : false,
+  "locked" : false,
+  "type" : "menu",
+  "default" : 61618569627
+}, {
+  "id" : "3198802a-f532-ad92-5750-ee37f6b520fc",
+  "name" : "subitems_per_column",
+  "display_width" : null,
+  "label" : "Subitems per Column",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 10
+}, {
+  "id" : "609fff0c-abd7-131f-9bd5-ffcd468f15ea",
+  "name" : "subitems_per_column_mobile",
+  "display_width" : null,
+  "label" : "Subitems per Column (Mobile)",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 30
+}, {
+  "id" : "71e8ed7d-0aed-ea91-7828-3838a0958319",
+  "name" : "subitems_per_column_small_mobile",
+  "display_width" : null,
+  "label" : "Subitems per Column (Small Mobile)",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 30
+} ]

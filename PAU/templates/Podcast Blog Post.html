@@ -1,0 +1,59 @@
+<!--
+templateType: blog_post
+isAvailableForNewContent: true
+label: Podcast Blog Post - Aptitute 8 HubSpot Theme
+screenshotPath: ../images/template-previews/blog-post-v1.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper cm-blog-post podcast-blog">
+    <div class="body-container body-container--blog-index">
+        <div class="blog-post-wrapper">
+            <div style="display: none;">
+                {% text "listing_summary" label="Listing Summary", export_to_template_context=True %}
+            </div>
+            {% module "podcast_banner" path="../modules/Podcast Post Banner", label="Podcast Post Banner" %}
+            <div class="content-wrapper">
+                <div class="post-body">
+                    {% module "content_with_bookmark" path="../modules/Content With Bookmark", label="Content With Bookmark" %}
+                </div>
+                <div class="post-author-section">
+                    <div class="post-author-wrapper {% if not content.blog_post_author.avatar %}no-author-img{% endif %}">
+                        {% if content.blog_post_author.avatar %}
+                        <div class="post-author-image">
+                            <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}"><img src="{{ content.blog_post_author.avatar }}" alt="{{ content.blog_post_author.display_name|striptags }}"></a>
+                        </div>
+                        {% endif %}
+                        <div class="post-author-content">
+                            <h3><a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.display_name }}</a></h3>
+                            <p>{{ content.blog_post_author.bio }}</p>
+                            <div class="post-author-social">
+                                <ul>
+                                    {% if content.blog_post_author.facebook %}
+                                    <li class="facebook"><a href="{{ content.blog_post_author.facebook }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/facebook1.svg" alt="Facebook"></a></li>
+                                    {% endif %}
+                                    {% if content.blog_post_author.twitter %}
+                                    <li class="twitter"><a href="{{ content.blog_post_author.twitter }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/twitter1.svg" alt="Twitter"></a></li>
+                                    {% endif %}
+                                    {% if content.blog_post_author.linkedin %}
+                                    <li class="linkedin"><a href="{{ content.blog_post_author.linkedin }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/linkedin1.svg" alt="Linkedin"></a></li>
+                                    {% endif %}
+                                    {% if content.blog_post_author.website %}
+                                    <li class="website"><a href="{{ content.blog_post_author.website }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/website1.svg" alt="Website"></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% module "latest_episode" path="../modules/Latest Episode", label="Latest Episode" %}
+            {% module "module_16397448352382" path="../modules/Training Suggestions", label="Training Suggestions" %}
+            {% module "newsletter" path="../modules/Subscribe Newsletter", label="Subscribe Newsletter" %}
+        </div>
+    </div>
+</main>
+
+{% endblock body %}

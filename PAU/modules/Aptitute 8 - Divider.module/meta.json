@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Divider.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 55275659560,
+  "label" : "Divider",
+  "is_available_for_new_content" : true
+}

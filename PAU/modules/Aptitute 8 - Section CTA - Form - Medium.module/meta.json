@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Section%20CTA%20-%20Form%20-%20Medium.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 55277639457,
+  "label" : "Section CTA - Form - Medium",
+  "is_available_for_new_content" : true
+}

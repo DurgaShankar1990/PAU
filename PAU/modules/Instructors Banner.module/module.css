@@ -1,0 +1,24 @@
+.instructors-banner h1{
+    margin-bottom: 24px;
+}
+.instructors-banner h3,
+.instructors-banner h5{
+    margin-bottom: 8px;
+}
+.instructors-banner .img {
+    width: 120px;
+}
+.instructors-banner .right-content {
+    padding-left: 40px;
+    width: calc(100% - 120px);
+}
+.instructors-banner .item + .item {
+    margin-top: 56px;
+}
+@media(max-width:767px){
+    .instructors-banner .span6:last-child,
+    .instructors-banner .item + .item{
+        margin-top: 40px;
+    }
+
+}

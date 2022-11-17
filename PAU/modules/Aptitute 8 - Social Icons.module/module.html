@@ -1,0 +1,88 @@
+{% macro buildID() %}
+{% if module.main_settings.css__id %} id="{{ module.main_settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.main_settings.css__class %}{{ module.main_settings.css__class }}{% endif %}{% endmacro %}
+
+{% set linkStyle = "text-align: center; margin-left: {{ module.settings.separation }}px; margin-right: {{ module.settings.separation }}px; width: {{ module.settings.icon_size }}px; height: {{ module.settings.icon_size }}px; border-radius: {{ module.settings.border_radius }}px; text-decoration: none; border: 0px; border-width: 0px;" %}
+
+{% macro social_icon(network) %}
+{% set networkIcon = module[network] %}
+{% if  networkIcon.enabled %}
+<a href="{{ networkIcon.link }}"  target="_blank" style="{{ linkStyle }}" >
+    {% icon
+        name="{{ networkIcon.icon.name }}"
+        style="{{ networkIcon.icon.type }}"
+        unicode="{{ networkIcon.icon.unicode }}"
+        icon_set="{{ networkIcon.icon.icon_set }}"
+    %}
+</a>
+{% endif %}
+{% endmacro %}
+
+{% macro buildStyles() %}
+margin-top: {{ module.margin.desktop.top }}px;
+margin-bottom: {{ module.margin.desktop.bottom }}px;
+{% endmacro %}
+
+<div {{ buildID() }} class="social__icon elements-social-links__container_{{ name }} {{ buildClass() }}" style="{{ buildStyles() }}">
+    {{ social_icon('facebook') }}
+    {{ social_icon('twitter') }}
+    {{ social_icon('linkedin') }}
+    {{ social_icon('youtube') }}
+    {{ social_icon('instagram') }}
+    {{ social_icon('web') }}
+    {{ social_icon('telegram') }}
+    {{ social_icon('whatsapp') }}
+    {{ social_icon('pinterest') }}
+    {{ social_icon('tiktok') }}
+</div>
+
+{% require_css %}
+<style>
+    .elements-social-links__container_{{ name }} {
+        {% if module.settings.hide_left_margin %}
+        margin-left: -{{ module.settings.separation }}px !important;
+        {% endif %}
+    }
+
+    .elements-social-links__container_{{ name }} {
+        text-align: {{ module.settings.align }};
+    }
+
+    .elements-social-links__icon_{{ name }} {
+
+        transition: 0.3s ease-in-out;
+
+        {% if module.settings.enable_shadow %}
+
+        {% if module.settings.shadow_type == "shadow_1" %}
+        -webkit-filter: drop-shadow(0px 11.89px 16.35px rgba(10, 102, 194, 0.15));
+        filter: drop-shadow(0px 11.89px 16.35px rgba(10, 102, 194, 0.15));
+        {% elif module.settings.shadow_type == 'shadow_2' %}
+        -webkit-filter: drop-shadow(0px 11.2909px 15.5249px rgb(31 37 89 / 4%));
+        filter:         drop-shadow(0px 11.2909px 15.5249px rgb(31 37 89 / 4%)); 
+        {% endif %}
+
+        {% endif %}
+
+    }
+
+    {% if module.settings.enable_hover %}
+    .elements-social-links__icon_{{ name }}:hover {
+        transform: scale({{ module.settings.zoom_hover_scale }});
+    }
+    {% endif %}
+
+    @media (max-width: 767px) {
+        .elements-social-links__container_{{ name }} {
+            text-align: {{ module.settings.align_mobile }};
+            margin-top: {{ module.margin.mobile.top }}px !important;
+            margin-bottom: {{ module.margin.mobile.bottom }}px !important;
+        }
+    }
+
+</style>
+{% end_require_css %}
+
+

@@ -1,0 +1,74 @@
+[ {
+  "id" : "131924b2-91fe-22ae-8cfb-1d829a9e3c82",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<p>Join Dr. Stacey Litam and Dr. Jose Luis Tapia-Fuselier Jr. as they discuss the importance of providing disability responsive care. In this episode, Dr. Litam and Dr. Tapia-Fuselier outline the challenges faced by interabled partners, identify strategies to support disabled clients, and challenge professional counselors and counselor educators to relearn what they think they know about sex therapy and disability.</p>"
+}, {
+  "id" : "eea2b6fe-75ed-9ff9-188a-2f709000ecf0",
+  "name" : "audio_link",
+  "display_width" : null,
+  "label" : "Audio Link",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/audio/file_example_MP3_700KB.mp3"
+}, {
+  "id" : "6aa0bccd-87b0-eb60-cec0-86c44a446fb5",
+  "name" : "link_text",
+  "display_width" : null,
+  "label" : "Link Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Read Transcript"
+}, {
+  "id" : "20a821b5-b888-f8eb-2ccd-ee623f03c867",
+  "name" : "link_field",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "12f3e8f2-92f6-890a-09b6-408befe50f1c",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/thpughtful-counselor.png",
+    "alt" : "thpughtful-counselor",
+    "loading" : "lazy",
+    "width" : 2170,
+    "height" : 820,
+    "max_width" : 2170,
+    "max_height" : 820
+  }
+} ]

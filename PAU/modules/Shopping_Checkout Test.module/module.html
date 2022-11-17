@@ -1,0 +1,169 @@
+<section class="shopping_checkout {{name}}">
+    <div class="shopping_checkout_container">
+        <form class="shopping_checkout_form" id="purchaserInformation">   
+            <fieldset class="form_section column12 purchaser_information">
+                <div class="form_heading">
+                    <h3>
+                        Purchaser Information
+                    </h3>                
+                </div>
+                <div class="form_input_section">
+                    <div class="form_input_field hs_firstname hs-form-field">
+                        <label class="label_heading" for="fullname">Name</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="fullname" name="fullname" value="" required placeholder="First, Last Name">
+                        </div>
+                    </div>
+                    <div class="form_input_field hs-form-field">
+                        <label class="label_heading" for="email">Email</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="email" name="email" value="" required placeholder="Email Address">
+                        </div>                        
+                    </div>
+                    <div class="form_input_field hs-form-field">
+                        <label class="label_heading" for="company">Company</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="company" name="company" value="" required placeholder="Company Name">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="dynamicCoursesClass" id="dynamicCourses">
+
+            </div>
+
+            <div class="form_submit_button">
+                <div class="form_submit_button_iner button_first">
+                    <a href="#">
+                        <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22.5C17.5228 22.5 22 18.0228 22 12.5C22 6.97715 17.5228 2.5 12 2.5C6.47715 2.5 2 6.97715 2 12.5C2 18.0228 6.47715 22.5 12 22.5Z" stroke="#9D1D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 8.5L8 12.5L12 16.5" stroke="#9D1D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M16 12.5H8" stroke="#9D1D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                        Previous
+                    </a>
+                </div>
+                <div class="form_submit_button_iner button_second">
+                    <a class="button checkout_button" href="#">Continue to Checkout</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% require_css %}
+<style>
+    /*   Form   */
+    .{{name}} fieldset {padding: 0;margin: 0;border: 0;outline: 0;}
+    .{{name}} .label_heading {font-weight: bold;color: #1F2559;font-size: 14px;}
+
+    /*  Form Bottom Button Style  */
+    .{{name}} .form_submit_button {width: 100%;display: flex;flex-wrap: wrap;justify-content: space-between;align-items: center;margin-top: 40px;}
+    .{{name}} .form_submit_button_iner.button_first>a {display: flex;font-weight: bold;color: #9D1D64;font-size: 18px;}
+    .{{name}} .form_submit_button_iner.button_first>a>span {padding-right: 8px;}
+
+    /*  Course Heading Style  */
+    .{{name}} .course_heading {color: #2488CD;font-size: 16px;font-weight: bold;margin-bottom: 30px;}
+
+    .shopping_checkout.{{name}} {width: 100%;float: left;{{ module.style.spacing.desktop.spacing.css }}; }
+    .{{name}} .shopping_checkout_container {max-width: 600px;margin: 0 auto;}
+    .{{name}} .shopping_checkout_form {padding: 48px;box-shadow: 0px 4px 8px 0px #0B325352;border-radius: 24px;border: 1px solid #C6CFDA;}
+
+
+    @media(max-width:767px){
+        .shopping_checkout.{{name}}{
+            {{ module.style.spacing.mobile.spacing.css }}
+        }
+    }
+
+</style>
+{% end_require_css %}
+
+
+{% require_js%}
+<script src="http://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/1.11.0/index.umd.min.js"></script>
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/2.0.1/index.unoptimized.umd.min.js"></script>
+<script>
+
+    import Client from 'shopify-buy';
+
+    // Initializing a client to return content in the store's primary language
+    const client = Client.buildClient({
+        domain: 'hubspot-to-shop-api.myshopify.com',
+        storefrontAccessToken: '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'
+    });
+
+    // Initializing a client to return translated content
+    const clientWithTranslatedContent = Client.buildClient({
+        domain: 'hubspot-to-shop-api.myshopify.com',
+        storefrontAccessToken: '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',
+        language: 'en'
+    }); 
+
+    
+
+    $(document).ready(function () {
+
+        function displayCart() { 
+            cart = JSON.parse(localStorage.getItem('shoppingCart'));
+            if(cart != null) {
+
+                console.log('display cart = ' + cart);
+                // List cart
+                var  cartListItems = function() {
+                    var cartCopy = []; 
+                    for(i in cart) {
+                        item = cart[i];
+                        itemCopy = {};
+                        for(p in item) {
+                            itemCopy[p] = item[p];
+
+                        }
+                        itemCopy.total = Number(item.courseprice * item.count).toFixed(2);
+                        cartCopy.push(itemCopy)
+                    }
+                    return cartCopy;
+                }
+
+
+                var cartArray = cartListItems();
+                console.log(cartArray + ' cartArray');
+                //var output = " <tr border='0'><th class='width_half'>Course Details</th><th>Quantity</th><th>Price</th><th>Total</th></tr>";
+                var output = "<fieldset class='form_section column12 course'>";
+                for(var i in cartArray) {
+
+                    output += "<div class='courseConainer' data-containerthinkificid='course_"+cartArray[i].thinkificId+"' data-coursecontainerid='course_"+cartArray[i].courseId+"'><div class='form_heading'><h3>"+ cartArray[i].coursename+"</h3></div><div class='mainCourse_id' data-thinkificid='course_"+cartArray[i].thinkificId+"' data-courseid='course_"+cartArray[i].courseId+"'>";
+                    var courseCount=cartArray[i].count;
+                    for(j=0; j<courseCount;j++) {
+                        var incre= parseInt(j) + 1;
+                        output += "<div class='form_course_section maindiv_"+j+"'>";
+                        output += "<div class='course_name course_heading'> Participant "+ incre  +"</div>";
+                        output += "<div class='form_input_section'><div class='form_input_field hs_firstname hs-form-field'><label class='label_heading' for='firstname_"+cartArray[i].courseId+'_'+ j  +"'>First Name</label>";
+                        output += "<div class='input'><input class='hs-input' type='text' id='firstname_"+cartArray[i].courseId+'_'+ j +"' name='firstname_"+cartArray[i].courseId+'_'+ j  +"' required placeholder='First Name'></div></div>";
+                        output+="<div class='form_input_field hs_firstname hs-form-field'><label class='label_heading' for='lastname_"+cartArray[i].courseId+'_'+ j  +"'>Last Name</label>";
+                        output += "<div class='input'><input class='hs-input' type='text' id='lastname_"+cartArray[i].courseId+'_'+ j +"' name='lastname_"+cartArray[i].courseId+'_'+ j  +"' required placeholder='Last Name'></div></div>";
+                        output += "<div class='form_input_field hs-form-field'><label class='label_heading' for='email'>Email</label>";
+                        output +="<div class='input'><input class='hs-input' type='text' id='email_"+cartArray[i].courseId+'_'+ j  +"' name='email_"+cartArray[i].courseId+'_'+ j  +"' required placeholder='Email Address'></div></div>";
+                        output +=" </div></div>";//form_input_section>form_course_section
+                    }
+                    output +=" </div></div>";
+
+                }
+                output +=" </fieldset>";
+                $('.dynamicCoursesClass').html(output);
+
+            }
+            else
+            {
+                cart = [];
+            }
+
+        }
+
+        //call the function
+        displayCart();
+    });        
+</script>
+{% end_require_js%}

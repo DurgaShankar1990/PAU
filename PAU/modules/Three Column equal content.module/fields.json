@@ -1,0 +1,312 @@
+[ {
+  "id" : "da31afd1-d89a-6f18-8d81-f30ae8febe8f",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Live Event Policy"
+}, {
+  "id" : "0214a11a-026c-77b4-9868-cadd352e7a69",
+  "name" : "sub_title",
+  "display_width" : null,
+  "label" : "Sub Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "1382fd04-b7d7-2f55-fef7-69ccf9486ca2",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "bea96f6e-92c4-32b3-d0a5-3df9dbd94169",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 56,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    }
+  }, {
+    "id" : "a6c79df1-e8f3-00c5-7a02-ba8696764c50",
+    "name" : "background_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing_field" : {
+      "padding" : {
+        "top" : {
+          "value" : 56,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    },
+    "background_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "bb632946-c3c4-acbf-48ea-1ed6b81a7845",
+  "name" : "item",
+  "display_width" : null,
+  "label" : "Col 1 Content",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "455eee02-7952-0187-02bb-79b083db54f5",
+    "name" : "icon_image",
+    "display_width" : null,
+    "label" : "Icon Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/icons/Event%20Communications.svg",
+      "alt" : "Event Communications",
+      "loading" : "lazy",
+      "width" : 41,
+      "height" : 53,
+      "max_width" : 41,
+      "max_height" : 53
+    }
+  }, {
+    "id" : "46e8252c-4e79-ecea-1a4c-32bd52b68ee0",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Event Communications"
+  }, {
+    "id" : "7d905a37-a1c2-3018-f7fd-8619ef4e0b8e",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "The Zoom login information will be sent 1-week, 1-day, and 1-hour before the start of the event. When registering, use an email that is active and that you check regularly. We are not responsible for communications not being received; if you do not add caps@paloaltou.edu to your email safe sender list, our emails are likely to end up in your spam or junk folders."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "icon_image" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/icons/Event%20Communications.svg",
+      "alt" : "Event Communications",
+      "loading" : "lazy",
+      "width" : 41,
+      "height" : 53,
+      "max_width" : 41,
+      "max_height" : 53
+    },
+    "title" : "Event Communications",
+    "content" : "The Zoom login information will be sent 1-week, 1-day, and 1-hour before the start of the event. When registering, use an email that is active and that you check regularly. We are not responsible for communications not being received; if you do not add caps@paloaltou.edu to your email safe sender list, our emails are likely to end up in your spam or junk folders."
+  }
+}, {
+  "id" : "28eb8935-cab8-202f-1df1-abcdfc7a747d",
+  "name" : "col_2_content",
+  "display_width" : null,
+  "label" : "Col 2 Content",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "645539a0-2c35-fe12-5335-d8eddba018da",
+    "name" : "icon_image",
+    "display_width" : null,
+    "label" : "Icon Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/icons/Cancellation%20Policy.svg",
+      "alt" : "Cancellation Policy",
+      "loading" : "lazy",
+      "width" : 78,
+      "height" : 60,
+      "max_width" : 78,
+      "max_height" : 60
+    }
+  }, {
+    "id" : "be8be87d-922a-ccb7-1bba-02ce8c4758fe",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Cancellation Policy"
+  }, {
+    "id" : "31ca80d0-8385-186b-69f4-5519813b6649",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Have a sudden change of plans and are unable to attend live? No worries, you will be given access to the on-demand version of the program once available"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "icon_image" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/icons/Cancellation%20Policy.svg",
+      "alt" : "Cancellation Policy",
+      "loading" : "lazy",
+      "width" : 78,
+      "height" : 60,
+      "max_width" : 78,
+      "max_height" : 60
+    },
+    "title" : "Cancellation Policy",
+    "content" : "Have a sudden change of plans and are unable to attend live? No worries, you will be given access to the on-demand version of the program once available"
+  }
+}, {
+  "id" : "9fe890f6-b159-4839-35a6-ecae86a53525",
+  "name" : "col_3_content",
+  "display_width" : null,
+  "label" : "Col 3 Content",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7fc1788f-2bc5-1dc0-0cd0-750686f407be",
+    "name" : "icon_image",
+    "display_width" : null,
+    "label" : "Icon Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/icons/Event%20Conduct.svg",
+      "alt" : "Event Conduct",
+      "loading" : "lazy",
+      "width" : 60,
+      "height" : 41,
+      "max_width" : 60,
+      "max_height" : 41
+    }
+  }, {
+    "id" : "f3b10a55-edd7-4c75-2e8d-256026121b3d",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Event Conduct"
+  }, {
+    "id" : "18be8739-92ba-c1bf-445f-fbd8a263d44a",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Please conduct yourself in a professional manner throughout the event. Our goal is to make this as interactive an experience as possible for all who attend. We reserve the right to remove any participants who are disruptive or who act unprofessionally."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "icon_image" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/icons/Event%20Conduct.svg",
+      "alt" : "Event Conduct",
+      "loading" : "lazy",
+      "width" : 60,
+      "height" : 41,
+      "max_width" : 60,
+      "max_height" : 41
+    },
+    "title" : "Event Conduct",
+    "content" : "Please conduct yourself in a professional manner throughout the event. Our goal is to make this as interactive an experience as possible for all who attend. We reserve the right to remove any participants who are disruptive or who act unprofessionally."
+  }
+} ]

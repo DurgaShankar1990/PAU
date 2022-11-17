@@ -1,0 +1,51 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Thank you CheckOut
+-->
+
+{% extends './layouts/base.html' %}
+{% block header %}
+{% module "module_16415437571042" path="/Aptitude 8 Theme/modules/Page Loading", label="Page Loading" %}
+{% global_partial path='/Aptitude 8 Theme/templates/partials/header_cart.html' %}
+{% endblock header %}
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+    {% dnd_area "shopping_cart", class="Shoppting_card_section_start" %}
+
+    {% dnd_section full_width="true"
+  padding={'top': '80','bottom': '80','left': '15','right': '15'}
+  %}
+    {% dnd_column, width=12 %}
+
+    {% dnd_row %}
+
+    {% dnd_module  path="@hubspot/rich_text" %}
+    {% module_attribute "html" %}
+    <div class="thank_you_content" style="text-align:center;max-width: 683px;margin: 0 auto;">
+        <h1>Thank you for your order!</h1>
+        <h3>
+            Your registration details will be sent to your email shortly. 
+        </h3>
+    </div>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+
+
+    {% end_dnd_row %}
+    {% dnd_row %}
+    {% dnd_module  path="/Aptitude 8 Theme/modules/Aptitute 8 - Buttons.module"
+    horizontal_alignment= "CENTER"
+
+    %}
+    {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% end_dnd_area %}
+
+</main>
+{% endblock body %}

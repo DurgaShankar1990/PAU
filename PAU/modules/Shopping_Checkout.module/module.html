@@ -1,0 +1,536 @@
+
+<section class="shopping_checkout {{name}}">
+    <div class="shopping_checkout_container">
+        <form class="shopping_checkout_form" id="purchaserInformation" method="post" >   
+            <fieldset class="form_section column12 purchaser_information">
+                <div class="form_heading">
+                    <h3>
+                        Purchaser Information
+                    </h3>                
+                </div>
+                <div class="form_input_section">
+                    <div class="form_input_field hs_firstname hs-form-field">
+                        <label class="label_heading" for="firstname">First Name</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="firstname" name="firstname" value="" required placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form_input_field hs_lastname hs-form-field">
+                        <label class="label_heading" for="lastname">Last Name</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="lastname" name="lastname" value="" required placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form_input_field hs-form-field">
+                        <label class="label_heading" for="email">Email</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="email" name="email" value="" required placeholder="Email Address">
+                        </div>                        
+                    </div>
+                    <div class="form_input_field hs-form-field">
+                        <label class="label_heading" for="company">Company</label>
+                        <div class="input">
+                            <input class="hs-input" type="text" id="company" name="company" value="" required placeholder="Company Name">
+                        </div>
+                    </div>
+                </div>
+                <!--                 <div class="form_input_checkbox">
+<input type="checkbox" id="remember" name="remember" >
+<label for="remember"> Same as purchaser info</label>
+</div> -->
+            </fieldset>
+            <div class="dynamicCoursesClass" id="dynamicCourses">
+
+            </div>
+
+            <div class="form_submit_button">
+                <div class="form_submit_button_iner button_first">
+
+                    {% set href = module.previous.previous_link.url.href %}
+                    {% if module.previous.previous_link.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                    {% endif %}
+                    <a href="{{ href }}"
+                       {% if module.previous.previous_link.open_in_new_tab %}target="_blank"{% endif %}
+                       {% if module.previous.previous_link.rel %}rel="{{ module.previous.previous_link.rel }}"{% endif %}
+                       >
+                        <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22.5C17.5228 22.5 22 18.0228 22 12.5C22 6.97715 17.5228 2.5 12 2.5C6.47715 2.5 2 6.97715 2 12.5C2 18.0228 6.47715 22.5 12 22.5Z" stroke="#9D1D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 8.5L8 12.5L12 16.5" stroke="#9D1D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M16 12.5H8" stroke="#9D1D64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                        Previous
+                    </a>
+                </div>
+                <div class="form_submit_button_iner button_second">
+                    <!--                     <a id="openShopify" class="button checkout_button" href="#">Continue to Checkout</a> -->
+
+                    <input  class="button checkout_button" type="submit" value="Continue to Checkout">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div id="overlay" class="web_dialog_overlay"></div>  
+<div id="dialog" class="web_dialog">  
+    <a class="btnCloseModel" id="btnClose">Close</a>
+    <p>
+        Hello 
+    </p>
+</div> 
+
+
+{% require_js %}
+
+
+<script>
+
+
+    $(document).ready(function () {
+
+        //var clickEme = $('input[name="remember"]');
+
+        $(document).on('click', '.form_input_checkbox', function(e) {
+
+            //$('.form_input_checkbox').on('click', 'input[name="remember"]', function (e) {
+
+            //console.log('check click');   
+            var Check =$(this).find('[name="remember"]');
+           // console.log(Check);
+            //console.log(Check.is(':checked'));
+
+            if (Check.is(':checked')) {
+
+
+                var firstname = $('input[name="firstname"]').val();
+                var lastname =  $('input[name="lastname"]').val();
+
+                var email= $('input[name="email"]').val();
+
+               // console.log('firstname ' + firstname);
+               // console.log('lastname ' + lastname);
+
+                $(this).parent().find('input[name="firstname_0"]').val(firstname);
+                $(this).parent().find('input[name="lastname_0"]').val(lastname);
+                $(this).parent().find('input[name="email_0"]').val(email);
+
+
+
+
+            } else {
+                $(this).parent().find('input[name="firstname_0"]').val('');
+                $(this).parent().find('input[name="lastname_0"]').val('');
+                $(this).parent().find('input[name="email_0"]').val('');
+            }
+        });
+    });
+
+
+
+
+
+
+    $(document).ready(function () {
+        //console.log('re1');
+        function getCookies(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+
+        const client = ShopifyBuy.buildClient({
+            domain: 'palo-alto-u.myshopify.com',
+            storefrontAccessToken: '47b27d57a1a00252417198bf757bf0a1'
+        });
+
+        //         var checkoutid = localStorage.getItem('checkoutid');
+        //         if(checkoutid)
+        //         {
+        //             client.checkout.fetch(checkoutid).then((checkout) => {
+        //                 // Do something with the checkout
+        //                 console.log(checkout);
+        //             });
+        //         }
+
+        var hubspotutk;
+        hubspotutk = (getCookies('hubspotutk'));
+
+        var hscontext;
+        hscontext = JSON.stringify({
+            "hutk": hubspotutk
+        });
+        var apikey='a1f5ca33-70ef-4c86-8d85-36ce9af55f9a';
+        var url ="//api.hubapi.com/contacts/v1/contact/?hapikey="+apikey;
+        //hang on event of form with id=myform
+
+        var hubContactCourses=[];
+        $("#purchaserInformation").submit(function(e) {
+
+            e.preventDefault();  
+            // insert contact in hubspot contacts
+            var contactIds = [];
+            var courses = [];
+            var hubspotCourses = [];
+            var coursesLength = $( ".course .courseConainer" ).length;
+            //alert('alert here');
+            //alert($('.form_course_section').length);
+            var totalusers=$('.form_course_section').length;
+            var check = [];
+            var purchaserFirstName = $('#purchaser_information').find('#firstname').val();
+            var purchaserLastName=$('#purchaser_information').find('#lastname').val();
+            var purchaserEmail = $('#purchaser_information').find('#email').val();
+            var purchaserCompany = $('#purchaser_information').find('#company').val();
+            var purchaserInfo = {'firstname':purchaserFirstName,
+                                 'lastname':purchaserLastName,
+                                 'email':purchaserEmail,
+                                 'company':purchaserCompany,
+                                };
+            //hubContactCourses.push(purchaserInfo);
+
+            localStorage.setItem('mainContacts',JSON.stringify(hubContactCourses));
+
+            $( ".course .courseConainer" ).each(function ( cindex ) {
+                var InnerLoopObject = $(this).find('.mainCourse_id .form_course_section');
+                var courseId = $(this).attr("data-containerthinkificid");
+                var hubspotCourseId = $(this).attr("data-coursecontainerid");
+                var totalLength = InnerLoopObject.length;
+                 var courseName = $(this).find('.form_heading h3').text();
+                hubspotCourses[cindex] = {
+                    hubspotCourseId: hubspotCourseId,
+                    contacts: []
+                }
+                courses[cindex] = {
+                    courseId: courseId,
+                    contacts: []
+                }
+                //console.log('course',cindex);
+                $(InnerLoopObject).each(async function( index ) {
+                    //firstname_0  lastname_0 email_0
+                    var firstname ="firstname_"+index;
+                    var lastname ="lastname_"+index;
+                    var email ="email_"+index;
+
+                    firstname=   $(this).find('input[name='+firstname+']').val();
+                    lastname=   $(this).find('input[name='+lastname+']').val();
+                    email=  $(this).find('input[name='+email+']').val();
+                    var hubspotContactObject = {'firstname':firstname, 'lastname':lastname,'email':email,'coursename':courseName };
+                    var contactId = await getOrCreateUser(email,firstname,lastname);
+                    check.push(contactId);
+                    //console.log('contactId',contactId);
+                    courses[cindex].contacts.push(contactId);
+                   // console.log('hubspotContactObject',hubspotContactObject);        
+                    hubspotCourses[cindex].contacts.push(hubspotContactObject);  
+                    //console.log('hubspotCourses',hubspotCourses);     
+                    
+                    
+                    if(check.length == totalusers){
+                        //console.log("save courses 2");
+                        localStorage.setItem('HubspotContactIds',JSON.stringify(hubspotCourses));
+                        createCheckout(courses);    
+                    }
+                    //console.log('courses',courses);
+                    //console.log('hubspot Contact', hubspotCourses);
+                });
+
+                //console.log("check1")
+            });
+
+            
+
+        });
+
+        function getOrCreateUser(email, firstname, lastname){
+            var url = 'https://api.thinkific.com/api/public/v1/users';
+
+            return new Promise((resolve,reject)=>{
+                $.ajax({
+
+                    url: url+'?page=1&query[email]='+email,
+                    type: 'get',
+                    beforeSend: function(request) {
+                        request.setRequestHeader("X-Auth-API-Key", '1f685dfe79956705cb3e78679494873c');
+                        request.setRequestHeader("X-Auth-Subdomain", 'concept');
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        //console.log('success' , response);
+                        if(response.items.length > 0){
+                            resolve(response.items[0].id);
+                        }else{
+                            $.ajax({
+                                url: url,
+                                type: 'post',
+                                beforeSend: function(request) {
+                                    request.setRequestHeader("X-Auth-API-Key", '1f685dfe79956705cb3e78679494873c');
+                                    request.setRequestHeader("X-Auth-Subdomain", 'concept');
+                                    request.setRequestHeader("Content-Type", 'application/json');
+                                },
+                                dataType: "json",
+                                data:JSON.stringify({
+                                    "email": email,
+                                    "first_name": firstname,
+                                    "last_name": lastname,
+                                }),
+                                success: function(response) {
+                                    //console.log('success contact' , response);
+                                    resolve(response.id);
+
+                                    //                                         window.location = "/thank-you-page";
+                                },
+                                error: function(xhr, desc, err) {
+                                    console.log(xhr);
+                                    console.log(desc);
+                                    console.log(err);
+                                    reject()
+                                }
+                            }); // end ajax call
+                        }
+                        //window.location = "/thank-you-page";
+                    },
+                    error: function(xhr, desc, err) {
+                        console.log(xhr);
+                        console.log(desc);
+                        console.log(err);
+                        reject();
+                    }
+                }); // end ajax call
+
+
+
+            })
+        }
+        function createCheckout(contactIds){
+            //console.log(contactIds);
+            var courseId = $("#thinkificCourseId").attr("data-containerthinkificid")
+            //console.log(courseId)
+            localStorage.setItem('contactIds',JSON.stringify(contactIds));
+
+
+            client.checkout.create().then((checkout) => {
+                // Do something with the checkout
+               // console.log('checkout');
+               // console.log(checkout);
+                var checkoutId = checkout.id
+                //console.log('checkout id =' + checkoutId);
+                var checkoutWebURL = checkout.webUrl;
+                localStorage.setItem("checkoutid",  checkoutId);
+                //console.log(localStorage.getItem('shoppingCart'));
+                cart = JSON.parse(localStorage.getItem('shoppingCart'));
+                if(cart != null) {
+                    //console.log('HIRAMAN');
+                   // console.log(cart);
+                    const lineItemsToAdd = [];
+                    cart.forEach(element => {
+                        lineItemsToAdd.push({
+                            variantId: element.productId.trim(),
+                            quantity: element.count
+                        })
+
+                    });
+                    //console.log('lineItemsToAdd');
+                   // console.log(lineItemsToAdd);
+                    // Add an item to the checkout
+                    client.checkout.addLineItems(checkoutId, lineItemsToAdd).then((checkout) => {
+                        // Do something with the updated checkout
+                       // console.log(checkout.lineItems); // Array with one additional line item
+                       // console.log(checkout.webUrl)
+                        //redirect the user
+                        window.location = checkout.webUrl
+
+                    });
+                }
+            });
+
+        }
+
+
+
+
+        function HideDialog() {  
+            $("#overlay").hide();  
+            $("#dialog").fadeOut(300);  
+        } 
+        $("#btnClose").click(function (e) {  
+            HideDialog();  
+            e.preventDefault();
+
+
+        });  
+    });  
+</script>
+{% end_require_js %}
+{% require_css %}
+<style>
+
+    /*   Checkbox   */
+    .form_input_checkbox {display: flex;margin-bottom: 20px;}
+    .form_input_checkbox>label {margin: 0;padding-left: 10px;}
+    .form_input_checkbox input#remember {margin-top: 6px;}
+    .form_input_checkbox>* {cursor: pointer;}
+    /*   End Checkbox   */
+
+    /* pop up start*/
+    .btnCloseModel{
+        text-align: right;
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
+    .web_dialog_overlay  
+    {  
+        position: fixed;  
+        top: 0;  
+        right: 0;  
+        bottom: 0;  
+        left: 0;  
+        height: 100%;  
+        width: 100%;  
+        margin: 0;  
+        padding: 0;  
+        background: #000000;  
+        opacity: .15;  
+        filter: alpha(opacity=15);  
+        -moz-opacity: .15;  
+        z-index: 101;  
+        display: none;  
+    }  
+    .web_dialog  
+    {  
+        display: none;  
+        position: fixed;  
+        width: 300px;  
+        height: 215px;  
+        top: 50%;  
+        left: 50%;  
+        transform: translate(-50%,-50%); 
+        background-color: #ffffff;  
+        border: 2px solid #336699;  
+        padding: 0px;  
+        z-index: 102;  
+        font-family: Verdana;  
+        font-size: 10pt;  
+    }  
+    .web_dialog_title  
+    {  
+        border-bottom: solid 2px #336699;  
+        background-color: #336699;  
+        padding: 4px;  
+        color: White;  
+        font-weight: bold;  
+    }  
+    .web_dialog_title a  
+    {  
+        color: White;  
+        text-decoration: none;  
+    }  
+    .align_right  
+    {  
+        text-align: right;  
+    }  
+
+    /* pop up end*
+    /*   Form   */
+    .{{name}} fieldset {padding: 0;margin: 0;border: 0;outline: 0;}
+    .{{name}} .label_heading {font-weight: bold;color: #1F2559;font-size: 14px;}
+
+    /*  Form Bottom Button Style  */
+    .{{name}} .form_submit_button {width: 100%;display: flex;flex-wrap: wrap;justify-content: space-between;align-items: center;margin-top: 40px;}
+    .{{name}} .form_submit_button_iner.button_first>a {display: flex;font-weight: bold;color: #9D1D64;font-size: 18px;}
+    .{{name}} .form_submit_button_iner.button_first>a>span {padding-right: 8px;}
+
+    /*  Course Heading Style  */
+    .{{name}} .course_heading {color: #2488CD;font-size: 16px;font-weight: bold;margin-bottom: 30px;}
+
+    .shopping_checkout.{{name}} {width: 100%;float: left;{{ module.style.spacing.desktop.spacing.css }}; }
+    .{{name}} .shopping_checkout_container {max-width: 600px;margin: 0 auto;}
+    .{{name}} .shopping_checkout_form {padding: 48px;box-shadow: 0px 4px 8px 0px #0B325352;border-radius: 24px;border: 1px solid #C6CFDA;}
+
+
+    @media(max-width:767px){
+        .shopping_checkout.{{name}}{
+            {{ module.style.spacing.mobile.spacing.css }}
+        }
+    }
+
+</style>
+{% end_require_css %}
+
+
+{% require_js%}
+<script>
+    $(document).ready(function () {
+
+        function displayCart() { 
+            cart = JSON.parse(localStorage.getItem('shoppingCart'));
+            if(cart != null) {
+
+                console.log('display cart = ' + cart);
+                // List cart
+                var  cartListItems = function() {
+                    var cartCopy = []; 
+                    for(i in cart) {
+                        item = cart[i];
+                        itemCopy = {};
+                        for(p in item) {
+                            itemCopy[p] = item[p];
+
+                        }
+                        itemCopy.total = Number(item.courseprice * item.count).toFixed(2);
+                        cartCopy.push(itemCopy)
+                    }
+                    return cartCopy;
+                }
+
+
+                var cartArray = cartListItems();
+                console.log(cartArray + ' cartArray');
+                //var output = " <tr border='0'><th class='width_half'>Course Details</th><th>Quantity</th><th>Price</th><th>Total</th></tr>";
+                var output = "<fieldset class='form_section column12 course'>";
+                for(var i in cartArray) {
+
+                    output += "<div class='courseConainer' id='thinkificCourseId' data-containerthinkificid='"+cartArray[i].thinkificId+"' data-coursecontainerid='"+cartArray[i].courseId+"'><div class='form_heading'><h3>"+ cartArray[i].coursename+"</h3></div><div class='form_input_checkbox'><input type='checkbox' id='remember' name='remember'><label for='remember'> Same as purchaser info</label></div><div class='mainCourse_id' data-thinkificid='"+cartArray[i].thinkificId+"' data-courseid='course_"+cartArray[i].courseId+"'>";
+                    var courseCount=cartArray[i].count;
+                    for(j=0; j<courseCount;j++) {
+                        var incre= parseInt(j) + 1;
+                        output += "<div class='form_course_section maindiv_"+j+"'>";
+                        output += "<div class='course_name course_heading'> Participant "+ incre  +"</div>";
+                        output += "<div class='form_input_section'><div class='form_input_field hs_firstname hs-form-field'><label class='label_heading' for='firstname_"+cartArray[i].courseId+'_'+ j  +"'>First Name</label>";
+                        output += "<div class='input'><input class='hs-input' type='text' id='firstname_"+cartArray[i].courseId+'_'+ j +"' name='firstname_"+ j  +"' required placeholder='First Name'></div></div>";
+                        output+="<div class='form_input_field hs_lastname hs-form-field'><label class='label_heading' for='lastname_"+cartArray[i].courseId+'_'+ j  +"'>Last Name</label>";
+                        output += "<div class='input'><input class='hs-input' type='text' id='lastname_"+cartArray[i].courseId+'_'+ j +"' name='lastname_"+ j  +"' required placeholder='Last Name'></div></div>";
+                        output += "<div class='form_input_field hs-form-field'><label class='label_heading' for='email'>Email</label>";
+                        output +="<div class='input'><input class='hs-input' type='text' id='email_"+cartArray[i].courseId+'_'+ j  +"' name='email_"+ j  +"' required placeholder='Email Address'></div></div>";
+                        output +=" </div></div>";//form_input_section>form_course_section
+                    }
+                    output +=" </div></div>";
+
+                }
+                output +=" </fieldset>";
+                $('.dynamicCoursesClass').html(output);
+
+            }
+            else
+            {
+                cart = [];
+            }
+
+        }
+
+        //call the function
+        displayCart();
+    });        
+</script>
+{% end_require_js%}

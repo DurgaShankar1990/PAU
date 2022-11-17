@@ -1,0 +1,301 @@
+{% macro buildID() %}
+  {% if module.main_settings.css__id %} id="{{ module.main_settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.main_settings.css__class %}{{ module.main_settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;  
+{% endmacro %}
+
+{% macro buildContentStyles() %}
+  padding-top: {{ module.paddings.desktop.content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.content.left }}px;
+  padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+
+{% if module.settings.type_of_card == "type_1" %}
+
+{% macro buildImage() %} 
+
+
+    <div class="elements-module-image_{{ name }}" style="{{ buildImageStyles() }}">
+      {% if module.image.image.src %}
+        {% set sizeAttrs = 'width="{{ module.image.image.width }}" height="{{ module.image.image.height }}"' %}
+        {% if module.image.image.size_type == 'auto' %}
+          {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif module.image.image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.image.image.max_width }}px; max-height: {{ module.image.image.max_height }}px"' %}
+        {% endif %}
+         {% set loadingAttr = module.image.image.loading != 'disabled' ? 'loading="{{ module.image.image.loading }}"' : '' %}
+        <img src="{{ module.image.image.src }}" alt="{{ module.image.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+    </div>
+      
+   
+{% endmacro %}
+
+  {% if module.card.link_field.url.href %}
+    {% set href = module.card.link_field.url.href %}
+    {% if module.card.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+    {% endif %}
+    {% set rel = [] %}
+    {% if module.card.link_field.no_follow %}
+      {% do rel.append("nofollow") %}
+    {% endif %}
+    {% if module.card.link_field.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+    {% endif %}
+    <a href="{{ href }}"
+      {% if module.card.link_field.open_in_new_tab %}target="_blank"{% endif %}
+      {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+      >
+  {% endif %}
+
+    <div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+        {{ buildImage() }}
+          <div id="testimonial-card" class="cards elements-tc-cards" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}"> 
+            <div class="cards__card elements-tc-cards__card">
+
+              {% if module.settings.enable_icon %}
+
+                <div class="elements-tc-card__image">
+                  {% if module.card.image.src %}
+                   {% set sizeAttrs = 'width="{{ module.card.image.width }}" height="{{ module.card.image.height }}"' %}
+                  {% if module.card.image.size_type == 'auto' %}
+                   {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                  {% elif module.card.image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.card.image.max_width }}px; max-height: {{ module.card.image.max_height }}px"' %}
+                  {% endif %}
+                  {% set loadingAttr = module.card.image.loading != 'disabled' ? 'loading="{{ module.card.image.loading }}"' : '' %}
+                    <img src="{{ module.card.image.src }}" alt="{{ module.card.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                  {% endif %}
+                </div>
+
+              {% endif %}
+
+              <div class="card__text elements-tc-card__text">
+                {% inline_rich_text field="card.text" value="{{ module.card.text }}" %}
+                {% inline_rich_text field="card.author" value="{{ module.card.author }}" %}
+              </div>
+
+             </div>
+           </div>
+        </div>
+      
+     {% if module.card.link_field.url.href %}
+    </a>
+  {% endif %}
+
+{% elif module.settings.type_of_card == "type_2" %}
+
+{% macro buildImage() %} 
+
+
+      <div class="elements-module-image_{{ name }}__type-2" style="{{ buildImageStyles() }}">
+        {% if module.image.image_type_2.src %}
+           {% set loadingAttr = module.image.image_type_2.loading != 'disabled' ? 'loading="{{ module.image.image_type_2.loading }}"' : '' %}
+          <img src="{{ module.image.image_type_2.src }}" alt="{{ module.image.image_type_2.alt }}" {{ loadingAttr }} style="width: {{ module.image.image_type_2.width }}px; height: {{ module.image.image_type_2.height }}px;">
+        {% endif %}
+      </div>
+    
+{% endmacro %}
+
+  {% if module.card.link_field.url.href %}
+    {% set href = module.card.link_field.url.href %}
+    {% if module.card.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+    {% endif %}
+    {% set rel = [] %}
+    {% if module.card.link_field.no_follow %}
+      {% do rel.append("nofollow") %}
+    {% endif %}
+    {% if module.card.link_field.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+    {% endif %}
+    <a href="{{ href }}"
+      {% if module.card.link_field.open_in_new_tab %}target="_blank"{% endif %}
+      {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+      >
+  {% endif %}
+
+    <div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+        <div id="testimonial-card__type-2" class="cards elements-tc-cards__type-2" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}"> 
+          <div class="cards__card elements-tc-cards__card__type-2">
+
+            {% if module.settings.enable_icon %}
+
+              <div class="elements-tc-card__image__type-2">
+                {% if module.card.image.src %}
+                 {% set sizeAttrs = 'width="{{ module.card.image.width }}" height="{{ module.card.image.height }}"' %}
+                {% if module.card.image.size_type == 'auto' %}
+                 {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif module.card.image.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ module.card.image.max_width }}px; max-height: {{ module.card.image.max_height }}px"' %}
+                {% endif %}
+                {% set loadingAttr = module.card.image.loading != 'disabled' ? 'loading="{{ module.card.image.loading }}"' : '' %}
+                  <img src="{{ module.card.image.src }}" alt="{{ module.card.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+              </div>
+
+            {% endif %}
+
+            <div class="card__text__type-2 elements-tc-card__text__type-2">
+              {% inline_rich_text field="card.text" value="{{ module.card.text }}" %}
+              {{ buildImage() }}
+              <div class="elements-module-author_{{ name }}__type-2">
+                {% inline_rich_text field="card.author" value="{{ module.card.author }}" %}
+              </div>
+
+            </div>
+
+           </div>
+         </div>
+      </div>
+      
+    {% if module.card.link_field.url.href %}
+      </a>
+    {% endif %}
+
+{% endif %}
+
+
+
+{% require_css %}
+<style>
+  
+  .elements-tc-cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: grap;
+    flex-wrap: grap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    margin-top: -11em;
+  }
+  
+  .elements-tc-cards__card {
+  
+    text-align: center;
+    margin: auto;
+    max-width: {{ module.settings.card_max_widh }}px;
+    width: 90%;
+    padding: 36px 32px 32px 32px;
+    transition: transform 0.3s ease;
+    background-color: #FFFFFF;
+    position: relative;
+
+  }
+  
+   .elements-tc-cards__card__type-2 {
+     {% if module.settings.card_align == "center" %}
+      margin: auto;
+     {% elif module.settings.card_align == "right" %}
+      float: right;
+     {% endif %}
+  }
+  
+  .elements-tc-cards__card__type-2 {
+    padding-top: {{ module.paddings.desktop.card.top }}px;
+    padding-bottom: {{ module.paddings.desktop.card.bottom }}px;
+    padding-left: {{ module.paddings.desktop.card.left }}px;
+    padding-right: {{ module.paddings.desktop.card.right }}px;
+    max-width: {{ module.settings.card_max_width }}px;
+  }
+  
+  .elements-module-image_{{ name }} img {
+    border-radius: {{ module.image.border_radius }}px;
+  }
+  
+  .elements-module-image_{{ name }}__type-2 img {
+    border-radius: {{ module.image.border_radius_type_2 }}px;
+    -webkit-filter: drop-shadow(0px 5px 8px rgba(33, 11, 121, 0.08));
+    filter:         drop-shadow(0px 5px 8px rgba(33, 11, 121, 0.08)); 
+    border: {{ module.image.border_width }}px solid {{ module.image.border_color.color }};
+  }
+  
+  .elements-module-image_{{ name }}__type-2 {
+    display: inline-block;
+    margin-right: 16px;
+  }
+  
+  .elements-module-author_{{ name }}__type-2 {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
+  }
+   
+  
+  @media(max-width: 767px) {
+    
+    .elements-tc-cards__card__type-2 {
+      padding-top: {{ module.paddings.mobile.card.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.card.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.card.left }}px !important;
+      padding-right: {{ module.paddings.mobile.card.right }}px !important;
+      
+      max-width: 100% !important;
+    }
+  
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    
+    margin-top: {{ module.margins.mobile.module.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.module.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.module.left }}px !important;
+    margin-right: {{ module.margins.mobile.module.right }}px !important;
+  }
+    
+  .elements-module-image_{{ name }} {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+    
+  .elements-module-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.content.right }}px !important;
+  }
+
+}
+  
+</style>
+{% end_require_css %}
+
+
+
+
+
+
+
+  

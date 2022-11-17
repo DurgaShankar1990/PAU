@@ -1,0 +1,183 @@
+[ {
+  "id" : "975e1a6e-fc18-4106-2966-ab914a60cc65",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "143e459e-0bca-8019-1b50-eac267c003a3",
+    "name" : "gradient_field",
+    "display_width" : null,
+    "label" : "Gradient",
+    "required" : false,
+    "locked" : false,
+    "type" : "gradient",
+    "default" : {
+      "side_or_corner" : {
+        "verticalSide" : "BOTTOM",
+        "horizontalSide" : null
+      },
+      "colors" : [ {
+        "color" : {
+          "r" : 0,
+          "g" : 90,
+          "b" : 156,
+          "a" : 1
+        }
+      }, {
+        "color" : {
+          "r" : 36,
+          "g" : 136,
+          "b" : 205,
+          "a" : 1
+        }
+      } ]
+    }
+  }, {
+    "id" : "d606a17d-cc29-a0af-e160-400d671ff9d2",
+    "name" : "desktop_spacing",
+    "display_width" : null,
+    "label" : "Desktop Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 20,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 20,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "c43e4807-591d-2e45-7fa4-a518c6743e23",
+    "name" : "mobile_spacing",
+    "display_width" : null,
+    "label" : "Mobile Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 20,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 20,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "7d5f6d88-d7d7-df7d-1bbd-d825dc4225d6",
+    "name" : "border_radius",
+    "display_width" : null,
+    "label" : "Border radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "default" : 50
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "gradient_field" : {
+      "side_or_corner" : {
+        "verticalSide" : "BOTTOM",
+        "horizontalSide" : null
+      },
+      "colors" : [ {
+        "color" : {
+          "r" : 0,
+          "g" : 90,
+          "b" : 156,
+          "a" : 1
+        }
+      }, {
+        "color" : {
+          "r" : 36,
+          "g" : 136,
+          "b" : 205,
+          "a" : 1
+        }
+      } ]
+    },
+    "desktop_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 20,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 20,
+          "units" : "px"
+        }
+      }
+    },
+    "mobile_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 20,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 20,
+          "units" : "px"
+        }
+      }
+    },
+    "border_radius" : 50
+  }
+}, {
+  "id" : "dab60b4c-3d26-69b5-26fb-9ea9bc0b03ea",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h2 class=\"white-color\">HOW ACCREDIBLE WORKS</h2>\n<h4 class=\"white-color\">For badge-earning courses, we’ve partnered with Accredible, a platform that allows you to<span style=\"text-decoration: underline;\"> <a class=\"white-color\" style=\"text-decoration: underline;\" href=\"https://www.youtube.com/watch?v=iad7NMGvGDE&amp;feature=emb_title\" target=\"_blank\" rel=\"noopener\">view, track, and share</a></span> your progress as you earn blockchain-verified, digital badges toward your certificate.</h4>"
+} ]

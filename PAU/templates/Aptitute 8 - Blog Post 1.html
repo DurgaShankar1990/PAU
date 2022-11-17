@@ -1,0 +1,177 @@
+<!--
+    templateType: blog_post
+    isAvailableForNewContent: true
+    label: Practice Blog Listing - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/blog-post-v1.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper">
+  <div class="body-container body-container--blog-index">
+    
+    {# 1 Section - Blog header #}
+    <section class="content-wrapper">
+      <div class="container-fluid elements--post--blog--header__container">
+        <div class="row-fluid-wrapper">
+            <div class="row-fluid">
+              
+                <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+                  
+                    <div style="text-align: center;">
+                      {% if content.tag_list[0].name %}
+                         <a class="blog-tag" href="{{ blog_tag_url(group.id, content.tag_list[0].slug) }}">
+                          <span class="elements--post--blog--tag__badge" style="padding: 6px 12px; border-radius: 5px;">
+                            {{ content.tag_list[0].name }}
+                          </span>
+                        </a>
+                      {% endif %}
+                      
+                      <h1 class="elements--post--blog__title">{{ content.name }}</h1>
+                      <p class="elements--post--blog__subtitle">{{ content.meta_description }}</p>
+                      {% if content.featured_image %}
+                      <img class="elements--post--blog__image" src="{{ content.featured_image }}" loading="lazy" alt="{{ content.featured_image_alt_text }}">
+                      {% endif %}
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+      </div>
+    </section>
+    {# End 1 Section - blog header #}
+    
+    
+    {# 2 Section - Main Content #}
+    <section class="content-wrapper">
+      <div class="container-fluid elements--post--blog--main__content">
+          <div class="row-fluid-wrapper">
+              <div class="row-fluid">
+                
+                  {# Author Section #}
+                {% if content.blog_post_author %}
+                  <div class="span5 widget-span widget-type-cell elements--post--blog--author__container" style="" data-widget-type="cell" data-x="0" data-w="5">
+                    
+                    <div class="cards__card elements--post--blog--author__card">
+                      
+                      <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+                       
+                        {% if content.blog_post_author.avatar %}
+                          <div class="elements--post--blog--author__image--container">
+                            <img alt="{{ content.blog_post_author.display_name }}" class="elements--post--blog--author__image" src="{{ content.blog_post_author.avatar }}"> 
+                          </div>
+                        {% endif %}
+                        
+                        
+                        <h3 class="elements--post--blog--author__display__name">{{ content.blog_post_author.display_name }}</h3>
+                        
+                      </a>    
+                      
+                      <p>{{ content.blog_post_author.bio }}</p>
+                      
+                      {% if content.blog_post_author.has_social_profiles %}
+                          <div class="hs-author-social-section">
+                              <div class="hs-author-social-links">
+                                <div class="row-fluid-wrapper">
+                                  <div class="row-fluid">
+                                      <div class="span12 widget-span widget-type-cell elements--post--blog--author__social__icons--container" style="" data-widget-type="cell" data-x="0" data-w="12">
+                                        {% if content.blog_post_author.facebook %}
+                                          <a href="{{ content.blog_post_author.facebook }}" target="_blank" class="hs-author-social-link hs-social-facebook">
+                                            <img class="elements--post--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg" alt="Facebook Author">
+                                          </a>
+                                        {% endif %}
+                                        {% if content.blog_post_author.twitter %}
+                                          <a href="{{ content.blog_post_author.twitter }}" target="_blank" class="hs-author-social-link hs-social-twitter">
+                                            <img class="elements--post--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg" alt="Twitter Author">
+                                          </a>
+                                        {% endif %}
+                                        {% if content.blog_post_author.linkedin %}
+                                          <a href="{{ content.blog_post_author.linkedin }}" target="_blank" class="hs-author-social-link hs-social-linkedin">
+                                            <img class="elements--post--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg" alt="Linkedin Author">
+                                          </a>
+                                        {% endif %}
+                                        {% if content.blog_post_author.website %}
+                                          <a href="{{ content.blog_post_author.website }}" target="_blank" class="hs-author-social-link hs-social-website">
+                                            <img class="elements--post--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/web.svg" alt="Website Author">
+                                          </a>
+                                        {% endif %}
+                                      </div>
+                                  </div>
+                              </div>
+     
+                              </div>
+                          </div>
+                      {% endif %}
+                   
+                    </div>
+                    
+                  </div>
+                {% endif %}
+                  {# End - Author Section #}
+                
+                  {# Body Section #}
+                  <div class="span7 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="5" data-w="7">
+                    <article>
+                      <div class="elements--post--blog--body">
+                        {{ content.post_body }}
+                      </div>
+                    </article>
+                  </div>
+                
+              
+              </div>
+          </div>
+      </div>
+    </section>
+    {# End 2 Section - Main Content #}
+    
+    {# 3 Section - CTA Subscribe #}
+    <div id="section-cta-subscribe">
+      <section class="content-wrapper" >
+        {% module "module_161135249798149" path='../modules/Aptitute 8 - Section CTA - Form', label="Aptitute 8 - Section Subscribe 2",
+          content = { 
+            content: '<h2 style="color: #fff;">Subscribe to our newsletter</h2>
+                      <p style="color: #fff;">Lorem ipsum dolor sit amet, consectetur 
+                      adipiscing elit. Semper neque enim rhoncus vestibulum at maecenas.
+                      Ut sociis dignissim.</p>',
+            form: { 
+              form: {
+                form_id: '5b5d666e-a71d-416a-9e77-d87ef25c04e4' 
+              }            
+            }
+          }
+        %} 
+      </section>
+    </div>
+    {# End 3 Section - CTA Subscribe #}
+    
+
+    {# 4 Section - Latest Articles #}
+    <div id="section-articles" style="background-color: {{ theme.global_colors.neutral_colors.neutral_color_200.color }};">
+
+      <section class="content-wrapper">
+        {% module "module_16115901644861" path='../modules/Aptitute 8 - Card - Articles', label="Aptitute 8 - Section Article Cards",
+          module_styles =  { background_color =  { 'color': theme.global_colors.neutral_colors.neutral_color_200.color, 'opacity': 100 } }
+          content = { content = '<h2>Latest Articles</h2>' },
+          margins =  { desktop =  { button = { 'top': 0 }, module = { 'bottom' : 0 } } },
+          paddings =  { desktop =  { module = { 'top': 96, 'bottom' : 150 } }, mobile =  { module = { 'top': 80, 'bottom' : 80 } } }
+        %}
+      </section>
+    </div>
+
+    {# End 4 Section - Latest Articles #}
+    
+    
+
+    
+    
+    
+
+  </div>
+</main>
+
+{% endblock body %}

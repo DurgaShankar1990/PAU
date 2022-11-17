@@ -1,0 +1,40 @@
+
+
+
+
+
+.elements-tc-cards__card__type-2 {
+  transition: transform 0.3s ease;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+.elements-tc-card__image {
+  height: auto;
+  width: 100%;
+  text-align: left;
+  
+}
+
+
+.elements-tc-card__text {
+  padding: 0.5rem 0rem;
+  text-align: left;
+  width: 100%;
+}
+
+
+
+@media(max-width: 767px) {
+  
+  .elements-tc-cards {
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .elements-tc-cards__card {
+    width: 90%;
+  }
+}
+
+

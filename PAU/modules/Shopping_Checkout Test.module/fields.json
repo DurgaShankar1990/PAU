@@ -1,0 +1,239 @@
+[ {
+  "id" : "cf51baf3-f39e-085f-d16c-5acc9009379a",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "484433cc-79ce-36d5-3972-0a57886dbbc0",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "b6cf9538-0491-9023-6b9b-9082b216dc47",
+      "name" : "desktop",
+      "display_width" : null,
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "12d1db05-02ba-3371-7fb3-cbf54f14eea6",
+        "name" : "spacing",
+        "display_width" : null,
+        "label" : "Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "default" : {
+          "padding" : {
+            "top" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "spacing" : {
+          "padding" : {
+            "top" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      }
+    }, {
+      "id" : "102d1783-f003-f0b8-e0cb-3d4dee1b1017",
+      "name" : "mobile",
+      "display_width" : null,
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "cf7f51d9-af75-d77b-d659-13f41188f8b3",
+        "name" : "spacing",
+        "display_width" : null,
+        "label" : "Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "default" : {
+          "padding" : {
+            "top" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "spacing" : {
+          "padding" : {
+            "top" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "desktop" : {
+        "spacing" : {
+          "padding" : {
+            "top" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      },
+      "mobile" : {
+        "spacing" : {
+          "padding" : {
+            "top" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing" : {
+      "desktop" : {
+        "spacing" : {
+          "padding" : {
+            "top" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 100,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      },
+      "mobile" : {
+        "spacing" : {
+          "padding" : {
+            "top" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "bottom" : {
+              "value" : 60,
+              "units" : "px"
+            },
+            "left" : {
+              "value" : null,
+              "units" : null
+            },
+            "right" : {
+              "value" : null,
+              "units" : null
+            }
+          }
+        }
+      }
+    }
+  }
+} ]

@@ -1,0 +1,245 @@
+[ {
+  "id" : "91f2d483-2626-c793-1326-b334cef6baa2",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Discover Continuing Education Programs from CONCEPT Partners"
+}, {
+  "id" : "2993d122-a482-41b5-d64d-55e200e4d79d",
+  "name" : "partner",
+  "display_width" : null,
+  "label" : "Partner",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "36f560ec-7a17-2828-d962-40da1e63767f",
+    "default" : 6
+  },
+  "children" : [ {
+    "id" : "90f4c6c6-fbf1-557f-a905-275134c8b26e",
+    "name" : "logo",
+    "display_width" : null,
+    "label" : "Logo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    }
+  }, {
+    "id" : "36f560ec-7a17-2828-d962-40da1e63767f",
+    "name" : "partner_name",
+    "display_width" : null,
+    "label" : "Partner Name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Partner Name"
+  }, {
+    "id" : "545a683d-6193-483b-e065-18069958d4d5",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Here is some introductory information about this partner and the programs we make together."
+  }, {
+    "id" : "e6207607-50f1-6e40-900d-a8786a851c3a",
+    "name" : "button_text",
+    "display_width" : null,
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Partner Programs"
+  }, {
+    "id" : "9e96aabe-e3b0-27cc-56bc-dfed64f461b0",
+    "name" : "button_link",
+    "display_width" : null,
+    "label" : "Button Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    },
+    "partner_name" : "Partner Name",
+    "content" : "Here is some introductory information about this partner and the programs we make together.",
+    "button_text" : "Partner Programs",
+    "button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    },
+    "partner_name" : "Partner Name",
+    "content" : "Here is some introductory information about this partner and the programs we make together.",
+    "button_text" : "Partner Programs",
+    "button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    },
+    "partner_name" : "Partner Name",
+    "content" : "Here is some introductory information about this partner and the programs we make together.",
+    "button_text" : "Partner Programs",
+    "button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    },
+    "partner_name" : "Partner Name",
+    "content" : "Here is some introductory information about this partner and the programs we make together.",
+    "button_text" : "Partner Programs",
+    "button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    },
+    "partner_name" : "Partner Name",
+    "content" : "Here is some introductory information about this partner and the programs we make together.",
+    "button_text" : "Partner Programs",
+    "button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Digital_Main_Image.jpg",
+      "alt" : "Program_Digital_Main_Image",
+      "loading" : "lazy",
+      "width" : 2011,
+      "height" : 1005,
+      "max_width" : 2011,
+      "max_height" : 1005
+    },
+    "partner_name" : "Partner Name",
+    "content" : "Here is some introductory information about this partner and the programs we make together.",
+    "button_text" : "Partner Programs",
+    "button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ]
+} ]

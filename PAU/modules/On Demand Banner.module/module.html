@@ -1,0 +1,271 @@
+{% if dynamic_page_crm_object %}
+{% set object = dynamic_page_crm_object %}
+
+{% set instructor = crm_associations(object.id, 'USER_DEFINED', 145 ,"limit=10","name, page_url, certificates, headshot_link, description,product_id,thinkific_course_id") %} 
+<div class="course-banner-dy" style="background-image:url('https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Blank_Main_Image.jpg')">
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="title">
+                <h1 id="title" class="white-color">{{ object.name }}</h1>
+<!--                 <h3 id="description" class="white-color">{{ object.meta_description }}</h3> -->
+                {% if object.course_type == "Live" %}
+                <p id="datetime" class="white-color">
+                    {% if object.event_start_date|datetimeformat('%e/%m/%Y') ==  object.event_end_date|datetimeformat('%e/%m/%Y')  %}
+                    {{ object.event_start_date|datetimeformat('%B %e, %Y') }} &nbsp;|&nbsp; {{ object.start_time }} - {{ object.end_time }} 
+                    {% else %}
+                    {{ object.event_start_date|datetimeformat('%B %e, %Y') }} - {{ object.event_end_date|datetimeformat('%B %e, %Y') }}  &nbsp;|&nbsp; {{ object.start_time }} - {{ object.end_time }} 
+                    {% endif %}
+                    {% if object.event_time_zone == "PST" %}    
+                    Pacific
+                    {% elif object.event_time_zone == "MST" %}
+                    Mountain
+                    {% elif object.event_time_zone == "CST" %}
+                    Central
+                    {% elif object.event_time_zone == "EST" %}
+                    Eastern
+                    {% elif object.event_time_zone == "Australia Eastern" %}
+                    Australia Eastern
+                    {% endif %}
+                </p>
+                {% endif %}
+            </div>
+            <div class="button-wrapper flex-row">
+                {% if object.price__usd_ != "0" %}
+                <a href="/shop" id="price" 
+                   data-name="{{ object.name }}" 
+                   data-productid="{{ object.product_id }}" 
+                   data-thinkificid="{{ object.thinkific_course_id }}" 
+                   data-courseid="{{ object.id }}" 
+                   data-description="{{ object.meta_description }}" 
+                   data-image="{% if object.course_image %} {{ object.course_image }} {% else %}https://f.hubspotusercontent20.net/hubfs/20705724/no_image.jpg{% endif %}" 
+                   data-price="{% if object.price__usd_ %}{{ object.price__usd_ }}{% else %}0{% endif %}" 
+                   class="button add-to-cart">
+                    Register | {% if object.price__usd_ %} {{ object.price__usd_|format_currency("en-US") }}{% else %}$0{% endif %} USD</a>
+                {% else %}
+                <a href="{{ object.register_button_url__overrides_shopify_}}" id="price" 
+                   data-name="{{ object.name }}" 
+                   data-productid="{{ object.product_id }}" 
+                   data-thinkificid="{{ object.thinkific_course_id }}" 
+                   data-courseid="{{ object.id }}" 
+                   data-description="{{ object.meta_description }}" 
+                   data-image="{% if object.course_image %} {{ object.course_image }} {% else %}https://f.hubspotusercontent20.net/hubfs/20705724/no_image.jpg{% endif %}" 
+                   data-price="{% if object.price__usd_ %}{{ object.price__usd_ }}{% else %}0{% endif %}" 
+                   class="button add-to-cart">
+                    Register | {% if object.price__usd_ %} {{ object.price__usd_|format_currency("en-US") }}{% else %}$0{% endif %} USD</a>
+                {% endif  %}
+
+
+                {% set href = module.link_field.url.href %}
+                {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                <a href="{{ href }}"  class="button white"
+                   {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if module.link_field.rel %}rel="{{ module.link_field.rel }}"{% endif %}
+                   >
+                    Purchase for a Group
+                </a>
+            </div>
+            {% if instructor.results|length > 0%}
+            <div class="author-section">
+                <div class="atitle">
+                    <strong>Presented By</strong>
+                    {% for ins in instructor.results %}
+                    {{ ins.name }} {% if not loop.last %} | {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="img-wrapper">
+                    {% for ins in instructor.results %}
+                    <img src="{{ ins.headshot_link }}" alt="{{ ins.name }}">
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% require_css %}
+<style>
+
+    .course-banner-dy{
+        {{ module.style.desktop.spacing_field.css }};
+        {{ module.style.border_field.css }}
+    }
+    @media(max-width:767px){
+        .instructors-banner{
+            {{ module.style.mobile.spacing_field.css }}
+        }
+    }
+
+</style>
+{% end_require_css %}
+
+
+{% require_js %}
+<!-- <script>
+$(document).ready(function () {
+
+
+// ************************************************
+// Shopping Cart API
+// ************************************************
+
+var shoppingCart = (function() {
+// =============================
+// Private methods and propeties
+// =============================
+cart = [];
+
+// Constructor
+function Item(coursename, courseprice, courseDesc, courseImage, count) {
+this.coursename = coursename;
+this.courseprice = courseprice;
+this.count = count;
+this.courseDesc = courseDesc;
+this.courseImage = courseImage;
+}
+
+// Save cart
+function saveCart() {
+localStorage.setItem('shoppingCart', JSON.stringify(cart));
+}
+
+// Load cart
+function loadCart() {
+cart = JSON.parse(localStorage.getItem('shoppingCart'));
+}
+if (localStorage.getItem("shoppingCart") != null) {
+loadCart();
+}
+
+
+// =============================
+// Public methods and propeties
+// =============================
+var obj = {};
+
+// Add to cart
+obj.addItemToCart = function(coursename, courseprice,courseDesc,courseImage, count) {
+for(var item in cart) {
+if(cart[item].coursename === coursename) {
+cart[item].count ++;
+saveCart();
+return;
+}
+}
+
+var item = new Item(coursename, courseprice,courseDesc,courseImage, count);
+console.log('add to cart = ' + item);
+cart.push(item);
+saveCart();
+}
+// Set count from item
+obj.setCountForItem = function(coursename, count) {
+for(var i in cart) {
+if (cart[i].coursename === coursename) {
+cart[i].count = count;
+break;
+}
+}
+};
+// Remove item from cart
+obj.removeItemFromCart = function(coursename) {
+for(var item in cart) {
+if(cart[item].coursename === coursename) {
+cart[item].count --;
+if(cart[item].count === 0) {
+cart.splice(item, 1);
+}
+break;
+}
+}
+saveCart();
+}
+
+// Remove all items from cart
+obj.removeItemFromCartAll = function(coursename) {
+for(var item in cart) {
+if(cart[item].coursename === coursename) {
+cart.splice(item, 1);
+break;
+}
+}
+saveCart();
+}
+
+// Clear cart
+obj.clearCart = function() {
+cart = [];
+saveCart();
+}
+
+// Count cart 
+obj.totalCount = function() {
+var totalCount = 0;
+for(var item in cart) {
+totalCount += cart[item].count;
+}
+return totalCount;
+}
+
+// Total cart
+obj.totalCart = function() {
+var totalCart = 0;
+for(var item in cart) {
+totalCart += cart[item].courseprice * cart[item].count;
+}
+return Number(totalCart.toFixed(2));
+}
+
+// List cart
+obj.listCart = function() {
+var cartCopy = [];
+for(i in cart) {
+item = cart[i];
+itemCopy = {};
+for(p in item) {
+itemCopy[p] = item[p];
+
+}
+itemCopy.total = Number(item.courseprice * item.count).toFixed(2);
+cartCopy.push(itemCopy)
+}
+return cartCopy;
+} 
+
+// cart : Array
+// Item : Object/Class
+// addItemToCart : Function 
+// removeItemFromCart : Function
+// removeItemFromCartAll : Function
+// clearCart : Function
+// countCart : Function
+// totalCart : Function
+// listCart : Function
+// saveCart : Function
+// loadCart : Function
+return obj;
+})();
+
+
+// *****************************************
+// Triggers / Events
+// ***************************************** 
+// Add item
+$('.add-to-cart').click(function() {
+//             event.preventDefault();
+var coursename = $(this).data('name');
+var courseDesc = $(this).data('description');
+var courseImage = $(this).data('image');
+var courseprice = Number($(this).data('price'));
+console.log('price =' + courseprice);
+shoppingCart.addItemToCart(coursename, courseprice,courseDesc,courseImage, 1);
+
+});
+$('.total-cart').html(shoppingCart.totalCart());
+
+
+});
+</script> -->
+{% end_require_js %}

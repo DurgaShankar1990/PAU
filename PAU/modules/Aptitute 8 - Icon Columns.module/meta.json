@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Icon%20Columns.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 55275533113,
+  "label" : "Icon Columns",
+  "is_available_for_new_content" : true
+}

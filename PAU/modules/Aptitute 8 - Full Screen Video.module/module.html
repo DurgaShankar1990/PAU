@@ -1,0 +1,414 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+
+
+  {% if module.video.enable_modal_video %}
+    margin-left: {{ module.margins.desktop.module.left }}px;
+    margin-right: {{ module.margins.desktop.module.right }}px;
+  {% else %}
+    
+    {% if module.module_styles.card_align == "center" %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elif module.module_styles.card_align == "flex-end" %}
+      margin-left: auto;
+    {% endif %}
+    
+    
+  {% endif %}
+
+  background-color: {{ module.module_styles.background_color.color }};
+  width: 100%;
+  border: {{ module.module_styles.border_width }}px solid {{ module.module_styles.border_color.color }};
+  border-radius: {{ module.module_styles.border_radius }}px;
+
+  {% if module.module_styles.min_height %}
+    min-height: {{ module.module_styles.min_height }}px;
+  {% endif %}
+
+  position: relative;
+
+  {% if module.module_styles.shadow == "shadow_1" %}
+      box-shadow: 0px 3px 10px rgba(31, 37, 89, 0.04);
+  {% elif module.module_styles.shadow == "shadow_2" %}
+      box-shadow: 0px 4px 12px rgba(8, 15, 52, 0.06);
+  {% elif module.module_styles.shadow == "shadow_3" %}
+      box-shadow: 0px 8px 18px rgba(31, 37, 89, 0.05);
+  {% elif module.module_styles.shadow == "shadow_4" %}
+      box-shadow: 0px 16px 51px rgba(28, 26, 74, 0.04);
+  {% elif module.module_styles.shadow == "shadow_5" %}
+      box-shadow: 0px 24px 75px rgba(21, 16, 152, 0.05);
+  {% elif module.module_styles.shadow == "shadow_6" %}
+      box-shadow: 0px 45px 84px rgba(8, 15, 52, 0.19);
+  {% endif %}
+
+{% endmacro %}
+
+
+{% macro buildContentStyles() %}
+  padding-top: {{ module.paddings.desktop.content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.content.left }}px;
+  padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+
+
+<div {{ buildID() }} class="elements--video-full-player_{{ name }} {{ buildClass() }}">
+  
+
+    <video autoplay muted loop id="videoBackground" defaultMuted playsinline>
+    <source src="{{ module.video.background_video }}" type="video/mp4">
+  </video>
+  
+  
+  
+  <div class="content-wrapper elements-row-content_{{ name }}" >
+    
+    
+    
+    
+    <div class="container-fluid elements-row-content-module_{{ name }}">
+        <div class="row-fluid-wrapper">
+            <div class="row-fluid elements-row-fluid-content-module_{{ name }}">
+              
+              {% if module.video.enable_modal_video %}
+                
+                <div class="span6 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="6">
+                  <div class="container-fluid elements-div-content_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+                    <div class="row-fluid-wrapper">
+                        <div class="row-fluid">
+
+                          <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+                            <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+
+                              {% if module.content.enable_top_text %}
+                                {% inline_rich_text field="content.text" value="{{ module.content.text }}" %}
+                              {% endif %}
+
+                              {% form
+                                form_to_use="{{ module.content.form_field.form_id }}"
+                                response_response_type="{{ module.content.form_field.response_type }}"
+                                response_message="{{ module.content.form_field.message }}"
+                                response_redirect_id="{{ module.content.form_field.redirect_id }}"
+                                response_redirect_url="{{module.content.form_field.redirect_url}}"
+                                gotowebinar_webinar_key="{{ module.content.form_field.gotowebinar_webinar_key }}"
+                              %}
+
+                            </div>
+                          </div>
+
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="span6 widget-span widget-type-cell elements--video__container_{{ name }}" style="" data-widget-type="cell" data-x="6" data-w="6">
+                  <div id="elements--video__container_{{ name }}" class="elements--video__inner-container_{{ name }}" >
+                    <div class="vid htmlvid elements--video_{{ name }}"                       
+                        {% if module.video.video_type == "youtube_video" %} 
+                           ytSrc="{{ module.video.youtube_id_video }}"
+                        {% else %} 
+                           vidSrc="{{ module.video.modal_video }}"
+                        {% endif %}
+                    >
+                    </div>
+                  </div>
+
+                </div>
+              
+              {% else %}
+              
+                <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+                  <div class="container-fluid elements-div-content_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+                    <div class="row-fluid-wrapper">
+                        <div class="row-fluid">
+
+                          <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+                            <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+
+                              {% if module.content.enable_top_text %}
+                                {% inline_rich_text field="content.text" value="{{ module.content.text }}" %}
+                              {% endif %}
+
+                              {% form
+                                form_to_use="{{ module.content.form_field.form_id }}"
+                                response_response_type="{{ module.content.form_field.response_type }}"
+                                response_message="{{ module.content.form_field.message }}"
+                                response_redirect_id="{{ module.content.form_field.redirect_id }}"
+                                response_redirect_url="{{module.content.form_field.redirect_url}}"
+                                gotowebinar_webinar_key="{{ module.content.form_field.gotowebinar_webinar_key }}"
+                              %}
+
+                            </div>
+                          </div>
+
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+              
+              {% endif %}
+
+              
+              
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  
+  fieldset.form-columns-1 .hs-input {
+    width: 100% !important;
+	}
+  
+  .elements--video__inner-container_{{ name }} {
+    max-width: 190px;
+    max-height: 190px;
+    margin: 0 auto;
+  }
+  
+  .elements-row-content-module_{{ name }} {
+    width: 100%;
+  }
+  
+   .elements--video__container_{{ name }} {
+      margin-top: 256px;
+    }
+      
+  .elements--video_{{ name }} {
+    height: 190px;
+    width: 190px;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+  }
+  
+
+  .elements--video_{{ name }}:before {
+
+
+  }
+
+  .elements--video_{{ name }}:hover:before {
+
+  }
+  
+  .elements--video_{{ name }}:after {
+    background-image: url('{{ module.video.play_icon.src }}') !important;
+    background-position: center !important;
+    background-size: 190px !important;
+  }
+  
+  .elements--video_{{ name }}:hover:after {
+
+    background-size: 210px !important;
+  }
+  
+  
+   #bp_container {
+    background: rgba({{ module.video.background_modal_color.color|convert_rgb }}, {{ module.video.background_modal_color.opacity/100 }}); 
+  }
+  
+ 
+  
+  
+  .elements--video-full-player_{{ name }}:has(> dnd-section) { 
+    padding: 0 !important;
+  }
+  
+  .elements--video-full-player_{{ name }} {
+    position: relative;
+  }
+  
+   .elements--video-full-player_icon_{{ name }} {
+    margin: auto;
+  }
+  
+  .elements-row-content_{{ name }} {
+    display: flex;
+    justify-content: {{ module.module_styles.card_align }};
+  }
+ 
+  
+  .elements-module-content_{{ name }} .hs-button {
+    margin-top: 8px;
+      
+    {% if module.module_styles.button_full_width %}
+      width: 100%;
+    {% endif %}
+   
+  }
+
+  
+  
+  .elements-module-content_{{ name }} textarea {
+    width: 100% !important;
+    height: 133px;
+  }
+  
+  @media(max-width: 472px) {
+    .elements-div-content_{{ name }} fieldset.form-columns-2 .input,
+    .elements-div-content_{{ name }} fieldset.form-columns-1 .input {
+      margin-right: 0px !important;
+    }
+  }
+  
+  @media (max-width: 400px), (min-device-width: 320px) and (max-device-width: 480px) {
+    
+    .elements-div-content_{{ name }} form .form-columns-2 .hs-form-field .hs-input {
+      width: 100% !important;  
+    }
+    
+  } 
+  
+  @media(min-width: 768px) {
+    
+    
+    .elements-div-content_{{ name }} {
+      {% if module.module_styles.card_max_width > 0 %}
+        max-width: {{ module.module_styles.card_max_width }}px !important;
+      {% endif %}
+    }
+    
+    {% if module.module_styles.inline_form %}
+      .elements-div-content_{{ name }} fieldset.form-columns-2 .hs-form-field {
+        max-width: 280px;
+      }
+
+      .elements-div-content_{{ name }} fieldset.form-columns-2 .input {
+        margin-right: 24px !important;
+      }
+
+      .elements-div-content_{{ name }} fieldset {
+        float: left;
+      }
+    
+     .elements-module-content_{{ name }} .hs-button {
+        float: left;
+        margin-top: 39px;
+      }
+
+    {% endif %}
+  }
+  
+  @media(max-width: 767px) {
+    
+    .elements-div-content_{{ name }} {
+      {% if module.module_styles.min_height_mobile %}
+        min-height: {{ module.module_styles.min_height_mobile }}px;
+      {% endif %}
+    }
+    
+ 
+    
+    .elements-row-fluid-content-module_{{ name }} {
+       display: flex;
+        flex-direction: column-reverse;
+    }
+   
+    
+    .elements--video__container_{{ name }} {
+      margin: auto !important;
+      width: 100% !important;
+    }
+    
+   .elements--video-full-player_{{ name }} .content-wrapper {
+      padding: 0 !important; 
+    }
+    
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    
+    margin-top: {{ module.margins.mobile.module.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.module.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.module.left }}px !important;
+    margin-right: {{ module.margins.mobile.module.right }}px !important;
+  }
+    
+  .elements-module-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.content.right }}px !important;
+  }
+
+}
+  
+  @media(max-width: 480px) {
+    .elements-module-content_{{ name }} .hs-button {
+     width: 100%;
+    }
+  }
+  
+</style>
+{% end_require_css %}
+
+
+{% require_js %}
+  <script>
+    var video = document.getElementById("videoBackground");
+    var btn = document.getElementById("myBtn");
+    video.play();
+
+    function playBackgroundVideo() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  
+    function setClickHandler(id, fn) {
+      document.getElementById(id).onclick = fn
+    }
+
+    setClickHandler('elements--video__container_{{ name }}', function(e) {
+      var className = e.target.className
+
+        {% if module.video.video_type == "youtube_video" %} 
+           BigPicture({
+          el: e.target,
+            ytSrc: e.target.getAttribute('ytSrc'),
+        })
+        {% else %} 
+           BigPicture({
+          el: e.target,
+          vidSrc: e.target.getAttribute('vidSrc'),
+        })
+        {% endif %}
+
+    });
+  </script>
+{% end_require_js %}
+
+  

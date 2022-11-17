@@ -1,0 +1,45 @@
+{% if dynamic_page_crm_object %}
+{% set obj = dynamic_page_crm_object %}
+
+{% set instructor = crm_associations(obj.id, 'USER_DEFINED', 145,"limit=10","name, page_url, bio, certificates, headshot_link, description") %} 
+{% if instructor.total >= 1 %} 
+<div class="presented-by {{name}}">
+    <div class="content-wrapper">
+        <div class="navigation-wrapper">
+            <div class="arrow arrow--left"></div>
+            <div class="arrow arrow--right"></div>
+        </div>
+        <div class="slider-group keen-slider" id="my-keen-slider">
+            {% for ins in instructor.results %}
+            <div class="items flex-row flex-wrap justify-bw keen-slider__slide">
+                <div class="m-col-5 mmb-30">
+                    <img src="{{ ins.headshot_link }}">
+                </div>
+                <div class="m-col-7">
+                    <h2 class="mb-16 venice-blue">Presented By</h2>
+                    <h3 class="mb-16 carbon-grey">{{ ins.name }}</h3>
+                    <p>{{ ins.bio|truncate(300, True, '...') }}</p>
+                    <div class="button-wrap">
+                        {% set href = module.link_field.url.href %}
+                        {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        <a href="{{ href }}/{{ ins.page_url }}" class="button"
+                           {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                           {% if module.link_field.rel %}rel="{{ module.link_field.rel }}"{% endif %}
+                           >View More Programs from this Presenter</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+<style>
+    .presented-by.{{name}}{
+        {{ module.style.spacing_field.css }}
+    }
+</style>

@@ -1,0 +1,105 @@
+/* @import url('http://example.com/example_style.css'); */
+
+/***********************************************/
+/* CSS @imports must be at the top of the file */
+/* Add them above this section                 */
+/***********************************************/
+
+/*****************************************/
+/* Start your style declarations here    */
+/*****************************************/
+
+
+.no-section-padding .dnd-section, .no-section-padding .content-wrapper--vertical-spacing {
+  padding: 0;
+}
+
+.background-home-marketing {
+  margin-top: 2%;
+  padding-bottom: 18%;
+  background-image: url(https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/backgrounds/background_marketing.png) !important;
+  background-size: 50% !important;
+  background-position: right 30% !important;
+  background-repeat: no-repeat !important; 
+}
+
+
+
+@media(max-width: 1679px) {
+  .background-home-marketing {
+    padding-bottom: 10%;
+  }
+}
+
+
+@media(max-width: 1500px) {
+  .background-home-marketing {
+    padding-bottom: 8%;
+  }
+}
+
+@media(max-width: 1430px) {
+  .background-home-marketing {
+    padding-bottom: 5%;
+  }
+}
+
+@media(max-width: 1320px) {
+  .background-home-marketing {
+    padding-bottom: 3%;
+  }
+}
+
+@media(max-width: 1280px) {
+  .background-home-marketing {
+    padding-bottom: 1%;
+  }
+}
+
+@media(max-width: 1200px) {
+  .background-home-marketing {
+    padding-bottom: 0;
+  }
+}
+
+@media(max-width: 1120px) {
+  .background-home-marketing {
+    padding-bottom: -5%;
+  }
+}
+
+@media(max-width: 767px) {
+  
+  .background-home-marketing {
+     background-image: none !important;
+     padding-bottom: 4px;
+     margin-top: 0px;
+  }
+  
+
+  .elements-template--span7__full-mobile .row-fluid .span7 {
+    width: 100% !important;
+  } 
+  
+  .elements-template--span6__full-mobile .row-fluid .span6 {
+    width: 100% !important;
+  } 
+  
+  .elements-template--span5__full-mobile .row-fluid .span5 {
+    width: 100% !important;
+  }
+  
+  .elements-template--span4__full-mobile .row-fluid .span4 {
+    width: 100% !important;
+  } 
+  
+  .elements-template--span3__full-mobile .row-fluid .span3 {
+    width: 100% !important;
+  } 
+  
+  .elements-template--span2__full-mobile .row-fluid .span2 {
+    width: 100% !important;
+  } 
+  
+  
+}

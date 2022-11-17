@@ -1,0 +1,693 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: eBook Landing Page v2 - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/ebook-landing-page-v2.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block header %}
+  {% global_partial path='./partials/header-no-navigation.html' %}
+{% endblock header %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  
+  
+    
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1' class='elements-template--span6__full-mobile elements-template--card-contact__full-mobile', label='section-1' %}
+  
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 96, 'bottom': 88 },
+        'mobile': { 'top': 24, 'bottom': 64 }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=7,
+        padding={
+          'default': { 'top': 24, 'left': 80 },
+          'mobile': { 'left': 0 }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+              <p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                Free eBook download
+              </p>
+              <h1 style="max-width: 520px; margin-bottom: 0;">Download our free Email Marketing eBook</h1>
+
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+        {# List Items #}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 8, 'bottom': 24 }
+          }
+        %}
+          {% dnd_module "module_161343401667031" path='../modules/Aptitute 8 - List Items', label="Aptitute 8 - List Items",
+            items = [
+              {
+                text: '<p style="max-width: 431px;"><span style="color: #1f2559;"><strong>50+ Tips</strong></span> from experts in the industry to grow your email marketing list blazing fast.</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              },
+              {
+                text: '<p style="max-width: 431px;"><span style="color: #1f2559;"><strong>12 Chapters</strong></span> explaining you how to start, manage and grow your email newsletter.</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              },
+              {
+                text: '<p style="max-width: 431px;"><span style="color: #1f2559;"><strong>28 FAQs</strong></span> answered about email marketing, monetization, and more interesting topics.</p>',
+                icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/check.svg', alt: 'Elements Image' }
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+        {# Buttons #}
+    
+        {% dnd_row 
+            margin={
+              'default': { 'top': 16 },
+              'mobile': { 'top': 16 }
+            }
+          %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              button= [
+                { 'button_text':'Download Free eBook', 'class_button':'btn-primary-dark' }
+              ]
+           %}
+           {% end_dnd_module %}
+
+         {% end_dnd_row %}
+    
+       {% end_dnd_column  %}
+       
+      {% dnd_column
+        offset=7,
+        width=5
+       %}
+        {% dnd_row
+          padding={
+             'mobile': { 'top': 16 }
+            }
+        %}
+          {% dnd_module  path='../modules/Aptitute 8 - Image', 
+            horizontal_alignment='LEFT',
+            img={
+              'alt': 'Elements Image',
+              'width': 392,
+              'height': auto,
+              'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/eBook_1.png',
+              'margin':'0'
+            }
+            
+           %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+  
+  
+
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+
+  
+  {# 2 Section - What’s included in the book? #}
+  
+  <section id="section-2">
+    
+  {% dnd_area 'section-2', label='section-2' %}
+
+    {% dnd_section
+         padding={
+         'default': { 'top': 110, 'bottom': 96 },
+         'mobile': { 'top': 56, 'bottom': 72 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+  
+      {% dnd_column %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  What’s included in the book?
+                </p>
+                <h2 style="text-align: center; max-width: 505px;">
+                  See what's inside our Email Marketing eBook
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row
+          padding={
+            'default': { 'top': 0, 'bottom': 32 },
+            'mobile': { 'top': 0, 'bottom': 0 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'image_full_width': false
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/email_1.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">All you need to know about Email Marketing</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/growth_2.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Tips and growth hacks to grow your email list faster</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/questions.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Answers to the most popular Frequently Asked Questions</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  }
+                  
+                ]
+              }            
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+        {# Buttons #}
+    
+        {% dnd_row 
+          margin={
+            'default': { 'top': 16 },
+            'mobile': { 'top': 16 }
+          }
+        %}
+         {% dnd_module path='../modules/Aptitute 8 - Buttons',
+           horizontal_alignment='CENTER',
+           button= [
+            { 'button_text':'Download Free eBook', 'class_button':'btn-primary-dark' }
+           ]
+         %}
+         {% end_dnd_module %}
+
+       {% end_dnd_row %}
+  
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 2 Section - What’s included in the book? #}
+  
+  
+    
+  
+  
+  {# 3 Section - About the eBook #}
+  
+  <section id="section-3">
+     
+  {% dnd_area 'section-3', label='section-3' %}  
+   
+  
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 96, 'bottom': 104 },
+        'mobile': { 'top': 40, 'bottom': 80 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+  
+  
+      {# Left Content #} 
+    
+       {% dnd_module  path='../modules/Aptitute 8 - Image', 
+        horizontal_alignment='LEFT',
+        img={
+          'alt': 'Elements Image',
+          'width': 672,
+          'height': auto,
+          'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/ebooks_2.svg',
+          'margin':'0'
+        },
+        offset=0,
+        width=7,
+        margin={
+         'mobile': { 'top': 180 }
+        }
+       %}
+       {% end_dnd_module %}
+    
+    
+       {# Right Content #}
+
+      
+      {% dnd_column 
+        offset=7, 
+        width=5,
+      %}
+
+        {% dnd_row 
+          margin={
+           'default': { 'top': 0 }
+          }
+  
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  About the eBook
+                </p>
+                <h2>
+                  Our eBook includes everything you need to know about Email Marketing
+                </h2>
+                <p style="margin-bottom: 15px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt platea donec fermentum sagittis habitant. Mattis lectus nibh blandit dolor. Orci in a nulla pretium ac.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 0 }
+          } 
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            button= [
+              { 'button_text':'Download Free eBook', 'class_button':'btn-primary-dark' }
+             ]
+           %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+
+       {% end_dnd_column  %}
+
+  
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - About the eBook #}
+  
+ 
+
+  
+  
+  {# 4 Section - Reviews #}
+  
+  <section id="section-4">
+    
+  {% dnd_area 'section-4' , label='section-4' %} 
+
+      
+    {% dnd_section
+         padding={
+         'default': { 'top': 128, 'bottom': 56 },
+         'mobile': { 'top': 80, 'bottom': 0 }
+        }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          vertical_alignment='BOTTOM'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='CENTER',        
+          %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">
+                  Reviews
+                </p>
+                <h2 style="max-width: 486px; text-align: center;">
+                  What are people saying about our eBook?
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row %}
+
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=0,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+            
+          %}
+          {% end_dnd_module %}
+  
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=4,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+          %}
+          {% end_dnd_module %}
+    
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=8,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+          %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 0 }
+          } 
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+             horizontal_alignment='CENTER',
+             button= [
+              { 'button_text':'Download Free eBook', 'class_button':'btn-primary-dark' }
+             ],
+             margins= { 
+              desktop: { top: 16, bottom: 80 },
+              mobile: { top: 32 }
+            }
+           %}
+           {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+    
+        
+         {% dnd_row
+          margin={ 
+          'default': { 'top': 48, 'bottom': 64 },
+          'mobile': { 'top': 56, 'bottom': 16 }
+          },
+          offset=0,
+          width=12
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Divider' %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 4 Section - Reviews #}
+  
+
+
+    
+  
+  {# 5 Section - About the Author #}
+  
+  <section id="section-5">
+    
+  {% dnd_area 'section-5', label='section-5' %}
+  
+    {% dnd_section
+      max_width=853,
+      vertical_alignment='MIDDLE',
+      padding={
+        'default': { 'top': 0, 'bottom': 200 },
+         'mobile': { 'top': 8, 'bottom': 156 }
+      }
+    %}
+ 
+      {% dnd_column %}
+    
+        {% dnd_row
+          margin={
+            'default': { 'top': 0, 'bottom': 16 },
+            'mobile': { 'top': 8, 'bottom': 0  }
+          },
+          vertical_alignment='MIDDLE'
+        %}
+         {% dnd_module  path='../modules/Aptitute 8 - Image', 
+            offset=0,
+            width=5,
+            horizontal_alignment='CENTER',
+            img={
+              'alt': 'Elements Image',
+              'width': 321,
+              'height': auto,
+              'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/avatar_10.png',
+              'margin':'0'
+            },
+            max_width_on_mobile=256
+          %}
+          {% end_dnd_module %}
+    
+          {% dnd_column
+            offset=5,
+            width=7,
+            padding={
+              'default': { 'left': 0 },
+              'mobile': { 'left': 0 }
+            }
+          %}
+    
+            {% dnd_row %}
+
+              {% dnd_module path='@hubspot/rich_text', 
+                horizontal_alignment='LEFT'
+              %}
+                {% module_attribute 'html' %} 
+                    <p style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 20px; margin-bottom: 8px;">
+                      About the Author
+                    </p>
+                    <h1 style="margin-bottom: 8px;">
+                      John Carter
+                    </h1>
+                    
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. 
+                      Ac malesuada ipsum, tellus vitae odio nulla sociis. Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. 
+                      Habitant aenean ut turpis lectus pulvinar mattis fames. 
+                    </p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+
+            {% end_dnd_row %}
+    
+    
+            {% dnd_row %}
+
+              {% dnd_module "module_161316588361313" path='../modules/Aptitute 8 - Social Icons', label="Aptitute 8 - Social Icons",
+                settings= {
+                  separation: 8,
+                  icon_size: 46,
+                  hide_left_margin: true
+                },
+                web= { enabled: true },
+                instagram= { enabled: false },
+                youtube= { enabled: false },
+                telegram= { enabled: false },
+                whatsapp= { enabled: false },
+                pinterest= { enabled: false },
+                tiktok= { enabled: false }
+                
+              %}
+              {% end_dnd_module %}
+
+            {% end_dnd_row %}    
+    
+    
+    
+
+         {% end_dnd_column  %}
+    
+  
+  
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 5 Section - About the Author #}
+  
+  
+      
+  
+  
+  {# 6 Section - Download our free eBook #}
+  
+  <section id="section-6">
+    
+  {% dnd_area 'section-6' class='elements-template--span6__full-mobile elements-template--card-contact__full-mobile', label='section-6' %}
+  
+    {% dnd_section
+      background_color={
+        r: 31,
+        g: 37,
+        b: 89,
+        a: 1.0
+      },
+      vertical_alignment='MIDDLE',
+      padding={
+        'default': { 'top': 0, 'bottom': 96 },
+        'mobile': { 'top': 0, 'bottom': 64 }
+      }
+    %}
+    
+      {% dnd_module  path='../modules/Aptitute 8 - Image', 
+        horizontal_alignment='RIGHT',
+        img={
+          'alt': 'Elements Image',
+          'width': 345,
+          'height': auto,
+          'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/eBook_1.png',
+          'margin':'0'
+        },
+        offset=0,
+        width=5,
+        margins= {
+          desktop: { 
+            top: -96
+          },
+          mobile: { 
+            top: -96
+          }
+        }
+       %}
+      {% end_dnd_module %}
+      {% dnd_column
+        offset=5,
+        width=7,
+        padding={
+          'default': { 'left': 24 },
+          'mobile': { 'left': 0 }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+              <h2 style="color: #FFFFFF; margin-bottom: 12px;">
+                Download our free eBook
+              </h2>
+              <p style="margin-bottom: 0px; color: #FFFFFF; max-width: 558px;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sed neque est et augue tempor ipsum. Eget vulputate bibendum neque quis. Non ac lorem fames dignissim blandit dapibus convallis. 
+              </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row %}
+          {% dnd_module "module_16134169095518" path='../modules/Aptitute 8 - Section CTA - Form - Medium', label="Aptitute 8 - Section CTA - Form - Medium",
+          module_styles={
+              card_type: 'without_card',
+              enable_top_content: false,
+              input_max_width: 559,
+              center_input: false
+            },
+            paddings= {
+              desktop: { 
+                content: { left: 0 }  
+              }
+            }
+           %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+       {% end_dnd_column  %}
+       
+  
+  
+
+    {% end_dnd_section %}
+  
+    
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 5 Section - Download our free eBook #}
+  
+
+  
+</main>
+{% endblock body %}

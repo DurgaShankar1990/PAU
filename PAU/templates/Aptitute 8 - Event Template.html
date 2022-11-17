@@ -1,0 +1,227 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Event Template - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/event-template.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 80, 'bottom': 24 },
+         'mobile': { 'top': 36, 'bottom': 0 }
+      }
+    %}
+ 
+      {% dnd_column %}
+    
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <a style="display: -webkit-inline-flex; display: -ms-inline-flexbox; display: inline-block; align-items: center;">
+                  <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="13" style="fill: {{ theme.global_colors.primary_colors.primary_color_1.color }}; width: 10px; margin-right: 6px; position: relative; top: 2px;" aria-hidden="true"><g id="layer1"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></g></svg>
+                     <span> Back to all Events</span>
+                </a>
+    
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+        {% dnd_row
+          margin={
+            'default': { 'top': 40, 'bottom': 16 },
+            'mobile': { 'top': 8, 'bottom': 0  }
+          }
+        %}
+         {% dnd_module  path='../modules/Aptitute 8 - Image', 
+          horizontal_alignment='CENTER',
+            img={
+              'alt': 'Elements Image',
+              'width': 1209,
+              'height': auto,
+              'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_background_1.png',
+              'margin':'0'
+            }
+          %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+      
+  {# 2 Section - Header #}
+  
+  <section id="section-2">
+    
+  {% dnd_area 'section-2', label='section-2' %}
+  
+    {% dnd_section
+      max_width=900,
+      padding={
+        'default': { 'top': 16, 'bottom': 96 },
+        'mobile': { 'top': 0, 'bottom': 64 }
+      },
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module path='@hubspot/rich_text',
+        horizontal_alignment='CENTER',
+        offset=0,
+        width=2
+      %}
+        {% module_attribute 'html' %} 
+          <p style="margin-bottom: 6px; text-align: center; font-size: 16px; font-weight: 700; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; ">
+            MAR
+          </p>
+          <h1 style="text-align: center; font-size: 64px; margin-bottom: 32px;">
+            27
+          </h1>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    
+      {% dnd_column
+        offset=2,
+        width=10,
+      %}
+    
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px;"><img src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg" alt="calendar" width="20" style="width: 20px;">&nbsp; &nbsp;<span style="vertical-align: top;">March 27th, 2021</span>&nbsp; &nbsp; &nbsp; &nbsp; <img src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg" alt="pin" width="20" style="width: 20px;">&nbsp; &nbsp;<span style="vertical-align: top;">New York, NY</span></p>
+                <h1>B2B HubSpot Inbound Marketing Workshop in San Francisco, CA</h1>
+                <p style="max-width: 588px;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row 
+          margin={
+            'default': { 'top': 12 },
+            'mobile': { 'top': 16, 'bottom': 24 }
+          } 
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            horizontal_alignment='LEFT',
+            offset=0,
+            width=12,
+            button= [
+              { 'button_text':'Register to Event', 'class_button':'btn-primary-dark' }              
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+      {% end_dnd_column  %}
+
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+  
+  </section>
+  
+  {# End 2 Section - Execution #}
+  
+
+  
+    
+  {# 3 Section - Description #}
+  
+  <section id="section-3">
+    
+  {% dnd_area 'section-3', label='section-3' %}
+  
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 96, 'bottom': 116 },
+        'mobile': { 'top': 56, 'bottom': 64 }
+      },
+      vertical_alignment='MIDDLE',
+      max_width=860
+    %}
+      {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'image_full_width': false,
+              'enable_image': false,
+              'text_align': 'left',
+              'text_align_mobile': 'left'
+            },
+            paddings = { 
+              desktop:{ content:{ top: 40, bottom: 40, left: 64, right: 64 } },  
+              mobile:{ content:{ top: 24, bottom: 32, left: 16, right: 16 } }
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {      
+                    content: "<h2 style='margin-bottom: 16px;'>What will we cover in our workshop?</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. Ac malesuada ipsum, tellus vitae odio nulla sociis. Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. Habitant aenean ut turpis lectus pulvinar mattis fames. Suscipit aliquet pellentesque enim, massa vitae pharetra amet.<br><br></p>
+                      <h4 style='margin-bottom: 8px;'>It's important to always have an inbound marketing plan</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.<br><br></p>
+                      <h4 style='margin-bottom: 8px;'>If your business is not growing, it's falling</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.</p>
+                      <ul>
+                      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu laoreet at donec tincidunt</li>
+                      <li>Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
+                      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc</li>
+                      </ul>",
+                  }
+                  
+                ]
+             }
+                        
+           ]
+        %}
+        {% end_dnd_module %}
+
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+  
+  </section>
+  
+  {# End 3 Section - Description #}
+  
+
+  
+    
+
+  
+  
+</main>
+{% endblock body %}

@@ -1,0 +1,243 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Job Template - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/jobs-template.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+    
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 40, 'bottom': 0 },
+         'mobile': { 'top': 32, 'bottom': 0 }
+      }
+    %}
+      {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <a style="display: -webkit-inline-flex; display: -ms-inline-flexbox; display: inline-block; align-items: center;" href="/jobs">
+                  <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="13" style="fill: {{ theme.global_colors.primary_colors.primary_color_1.color }}; width: 10px; margin-right: 8px; position: relative; top: 2px;" aria-hidden="true"><g id="layer1"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></g></svg>
+                    <span> Back to all Jobs</span>
+                </a>
+    
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+    {% dnd_section
+       background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 0, 'bottom': 0 },
+         'mobile': { 'top': 0, 'bottom': 56 }
+      },
+      margin={
+        'default': { 'top': 216 },
+         'mobile': { 'top': 0 }
+      },
+      max_width=797
+    %}
+ 
+      {% dnd_column %}
+    
+        {% dnd_row
+          margin={
+            'default': { 'top': 16, 'bottom': 16 },
+            'mobile': { 'top': 8, 'bottom': 0  }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'image_full_width': false,
+              'enable_image': false,
+              'text_align': 'center',
+              'text_align_mobile': 'center',
+              'enable_button': true,
+              button: { 
+                full_width: false,
+                button_class: 'btn-primary-dark'
+              }
+            },
+            paddings = { 
+              desktop:{ content:{ top: 24, bottom: 24, left: 64, right: 64 } },  
+              mobile:{ content:{ top: 24, bottom: 16, left: 0, right: 0 } }
+            },
+            margins = { 
+              desktop:{ module:{ top: -216 } },  
+              mobile:{ module:{ top: 24 } }
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {      
+                    content: '<p><span style="display: inline-flex; align-items: center; margin: 0 8px;"> <img src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg" style="margin-right: 12px; filter: drop-shadow(0px 3px 5px rgba(244,38,62,0.22));" alt="Elements Icon" width="19" height="24"> <span>San Francisco, CA</span> </span> <span style="border-left: 1px solid #f4f4f9; margin: 0 16px;">&nbsp;</span> <span style="display: inline-flex; align-items: center; margin: 0 8px;"> <img src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/suitcase_1.svg" class="elements--jobs__emplyment-type-icon" style="margin-right: 12px; filter: drop-shadow(0px 3px 5px rgba(244,38,62,0.22));" alt="Elements Image" width="27" height="24"> <span class="elements--jobs__employment_type-data">Full Time</span> </span></p><h1 style="margin-bottom: 8px;">Lead Web Designer</h1><p style="margin-bottom: 32px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra ullamcorper ac, eget.</p>',
+                    card_button_text: 'Apply Now'
+                  }
+                  
+                ]
+             }
+                        
+           ]
+        %}
+        {% end_dnd_module %}
+
+  
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+    
+  {# 2 Section - Description #}
+  
+  <section id="section-2">
+    
+  {% dnd_area 'section-2', label='section-2' %}
+  
+    {% dnd_section
+      max_width=672,
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 64, 'bottom': 148 },
+        'mobile': { 'top': 56, 'bottom': 64 }
+      },
+    %}
+      {% dnd_column %}
+    
+    
+        
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <h2>About this position</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. Ac malesuada ipsum, tellus vitae odio nulla sociis. Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. Habitant aenean ut turpis lectus pulvinar mattis fames. Suscipit aliquet pellentesque enim, massa vitae pharetra amet. Sem neque vitae aliquet odio suspendisse non adipiscing ornare amet.</p>
+                <h3 style="margin-bottom: 16px;">Requirements</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra ullamcorper ac, eget.</p>
+                <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu laoreet at donec tincidunt</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu laoreet at donec tincidunt</li>
+                <li>Cras ornare arcu dui vivamus arcu felis bibendum. Ut venenatis tellus in metus vulputate</li>
+                </ul>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+        {% dnd_row
+          padding={
+            'default': { 'top': 16, 'bottom': 16 },
+            'mobile': { 'top': 16, 'bottom': 16 }
+          } 
+        %}
+          {% dnd_module  path='../modules/Aptitute 8 - Image', 
+            horizontal_alignment='CENTER',
+            img={
+              'alt': 'Elements Image',
+              'width': 1209,
+              'height': auto,
+              'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/youtube_1.svg',
+              'margin':'0'
+            },
+            border_radius=36,
+            border_radius_mobile=24
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+          
+        
+        {% dnd_row
+        
+         padding={
+            'default': { 'top': 16 },
+            'mobile': { 'top': 16 }
+          } 
+        
+        %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <h3 style="margin-bottom: 16px;">
+                  How can I apply?
+                </h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                  Nunc mauris viverra cursus arcu nibh et commodo in orci. 
+                  Sit fermentum at sed vitae in facilisis viverra morbi. 
+                  Nisl fringilla dolor amet, tortor volutpat in non quam bibendum. 
+                  Proin vitae bibendum magna ut proin mauris netus.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+    
+    
+        {% dnd_row 
+          margin={
+            'default': { 'top': 16 },
+            'mobile': { 'top': 16, 'bottom': 24 }
+          } 
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            button= [
+              { 'button_text':'Apply Now', 'class_button':'btn-primary-dark' }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+      {% end_dnd_column  %}
+    
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+  
+  </section>
+  
+  {# End 2 Section - Description #}
+  
+
+  
+    
+
+  
+  
+</main>
+{% endblock body %}

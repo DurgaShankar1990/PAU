@@ -1,0 +1,76 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Coming Soon - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/coming-soon.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Content #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    
+    {% dnd_section
+      full_width=true,
+      padding={
+        'default': { 'top': 4, 'bottom': 0, 'left': 0, 'right': 0 },
+        'mobile': { 'top': 0, 'bottom': 0, 'left': 0, 'right': 0 }
+      }
+    %}
+      {% dnd_module "module_161550790904239" path='../modules/Aptitute 8 - Divider', label="Aptitute 8 - Divider",
+        show_on_mobile=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+    
+     {% dnd_section
+      max_width=560,
+      vertical_alignment='BOTTOM',
+      padding={
+        'default': { 'top': 64, 'bottom': 96 },
+        'mobile': { 'top': 8, 'bottom': 72 }
+      }
+    %}
+      {% dnd_module "module_16134169095518" path='../modules/Aptitute 8 - Section CTA - Form - Medium', label="Aptitute 8 - Section CTA - Form - Medium",
+        module_styles= { 
+          card_type: 'without_card'
+          
+        },
+        content= { 
+          content: '<h1 style="text-align: center;">Coming soon... Subscribe to stay tuned</h1><p style="text-align: center; margin-bottom: 40px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sapien ut praesent sagittis nec et. Est, mauris nullam ut risus enim</p>'          
+        },
+        image= { 
+          image: {
+            src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/mail.svg',
+            alt: 'Elements Image',
+            size_type:'auto_custom_max', 
+            max_width: 397,
+            max_height: 264
+          },
+          image_align: 'center'
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Content #}
+  
+  
+
+
+
+  
+</main>
+{% endblock body %}

@@ -1,0 +1,29 @@
+<!--
+templateType: "global_partial"
+label: "Website header"
+isAvailableForNewContent: false
+-->
+<!-- <script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+<script
+        src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"
+        integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k="
+        crossorigin="anonymous"></script> -->
+
+{{ require_js ('https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js')}}
+{{ require_js ('https://code.jquery.com/ui/1.13.0/jquery-ui.js')}}
+<header id="header" class="header shopping_card_header">
+
+    <div class="header__top">
+    </div>
+    <div class="header__bottom">
+        <div class="header__container content-wrapper">
+            {# Header logo column #}
+            <div class="header__logo header__logo--main">
+                {% module 'site_logo' path='@hubspot/logo', link="http://concept.paloalotu.edu/" img= { "override_inherited_src": true, "src": "https://f.hubspotusercontent20.net/hub/20705724/hubfs/Concept-Leading.png", "alt": "Aptitute 8 Logo", "width": 186 } %}
+            </div>
+            {# End header logo column #}
+        </div>
+    </div>
+</header>
+
+<div class="sticky-padding"></div>

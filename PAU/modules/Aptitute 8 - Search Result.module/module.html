@@ -1,0 +1,55 @@
+<div class="elements-search-result-input">
+  <form action="/hs-search-results">
+    <input type="text" name="term" class="hs-search-field__input" placeholder="{{ module.input_placeholder }}">
+
+    {% if module.content_types.website_pages %}
+      <input type="hidden" name="type" value="SITE_PAGE">
+    {% endif %}
+    {% if module.content_types.landing_pages %}
+      <input type="hidden" name="type" value="LANDING_PAGE">
+    {% endif %}
+    {% if module.content_types.blog_posts %}
+      <input type="hidden" name="type" value="BLOG_POST">
+      <input type="hidden" name="type" value="LISTING_PAGE">
+    {% endif %}
+    {% if module.content_types.knowledge_articles %}
+      <input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+    {% endif %}
+    
+    <input type="submit" class="btn-primary-dark elements-search-results__button" value="{{ module.button_text }}">
+  </form>
+</div> 
+<div class="hs-search-results">
+  <template class="hs-search-results__template">
+      <a href="#" class="elements-results-card-link">
+      <li class="cards__card elements-results-card">
+        <span class="hs-search-results__title">Content Title</span>
+        <p class="hs-search-results__description">Description</p>
+        Read More
+      </li>
+ </a>
+  </template>
+  <ul id="hsresults" class="hs-search-results__listing"></ul>
+  <div class="hs-search-results__pagination" data-search-path="{{ site_settings.content_search_results_page_path }}">
+    <a href="" class="hs-search-results__prev-page btn-primary-dark"></a>
+    <a href="" class="hs-search-results__next-page btn-primary-dark"></a>
+  </div>
+</div> 
+
+
+
+{% require_css %}
+<style>
+  
+  .elements-search-result-input form .hs-search-field__input {
+    height: 87px;
+    background-image: url({{ module.search_icon.src }});
+    background-position: 24px;
+    background-repeat: no-repeat;
+    background-size: 26px;
+    padding-left: 64px;
+    padding-right: 120px;
+  }
+  
+</style>
+{% end_require_css %}

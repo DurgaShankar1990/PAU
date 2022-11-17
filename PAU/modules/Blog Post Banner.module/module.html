@@ -1,0 +1,19 @@
+<div class="blog-post-banner {% if not content.featured_image %}no-featured-img{% endif %}">
+    <div class="content-wrapper">
+        <div class="blog-post-banner-content-wrap">
+            <div class="blog-post-banner-col left-col">
+                <div class="blog-post-banner-content">
+                    <h1>{{ content.name }}</h1>
+                    <p>{{ module.subtitle }}</p>
+                </div>
+            </div>
+            {% if content.featured_image %}
+            <div class="blog-post-banner-col right-col">
+                <div class="podcast-image" style="background-image: url('')">
+                 <img src="{{ content.featured_image }}" alt="{{ content.name|striptags }}">
+                </div>
+            </div>
+             {% endif %}
+        </div>
+    </div>
+</div>

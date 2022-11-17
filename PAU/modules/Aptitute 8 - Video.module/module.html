@@ -1,0 +1,148 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+
+
+<div {{ buildID() }} class="{{ buildClass() }}">
+  <div id="elements--video__container_{{ name }}" class="elements--video__container_{{ name }}">
+    <div 
+      class="vid htmlvid elements--video_{{ name }}" 
+      style="background-image:url({{ module.image.image_field.src }})" 
+      
+      {% if module.video.video_type == "youtube_video" %} 
+         ytSrc="{{ module.video.youtube_id_video }}"
+      {% elif module.video.video_type == "vimeo_video" %}
+         vimeoSrc="{{ module.video.vimeo_video_id }}" 
+      {% else %} 
+         vidSrc="{{ module.video.video }}"
+      {% endif %}
+    >
+    </div>
+  </div>
+</div>
+
+
+
+{% require_css %}
+<style>
+  
+  .elements--video__container_{{ name }} {
+    margin-top: {{ module.margin.desktop.top }}px;
+    margin-bottom: {{ module.margin.desktop.bottom }}px;
+    margin-left: {{ module.margin.desktop.left }}px;
+    margin-right: {{ module.margin.desktop.right }}px;
+  }
+  
+  .elements--video_{{ name }} {
+    height: {{ module.module_styles.height }}px;
+    width: {{ module.module_styles.width }}px;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    border-radius: {{ module.module_styles.border_radius }}px;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    padding-bottom: {{ module.module_styles.height }}px;
+  }
+  
+
+  .elements--video_{{ name }}:before {
+    border-radius: {{ module.module_styles.border_radius }}px;
+    background: rgba({{ module.module_styles.image_cover_color.color|convert_rgb }}, {{ module.module_styles.image_cover_color.opacity/100 }}); 
+  }
+
+  .elements--video_{{ name }}:hover:before {
+    background: rgba({{ module.module_styles.image_cover_color_hover.color|convert_rgb }}, {{ module.module_styles.image_cover_color_hover.opacity/100 }}); 
+  }
+  
+  .elements--video_{{ name }}:after {
+    background-image: url('{{ module.module_styles.play_icon.src }}') !important;
+    background-position: center 53% !important;
+    background-size: {{ module.module_styles.play_icon_size }}% !important;
+  }
+  
+  .elements--video_{{ name }}:hover:after {
+
+    background-size: {{ module.module_styles.play_icon_size + 2 }}% !important;
+  }
+  
+  
+  #bp_container {
+    background: rgba({{ module.module_styles.background_modal_color.color|convert_rgb }}, {{ module.module_styles.background_modal_color.opacity/100 }}); 
+
+  }
+  
+  @media(max-width: 767px) {
+    
+    .elements--video__container_{{ name }} {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      
+      padding-top: {{ module.margin.mobile.top }}px !important;
+      padding-bottom: {{ module.margin.mobile.bottom }}px !important;
+      padding-left: {{ module.margin.mobile.left }}px !important;
+      padding-right: {{ module.margin.mobile.right }}px !important;
+      
+      display: table-cell;
+      width: 767px;
+      max-width: 100%;
+    }
+    
+    .elements--video_{{ name }}:before {
+      border-radius: {{ module.module_styles.border_radius_mobile }}px;
+    }
+    
+    .elements--video_{{ name }} {
+      width: 100%;
+      padding-bottom: 60%;
+      border-radius: {{ module.module_styles.border_radius_mobile }}px;
+    }
+    
+  }
+
+  
+  
+</style>
+{% end_require_css %}
+
+
+{% require_js %}
+<script>
+  function setClickHandler(id, fn) {
+    document.getElementById(id).onclick = fn
+  }
+  
+  if(document.getElementsByTagName("HTML")[0].getAttribute("class") !== 'hs-inline-edit') {
+    
+         setClickHandler('elements--video__container_{{ name }}', function(e) {
+    var className = e.target.className
+                  
+     {% if module.video.video_type == "youtube_video" %} 
+         BigPicture({
+			  el: e.target,
+				  ytSrc: e.target.getAttribute('ytSrc'),
+			})
+      {% elif module.video.video_type == "vimeo_video" %}
+         BigPicture({
+                 el: e.target,
+                 vimeoSrc: e.target.getAttribute('vimeoSrc'),
+			})
+      {% else %} 
+         BigPicture({
+        el: e.target,
+        vidSrc: e.target.getAttribute('vidSrc'),
+      })
+      {% endif %}
+  
+  });
+        
+   } 
+ 
+</script>
+{% end_require_js %}

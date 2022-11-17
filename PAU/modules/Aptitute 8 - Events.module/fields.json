@@ -1,0 +1,2227 @@
+[ {
+  "id" : "7eda0a66-a6f5-eb81-a82f-d9f4b1a7ca27",
+  "name" : "featured_event",
+  "display_width" : null,
+  "label" : "Featured Event",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "cc2040b4-caec-c3df-ca19-1a78bb162130",
+    "controlling_value_regex" : "true",
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "children" : [ {
+    "id" : "02865f5b-cc25-6f17-7451-53040e852069",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+      "alt" : "Elements Image",
+      "loading" : "lazy",
+      "width" : 1626,
+      "height" : 853,
+      "max_width" : 649,
+      "max_height" : 340
+    }
+  }, {
+    "id" : "3ad20f59-68f5-6a48-2981-377d328fe3fd",
+    "name" : "category",
+    "display_width" : null,
+    "label" : "Category",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "featured"
+  }, {
+    "id" : "cf503e17-0233-65f2-e0a2-5e67e2a32418",
+    "name" : "date_field",
+    "display_width" : null,
+    "label" : "Date",
+    "required" : false,
+    "locked" : false,
+    "type" : "date",
+    "default" : 1616817600000
+  }, {
+    "id" : "1cf4cd33-4aa4-b265-9d3b-460599689c07",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "inline_help_text" : "max 183 char",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h5 style=\"margin-bottom: 12px;\">B2B HubSpot Inbound Marketing Workshop in San Francisco, CA</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>"
+  }, {
+    "id" : "7c4c61fe-19ad-d2e2-bcad-222570fbf671",
+    "name" : "link_field",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://inboundelements.com/",
+        "content_id" : null
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "179b1bbe-a74e-525b-ddac-6dfc9d8dc4a1",
+    "name" : "calendar_icon",
+    "display_width" : null,
+    "label" : "Calendar Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+      "alt" : "Elements Image",
+      "loading" : "disabled",
+      "width" : 18,
+      "height" : 18,
+      "max_width" : 21,
+      "max_height" : 21
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+      "alt" : "Elements Image",
+      "loading" : "lazy",
+      "width" : 1626,
+      "height" : 853,
+      "max_width" : 649,
+      "max_height" : 340
+    },
+    "category" : "featured",
+    "date_field" : 1616817600000,
+    "content" : "<h5 style=\"margin-bottom: 12px;\">B2B HubSpot Inbound Marketing Workshop in San Francisco, CA</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://inboundelements.com/",
+        "content_id" : null
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    },
+    "calendar_icon" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+      "alt" : "Elements Image",
+      "loading" : "disabled",
+      "width" : 18,
+      "height" : 18,
+      "max_width" : 21,
+      "max_height" : 21
+    }
+  }
+}, {
+  "id" : "6f26afdc-eaed-9af3-f402-f30b00a737db",
+  "name" : "event_group",
+  "display_width" : null,
+  "label" : "Event Group",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "cb9ce881-295a-93cc-1453-0a6b23565e17",
+    "name" : "title_event_group",
+    "display_width" : null,
+    "label" : "Title Event Group",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "All Events"
+  }, {
+    "id" : "16ece844-56f0-6327-a95e-af32ab640630",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Events",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 4
+    },
+    "children" : [ {
+      "id" : "5726a267-a1e3-bbe5-bc87-acf78fcc7d32",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Image",
+      "required" : false,
+      "locked" : false,
+      "responsive" : false,
+      "resizable" : false,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      }
+    }, {
+      "id" : "801d802a-9d9b-5f5a-7077-6bcf8edb590c",
+      "name" : "category",
+      "display_width" : null,
+      "label" : "Category",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Course"
+    }, {
+      "id" : "36ec5254-3553-16b8-4f53-3cd0d3631b52",
+      "name" : "date_field",
+      "display_width" : null,
+      "label" : "Date",
+      "required" : false,
+      "locked" : false,
+      "type" : "date",
+      "default" : 1618200000000
+    }, {
+      "id" : "5e9d1fca-bda8-b8db-0478-47b8eaf989bb",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Content",
+      "inline_help_text" : "max 183 char",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>"
+    }, {
+      "id" : "1cc8d453-ea1d-45f2-6dc4-f843896ccaff",
+      "name" : "link_field",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "1898f656-7728-03d0-7f57-be890792d114",
+      "name" : "calendar_icon",
+      "display_width" : null,
+      "label" : "Calendar Icon",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      }
+    }, {
+      "id" : "dc1b695c-a37a-b3ae-b060-43829065dfaa",
+      "name" : "button",
+      "display_width" : null,
+      "label" : "Button",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "d56c22bc-ca72-ad4b-f3d9-904af19e6eb0",
+        "name" : "text_field",
+        "display_width" : null,
+        "label" : "Text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Register"
+      }, {
+        "id" : "eca8408a-d5f0-05aa-d8ea-b9c5a6ea2f42",
+        "name" : "link_field_1",
+        "display_width" : null,
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : [ {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "title_event_group" : "All Events",
+    "content" : [ {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    } ]
+  }, {
+    "title_event_group" : "All Events",
+    "content" : [ {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }, {
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_2.png",
+        "alt" : "Elements Image",
+        "loading" : "lazy",
+        "width" : 1626,
+        "height" : 853,
+        "max_width" : 649,
+        "max_height" : 340
+      },
+      "category" : "Course",
+      "date_field" : 1618200000000,
+      "content" : "<h5 style=\"margin-bottom: 12px;\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h5>\n<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>",
+      "link_field" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://inboundelements.com/",
+          "content_id" : null
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "calendar_icon" : {
+        "size_type" : "exact",
+        "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+        "alt" : "Elements Image",
+        "loading" : "disabled",
+        "width" : 18,
+        "height" : 18,
+        "max_width" : 21,
+        "max_height" : 21
+      },
+      "button" : {
+        "text_field" : "Register",
+        "link_field_1" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    } ]
+  } ]
+}, {
+  "id" : "b717e44b-cfe3-3868-2e30-a6feb7a48504",
+  "name" : "module_styles",
+  "display_width" : null,
+  "label" : "Module Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cc2040b4-caec-c3df-ca19-1a78bb162130",
+    "name" : "enable_featured_event",
+    "display_width" : null,
+    "label" : "Enable Featured Event",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "8844329a-4028-50f3-e1e4-1db2333d2f59",
+    "name" : "enable_header_titles",
+    "display_width" : null,
+    "label" : "Enable Header Titles",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "51c192a5-22ed-1a88-a00f-d47c39842673",
+    "name" : "border_radius",
+    "display_width" : null,
+    "label" : "Border Radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 36
+  }, {
+    "id" : "a06ec5fd-bea3-f71f-2e88-53bafb7c59df",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "shadow_1", "Shadow 1" ], [ "shadow_2", "Shadow 2" ], [ "shadow_3", "Shadow 3" ], [ "shadow_4", "Shadow 4" ], [ "shadow_5", "Shadow 5" ], [ "shadow_6", "Shadow 6" ] ],
+    "type" : "choice",
+    "default" : "shadow_1"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enable_featured_event" : true,
+    "enable_header_titles" : true,
+    "border_radius" : 36,
+    "shadow" : "shadow_1"
+  }
+}, {
+  "id" : "99df0bb8-d5d1-2708-8954-da35efa017ed",
+  "name" : "paddings",
+  "display_width" : null,
+  "label" : "Paddings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "da5a7bf2-96b1-96d2-7a66-72798fb149ef",
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "226025b7-68e5-c96f-60a2-8939f304f62d",
+      "name" : "module",
+      "display_width" : null,
+      "label" : "Module",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "5f0d922d-55ac-4b0c-60fe-9e0606acab06",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "66b8d44c-96c1-0603-1f33-7501003c4945",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "98c1288e-30bf-eb50-82ea-7cd7b19414b5",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "088f1112-89d3-3a47-11e0-5870ba55bcc7",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0
+      }
+    }, {
+      "id" : "24039b7c-2ab9-dca7-48f9-ac1e3b9e5044",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Content",
+      "help_text" : "%",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "49106367-34a7-c3b7-a9da-11025deea01a",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 56
+      }, {
+        "id" : "a843e85c-ec00-8a05-fffc-d125c50356f1",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 56
+      }, {
+        "id" : "9601fd61-c0d2-5a18-0ff7-4b53210a6ce8",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "ffbfecdd-24bb-b036-2725-d2749c0b8fe8",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 56,
+        "bottom" : 56,
+        "left" : 0,
+        "right" : 0
+      }
+    }, {
+      "id" : "aea4720a-b70b-45fd-9a60-5badc0ba4f75",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Image",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "073348a8-f4f3-352f-12e6-ea95f710f59e",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "34c8c41c-8b4a-f16a-de6e-e3de3770d18e",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "a3884728-5621-e4b7-c370-259aea9e0813",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "a9116e0b-10bc-4d31-9de7-cb64e66b2f3e",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "module" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0
+      },
+      "content" : {
+        "top" : 56,
+        "bottom" : 56,
+        "left" : 0,
+        "right" : 0
+      },
+      "image" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0
+      }
+    }
+  }, {
+    "id" : "74dd19ae-17a2-da0d-19fc-0e7803bb7e24",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d3184496-a067-c344-3739-72da277dfb04",
+      "name" : "module",
+      "display_width" : null,
+      "label" : "Module",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "2bfa651b-c657-af7c-118b-1db66ca4f918",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "8984f64c-51a8-4805-20e6-84d5047b1b87",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 24
+      }, {
+        "id" : "e96152a7-7c4d-9936-4ec7-af1579e4eddc",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "c7565889-c522-4ecb-495e-329cdfa765ad",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 0,
+        "bottom" : 24,
+        "left" : 0,
+        "right" : 0
+      }
+    }, {
+      "id" : "d9d78fd1-27c7-c46b-7b0b-5e1ee446d86a",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Content",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "0b5c8693-3964-dfd1-8577-c0e350bc965b",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "9a9a75fe-01c5-7815-cc7a-f36f20a33c91",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "bdf9036e-a9fd-b6b4-6f56-74285988dc9e",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 28
+      }, {
+        "id" : "7ce05078-595a-49f5-2a11-6d0508f65178",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 28
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 28,
+        "right" : 28
+      }
+    }, {
+      "id" : "049d5eca-2585-563f-8806-8eba280ad09e",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Image",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "ee1c23f5-10ea-2bf0-a573-509397cc8696",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "32a5a118-e6e0-c7a7-f46c-3d082a7bfa73",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 36
+      }, {
+        "id" : "5bd8473f-fc9b-1be7-bee4-4196c413ba4f",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "68405d5c-19fa-11b5-8ed2-80475dd73802",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 0,
+        "bottom" : 36,
+        "left" : 0,
+        "right" : 0
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "module" : {
+        "top" : 0,
+        "bottom" : 24,
+        "left" : 0,
+        "right" : 0
+      },
+      "content" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 28,
+        "right" : 28
+      },
+      "image" : {
+        "top" : 0,
+        "bottom" : 36,
+        "left" : 0,
+        "right" : 0
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "desktop" : {
+      "module" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0
+      },
+      "content" : {
+        "top" : 56,
+        "bottom" : 56,
+        "left" : 0,
+        "right" : 0
+      },
+      "image" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0
+      }
+    },
+    "mobile" : {
+      "module" : {
+        "top" : 0,
+        "bottom" : 24,
+        "left" : 0,
+        "right" : 0
+      },
+      "content" : {
+        "top" : 0,
+        "bottom" : 0,
+        "left" : 28,
+        "right" : 28
+      },
+      "image" : {
+        "top" : 0,
+        "bottom" : 36,
+        "left" : 0,
+        "right" : 0
+      }
+    }
+  }
+}, {
+  "id" : "87f28a66-673e-5f14-e5bb-1a939d05583f",
+  "name" : "margins",
+  "display_width" : null,
+  "label" : "Margins",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ffff015f-6eac-1457-212c-54abbe7fcf04",
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "ac29b994-54b8-b360-030d-9c711bb7a8f7",
+      "name" : "module",
+      "display_width" : null,
+      "label" : "Module",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "d6dc90b7-1ccf-a4cf-2e98-6e4af8bf8b6a",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 24
+      }, {
+        "id" : "d536aa60-7a63-71bd-23e9-b612970f04ab",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 24
+      }, {
+        "id" : "97f744bf-52cb-76a6-6452-00a31b162131",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "b8a9966a-77da-c789-ca15-54dbda6a52ba",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 24,
+        "bottom" : 24,
+        "left" : 0,
+        "right" : 0
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "module" : {
+        "top" : 24,
+        "bottom" : 24,
+        "left" : 0,
+        "right" : 0
+      }
+    }
+  }, {
+    "id" : "0a296f1c-c936-d3a9-4e2b-ac38143a100a",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "0e70395d-dc53-47b6-32ae-47d1ba94ad7c",
+      "name" : "module",
+      "display_width" : null,
+      "label" : "Module",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "dd072a0c-bf1c-a661-798d-10ce3be20a25",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 8
+      }, {
+        "id" : "c11c53ab-527b-4c71-e615-2f8debb80270",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 32
+      }, {
+        "id" : "2dbeea6a-1bd3-fd37-5b5d-df5df75e5a68",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "9529565e-0fb2-8601-569d-a97f23e0af03",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "slider",
+        "max" : 512,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "top" : 8,
+        "bottom" : 32,
+        "left" : 0,
+        "right" : 0
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "module" : {
+        "top" : 8,
+        "bottom" : 32,
+        "left" : 0,
+        "right" : 0
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "desktop" : {
+      "module" : {
+        "top" : 24,
+        "bottom" : 24,
+        "left" : 0,
+        "right" : 0
+      }
+    },
+    "mobile" : {
+      "module" : {
+        "top" : 8,
+        "bottom" : 32,
+        "left" : 0,
+        "right" : 0
+      }
+    }
+  }
+}, {
+  "id" : "7de2d361-9761-92a7-326e-53105468e4c4",
+  "name" : "animation",
+  "display_width" : null,
+  "label" : "Animation",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "6463bf20-0b0e-073b-0902-9d644edccada",
+    "name" : "enable_animation",
+    "display_width" : null,
+    "label" : "Enable Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "cf692124-7936-2d2c-4381-6a99ddf8fa7e",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fade", "Fade" ], [ "flip", "Flip" ], [ "slide", "Slide" ], [ "zoom", "Zoom" ] ],
+    "type" : "choice",
+    "default" : "fade"
+  }, {
+    "id" : "cfd99db2-8f63-5e33-fc64-8a1d0ed820a5",
+    "name" : "direction_fade",
+    "display_width" : null,
+    "label" : "Direction",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "cf692124-7936-2d2c-4381-6a99ddf8fa7e",
+      "controlling_value_regex" : "fade",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up ↑" ], [ "down", "Down ↓" ], [ "left", "Left ←" ], [ "right", "Right →" ], [ "up-left", "Up Left ↖" ], [ "up-right", "Up Right ↗" ], [ "down-left", "Down Left ↙" ], [ "down-right", "Down Right ↘" ] ],
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "f29a7284-fe31-ac39-8d69-c5beecb30e82",
+    "name" : "direction_zoom",
+    "display_width" : null,
+    "label" : "Direction",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "cf692124-7936-2d2c-4381-6a99ddf8fa7e",
+      "controlling_value_regex" : "zoom",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "in", "In" ], [ "in-up", "In Up ↑" ], [ "in-down", "In Down ↓" ], [ "in-left", "In Left ←" ], [ "in-right", "In Right →" ], [ "out", "Out" ], [ "out-up", "Out Up ↑" ], [ "out-down", "Out Down ↓" ], [ "out-left", "Out Left ←" ], [ "out-right", "Out Right →↘" ] ],
+    "type" : "choice",
+    "default" : "out-up"
+  }, {
+    "id" : "5408b6ac-f412-2ba8-f7e9-50448852323b",
+    "name" : "direction_flip",
+    "display_width" : null,
+    "label" : "Direction",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "cf692124-7936-2d2c-4381-6a99ddf8fa7e",
+      "controlling_value_regex" : "flip",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up ↑" ], [ "down", "Down ↓" ], [ "left", "Left ←" ], [ "right", "Right →" ] ],
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "4b462612-1d04-9b6f-6c5f-01f2c619640d",
+    "name" : "direction_slide",
+    "display_width" : null,
+    "label" : "Direction",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "cf692124-7936-2d2c-4381-6a99ddf8fa7e",
+      "controlling_value_regex" : "slide",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up ↑" ], [ "down", "Down ↓" ], [ "left", "Left ←" ], [ "right", "Right →" ] ],
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "305b5a47-4ec4-1563-6bc6-ee5e093c33e3",
+    "name" : "frecuency",
+    "display_width" : null,
+    "label" : "Frecuency",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "true", "Once" ], [ "false", "Every Time" ] ],
+    "type" : "choice",
+    "default" : "true"
+  }, {
+    "id" : "f181ccbf-5b86-ba7f-9cea-a1a48a95a194",
+    "name" : "duration",
+    "display_width" : null,
+    "label" : "Duration",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 3000,
+    "step" : 1,
+    "type" : "number",
+    "default" : 400
+  }, {
+    "id" : "0b7941a1-3ac2-3a1c-474a-d28fc330ba0d",
+    "name" : "delay",
+    "display_width" : null,
+    "label" : "Delay",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 3000,
+    "step" : 1,
+    "type" : "number",
+    "default" : 0
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enable_animation" : true,
+    "animation" : "fade",
+    "direction_fade" : "up",
+    "direction_zoom" : "out-up",
+    "direction_flip" : "up",
+    "direction_slide" : "up",
+    "frecuency" : "true",
+    "duration" : 400,
+    "delay" : 0
+  }
+}, {
+  "id" : "94721067-d645-0378-b049-21030fb41168",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "1a608577-9357-1c1f-1cdb-b441fe725bfd",
+    "name" : "background_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "0309fad8-d5da-aebf-8723-86009e8c410c",
+    "name" : "date",
+    "display_width" : null,
+    "label" : "Date",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "dbc407bc-e86e-a883-66c3-858d7b732c4f",
+      "name" : "font_type",
+      "display_width" : null,
+      "label" : "Font type",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "google", "Google" ], [ "custom", "Custom" ] ],
+      "type" : "choice",
+      "default" : "google"
+    }, {
+      "id" : "7433ecf5-ce1e-7fe3-766c-549980f003d5",
+      "name" : "font_field",
+      "display_width" : null,
+      "label" : "Font",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "dbc407bc-e86e-a883-66c3-858d7b732c4f",
+        "controlling_value_regex" : "google",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "load_external_fonts" : true,
+      "type" : "font",
+      "default" : {
+        "size" : null,
+        "size_unit" : "px"
+      }
+    }, {
+      "id" : "9af37217-7ae2-8798-32f3-fe56b797ec2f",
+      "name" : "date_color",
+      "display_width" : null,
+      "label" : "Date Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "dbc407bc-e86e-a883-66c3-858d7b732c4f",
+        "controlling_value_regex" : "custom",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#636466",
+        "opacity" : 99
+      }
+    }, {
+      "id" : "372e95a0-9d49-0edb-9a30-a6e7ee8afbd2",
+      "name" : "font",
+      "display_width" : null,
+      "label" : "Font",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "dbc407bc-e86e-a883-66c3-858d7b732c4f",
+        "controlling_value_regex" : "custom",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "Plus Jakarta Display", "Plus Jakarta Display" ], [ "AbrilFatface", "Abril" ] ],
+      "type" : "choice",
+      "default" : "Plus Jakarta Display"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "font_type" : "google",
+      "font_field" : {
+        "size" : null,
+        "size_unit" : "px"
+      },
+      "date_color" : {
+        "color" : "#636466",
+        "opacity" : 99
+      },
+      "font" : "Plus Jakarta Display"
+    }
+  }, {
+    "id" : "b166998d-e9f6-746a-77bc-1c2cf0a5de7b",
+    "name" : "headings",
+    "display_width" : null,
+    "label" : "Headings",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "81c9b315-1668-7f6b-0ee4-ceaa3f69d580",
+      "name" : "font_type",
+      "display_width" : null,
+      "label" : "Font type",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "google", "Google" ], [ "custom", "Custom" ] ],
+      "type" : "choice",
+      "default" : "google"
+    }, {
+      "id" : "e25ebab1-86c9-27f2-915b-b2d2e0e4cda2",
+      "name" : "font_field",
+      "display_width" : null,
+      "label" : "Font",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "81c9b315-1668-7f6b-0ee4-ceaa3f69d580",
+        "controlling_value_regex" : "google",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "load_external_fonts" : true,
+      "type" : "font",
+      "default" : {
+        "size" : null,
+        "size_unit" : "px"
+      }
+    }, {
+      "id" : "737969c0-130c-a960-44d9-3bf158b65b1a",
+      "name" : "date_color",
+      "display_width" : null,
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "81c9b315-1668-7f6b-0ee4-ceaa3f69d580",
+        "controlling_value_regex" : "custom",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#636466",
+        "opacity" : 99
+      }
+    }, {
+      "id" : "8e8e4151-580c-040f-9e17-6b2c88ee6603",
+      "name" : "font",
+      "display_width" : null,
+      "label" : "Font",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "81c9b315-1668-7f6b-0ee4-ceaa3f69d580",
+        "controlling_value_regex" : "custom",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "Plus Jakarta Display", "Plus Jakarta Display" ], [ "AbrilFatface", "Abril" ] ],
+      "type" : "choice",
+      "default" : "Plus Jakarta Display"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "font_type" : "google",
+      "font_field" : {
+        "size" : null,
+        "size_unit" : "px"
+      },
+      "date_color" : {
+        "color" : "#636466",
+        "opacity" : 99
+      },
+      "font" : "Plus Jakarta Display"
+    }
+  }, {
+    "id" : "d036ac4f-a2de-8a09-042a-dfdb06f347cd",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "56e4b3aa-bb46-a586-784d-c3c355967ebb",
+      "name" : "font_type",
+      "display_width" : null,
+      "label" : "Font type",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "google", "Google" ], [ "custom", "Custom" ] ],
+      "type" : "choice",
+      "default" : "google"
+    }, {
+      "id" : "a8b9a04c-ff62-bedd-d5d1-ffe6c3cc165c",
+      "name" : "font_field",
+      "display_width" : null,
+      "label" : "Font",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "56e4b3aa-bb46-a586-784d-c3c355967ebb",
+        "controlling_value_regex" : "google",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "load_external_fonts" : true,
+      "type" : "font",
+      "default" : {
+        "size" : null,
+        "size_unit" : "px"
+      }
+    }, {
+      "id" : "1caeb091-5368-1867-2f0f-26872202e982",
+      "name" : "date_color",
+      "display_width" : null,
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "56e4b3aa-bb46-a586-784d-c3c355967ebb",
+        "controlling_value_regex" : "custom",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#636466",
+        "opacity" : 99
+      }
+    }, {
+      "id" : "c1063ca0-17bd-9ff2-82de-4f2c34038618",
+      "name" : "font",
+      "display_width" : null,
+      "label" : "Font",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "56e4b3aa-bb46-a586-784d-c3c355967ebb",
+        "controlling_value_regex" : "custom",
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "Plus Jakarta Display", "Plus Jakarta Display" ], [ "AbrilFatface", "Abril" ] ],
+      "type" : "choice",
+      "default" : "Plus Jakarta Display"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "font_type" : "google",
+      "font_field" : {
+        "size" : null,
+        "size_unit" : "px"
+      },
+      "date_color" : {
+        "color" : "#636466",
+        "opacity" : 99
+      },
+      "font" : "Plus Jakarta Display"
+    }
+  }, {
+    "id" : "48b8c26f-6bb4-d908-bb4f-83f563fb6959",
+    "name" : "button_and_category",
+    "display_width" : null,
+    "label" : "Button and Category",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "08edca04-e0cc-7708-ea5d-e7334cc65e0a",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "51f5d5c2-5cea-c484-cd9e-b1e7a0d2844d",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#2488cd",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "background_color" : {
+        "color" : "#2488cd",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "background_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "date" : {
+      "font_type" : "google",
+      "font_field" : {
+        "size" : null,
+        "size_unit" : "px"
+      },
+      "date_color" : {
+        "color" : "#636466",
+        "opacity" : 99
+      },
+      "font" : "Plus Jakarta Display"
+    },
+    "headings" : {
+      "font_type" : "google",
+      "font_field" : {
+        "size" : null,
+        "size_unit" : "px"
+      },
+      "date_color" : {
+        "color" : "#636466",
+        "opacity" : 99
+      },
+      "font" : "Plus Jakarta Display"
+    },
+    "content" : {
+      "font_type" : "google",
+      "font_field" : {
+        "size" : null,
+        "size_unit" : "px"
+      },
+      "date_color" : {
+        "color" : "#636466",
+        "opacity" : 99
+      },
+      "font" : "Plus Jakarta Display"
+    },
+    "button_and_category" : {
+      "text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "background_color" : {
+        "color" : "#2488cd",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "b65682aa-72f4-2976-c133-2554db0516ac",
+  "name" : "settings",
+  "display_width" : null,
+  "label" : "Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "16554455-829e-fc39-268b-893b0751f000",
+    "name" : "css__id",
+    "display_width" : null,
+    "label" : "CSS ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "6af7bf44-7f84-6ddd-ef02-80ca569bbcad",
+    "name" : "css__class",
+    "display_width" : null,
+    "label" : "CSS Class",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

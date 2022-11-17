@@ -1,0 +1,52 @@
+<div class="content-with-bookmark">
+    <div class="main-left-content">
+        <div class="bookmark-content">
+            <div class="bookmark-title">{{ module.bookmark_title }}</div>
+            <div class="bookmark-list">
+                <ul>
+                    {% for item in module.content_items %}
+                    <li><a data-scroll="item-{{ loop.index }}" href="#item-{{ loop.index }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-right-content">
+        <div class="right-inner-content">
+            {% if module.top_content %}
+            <div class="right-top-content">
+                {{ module.top_content }}
+            </div>
+            {% endif %}
+            <div class="right-content-item-wrapper">
+                {% for item in module.content_items %}
+                <section id="item-{{ loop.index }}" class="right-content-item">
+                    <div class="top-title">
+                        <h2>{{ item.title }}</h2>
+                    </div>
+                    <div class="main-content-inner">
+                        {{ item.content }}
+                    </div>
+                    {% if item.button_text %}
+                    <div class="content-btn">
+                        {% set href = item.button_link.url.href %}
+                        {% if item.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        <a href="{{ href }}"
+                           {% if item.button_link.open_in_new_tab %}target="_blank"{% endif %}
+                           {% if item.button_link.rel %}rel="{{ item.button_link.rel }}"{% endif %}
+                           >{{ item.button_text }}</a>
+                    </div>
+                    {% endif %}
+                </section>
+                {% endfor %}
+            </div>
+            {% if module.bottom_content %}
+            <div class="right-bottom-content">
+                {{ module.bottom_content }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

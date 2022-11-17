@@ -1,0 +1,167 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Events - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/events.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+<main id="main-content" class="body-container-wrapper">
+  {% dnd_area 'dnd_area' class='body-container body-container--qa-test', label='Main section' %}
+  
+    {# 1 Section - Hero #}
+  
+    {% dnd_section
+      vertical_alignment='BOTTOM',
+      padding={
+        'default': { 'top': 40, 'bottom': 0 },
+        'mobile': { 'top': 16, 'bottom': 0 }
+      }
+    %}
+  
+      {# Left Content #} 
+      {% dnd_column 
+        offset=0, 
+        width=7,
+      %}
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 0 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 4px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Our Events
+                </p>
+                <h1>
+                  Upcoming Events
+                </h1>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+       {% end_dnd_column  %}
+
+       {# Right Content #}
+  
+        {% dnd_module path='@hubspot/rich_text', 
+          horizontal_alignment='RIGHT',
+          offset=7,
+          width=5,
+        %}
+            {% module_attribute 'html' %} 
+                <p>
+                  Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.
+                </p>
+            {% end_module_attribute %}
+         {% end_dnd_module %}
+
+  
+    {% end_dnd_section %}
+  
+    {# End 1 Section - Hero #}
+  
+    {# 2 Section - Events #}
+  
+    {% dnd_section
+      vertical_alignment='MIDDLE',
+      margin={
+           'default': { 'bottom': 56 },
+           'mobile': { 'top': 0 }
+      },
+      padding={
+        'default': { 'top': 0, 'bottom': 56 },
+        'mobile': { 'top': 16, 'bottom': 56 }
+      }
+    %}
+  
+      {% dnd_module "module_161289798372318" path='../modules/Aptitute 8 - Events', label="Aptitute 8 - Events",
+
+            event_group=[ 
+              {
+                title_event_group: 'All Events',
+                content: [
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_3.jpg",
+                      alt: "Elements Image",
+                      loading: "lazy"
+                    },
+                    category: 'Course',
+                    date_field: 1618270115000,
+                    content: '<h5 style="margin-bottom: 12px;">HubSpot Advanced Email Marketing Course in Manhattan, New York</h5><p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>',
+                    calendar_icon:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+                      alt: "Elements Image",
+                      width: 18,
+                      height: 18
+                    }  
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_4.jpg",
+                      alt: "Elements Image",
+                      loading: "lazy"
+                    },
+                    category: 'Masterclass',
+                    date_field: 1619652515000,
+                    content: '<h5 style="margin-bottom: 12px;">B2B Business Development 101 Masterclass in Los Angeles, CA</h5><p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>',
+                    calendar_icon:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+                      alt: "Elements Image",
+                      width: 18,
+                      height: 18
+                    }  
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_5.jpg",
+                      alt: "Elements Image",
+                      loading: "lazy"
+                    },
+                    category: 'Course',
+                    date_field: 1621034915000,
+                    content: '<h5 style="margin-bottom: 12px;">Facebook Ads & Google Ads Marketing 101 Course in San Francisco, CA</h5><p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>',
+                    calendar_icon:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+                      alt: "Elements Image",
+                      width: 18,
+                      height: 18
+                    }  
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/events_6.jpg",
+                      alt: "Elements Image",
+                      loading: "lazy"
+                    },
+                    category: 'Masterclass',
+                    date_field: 1623367715000,
+                    content: '<h5 style="margin-bottom: 12px;">HubSpot HubDB Development Masterclass in Manhattan, New York</h5><p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor.</p>',
+                    calendar_icon:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar.svg",
+                      alt: "Elements Image",
+                      width: 18,
+                      height: 18
+                    }  
+                  }
+                ]
+              }
+              
+            ]
+          %}
+          {% end_dnd_module %}
+  
+
+    {% end_dnd_section %}
+  
+    {# End 2 Section - Events #}
+  
+
+
+  {% end_dnd_area %}
+  
+</main>
+{% endblock body %} 

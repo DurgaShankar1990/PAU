@@ -1,0 +1,151 @@
+{% macro loop_m(value) %}{% for item in value %} {{ item|regex_replace("[^a-zA-Z]", "") }} {% endfor %}{% endmacro %} 
+
+{% set items = "name, page_url, course_image, ce_hours, length, course_type,partner_logo_url, price__usd_, presented_by, specialty_area,presenter_s_, start_time, format, certificate, badge_earning, event_start_date, event_end_date, end_time, event_end_date, in_partnership_with__search_" %}
+{#{% set objects = crm_objects("courses") %}
+{% set per_page = 9 %}
+{% set offset_number = 0 %}
+{% set total_pages = objects.total|divide(per_page) + 5 %}
+{% if not request.query_dict.page %}
+{% set page_number = 1 %}
+{% elif request.query_dict.page %}
+{% set page_number = request.query_dict.page %}
+{% endif %}#}
+
+
+
+<!-- =========================== Dateformate =================================== -->
+{#
+{% set Dateformate = [] %} 
+{% for item in items.results|unique('event_start_date')|sort(False, False, 'event_start_date') %}
+{% do Dateformate.append(item.event_start_date) %}
+{% endfor %}
+
+#}
+
+
+{% set query = "order=-hs_createdate&limit=" ~ per_page ~ "&offset=" ~ offset_number %}
+
+{% set objects = crm_objects("courses", query, items, "formatting=true") %}
+{% set per_page = 9 %}
+{% set offset_number = 0 %}
+{% set total_pages = objects.total|divide(per_page) + 5 %}
+{% if not request.query_dict.page %}
+{% set page_number = 1 %}
+{% elif request.query_dict.page %}
+{% set page_number = request.query_dict.page %}
+{% endif %}
+
+
+<div class="content-wrapper">
+    <div id="loader" class="load_page">
+    </div>
+
+    <div class="row course-bi-inst course-obj" id="articles">
+        <div class="flex-row flex-wrap isotope" id="load">
+
+            
+            {% for object in objects.results %}
+            {% set instructor = crm_associations(object.id, 'USER_DEFINED', 145, "limit=100","name, page_url, headshot_link") %}
+            <div class="element-item course-item date {{ object.event_start_date|datetimeformat('%e/%m/%Y') }} {{ loop_m(object.certificate)|lower }} {{ object.ce_hours|regex_replace("[^0-9]", "")|lower}} {{ loop_m(object.specialty_area)|lower }} {{ loop_m(object.presented_by)|lower }} {{ loop_m(object.format)|lower }} {{ loop_m(object.course_type)|lower }} {{ instructor.results[0].name|regex_replace("[^a-zA-Z^0-9]", "")|lower }} {{ object.in_partnership_with__search_|lower|replace(' ', '-')|lower }}" data-category="{{ loop_m(object.certificate)|lower }} {{ object.ce_hours|lower|regex_replace("[^a-zA-Z^0-9]", "")|lower}} {{ loop_m(object.specialty_area)|lower }} {{ loop_m(object.presented_by)|lower }} {{ loop_m(object.format)|lower }} {{ loop_m(object.course_type)|lower }} {{ instructor.results[0].name|regex_replace("[^a-zA-Z^0-9]", "")|lower }} {{ object.event_start_date|datetimeformat('%e/%m/%Y') }} {{ object.in_partnership_with__search_|lower|replace(' ', '-')|lower }}">
+                <div class="c-inner">
+                    <a href="{{ request.path}}/{{ object.page_url }}">
+                        <div class="image">
+                            {% if object.course_image %}<img src="{{ object.course_image }}" alt=" {{ object.name }}" loading="lazy">{% endif %}
+                            {% if object.ce_hours or object.length %}<span class="hours number">{{ object.length }} {% if object.ce_hours %}/ {{ object.ce_hours }}{% endif %}</span>{% endif %}
+                        </div>
+                        <div class="pl-32 pr-32 pb-40 pt-40">
+                            <div class="instructor-image">
+                                {% for headshot in instructor.results %}
+                                {% if loop.index <= 3%}
+                                {% if headshot.headshot_link %}  
+                                <img class="author-img author-{{loop.index}}" src="{{ headshot.headshot_link}}" loading="lazy">
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="instructor-title">
+                                {% for instructorname in instructor.results %}
+                                {% if loop.index <= 3%}
+                                {% if instructorname.name %}
+                                <h5 class="des berry-jam mb-5">{{ instructorname.name }}</h5>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <h3 class="title midnight-blue mb-16 name">
+                                {{ object.name }} 
+                            </h3>
+                            <h5 class="event glacial-blue-ice mb-16 p-small">
+                                {% if object.course_type == "On Demand" %}
+                                <span>Available On Demand</span>
+                                {% elif object.course_type == "Live" %}
+                                {% if object.event_start_date|datetimeformat('%e/%m/%Y') ==  object.event_end_date|datetimeformat('%e/%m/%Y')  %}
+                                <span><span class="date" >{{ object.event_start_date }}</span>Event Date: {{ object.event_start_date|datetimeformat('%b. %e, %Y') }} | {{ object.start_time }} - {{ object.end_time }}</span>
+                                {% else %}
+                                <span><span class="date" >{{ object.event_start_date}}</span>Event Date: {{ object.event_start_date|datetimeformat('%b. %e, %Y') }} - {{ object.event_end_date|datetimeformat('%b. %e, %Y') }}</span>
+                                <br><span>{{ object.start_time }} - {{ object.end_time }}</span>
+                                {% endif %}
+                                {% else %}
+                                <span>Available On Demand</span>
+                                {% endif %}
+                            </h5>
+                            <div class="flex-row justify-bw align-center">
+                                <div class="price glacial-blue-ice price" data-prices="{{ object.price__usd_ }}">{% if object.price__usd_%}{{ object.price__usd_|format_currency("en-US") }}{% else %}$0{% endif %}</div>
+                                <div class="uni">
+                                    {% if object.partner_logo_url %}
+                                    <img src="{{ object.partner_logo_url }}" width="48" loading="lazy">
+                                    {% endif %}
+                                    {% if object.badge_earning == "Yes" %}
+                                    <img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Concept-medallion.svg" alt="PAU" loading="lazy">
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <div class="text-center" style="display:none">
+        <button id="load-more"> 
+            <svg width="50" height="43" viewBox="0 0 50 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3L25 19L47 3" stroke="url(#paint0_linear_452_1091)" stroke-width="5" stroke-linecap="round"/>
+                <path d="M3 23L25 39L47 23" stroke="#2488CD" stroke-width="5" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="paint0_linear_452_1091" x1="25" y1="1.4" x2="25" y2="19" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.112763" stop-color="#005A9C"/>
+                        <stop offset="0.648378" stop-color="#2488CD"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </button>
+    </div>
+</div>
+{% for i in range(2,total_pages)%}
+<a class="courseData" href="{{ content.absolute_url }}?page={{i}}"></a>
+{% endfor %}
+{% require_css %}
+<style>
+    {% scope_css %}
+    .course-filter{
+        background: {{ module.style.gradient_field.css }};
+        {{ module.style.desktop_spacing.css }}
+        {{ module.style.border_field.css }};
+        {{ module.style.border_field.css }}
+    }
+    @media(max-width:767px){
+        .course-filter{
+            {{ module.style.mobile_spacing.css }}
+        }
+    }
+
+    {% end_scope_css %}
+</style>
+{% end_require_css %}
+

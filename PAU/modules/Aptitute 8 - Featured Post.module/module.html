@@ -1,0 +1,87 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+<div {{ buildID() }} class="container-fluid elements-container-fluid__featured__post {{ buildClass() }}">
+    <div class="row-fluid-wrapper">
+      <div class="row-fluid">
+              
+        <div class="span12 widget-span widget-type-cell elements-blog__featured-container" data-widget-type="cell" data-x="0" data-w="12">
+
+          <article>
+            {% set pop_posts = blog_popular_posts(module.article.blog is truthy ? module.article.blog : 'default', 1, module.article.tag is truthy ? module.article.tag : '' ) %}
+            {% for pop_post in pop_posts %}
+              {% if pop_post.featured_image %}
+                <a href="{{ pop_post.absolute_url }}">
+                  <img src="{{ pop_post.featured_image }}" class="elements-blog__featured-image" alt="{{ pop_post.featured_image_alt_text }}">
+                </a>
+              {% endif %}
+
+            <div class="cards__card elements-blog__featured-card">
+              
+              <a class="elements--blog--card__featured__badge-container" href="{{ blog_tag_url(group.id, pop_post.tag_list[0].slug) }}">
+                <span class="elements--blog--card__featured__badge" >
+                  {{ pop_post.tag_list[0].name }}
+                </span>
+              </a>
+              
+              <a href="{{ pop_post.absolute_url }}" style="text-decoration: none;">
+                <h4 class="elements--blog--card__featured__title">{{ pop_post.name }}</h4>
+              </a>
+              {% if pop_post.meta_description %}
+                {{ pop_post.meta_description|truncatehtml(131) }}
+              {% endif %}
+            </div>
+            {% endfor %}
+          </article>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+{% require_css %}
+<style>
+  
+  .elements-blog__featured-card {
+    max-width: 460px;
+    position: absolute;
+    padding: 58px 40px 40px;
+    width: 100%;
+    top: 100px;
+    
+    {% if module.card.card_background_color.color %}
+      background: {{ module.card.card_background_color.color }};
+    {% endif %}
+    
+    {% if module.card.border_width %}
+      border: {{ module.card.border_width }}px solid {{ module.card.border_color.color }} !important;
+    {% endif %}
+    
+    {% if module.card.text_color.color %}
+      color: {{ module.card.text_color.color }} !important;
+    {% endif %}
+
+    
+  }
+  
+  .elements-blog__featured-card h4 {
+    {% if module.card.title_color.color %}
+      color: {{ module.card.title_color.color }} !important;
+    {% endif %}
+  }
+  
+  .elements--blog--card__featured__badge {
+    padding: 6px 12px; 
+    border-radius: 5px; 
+    background-color: {{ module.card.badge_color.color is truthy ? module.card.badge_color.color : theme.global_colors.primary_colors.primary_color_1.color }};
+    color: {{ module.card.font_color.color is truthy ? module.card.font_color.color : theme.global_colors.neutral_colors.neutral_color_100.color }}; 
+  }
+  
+
+</style>
+{% end_require_css %}

@@ -1,0 +1,58 @@
+<div class="instructors-banner">
+    <div class="content-wrapper">
+        <div class="row-fluid-wrapper">
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="inner">
+                        <h5 class="sunshade">{{ module.top_title }}</h5>
+                        <h1 class="white-color">{{ module.title }}</h1>
+                        <p class="white-color">{{ module.content }}</p>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="inner-wrap inst-content">
+                        {% for item in module.item %}
+                        <div class="item flex-row align-center aos-init" data-aos="fade-up" data-aos-once="true" data-aos-duration="400" data-aos-delay="{{ loop.index }}">
+                            {% if item.image_field.src %}
+                                <div class="img">
+                                    {% set sizeAttrs = 'width="{{ item.image_field.width }}" height="{{ item.image_field.height }}"' %}
+                                    {% if item.image_field.size_type == 'auto' %}
+                                    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                                    {% elif item.image_field.size_type == 'auto_custom_max' %}
+                                    {% set sizeAttrs = 'width="{{ item.image_field.max_width }}" height="{{ item.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+                                    {% endif %}
+                                    {% set loadingAttr = item.image_field.loading != 'disabled' ? 'loading="{{ item.image_field.loading }}"' : '' %}
+                                    <img src="{{ item.image_field.src }}" alt="{{ item.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                                </div>
+                            {% endif %}
+                            <div class="right-content">
+                                <h3 class="glacial-blue-ice">{{ item.title }}</h3>
+                                <p class="white-color">{{ item.content }}</p>
+                            </div>
+                        </div>
+                           
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% require_css %}
+<style>
+
+    {% scope_css %}
+    .instructors-banner{
+        background-color:rgba({{ module.style.background_color.color|convert_rgb  }},{{ module.style.background_color.opacity/100 }});
+        {{ module.style.desktop.spacing_field.css }};
+        {{ module.style.border_field.css }}
+    }
+    @media(max-width:767px){
+        .instructors-banner{
+            {{ module.style.mobile.spacing_field.css }}
+        }
+    }
+    
+    {% end_scope_css %}
+</style>
+{% end_require_css %}

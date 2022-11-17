@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Card%20-%20Testimonial.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 55275343664,
+  "label" : "Card - Testimonial",
+  "is_available_for_new_content" : true
+}

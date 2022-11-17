@@ -1,0 +1,9 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* ====== Resource Page ======= */
+
+.resource-page .recent-posts-wrapper {
+    background: #fff;
+}

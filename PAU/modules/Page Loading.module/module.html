@@ -1,0 +1,92 @@
+
+<div id="page__onload" class="page__onload {{name}}">
+     <div class="page__onloadDoor"></div>
+    <div class="page__onloadContent">
+        <svg width="132px" height="58px" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            <circle fill="#2488cd" stroke="none" cx="6" cy="50" r="6">
+                <animate
+                         attributeName="opacity"
+                         dur="1s"
+                         values="0;1;0"
+                         repeatCount="indefinite"
+                         begin="0.1"/>    
+            </circle>
+            <circle fill="#2488cd" stroke="none" cx="26" cy="50" r="6">
+                <animate
+                         attributeName="opacity"
+                         dur="1s"
+                         values="0;1;0"
+                         repeatCount="indefinite" 
+                         begin="0.2"/>       
+            </circle>
+            <circle fill="#2488cd" stroke="none" cx="46" cy="50" r="6">
+                <animate
+                         attributeName="opacity"
+                         dur="1s"
+                         values="0;1;0"
+                         repeatCount="indefinite" 
+                         begin="0.3"/>     
+            </circle>
+        </svg>
+        <text id="Loading">Loading...</text>
+    </div>
+
+</div>
+
+{% require_css %}
+<style>
+
+    body.loaded {
+        overflow-y: auto;
+    }
+
+div#page__onload{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    z-index: 999;
+}
+
+div#page__onload .page__onloadContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);z-index: 999999;
+}
+
+div#page__onload .page__onloadContent svg {width: 100px;
+    height: 100px; 
+    left: 32%;
+    position: relative;}
+
+.page__onloadContent text#Loading {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-weight: 600;
+    top: -40px;
+}
+</style>
+{% end_require_css %}
+{% require_js %}
+<script>
+    $(document).ready(function() {
+        // Will wait for everything on the page to load.
+        $(window).bind('load', function() {
+            setTimeout(function() {
+                $('.page__onload').addClass('loaded');
+            }, 6000)
+            setTimeout(function() {
+                $('.page__onload').css({'display':'none'})
+            }, 8000)
+        });
+
+
+    })
+</script>
+{% end_require_js %}

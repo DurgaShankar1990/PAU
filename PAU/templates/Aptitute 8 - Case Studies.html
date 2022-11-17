@@ -1,0 +1,158 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Case Studies - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/case-studies.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Case Studies #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 80, 'bottom': 32 },
+         'mobile': { 'top': 36, 'bottom': 0 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; max-width: 590px;">
+                  Case Studies
+                </p>
+                <h1 style="text-align: center; max-width: 590px;">
+                  See our past results
+                </h1>
+                <p style="margin-bottom: 15px; text-align: center; max-width: 590px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+        {# Cards #}
+  
+        {% dnd_row
+          padding={
+            'default': { 'top': 16 },
+            'mobile': { 'top': 16 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Elements - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'image_full_width': true,
+              'text_align': 'left',
+              'text_align_mobile':'left'
+            },
+            paddings = { 
+              desktop:{ content:{ top: 16, bottom: 40, left: 32, right: 32 } },  
+              mobile:{ content:{ top: 16, bottom: 36, left: 24, right: 24 } }
+            }, 
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {
+                    image_full_width:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/youtube_1.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">YouTube</p><h3 style="margin-bottom: 8px;">How we helped YouTube increase app installs by 24% in less than 30 days</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean lorem odio morbi vitae. Ultricies tempus, imperdiet phasellus porta. Imperdiet et aliquet senectus vel. Amet ornare.</p>',
+                  },
+                  {
+                    image_full_width:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/google_1.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">Google</p><h3 style="margin-bottom: 8px;">How we helped Google to increase conversion rate on G-Suite by 25%</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean lorem odio morbi vitae. Ultricies tempus, imperdiet phasellus porta. Imperdiet et aliquet senectus vel. Amet ornare.</p>',
+                  }
+                ]
+              },
+              {
+                card:
+                [
+                
+                  {
+                    image_full_width:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/adobe_1.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">Adobe</p><h3 style="margin-bottom: 8px;">How we helped Adobe to increase their organic SEO traffic by 85%</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean lorem odio morbi vitae. Ultricies tempus, imperdiet phasellus porta. Imperdiet et aliquet senectus vel. Amet ornare.</p>',
+                  },
+                  {
+                    image_full_width:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/snapchat.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">Snapchat</p><h3 style="margin-bottom: 8px;">How we helped Snapchat increase user retention by over 15% with one simple strategy</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean lorem odio morbi vitae. Ultricies tempus, imperdiet phasellus porta. Imperdiet et aliquet senectus vel. Amet ornare.</p>',
+                  }
+                ]
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Case Studies #}
+  
+  
+  
+  
+  {# 2 Section - Section CTA #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+
+    {% dnd_section
+         padding={
+         'default': { 'top': 72, 'bottom': 116 },
+         'mobile': { 'top': 56, 'bottom': 80 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+    
+      {% dnd_module "module_161290746495735" path='../modules/Aptitute 8 - Section CTA', label="Elements - Section CTA - Full Width" %}
+      {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - Section CTA #}
+  
+
+    
+
+
+  
+</main>
+{% endblock body %}

@@ -1,0 +1,39 @@
+[ {
+  "id" : "8ac4ba59-85ab-cec6-c6b8-1c8c6acd3785",
+  "name" : "register_link",
+  "display_width" : null,
+  "label" : "Register Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "CONTENT",
+      "href" : null,
+      "content_id" : 62129172492
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "014782ac-752c-a441-1cf7-ac64b02380ee",
+  "name" : "purchase_link",
+  "display_width" : null,
+  "label" : "Purchase link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "CONTENT",
+      "href" : null,
+      "content_id" : 61477200158
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+} ]

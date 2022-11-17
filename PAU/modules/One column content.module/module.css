@@ -1,0 +1,11 @@
+.one-col-content .wrap{
+    max-width:890px;
+    margin:0 auto;
+}
+.one-col-content h2,
+.one-col-content h4{
+    font-weight:normal
+}
+.one-col-content h4{
+    line-height: 2;
+}

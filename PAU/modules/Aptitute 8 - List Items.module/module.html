@@ -1,0 +1,145 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+{% endmacro %}
+
+<div {{ buildID() }} class="{{ buildClass() }}">
+
+  {% if module.module_styles.layout == "vertical" %}
+    {% for item in module.items %}
+      <div class="elements--list-items__container_{{ name }}">
+
+        {% if item.icon.src %}
+        <span class="elements--list-items__icon_{{ name }}">
+          <img src="{{ item.icon.src }}" alt="{{ item.icon.alt }}" width="{{ item.icon.width }}" height="{{ item.icon.height }}">
+        </span>
+        {% endif %}
+
+        <span class="elements--list-items__text_{{ name }}">
+          {% inline_rich_text field="text" value="{{ item.text }}" %}
+        </span>
+
+
+      </div>
+    {% endfor %}
+
+  {% else %}
+    <div class="elements--list-items__row_vertical_{{ name }}">
+      {% for item in module.items %}
+        <div class="elements--list-items__container_vertical_{{ name }}">
+
+          {% if item.icon.src %}
+          <span class="elements--list-items__icon_{{ name }}">
+            <img src="{{ item.icon.src }}" alt="{{ item.icon.alt }}" width="{{ item.icon.width }}" height="{{ item.icon.height }}">
+          </span>
+          {% endif %}
+
+          <span class="elements--list-items__text_{{ name }}">
+            {% inline_rich_text field="text" value="{{ item.text }}" %}
+          </span>
+
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+
+{% require_css %}
+<style>
+  
+  .elements--list-items__text_{{ name }} * {
+    margin-bottom: 0;
+  }
+    
+  .elements--list-items__container_{{ name }} {
+    display: flex;
+    margin: 10px 0;
+  } 
+  
+  .elements--list-items__container_vertical_{{ name }} {
+    display: flex;
+    margin: 10px 16px;
+  } 
+  
+  .elements--list-items__row_vertical_{{ name }} {
+    display: flex;
+    margin: 0 -16px;
+  }
+  
+  .elements--list-items__icon_{{ name }} {
+    margin-right: 12px;
+  }
+  
+  .elements--list-items__icon_{{ name }} img {
+    margin-top: 3px;
+    filter: drop-shadow(0px 2px 5px rgba(244, 38, 62, 0.16));
+  }
+  
+
+  .elements-module-text_{{ name }} {
+    padding-top: {{ module.paddings.desktop.content.top }}px;
+    padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+    padding-left: {{ module.paddings.desktop.content.left }}px;
+    padding-right: {{ module.paddings.desktop.content.right }}px;
+    
+    text-align: {{ module.module_styles.text_styles.text_align }};
+  }
+  
+  
+
+  @media(max-width: 767px) {
+      
+    .elements--list-items__row_vertical_{{ name }} {
+      display: unset;
+      margin: 0 -16px;
+    }
+    
+    .elements-div-module_{{ name }} {
+      
+      padding-top: {{ module.paddings.mobile.module.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.module.left }}px !important;
+      padding-right: {{ module.paddings.mobile.module.right }}px !important;
+
+      margin-top: {{ module.margins.mobile.module.top }}px;
+      margin-bottom: {{ module.margins.mobile.module.bottom }}px;
+      margin-left: {{ module.margins.mobile.module.left }}px;
+      margin-right: {{ module.margins.mobile.module.right }}px;
+    }
+
+    .elements-module-text_{{ name }} {
+      padding-top: {{ module.paddings.mobile.content.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.content.left }}px !important;
+      padding-right: {{ module.paddings.mobile.content.right }}px !important;
+      
+      text-align: {{ module.module_styles.text_styles.text_align_mobile }} !important;
+    }
+
+  }
+  
+
+</style>
+{% end_require_css %}
+
+
+
+
+
+  

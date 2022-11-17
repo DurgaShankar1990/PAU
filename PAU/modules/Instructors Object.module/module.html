@@ -1,0 +1,108 @@
+
+{% if dynamic_page_crm_object %}
+{% set obj = dynamic_page_crm_object %} 
+<div class="ins-innerpage">
+    <div class="flex-row flex-wrap">
+        <div class="m-col-5 m-mb-30">
+            <h5 class="mb-16">
+                {% set href = module.link_field.url.href %}
+                {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                <a href="{{ href }}" class="glacial-blue-ice"
+                   {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if module.link_field.rel %}rel="{{ module.link_field.rel }}"{% endif %}
+                   >See All Presenters
+                </a>
+            </h5>
+            <h1 class="venice-blue mb-16">{{ obj.name }}</h1>
+            <h3 class="glacial-blue-ice mb-16">{{ obj.title }}</h3>
+            <div class="desc">
+                <p>{{ obj.bio }}</p>
+            </div>
+        </div>
+        <div class="m-col-7 pl-48 mpl-0 text-center">
+            <img class="radius-16 aos-init " data-aos="fade-left" data-aos-once="true" data-aos-duration="400" data-aos-delay="0" src="{{ obj.headshot_link}}" alt="{{ obj.name }}">
+        </div>
+    </div>
+</div>
+{% else %}
+
+{% if dynamic_page_crm_object_type_fqn %}
+{% set objects = crm_objects(dynamic_page_crm_object_type_fqn) %}
+{% set total_pages = objects.total|divide(batch_num) %}
+{% set more_pages = total_pages - page_num %}
+
+{% set items = "name, page_url, description, instructor_image_url, headshot_link, last_name" %}
+
+{% set per_page = 12 %}
+{% set offset_number = 0 %}
+{% set total_pages = objects.total|divide(per_page)|round(0,"ceil") %}
+
+
+{% if not request.query_dict.page %}
+  {% set page_number = 1 %}
+{% elif request.query_dict.page %}
+  {% set page_number = request.query_dict.page %}
+  {% set offset_number = (page_number - 1) * per_page %}
+{% endif %}
+
+{# the database query #}
+
+{% set query = "order=last_name&limit=" ~ per_page ~ "&offset=" ~ offset_number %}
+
+{% set objects = crm_objects(dynamic_page_crm_object_type_fqn, query , items) %}
+
+<div class="ins-object" id="articles">
+    <div class="flex-row flex-wrap row">
+        {% for object in objects.results %}
+        <div class="ins-item aos-init " data-aos="fade-up" data-aos-once="true" data-aos-duration="400" data-aos-delay="0">
+            <div class="inner">
+                <a href="{{ request.path }}/{{ object.page_url }}">
+                    {% if object.headshot_link %}
+                    <div class="image">
+                        <img src="{{ object.headshot_link }}" alt="{{ object.name }}">
+                    </div>
+                    {% endif %}
+                    <div class="content">
+                        <h3>{{ object.name }}</h3>
+                        <p class="flex-row align-center">
+                            <img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Vector.png">
+                            <span>About this Presenter</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        {% if total_pages >= page_number %}
+        <a id="load-more" href="{{ content.absolute_url }}?page={{ page_number|add(1) }}"> 
+            <svg width="50" height="43" viewBox="0 0 50 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3L25 19L47 3" stroke="url(#paint0_linear_452_1091)" stroke-width="5" stroke-linecap="round"/>
+                <path d="M3 23L25 39L47 23" stroke="#2488CD" stroke-width="5" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="paint0_linear_452_1091" x1="25" y1="1.4" x2="25" y2="19" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.112763" stop-color="#005A9C"/>
+                        <stop offset="0.648378" stop-color="#2488CD"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </a>
+        {% endif %}
+    </div>
+    
+</div>
+{% endif %}
+{% endif %}
+
+
+
+{% set queryBottom = "order=first_name&limit=" ~ per_page ~ "&offset=" ~ offset_number %}
+{% set instructor = crm_objects("instructors", queryBottom , "name") %}
+
+<div class="button-group js-radio-button-group filter_button" data-filter-group="instructors" id="instructors" style="display:none">
+    {% for item in instructor.results %}
+    <button class="button" data-filter=".{{item.name|regex_replace("[^a-zA-Z^0-9]", "")|lower }}">{{ item.name }}</button>
+    {% endfor %}
+</div>

@@ -1,0 +1,92 @@
+{% if module.enable_module %}
+
+<div class="elements-overlay-search">
+    <span class="hideBtn"></span>
+    <div id="searchBar" class="searchBar">
+        <form action="/hs-search-results">
+            <div class="elements-search-modal-group">
+                <input type="text" name="term" class="hs-search-field__input" placeholder="{{ module.search_placeholder_text }}" data-aos="fade-down" data-aos-once="true" autofocus>
+                <input type="image" src="{{ module.icons.search_icon.src }}" alt="Submit Form" class="elements-icon-search-field" />
+            </div>
+
+            {% if module.content_types.website_pages %}
+            <input type="hidden" name="type" value="SITE_PAGE">
+            {% endif %}
+            {% if module.content_types.landing_pages %}
+            <input type="hidden" name="type" value="LANDING_PAGE">
+            {% endif %}
+            {% if module.content_types.blog_posts %}
+            <input type="hidden" name="type" value="BLOG_POST">
+            <input type="hidden" name="type" value="LISTING_PAGE">
+            {% endif %}
+            {% if module.content_types.knowledge_articles %}
+            <input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<div class="showBtn"></div>
+
+{% endif %}
+
+{% require_css %}
+<style>
+    .elements-overlay-search input[type=text] {
+        font-size: 32px;
+        background: transparent;
+        background-position: top right 0;
+        background-repeat: no-repeat;
+        border: none;
+        border-radius: 0px;
+        border-bottom: 2px solid #BDBFD1;
+        box-shadow: none;
+        padding-bottom: 50px;
+        padding-top: 10px;
+        padding-left: 0px;
+        color: #1F2559;
+        height: 90px;
+    }
+
+    .hideBtn {
+        background-image: url({{ module.icons.close_icon.src }});
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 25px;
+        width: 25px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .elements-overlay-search button {
+        float: left;
+        width: 20%;
+        padding: 15px;
+        background: rgb(54, 21, 241);
+        font-size: 17px;
+        border: none;
+        color:white;
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .showBtn {
+        cursor: pointer;
+        background-image: url({{ get_asset_url('../../images/Search Icon.svg') }}) !important;
+        background-size: cover;
+        height: 20px;
+        width: 20px;
+        margin-left: 25px;
+        transition: 0.2s ease-in-out;
+    }
+
+    @media(max-width: 1024px) {
+        .showBtn {
+            background-image: url({{ get_asset_url('../../images/Search Icon.svg') }}) !important;
+            position: absolute;
+            top: -42px;
+            right: 50px;
+        }
+    }
+</style>
+{% end_require_css %}
+

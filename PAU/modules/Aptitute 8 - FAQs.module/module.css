@@ -1,0 +1,29 @@
+
+.elements--faq__accordion {
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.4s;
+  padding-right: 40px;
+}
+
+.active, .elements--faq__accordion:hover {
+}
+
+
+.elements--faq__panel {
+  max-height: 0;
+  overflow: hidden;
+  padding-right: 40px;
+  transition: max-height 0.3s ease-out;
+}
+
+
+@media(max-width: 430px) {
+  
+  .elements--faq__accordion:after {
+    top: 46px;
+    right: 24px;
+  }
+  
+}
+

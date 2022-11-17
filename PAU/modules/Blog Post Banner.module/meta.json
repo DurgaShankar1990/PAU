@@ -1,0 +1,12 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 61868070182,
+  "js_assets" : [ {
+    "url" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/js/modal.js",
+    "autoload" : true,
+    "name" : "modal.js"
+  } ],
+  "label" : "Blog Post Banner",
+  "is_available_for_new_content" : true
+}

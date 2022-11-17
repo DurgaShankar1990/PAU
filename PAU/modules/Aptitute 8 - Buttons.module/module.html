@@ -1,0 +1,170 @@
+{% if module.enable_module %}
+
+{% macro buildID() %}
+{% if module.main_settings.css__id %} id="{{ module.main_settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.main_settings.css__class %}{{ module.main_settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+text-align: {{ module.settings.button_align_desktop }};
+width: 100%;
+
+margin-top: {{ module.margins.desktop.top }}px;
+margin-bottom: {{ module.margins.desktop.bottom }}px;
+margin-left: {{ module.margins.desktop.left }}px;
+margin-right: {{ module.margins.desktop.right }}px;
+{% endmacro %}
+
+
+<div {{ buildID() }} class=" container-fluid {{ buildClass() }}">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+            <div class="span12 widget-span widget-type-cell elements-module-button_{{ name }}" style="{{ buildModuleStyles() }}" data-widget-type="cell" data-x="0" data-w="12">
+
+                <div class="elements-module-buttons-container">
+
+                    {% for button in module.button %}
+
+                    {% macro buildButtonStyles() %}
+                    {% if button.class_button == "elements-btns-custom" %}
+                    font-family: {{ button.font_style.font }}; {{ button.font_style.style }}; 
+                    color: {{ button.font_style.color }}; 
+                    font-size: {{ button.font_style.size }}{{button.font_style.size_unit }};
+                    background-color: {{ button.background_color.color }};
+                    border: {{ button.border_width }}px solid {{ button.border_color.color }};
+                    border-radius: {{ button.border_radius }}px;
+                    {% endif %}
+                    {% endmacro %}
+                    {% if button.link_field.url.href %}
+                    {% set href = button.link_field.url.href %}
+                    {% if button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                    {% endif %}
+                    {% set rel = [] %}
+                    {% if button.link_field.no_follow %}
+                    {% do rel.append("nofollow") %}
+                    {% endif %}
+                    {% if button.link_field.open_in_new_tab %}
+                    {% do rel.append("noopener") %}
+                    {% endif %}
+                    <a href="{{ href }}"
+                       {% if button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                       {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                       class="elements-link-buttons_{{ name }}"
+                       >
+                        <button class="{% if button.display_options.enable_on_desktop %}elements-buttons-disabled-on-desk {% endif %}{% if button.display_options.enable_on_tablet %}elements-buttons-disabled-on-tablet {% else %}elements-buttons-enabled-on-tablet {% endif %}{% if button.display_options.enable_on_mobile %}elements-buttons-disabled-on-mobile {% else %}elements-buttons-enabled-on-mobile {% endif %} {{ button.class_button }}{% if button.class_button is equalto "elements-btns-custom" %}_{{ name }}{% endif %} elements-btns-styles_{{ name }}" style="{{ buildButtonStyles() }}">
+                            {{ button.button_text }}
+                        </button>
+                    </a>
+                    {% endif %}
+
+                    {% endfor %}
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% require_css %}
+<style>
+
+    .elements-buttons-disabled-on-desk {
+        display: none;  
+    }
+
+
+
+    .elements-link-buttons_{{ name }} {
+        {% if module.button|length > 1 %}
+        {% if module.settings.button_align_desktop == 'center' or module.settings.button_align_mobile == 'center' %}
+        margin: 8px;
+        {% else %}
+        margin-right: {{ module.settings.margin_buttons }}px !important;
+        {% endif %}
+        {% endif %}
+    }
+
+    .elements-module-button_{{ name }} a:last-child {
+
+        {% if module.settings.button_align_desktop == 'center' or module.settings.button_align_mobile == 'center' %}
+
+        {% else %}
+        margin-right: 0px !important;
+        {% endif %}
+    }
+
+    .elements-btns-custom_{{ name }} {
+        transition: 0.2s ease-in-out;
+    }
+
+    {% if module.settings.zoom_hover %}
+    .elements-btns-custom_{{ name }}:hover,
+    .elements-btns-custom_{{ name }}:focus {
+        transform: scale(1.0{{ module.settings.zoom_hover_scale }});
+    }
+    {% endif %}
+
+    {% if module.settings.size_breakpoint > 0 %}
+    @media(max-width: {{ module.settings.size_breakpoint }}px) {   
+
+        .elements-module-button_{{ name }} {
+            text-align: {{ module.settings.button_align_mobile }} !important;
+        }
+
+    }
+    {% endif %}
+
+
+
+    @media (max-width: 961px) {
+
+        .elements-buttons-enabled-on-tablet {
+            display: unset !important;
+        }
+
+        .elements-buttons-disabled-on-tablet {
+            display: none !important;
+        }
+
+    }
+
+    @media(max-width: 767px) {
+
+        .elements-buttons-enabled-on-mobile {
+            display: unset !important;
+        }
+
+        .elements-buttons-disabled-on-mobile {
+            display: none !important;
+        }
+
+        .elements-module-buttons-container {
+            display: table-cell;
+            width: 767px;
+            max-width: 100%;
+        }
+
+        .elements-btns-styles_{{ name }} {
+            margin-bottom: 8px;  
+        }
+
+        .elements-module-button_{{ name }} {
+            margin-top: {{ module.margins.mobile.top }}px !important;
+            margin-bottom: {{ module.margins.mobile.bottom }}px !important;
+            margin-left: {{ module.margins.mobile.left }}px !important;
+            margin-right: {{ module.margins.mobile.right }}px !important;
+        }
+
+    }
+
+</style>
+{% end_require_css %}
+
+
+{% endif %}

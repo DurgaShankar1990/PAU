@@ -1,0 +1,342 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Contact v2 - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/contact-v2.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+<main id="main-content" class="body-container-wrapper">
+  {% dnd_area 'dnd_area' class='body-container body-container--qa-test', label='Main section' %}
+  
+    {# 1 Section - Hero #}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      horizontal_alignment='CENTER',
+      max_width=598,
+      padding={
+        'default': { 'top': 56, 'bottom': 328 },
+        'mobile': { 'top': 16, 'bottom': 316 }
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+              <p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">
+                Contact Us
+              </p>
+              <h1 style="text-align: center;">
+                Get in touch with us
+              </h1>
+              <p style="margin-bottom: 15px; text-align: center;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra.
+              </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          }
+        %}
+          {% dnd_module "module_161177258472321" path='../modules/Aptitute 8 - Contact Icons', label="Aptitute 8 - Contact Icons",
+            settings = { layout: 'horizontal', button_align_desktop: 'center', button_align_mobile: 'center', margin_buttons: 24 }
+            button = [
+              {
+                icon:{
+                  src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/email_1.svg",
+                  alt: "Elements Image"
+                },
+                button_text: 'contact@growth.com',
+                font_color: { color: '#62668A' }
+              },
+              {
+                icon:{
+                  src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/phone_1.svg",
+                  alt: "Elements Image"
+                },
+                button_text: '(546) 232 - 9872',
+                font_color: { color: '#62668A' }
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+       {% end_dnd_column  %}
+
+    {% end_dnd_section %}
+  
+    {# End 1 Section - Hero #}
+  
+  
+  
+    {# 2 Section - Contact Form #}
+      
+    {% dnd_section
+      vertical_alignment='TOP',
+      background_color={
+          r: 244,
+          g: 38,
+          b: 62,
+          a: 1.0
+      },
+      max_width=694,
+      padding={
+        'default': { 'top': 16, 'bottom': 116 },
+        'mobile': { 'top': 0, 'bottom': 96 }
+      }
+    %}
+      
+    {% dnd_module "module_161169799437319" path='../modules/Aptitute 8 - Card - Form', label="Aptitute 8 - Card Contact Form",
+      margins = {
+          desktop: {
+            module: {
+              top: -280
+            }              
+          },
+          mobile: {
+            module: {
+             top: -280
+            }
+          }
+        }
+    %}
+    {% end_dnd_module %}
+
+    {% end_dnd_section %}
+  
+    {# End 2 Section - Contact Form #}
+  
+  
+  
+  
+    {# 3 Section - FAQ's #}
+
+    {% dnd_section
+      max_width=721,
+      vertical_alignment='TOP',
+      horizontal_alignment='CENTER',
+      padding={
+        'default': { 'top': 116, 'bottom': 96 },
+        'mobile': { 'top': 72, 'bottom': 56 }
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 8 }
+          }
+          
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+              <p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">
+                Need More Information?
+              </p>
+              <h2 style="text-align: center;">
+                Frequently Asked Quesions
+              </h2>
+            
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module "module_16117068291619" path='../modules/Aptitute 8 - FAQs', label="Aptitute 8 - FAQ's",
+            faq_columns = [
+              {
+                content: [
+                  {
+                    title: 'How big is your marketing team?',
+                    content: 'Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.'
+                  },
+                  {
+                    title: 'Do you also offer design services?',
+                    content: 'Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.'                    
+                  },
+                  {
+                    title: "What's your typical cost for a campaign?",
+                    content: 'Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.'                    
+                  },
+                  {
+                    title: 'Do you guarantee marketing results?',
+                    content: 'Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.'                    
+                  },
+                  {
+                    title: 'What certifications does your agency has?',
+                    content: 'Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.'                    
+                  }
+                ]
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+       {% end_dnd_column  %}
+
+    {% end_dnd_section %}
+  
+    {# End 3 Section - FAQ's #}
+    
+      
+    {# 4 Section - Social Card Icons #}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      horizontal_alignment='CENTER',
+      max_width=488,
+            background_color={
+          r: 250,
+          g: 250,
+          b: 252,
+          a: 1.0
+      },
+      padding={
+        'default': { 'top': 96, 'bottom': 0 },
+        'mobile': { 'top': 36, 'bottom': 0 }
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16, 'bottom': 0 },
+           'mobile': { 'top': 24, 'bottom': 0 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+              <p style="margin-bottom: 8px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">
+                Follow Us
+              </p>
+              <h2 style="text-align: center;">
+                Follow us for great content on marketing
+              </h2>
+              <p style="margin-bottom: 15px; text-align: center;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.
+              </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+       {% end_dnd_column  %}
+
+    {% end_dnd_section %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      horizontal_alignment='CENTER',
+      background_color={
+          r: 250,
+          g: 250,
+          b: 252,
+          a: 1.0
+      },
+      padding={
+        'default': { 'top': 0, 'bottom': 104 },
+        'mobile': { 'top': 0, 'bottom': 56 }
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          margin={
+           'default': { 'top': 0, 'bottom': 16 },
+           'mobile': { 'top': 0, 'bottom': 24 }
+          } 
+         %}
+          {% dnd_module "module_161176441659621" path='../modules/Aptitute 8 - Card - Social Icons', label="Aptitute 8 - Card Social Icons",
+            rows = [
+              {
+                card: [
+                  {
+                    title: 'Facebook',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg",
+                      alt: "Elements Image"
+                    }                    
+                  },
+                  {
+                    title: 'Twitter',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg",
+                      alt: "Elements Image"
+                    }                    
+                  },
+                  {
+                    title: 'Instagram',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/instagram.svg",
+                      alt: "Elements Image"
+                    }                    
+                  },
+                  {
+                    title: 'LinkedIn',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg",
+                      alt: "Elements Image"
+                    }                    
+                  }
+                ]
+              },
+              {
+                card: [
+                  {
+                    title: 'Youtube',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/youtube.svg",
+                      alt: "Elements Image"
+                    }                    
+                  },
+                  {
+                    title: 'Telegram',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/telegram.svg",
+                      alt: "Elements Image"
+                    }                    
+                  },
+                  {
+                    title: 'WhatsApp',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/whatsapp.svg",
+                      alt: "Elements Image"
+                    }                    
+                  },
+                  {
+                    title: 'Pinterest',
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/pinterest.svg",
+                      alt: "Elements Image"
+                    }                    
+                  }
+                ]
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+       {% end_dnd_column  %}
+
+    {% end_dnd_section %}
+  
+    {# 4 Section - Social Card Icons #}
+
+
+  {% end_dnd_area %}
+  
+</main>
+{% endblock body %} 

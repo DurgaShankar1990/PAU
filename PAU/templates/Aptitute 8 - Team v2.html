@@ -1,0 +1,267 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Team v2 - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/team-v2.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Header #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 80, 'bottom': 0 },
+         'mobile': { 'top': 36, 'bottom': 36 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; max-width: 790px;">
+                  Our Team
+                </p>
+                <h1 style="text-align: center; max-width: 534px; margin-bottom: 0px;">
+                  The amazing team behind Elements
+                </h1>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Header #}
+  
+  
+    
+  {# 1.1 Section - Header Subtitle #}
+  
+  <section id="section-1-1">
+    
+  {% dnd_area 'section-1-1', label='section-1-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 16, 'bottom': 0 },
+         'mobile': { 'top': 16, 'bottom': 0 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 15px; text-align: center; max-width: 564px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1.1 Section - Header Subtitle #}
+  
+  
+  
+  
+  {# 2 Section - Cards #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+
+    {% dnd_section
+      padding={
+        'default': { 'top': 8, 'bottom': 24 },
+        'mobile': { 'top': 8, 'bottom': 24 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+    
+      {% dnd_module path='../modules/Aptitute 8 - Card - Team Member', label="Aptitute 8 - Card - Team Member",
+        module_styles= {
+          text_position: 'bottom',
+          border_radius: 50
+        },
+        paddings= { 
+          desktop: {
+            module: { top: 28, bottom: 28, left: 32, right: 16 },
+            content: { top: 16, bottom: 0, left: 16, right: 0 },
+            image: { top: 8, bottom: 0, left: 0, right: 8 },
+            bottom_content: { top: 8, bottom: 16, left: 0, right: 0 }
+          }
+        }
+          rows= 
+            [
+              {
+                card:
+                [
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hub/8768169/hubfs/Elements/Theme/users/avatar_6.jpg",
+                      alt: "Elements Image",
+                      width: 80
+                    },
+                    content: '<p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>',
+                    member_name: '<h4 style="margin-bottom: 6px;">Emily Smith</h4><p style="margin-bottom: 10px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>'
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hub/8768169/hubfs/Elements/Theme/users/avatar_7.jpg",
+                      alt: "Elements Image",
+                      width: 80
+                    },
+                    content: '<p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>',
+                    member_name: '<h4 style="margin-bottom: 6px;">Emily Smith</h4><p style="margin-bottom: 10px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>'
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hub/8768169/hubfs/Elements/Theme/users/avatar_8.jpg",
+                      alt: "Elements Image",
+                      width: 80
+                    },
+                    content: '<p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>',
+                    member_name: '<h4 style="margin-bottom: 6px;">Emily Smith</h4><p style="margin-bottom: 10px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>'
+                  }
+                ]
+              },
+              {
+                card:
+                [
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hub/8768169/hubfs/Elements/Theme/users/testimonials_14.png",
+                      alt: "Elements Image",
+                      width: 80
+                    },
+                    content: '<p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>',
+                    member_name: '<h4 style="margin-bottom: 6px;">Emily Smith</h4><p style="margin-bottom: 10px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>'
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hub/8768169/hubfs/Elements/Theme/users/testimonials_15.png",
+                      alt: "Elements Image",
+                      width: 80
+                    },
+                    content: '<p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>',
+                    member_name: '<h4 style="margin-bottom: 6px;">Emily Smith</h4><p style="margin-bottom: 10px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>'
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hub/8768169/hubfs/Elements/Theme/users/testimonials_13.png",
+                      alt: "Elements Image",
+                      width: 80
+                    },
+                    content: '<p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>',
+                    member_name: '<h4 style="margin-bottom: 6px;">Emily Smith</h4><p style="margin-bottom: 10px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>'
+                  }
+                ]
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - FAQs #}
+  
+  
+
+  
+  {# 3 Section - Contact Us #}
+  
+  <section id="section-3">
+     
+  {% dnd_area 'section-3', label='section-3' %}  
+
+    {% dnd_section
+         padding={
+         'default': { 'top': 32, 'bottom': 116 },
+         'mobile': { 'top': 80, 'bottom': 80 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+    
+            {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+
+                <h4 style="text-align: center; max-width: 480px;">
+                  Join our team!
+                </h4>
+                <p style="margin-bottom: 15px; text-align: center; max-width: 480px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium commodo, lorem sed dui viverra id auctor.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+        
+         {% dnd_row 
+            margin={
+              'default': { 'top': 16, 'bottom': 40 },
+              'mobile': { 'top': 16, 'bottom': 24 }
+            } 
+          %}
+            {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              button= [
+                { 'button_text':'Join Our Team ', 'class_button':'btn-primary-dark' }
+              ],
+              settings= { button_align_desktop: 'center', button_align_mobile: 'center'  }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - Contact Us #}
+    
+
+
+  
+</main>
+{% endblock body %}

@@ -1,0 +1,65 @@
+
+.navigation-wrapper {
+    position: relative;
+    display: flex;
+    padding-left: 50%;
+    margin-bottom: 40px;
+}
+.navigation-wrapper .arrow {
+    width: 64px;
+    height: 64px;
+    fill: #fff;
+    cursor: pointer;
+    background: #FFFFFF;
+    border: 0.5px solid #C6CFDA;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px rgb(31 37 89 / 5%);
+    border-radius: 10px;
+    padding: 20px 28px;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 5px;
+    position: static;
+    vertical-align: middle;
+    transform: none;
+}
+
+.navigation-wrapper .arrow--right {
+    left: auto;
+    right: 5px;
+    background-image: url(https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/prevArrow.svg);
+    transform: rotate( 180deg);
+}
+
+.navigation-wrapper .arrow--left {
+    margin-left: 0;
+    background-image: url(https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/prevArrow.svg);
+}
+
+.navigation-wrapper .arrow--right:hover{
+    background-image: url(https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/hover-arrow.svg);
+    transform: rotate(0deg);
+}
+
+.navigation-wrapper .arrow--left:hover{
+    background-image: url(https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/hover-arrow.svg);
+    transform: rotate( 180deg);
+}
+
+.keen-slider.slick-initialized .slick-slide {
+    display: flex;
+}
+div#my-keen-slider .slick-slide img {
+    margin: 0 auto;
+}
+@media (max-width: 767px){
+    .navigation-wrapper {
+        padding-left: 0;
+    }
+
+    .navigation-wrapper .arrow {
+        width: 50px;
+        height: 50px;
+    }
+}

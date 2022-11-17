@@ -1,0 +1,18 @@
+{
+  "global" : false,
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Video.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 55275602331,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/templates/_video.css",
+    "name" : "_video.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/video.js",
+    "name" : "video.js"
+  } ],
+  "label" : "Video",
+  "is_available_for_new_content" : true
+}

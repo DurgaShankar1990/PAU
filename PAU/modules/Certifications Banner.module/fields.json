@@ -1,0 +1,279 @@
+[ {
+  "id" : "3cb70f86-8066-1072-de29-788d7ddc76d4",
+  "name" : "background_image",
+  "display_width" : null,
+  "label" : "Background Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/AdobeStock_373123011-scaled.jpeg",
+    "alt" : "AdobeStock_373123011-scaled",
+    "loading" : "lazy",
+    "width" : 2560,
+    "height" : 1708,
+    "max_width" : 2560,
+    "max_height" : 1708
+  }
+}, {
+  "id" : "42bc49ac-e40e-9104-9a0d-e848aee68807",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "510f1d79-f91d-fc9c-4d0f-8ca334ebbdb6",
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "b1a589bf-f431-46f6-c630-14140ecc010c",
+      "name" : "spacing_field",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 92,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 72,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "spacing_field" : {
+        "padding" : {
+          "top" : {
+            "value" : 92,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 72,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    }
+  }, {
+    "id" : "ed30d572-a555-ec4d-ff03-69a91db53549",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d3cd4387-34e5-d90d-df8b-55715f74b3db",
+      "name" : "spacing_field",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 92,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 72,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "spacing_field" : {
+        "padding" : {
+          "top" : {
+            "value" : 92,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 72,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "desktop" : {
+      "spacing_field" : {
+        "padding" : {
+          "top" : {
+            "value" : 92,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 72,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    },
+    "mobile" : {
+      "spacing_field" : {
+        "padding" : {
+          "top" : {
+            "value" : 92,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 72,
+            "units" : "px"
+          },
+          "left" : {
+            "value" : null,
+            "units" : null
+          },
+          "right" : {
+            "value" : null,
+            "units" : null
+          }
+        }
+      }
+    }
+  }
+}, {
+  "id" : "c323ddb5-20dc-16b5-63f4-0e9e950a06be",
+  "name" : "banner_title",
+  "display_width" : null,
+  "label" : "Banner title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "COLLECT BADGES. <b>EARN CERTIFICATES.</b>"
+}, {
+  "id" : "ab421617-2064-d110-bf3f-51419c2844bb",
+  "name" : "sub_title",
+  "display_width" : null,
+  "label" : "Sub title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "es strategically to collect badges, earning your way to a psychology certificate."
+}, {
+  "id" : "a3ef7997-f799-c824-4dd0-f798f360ee7d",
+  "name" : "button",
+  "display_width" : null,
+  "label" : "Button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "213b4498-c891-7eb4-f94d-af76b72787a4",
+    "name" : "button_text",
+    "display_width" : null,
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "VIEW CERTIFICATES"
+  }, {
+    "id" : "efb60077-2591-a0bd-dd29-da12d37f69ce",
+    "name" : "link_field",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "button_text" : "VIEW CERTIFICATES",
+    "link_field" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+} ]

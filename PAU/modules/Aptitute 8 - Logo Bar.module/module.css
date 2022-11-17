@@ -1,0 +1,51 @@
+.dnd_area-module-7-flexbox-positioning > div {
+  width: 100% !important;
+}
+
+.dnd_area-module-6-flexbox-positioning > div {
+  width: 100% !important;
+}
+
+.brand__container > * {
+  margin: 25px 0 0 55px;
+}
+
+.brand__container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: -55px 0 0 -55px;
+  width: calc(100% + 55px);
+
+}
+
+.logo__bar-logo {
+  transition: transform .3s;
+}
+  
+.logo__bar-logo:hover {
+  transform: scale(1.1);
+}
+
+
+@media (max-width: 767px) {
+  
+  .logo__bar-logo {
+    max-width: 200px !important;
+    height: auto !important;
+  }
+  
+  .brand__container > * {
+    margin: 20px 0 0 30px;
+  }
+  
+  .brand__container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: -30px 0 0 -30px;
+    width: calc(100% + 30px);
+
+  }
+  
+}
+
+

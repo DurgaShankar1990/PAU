@@ -1,0 +1,216 @@
+{% macro buildID() %}
+  {% if module.main_settings.css__id %} id="{{ module.main_settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.main_settings.css__class %}{{ module.main_settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  text-align: {{ module.settings.button_align_desktop }};
+  width: 100%;
+{% endmacro %}
+
+{% if module.settings.layout is equalto "horizontal" %}
+
+<div {{ buildID() }} class="container-fluid {{ buildClass() }}">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+            <div class="span12 widget-span widget-type-cell elements-module-button_{{ name }}" style="{{ buildModuleStyles() }}" data-widget-type="cell" data-x="0" data-w="12">
+             {% for button in module.button %}
+
+              {% set href = button.link_field.url.href %}
+                {% if button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                {% endif %}
+                {% set rel = [] %}
+                {% if button.link_field.no_follow %}
+                  {% do rel.append("nofollow") %}
+                {% endif %}
+                {% if button.link_field.open_in_new_tab %}
+                  {% do rel.append("noopener") %}
+                {% endif %}
+                <span href="{{ href }}" class="elements-btns-styles_{{ name }}"
+                  {% if button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                  {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                >
+                	{% if button.icon.src %}
+                    {% set sizeAttrs = 'width="{{ button.icon.width }}" height="{{ button.icon.height }}"' %}
+                    {% if button.icon.size_type == 'auto' %}
+                      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                    {% elif button.icon.size_type == 'auto_custom_max' %}
+                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ button.icon.max_width }}px; max-height: {{ button.icon.max_height }}px"' %}
+                    {% endif %}
+                     {% set loadingAttr = button.icon.loading != 'disabled' ? 'loading="{{ button.icon.loading }}"' : '' %}
+                      <a href="{{ href }}" {% if button.link_field.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+                        <img class="elements-ci__image_{{ name }}" src="{{ button.icon.src }}" alt="{{ button.icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                      </a>
+                  {% endif %}
+                
+                <a href="{{ href }}" class="elements-btns-text--styles_{{ name }}" style="color: {{ button.font_color.color }};">
+                  {{ button.button_text }}
+                </a>
+
+              </span>
+             {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% elif module.settings.layout is equalto "vertical" %}
+
+
+<div {{ buildID() }} class="container-fluid {{ buildClass() }}">
+    <div class="row-fluid-wrapper">
+      {% for button in module.button %}
+        <div class="row-fluid">
+            <div class="span12 widget-span widget-type-cell elements-module-button_{{ name }}" style="{{ buildModuleStyles() }}" data-widget-type="cell" data-x="0" data-w="12">
+             
+
+              {% set href = button.link_field.url.href %}
+                {% if button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                {% endif %}
+                {% set rel = [] %}
+                {% if button.link_field.no_follow %}
+                  {% do rel.append("nofollow") %}
+                {% endif %}
+                {% if button.link_field.open_in_new_tab %}
+                  {% do rel.append("noopener") %}
+                {% endif %}
+                <span href="{{ href }}" class="elements-btns-styles_{{ name }}"
+                  {% if button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                  {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                >
+                	{% if button.icon.src %}
+                    {% set sizeAttrs = 'width="{{ button.icon.width }}" height="{{ button.icon.height }}"' %}
+                    {% if button.icon.size_type == 'auto' %}
+                      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                    {% elif button.icon.size_type == 'auto_custom_max' %}
+                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ button.icon.max_width }}px; max-height: {{ button.icon.max_height }}px"' %}
+                    {% endif %}
+                     {% set loadingAttr = button.icon.loading != 'disabled' ? 'loading="{{ button.icon.loading }}"' : '' %}
+                      <a href="{{ href }}" {% if button.link_field.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+                        <img class="elements-ci__image_{{ name }}" src="{{ button.icon.src }}" alt="{{ button.icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                      </a>
+                  {% endif %}
+                
+                <a href="{{ href }}" class="elements-btns-text--styles_{{ name }}" style="color: {{ button.font_color.color }};">
+                  {{ button.button_text }}
+                </a>
+
+              </span>
+             
+            </div>
+
+        </div>
+      {% endfor %}
+    </div>
+</div>
+
+{% endif %}
+
+
+
+{% require_css %}
+<style>
+  
+  
+  .elements-ci__image_{{ name }} {
+    transition: .3s ease;    
+  }
+  
+  .elements-ci__image_{{ name }}:hover {
+    {% if module.settings.enable_zoom_hover %}
+      transform: scale(1.1);
+    {% endif %}
+  }
+  
+  
+  
+  .elements-btns-text--styles_{{ name }} {
+    display: inline-block;
+
+    vertical-align: top;
+    padding-top: 12px;
+
+      margin-left: 8px;
+      margin-bottom: 0px;
+    {% if module.settings.layout is equalto "horizontal" %}
+      padding-left: 10px;
+
+    {% elif module.settings.layout is equalto "vertical" %}
+      padding-left: 4px;
+    {% endif %}
+    
+    
+  }
+  
+  .elements-btns-text--styles_{{ name }}:hover {
+    color: {{ module.settings.hover_color.color }} !important;
+  }
+  
+  .elements-btns-styles_{{ name }} {
+    {% if module.settings.layout is equalto "horizontal" %}
+      margin: 0 {{ module.settings.margin_buttons }}px;
+    {% elif module.settings.layout is equalto "vertical" %}
+      margin: 0;
+    {% endif %}
+    
+  }
+  
+  .elements-module-button_{{ name }} {
+    {% if module.settings.layout is equalto "vertical" %}
+      margin: {{ module.settings.margin_buttons }}px 0;
+    {% endif %}
+  }
+  
+  .elements-module-button_{{ name }} button:last-child {
+    margin-right: 0px;
+  }
+  
+  .elements-module-button_{{ name }} button:first-child {
+    margin-left: 0px;
+  }
+  
+  
+  
+  @media(max-width: 767px) {
+    .elements-module-button_{{ name }} {
+      text-align: {{ module.settings.button_align_mobile }} !important;
+    }
+  }
+  
+  
+  
+  @media(max-width: 600px) {
+    
+    .elements-btns-styles_{{ name }} {
+      display: block;
+      
+      {% if module.settings.layout is equalto "horizontal" %}
+         margin-bottom: 12px;
+      {% endif %}
+     
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+    
+
+  }
+  
+    @media(max-width: 258px) {
+    
+    .elements-btns-text--styles_{{ name }} {
+      padding-top: 0px;
+      padding-left: 0px;
+      margin-bottom: 8px;
+    }
+
+  }
+  
+
+ 
+  
+</style>
+{% end_require_css %}

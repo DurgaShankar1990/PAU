@@ -1,0 +1,385 @@
+{% macro buildID() %} 
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %} 
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+  border-radius: {{ module.module_styles.border_radius }}px;
+
+
+  {% if module.module_styles.shadow == "shadow_1" %}
+      box-shadow: 0px 3px 10px rgba(31, 37, 89, 0.04);
+  {% elif module.module_styles.shadow == "shadow_2" %}
+      box-shadow: 0px 4px 12px rgba(8, 15, 52, 0.06);
+  {% elif module.module_styles.shadow == "shadow_3" %}
+      box-shadow: 0px 8px 18px rgba(31, 37, 89, 0.05);
+  {% elif module.module_styles.shadow == "shadow_4" %}
+      box-shadow: 0px 16px 51px rgba(28, 26, 74, 0.04);
+  {% elif module.module_styles.shadow == "shadow_5" %}
+      box-shadow: 0px 24px 75px rgba(21, 16, 152, 0.05);
+  {% elif module.module_styles.shadow == "shadow_6" %}
+      box-shadow: 0px 45px 84px rgba(8, 15, 52, 0.19);
+  {% endif %}
+
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+{% endmacro %}
+
+{% macro buildContentStyles() %}
+  padding-top: 12%;
+{% endmacro %}
+
+<div {{ buildID() }} class="{{ buildClass() }}">
+
+{% if module.module_styles.enable_featured_event %}
+	
+<div class="cards__card container-fluid elements-div-content_{{ name }} elements--events__featured-event" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+  
+  {# Featured Event #}
+  <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+          {% set href = module.featured_event.link_field.url.href %}
+          {% if module.featured_event.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+          {% endif %}
+          {% set rel = [] %}
+          {% if module.featured_event.link_field.no_follow %}
+            {% do rel.append("nofollow") %}
+          {% endif %}
+          {% if module.featured_event.link_field.open_in_new_tab %}
+            {% do rel.append("noopener") %}
+          {% endif %}
+          <a href="{{ href }}" style="text-decoration: none !important;"
+            {% if module.featured_event.link_field.open_in_new_tab %}target="_blank"{% endif %}
+            {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+            >
+         
+          <div class="span7 widget-span widget-type-cell elements-events__section__image" data-widget-type="cell" data-x="0" data-w="7">
+            <div class="elements-module-image-container_{{ name }}" style="{{ buildImageStyles() }}">
+              {% if module.featured_event.image.src %}
+                 {% set loadingAttr = module.featured_event.image.loading != 'disabled' ? 'loading="{{ module.featured_event.image.loading }}"' : '' %}
+                <img class="elements-module-image_{{ name }}" src="{{ module.featured_event.image.src }}" alt="{{ module.featured_event.image.alt }}" {{ loadingAttr }} style="">
+              {% endif %}
+            </div>
+          </div>
+          <div class="span5 widget-span widget-type-cell elements-events__section__text" data-widget-type="cell" data-x="7" data-w="5">
+               <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+                 <div class="elements--events--card__container">
+                    <span class="elements--events--card__badge">{{ module.featured_event.category }}</span>
+                 </div>
+
+                 <div class="elements--events--card__date">
+                   {% if module.featured_event.calendar_icon.src %}
+                      <img src="{{ module.featured_event.calendar_icon.src }}" class="elements--events--card__date--icon" alt="{{ module.featured_event.calendar_icon.alt }}" width="{{ module.featured_event.calendar_icon.width }}" height="{{ module.featured_event.calendar_icon.height }}">
+                   {% endif %}
+                   <p>{{ module.featured_event.date_field|datetimeformat('%B %e, %Y') }}</p>
+                 </div>
+
+                 <div class="elements--events--card__date__container--day">   
+                   <p class="elements--events--card__date--month">{{ module.featured_event.date_field|datetimeformat('%b') }}</p>
+                   <p class="elements--events--card__date--day">{{ module.featured_event.date_field|datetimeformat('%e') }}</p>
+                 </div>
+
+                {% inline_rich_text field="featured_event.featured_event" value="{{ module.featured_event.content|truncatehtml(193) }}" %}
+
+               </div>
+          </div>
+             
+          </a>
+        </div>
+    </div>
+</div> 
+
+
+{% endif %}
+    {# All Events #}
+  
+    {% for group in module.event_group %}
+
+    {% if module.module_styles.enable_header_titles %}
+
+      <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+          <div class="span7 widget-span widget-type-cell elements-events__section__group--title" data-widget-type="cell" data-x="0" data-w="7">
+            <h2>
+              {{ group.title_event_group }}
+            </h2>
+          </div>
+        </div>
+      </div>
+
+    {% endif %}
+ 
+
+  {% for event in group.content %}
+
+
+<div class="cards__card container-fluid elements-div-content_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+          
+          {% set href = event.link_field.url.href %}
+          {% if event.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+          {% endif %}
+          {% set rel = [] %}
+          {% if event.link_field.no_follow %}
+            {% do rel.append("nofollow") %}
+          {% endif %}
+          {% if event.link_field.open_in_new_tab %}
+            {% do rel.append("noopener") %}
+          {% endif %}
+          <a href="{{ href }}" style="text-decoration: none !important;"
+            {% if event.link_field.open_in_new_tab %}target="_blank"{% endif %}
+            {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+          >
+          <div class="span7 widget-span widget-type-cell elements-events__section__image" data-widget-type="cell" data-x="0" data-w="7">
+            <div class="elements-module-image-container_{{ name }}" style="{{ buildImageStyles() }}">
+              {% if event.image.src %}
+                 {% set loadingAttr = event.image.loading != 'disabled' ? 'loading="{{ event.image.loading }}"' : '' %}
+                <img class="elements-module-image_{{ name }}" src="{{ event.image.src }}" alt="{{ event.image.alt }}" {{ loadingAttr }} style="">
+              {% endif %}
+            </div>
+          </div>
+          
+          <div class="span5 widget-span widget-type-cell elements-events__section__text" data-widget-type="cell" data-x="7" data-w="5">
+            <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+               <div class="elements--events--card__container">
+                  <span class="elements--events--card__badge">{{ event.category }}</span>
+               </div>
+
+               <div class="elements--events--card__date">
+                 {% if event.calendar_icon.src %}
+                    <img src="{{ event.calendar_icon.src }}" class="elements--events--card__date--icon" alt="{{ event.calendar_icon.alt }}" width="{{ event.calendar_icon.width }}" height="{{ event.calendar_icon.height }}">
+                 {% endif %}
+                 <p>{{ event.date_field|datetimeformat('%B %e, %Y') }}</p>
+               </div>
+
+               <div class="elements--events--card__date__container--day">   
+                 <p class="elements--events--card__date--month">{{ event.date_field|datetimeformat('%b') }}</p>
+                 <p class="elements--events--card__date--day">{{ event.date_field|datetimeformat('%e') }}</p>
+               </div>
+
+              {% inline_rich_text field="content.content" value="{{ event.content|truncatehtml(193) }}" %}
+                <br>
+               <div class="button-wrap">
+                   {% set href = event.button.link_field_1.url.href %}
+                   {% if event.button.link_field_1.url.type is equalto "EMAIL_ADDRESS" %}
+                   {% set href = "mailto:" + href %}
+                   {% endif %}
+                   <a href="{{ href }}" class="button"
+                      {% if event.button.link_field_1.open_in_new_tab %}target="_blank"{% endif %}
+                      {% if event.button.link_field_1.rel %}rel="{{ item2.button.link_field_1.rel }}"{% endif %}
+                      >
+                       {{ event.button.text_field }}
+                   </a>
+                </div>
+             </div>
+          </div>
+            
+         </a>
+          
+        </div>
+    </div>
+  </div>
+  {% endfor %}
+{% endfor %}
+</div> 
+
+
+
+{% require_css %}
+<style>
+  
+  .elements-div-content_{{ name }} {
+    cursor: pointer;
+  }
+  
+  .elements-div-content_{{ name }}:hover {
+    -webkit-transform: scale(1.01) !important;
+    -ms-transform: scale(1.01) !important;
+    transform: scale(1.01) !important;
+  }
+  
+  .elements-module-image_{{ name }} {
+    object-fit: cover;
+    max-width: 643px;
+    width: 100%;
+    min-height: 480px;
+  }
+  
+  .elements--events--card__date--month {
+    color: {{ theme.global_colors.primary_colors.primary_color_1.color }};
+  }
+  .elements--events--card__date--day {
+    color: {{ theme.typography.global_fonts.headers_font.color }};
+  }
+
+  .elements-module-image_{{ name }} {
+    border-top-left-radius: {{ module.module_styles.border_radius }}px;
+    border-bottom-left-radius: {{ module.module_styles.border_radius }}px;
+  }
+  
+  .elements--events--card__badge {
+    background-color: {{ theme.global_colors.primary_colors.primary_color_1.color }};
+    color: {{ theme.global_colors.neutral_colors.neutral_color_100.color }};
+  }
+  
+  
+  @media(max-width: 1218px) {
+    .elements-module-image_{{ name }} {
+      padding-right: 32px;
+    }
+  }
+  
+  @media(min-width: 1139px) {
+    .elements-module-content_{{ name }} {
+      padding-right: 16% !important;
+    }
+  }
+  
+  
+  @media (min-width: 768px) and (max-width: 1139px) {
+    .elements-module-content_{{ name }} {
+      padding-right: 12% !important;
+    }
+  }
+
+  
+@media(max-width: 767px) {
+  
+  .elements-module-image_{{ name }} {
+   max-width: 100%; 
+  }
+    
+  
+  .elements--events--card__date__container--day {
+    top: -12px;
+    right: 24px;
+  }
+  
+  .elements--events--card__date--day {
+    font-size: 50px;
+  }
+  
+  .elements--events--card__date--month {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  .elements-module-image_{{ name }} {
+    padding-right: 0px;
+    border-top-left-radius: {{ module.module_styles.border_radius }}px;
+    border-top-right-radius: {{ module.module_styles.border_radius }}px;
+    border-bottom-left-radius: 0px;
+  }
+    
+  .elements-div-content_{{ name }} {
+    max-height: unset !important;
+    
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    
+    margin-top: {{ module.margins.mobile.module.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.module.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.module.left }}px !important;
+    margin-right: {{ module.margins.mobile.module.right }}px !important;
+  }
+    
+  .elements-module-image-container_{{ name }} {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+
+  .elements-module-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.content.right }}px !important;
+  }
+
+}
+   {% scope_css %}
+    .cards__card {
+       background-color:rgba({{ module.style.background_color.color|convert_rgb  }},{{ module.style.background_color.opacity/100 }});
+    }
+    .elements--events--card__date{
+        {% if module.style.date.font_type == "google" %}
+            color: {{ module.style.date.font_field.color }}; 
+            font-size: {{ module.style.date.font_field.size }}{{module.style.date.font_field.size_unit }};
+            font-family: {{ module.style.date.font_field.font }};
+            {{ module.style.date.font_field.style }};
+            
+        {% else %}
+            color:rgba({{ module.style.date.date_color.color|convert_rgb  }},{{ module.style.date.date_color.opacity/100 }});
+            font-family:{{ module.style.date.font }};
+        {% endif %}
+    }
+    .cards__card .hs_cos_wrapper p{
+         {% if module.style.content.font_type == "google" %}
+            font-family: {{ module.style.content.font_field.font }};
+            {{ module.style.content.font_field.style }}; 
+            color: {{ module.style.content.font_field.color }}; 
+            font-size: {{ module.style.content.font_field.size }}{{module.style.content.font_field.size_unit }};
+        {% else %}
+            color:rgba({{ module.style.content.date_color.color|convert_rgb  }},{{ module.style.content.date_color.opacity/100 }});
+            font-family:{{ module.style.content.font }};
+        {% endif %}
+    }
+    .cards__card h1,
+    .cards__card h2,
+    .cards__card h3,
+    .cards__card h4,
+    .cards__card h5,
+    .cards__card h6,
+    p.elements--events--card__date--day{
+        {% if module.style.headings.font_type == "google" %}
+            font-family: {{ module.style.headings.font_field.font }}; {{ module.style.headings.font_field.style }}; 
+            color: {{ module.style.headings.font_field.color }}; 
+            font-size: {{ module.style.headings.font_field.size }}{{module.style.headings.font_field.size_unit }};
+        {% else %}
+            color:rgba({{ module.style.headings.date_color.color|convert_rgb  }},{{ module.style.headings.date_color.opacity/100 }});
+            font-family:{{ module.style.headings.font }};
+        {% endif %}
+    }
+    
+    .elements--events--card__badge,
+    .cards__card a.button{
+        color:rgba({{ module.style.button_and_category.text_color.color|convert_rgb }},{{ module.style.button_and_category.text_color.opacity/100 }});
+        background-color:rgba({{ module.style.button_and_category.background_color.color|convert_rgb  }},{{ module.style.button_and_category.background_color.opacity/100 }});
+    }
+   {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+
+
+
+
+
+
+
+
+  

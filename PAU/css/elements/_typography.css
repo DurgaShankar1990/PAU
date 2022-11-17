@@ -1,0 +1,204 @@
+/* Custom Font */
+
+{% set custom_font_family = "Plus Jakarta Display" %}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: normal;
+    font-weight: normal;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Regular.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Regular.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: italic;
+    font-weight: normal;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Italic.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Italic.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: normal;
+    font-weight: lighter;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Light.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Light.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: italic;
+    font-weight: lighter;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-LightItalic.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-LightItalic.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: normal;
+    font-weight: 500;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Medium.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Medium.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: italic;
+    font-weight: 500;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-MediumItalic.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-MediumItalic.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-MediumItalic.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: normal;
+    font-weight: bold;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Bold.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Bold.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: {{ custom_font_family }};
+    font-style: italic;
+    font-weight: bold;
+    src: url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-BoldItalic.eot?') format('eot'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-BoldItalicItalic.woff') format('woff'), url('https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/fonts/PlusJakartaDisplay-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'AbrilFatface';
+    font-style: italic;
+    font-weight: bold;
+    src: url('https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/fonts/AbrilFatface-Regular.woff') format('woff'),
+         url('https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/fonts/AbrilFatface-Regular.ttf') format('truetype');
+}
+
+/* Body */
+
+body {
+    font-family: {{ custom_font_family }}, sans-serif;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+html[lang^="ja"] body,
+html[lang^="zh"] body,
+html[lang^="ko"] body {
+    line-break: strict;
+    word-break: break-all;
+}
+
+
+/* Paragraphs */
+
+p {
+    font-size: 1rem;
+    margin: 0 0 1.4rem;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* Anchors */
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: 1s all ease-in-out;
+}
+
+
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: {{ custom_font_family }}, serif;
+    font-weight: 700;
+    margin: 0 0 1.4rem;
+}
+
+
+
+/* Lists */
+
+ul,
+ol {
+    margin: 0 0 1.5rem;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin: 0;
+}
+
+.hs_cos_wrapper_type_rich_text li, .hs_cos_wrapper_type_inline_rich_text li {
+    margin: 8px 0;
+}
+
+ul.no-list {
+    list-style: none;
+}
+
+/* Code blocks */
+
+code {
+    vertical-align: bottom;
+}
+
+/* Blockquotes */
+
+blockquote {
+    border-left: 2px solid {{ theme.global_colors.neutral_colors.neutral_color_400.color }};
+    margin: 0 0 1.4rem;
+    padding-left: 15px;
+}
+
+/* Horizontal rules */
+
+hr {
+    background-color: {{ theme.global_colors.neutral_colors.neutral_color_400.color }};
+    border: none;
+    color: #CCC;
+    height: 1px;
+}
+
+/* Subscripts and superscripts */
+
+sup,
+sub {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* Focus styles */
+
+:focus {
+    outline: auto;
+    outline-color: green;
+}
+
+.disable-focus-styles :focus {
+    outline: none;
+}
+
+p:last-child{
+    margin:0;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    height: auto;
+}

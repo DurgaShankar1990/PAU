@@ -1,0 +1,314 @@
+{% macro buildID() %}
+{% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+padding-top: {{ module.paddings.desktop.module.top }}px !important;
+padding-bottom: {{ module.paddings.desktop.module.bottom }}px !important;
+padding-left:  {{ module.paddings.desktop.module.left }}px !important;
+padding-right: {{ module.paddings.desktop.module.right }}px !important;
+
+margin-top: {{ module.margins.desktop.module.top }}px;
+margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+margin-left: {{ module.margins.desktop.module.left }}px;
+margin-right: {{ module.margins.desktop.module.right }}px;
+
+width: 100%;
+border-radius: {{ module.module_styles.border_radius }}px;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+padding-top: {{ module.paddings.desktop.image.top }}px;
+padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+padding-left: {{ module.paddings.desktop.image.left }}px;
+padding-right: {{ module.paddings.desktop.image.right }}px;
+
+{% endmacro %}
+
+{% macro buildContentStyles() %}
+padding-top: {{ module.paddings.desktop.content.top }}px;
+padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+padding-left: {{ module.paddings.desktop.content.left }}px;
+padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+
+{% macro buildLinks() %}
+{% if module.button.open_external_link %}
+window.open('{{ module.button.link }}');
+{% else %}
+location.href='{{ module.button.link }}';
+{% endif %}
+{% endmacro %}
+
+
+
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" style="{{ buildModuleStyles() }}">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+            <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">    
+
+                {# Stats Simple Style #}
+                {% if module.module_styles.stats_style == "simple" %}
+
+                <div class="elements--stats__container--type-1__{{ name }}" >
+                    {% for item in module.stats %}
+                    <div class="elements--stats__stat--type-1__{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+                        <h2 class="elements--stats__text__top--type-1__{{ name }}" style="{% if item.stat_text_align == "left" %}justify-content: flex-start;{% elif item.stat_text_align == "center" %}justify-content: center;{% elif item.stat_text_align == "right" %}justify-content: flex-end;{% endif %}">
+                            {% inline_text field="number" value="{{ item.number }}" %}
+                            <span class="elements--stats__symbol--type-1__{{ name }}" style="padding-left: {{ item.symbol_padding }}px; {% if item.symbol_type == "icon" %}width: {{ item.symbol_size }}px; {% endif %}color: {{ item.symbol_color.color }}; fill: {{ item.symbol_color.color }};">
+                                {% if item.symbol_type == "text" %}
+                                {% inline_text field="symbol" value="{{ item.symbol }}" %}
+                                {% elif item.symbol_type == "icon" %}
+                                {% icon
+                            name="{{ item.icon_field.name }}"
+                            style="{{ item.icon_field.type }}"
+                            unicode="{{ item.icon_field.unicode }}"
+                            icon_set="{{ item.icon_field.icon_set }}"
+                          %}
+                                {% endif %}
+                            </span>
+                        </h2>
+                        <span class="elements--stats__text--type-1__{{ name }}" style="text-align: {{ item.stat_text_align }};">
+                            {% inline_rich_text field="text" value="{{ item.text }}" %}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {# Stats With Image Style #}
+
+                {% elif module.module_styles.stats_style == "with_image" %}
+
+                <div class="elements-module-image_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+
+                    {% if module.image.image_field.src %}
+                    {% set loadingAttr = module.image.image_field.loading != 'disabled' ? 'loading="{{ module.image.image_field.loading }}"' : '' %}
+                    <img src="{{ module.image.image_field.src }}" alt="{{ module.image.image_field.alt }}" {{ loadingAttr }}>
+                    {% endif %}
+
+                </div>
+
+                <div class="cards__card elements--stats__card--type-2__{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+
+                    <div class="elements--stats__container--type-1__{{ name }}" >
+
+                        {% for item in module.stats %}
+                        <div class="elements--stats__stat--type-1__{{ name }}" >
+                            <h2 class="elements--stats__text__top--type-1__{{ name }}" style="{% if item.stat_text_align == "left" %}justify-content: flex-start;{% elif item.stat_text_align == "center" %}justify-content: center;{% elif item.stat_text_align == "right" %}justify-content: flex-end;{% endif %}">
+                                {% inline_text field="number" value="{{ item.number }}" %}
+                                <span class="elements--stats__symbol--type-1__{{ name }}" style="padding-left: {{ item.symbol_padding }}px; {% if item.symbol_type == "icon" %}width: {{ item.symbol_size }}px; {% endif %}color: {{ item.symbol_color.color }}; fill: {{ item.symbol_color.color }};">
+                                    {% if item.symbol_type == "text" %}
+                                    {% inline_text field="symbol" value="{{ item.symbol }}" %}
+                                    {% elif item.symbol_type == "icon" %}
+                                    {% icon
+                              name="{{ item.icon_field.name }}"
+                              style="{{ item.icon_field.type }}"
+                              unicode="{{ item.icon_field.unicode }}"
+                              icon_set="{{ item.icon_field.icon_set }}"
+                          %}
+                                    {% endif %}
+                                </span>
+                            </h2>
+                            <span class="elements--stats__text--type-1__{{ name }}" style="text-align: {{ item.stat_text_align }};">
+                                {% inline_rich_text field="text" value="{{ item.text }}" %}
+                            </span>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% require_css %}
+<style>
+
+    {# Stats Simple Style #}
+
+
+    .elements--stats__stat--type-1__{{ name }} {
+        padding-top: {{ module.paddings.desktop.stats.top }}px;
+        padding-bottom: {{ module.paddings.desktop.stats.bottom }}px;
+    }
+
+    .elements--stats__container--type-1__{{ name }} {
+        display: grid;
+        grid-template-columns: repeat({{ module.module_styles.columns_per_row }}, auto);
+        grid-column-gap: {{ module.module_styles.stats_gap }}px;
+    }
+
+    .elements--stats__text__top--type-1__{{ name }} {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+        font-weight: 500;
+        margin-top: 0px;
+    }
+
+    .elements--stats__text--type-1__{{ name }} * {
+        margin-bottom: 0px;
+        line-height: 22px;
+    }
+
+    {# Stats With Image Style #}
+
+    .elements--stats__card--type-2__{{ name }} {
+        width: 86%;
+        margin: -6% auto 0;
+
+        padding-top: {{ module.paddings.desktop.card.top }}px !important;
+        padding-bottom: {{ module.paddings.desktop.card.bottom }}px !important;
+        padding-left:  {{ module.paddings.desktop.card.left }}px !important;
+        padding-right: {{ module.paddings.desktop.card.right }}px !important;
+        position: relative;
+
+    }
+
+
+    .elements-module-image_{{ name }} img {
+        width: 100%;
+        border-radius: {{ module.image.border_radius }}px;
+        transition: .2s ease-in-out;
+    }
+
+    .elements-module-image_{{ name }} img:hover {
+        transform: scale(1.02);
+    }
+
+
+    @media(max-width: 992px) {
+
+        .elements--stats__container--type-1__{{ name }} {
+            grid-template-columns: repeat({{ module.module_styles.columns_per_row_tablet }}, auto);
+        }
+
+    }
+
+
+    @media(max-width: 767px) {
+
+        .elements-module-image_{{ name }} img {
+            border-radius: {{ module.image.border_radius_mobile }}px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .elements-module-image_{{ name }} img:hover {
+            transform: none;
+        }
+
+        .elements--stats__text__top--type-1__{{ name }} {
+            margin-bottom: 0px;
+        }
+
+        .elements--stats__card--type-2__{{ name }} {
+            margin-top: -10px !important;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            width: 100%;
+            padding-top: {{ module.paddings.mobile.card.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.card.bottom }}px !important;
+            padding-left:  {{ module.paddings.mobile.card.left }}px !important;
+            padding-right: {{ module.paddings.mobile.card.right }}px !important;
+        }
+
+        .elements--stats__card--type-2__{{ name }}:hover {
+            transform: none !important;
+        }
+
+        .elements--stats__stat--type-1__{{ name }} {
+            padding-top: {{ module.paddings.mobile.stats.top }}px;
+            padding-bottom: {{ module.paddings.mobile.stats.bottom }}px;
+        }
+
+        .elements--stats__container--type-1__{{ name }} {
+            grid-template-columns: repeat({{ module.module_styles.columns_per_row_mobile }}, auto);
+        }
+
+        .elements-div-content_{{ name }} {
+            padding-top: {{ module.paddings.mobile.module.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+            padding-left: {{ module.paddings.mobile.module.left }}px !important;
+            padding-right: {{ module.paddings.mobile.module.right }}px !important;
+
+            margin-top: {{ module.margins.mobile.module.top }}px;
+            margin-bottom: {{ module.margins.mobile.module.bottom }}px;
+            margin-left: {{ module.margins.mobile.module.left }}px;
+            margin-right: {{ module.margins.mobile.module.right }}px;
+        }
+
+        .elements-module-image_{{ name }} {
+            padding-top: {{ module.paddings.mobile.image.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+            padding-left: {{ module.paddings.mobile.image.left }}px !important;
+            padding-right: {{ module.paddings.mobile.image.right }}px !important;
+        }
+
+        .elements-module-card-title-content_{{ name }} {
+            padding-top: {{ module.paddings.mobile.content.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+            padding-left: {{ module.paddings.mobile.content.left }}px !important;
+            padding-right: {{ module.paddings.mobile.content.right }}px !important;
+        }
+
+    }
+
+    .cards__card.elements--stats__card--type-2__{{ name }}{
+        background-color:rgba({{ module.style.background_color.color|convert_rgb }},{{ module.style.background_color.opacity/100 }});
+        {% if module.style.box_shadow %}
+        {% else %}
+            box-shadow:none;
+        {% endif %}
+    }
+  
+    {% if   module.style.top_text_style.font_type == "google" %}
+        .elements--stats__text__top--type-1__{{ name }} {
+            font-family: {{ module.style.top_text_style.font_field.font }}; {{ module.style.top_text_style.font_field.style }};
+            color: {{ module.style.top_text_style.font_field.color }};
+            font-size: {{ module.style.top_text_style.font_field.size }}{{module.style.top_text_style.font_field.size_unit }};
+        }
+    {% else %}
+        .elements--stats__text__top--type-1__{{ name }} {
+             font-family: {{ module.style.top_text_style.custom_font.font_family }};
+             font-size: {{ module.style.top_text_style.custom_font.font_size }}px;
+             color: rgba({{ module.style.top_text_style.custom_font.color_field.color|convert_rgb  }},{{  module.style.top_text_style.custom_font.color_field.opacity/100 }})
+        }
+    {% endif %}
+    
+    {% if   module.style.bottom_text_style.font_type == "google" %}
+        .elements--stats__text--type-1__{{ name }} * {
+            font-family: {{ module.style.bottom_text_style.font_field.font }}; {{ module.style.bottom_text_style.font_field.style }};
+            color: {{ module.style.bottom_text_style.font_field.color }};
+            font-size: {{ module.style.bottom_text_style.font_field.size }}{{module.style.bottom_text_style.font_field.size_unit }};
+        }
+    {% else %}
+        .elements--stats__text--type-1__{{ name }} * {
+             font-family: {{ module.style.bottom_text_style.custom_font.font_family }};
+             font-size: {{ module.style.bottom_text_style.custom_font.font_size }}px;
+             color: rgba({{ module.style.bottom_text_style.custom_font.color_field.color|convert_rgb  }},{{  module.style.bottom_text_style.custom_font.color_field.opacity/100 }})
+        }
+    {% endif %}
+
+
+</style>
+{% end_require_css %}
+
+
+
+
+
+
+
+
+

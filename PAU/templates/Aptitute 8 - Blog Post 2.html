@@ -1,0 +1,199 @@
+<!--
+    templateType: blog_post
+    isAvailableForNewContent: true
+    label: Blog Post v2 - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/blog-post-v2.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper">
+  <div class="body-container body-container--blog-index">
+    
+    {# 1 Section - Blog header #}
+    <section class="content-wrapper">
+      <div class="container-fluid elements--post2--blog--header__container">
+        <div class="row-fluid-wrapper">
+            <div class="row-fluid">
+              
+               <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+                 
+                 <a href="{{ group.absolute_url }}" class="elements--post2--blog-pagination__link" style="display: -webkit-inline-flex; display: -ms-inline-flexbox; display: inline-block; align-items: center;">
+                  <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="13" style="fill: {{ theme.global_colors.primary_colors.primary_color_1.color }}; width: 10px; margin-right: 8px; position: relative; top: 2px;" aria-hidden="true"><g id="layer1"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></g></svg>
+                    <span> Back to Blog</span>
+                 </a>
+
+                <img class="elements--post--blog__image" src="{{ content.featured_image }}" loading="lazy" alt="{{ content.featured_image_alt_text }}">
+                
+                 <div class="elements--post2--blog--header__text">
+                   
+                   {% if content.tag_list[0].name %}
+                     <a class="blog-tag" href="{{ blog_tag_url(group.id, content.tag_list[0].slug) }}">
+                      <span class="elements--post--blog--tag__badge" style="padding: 6px 12px; border-radius: 5px;">
+                        {{ content.tag_list[0].name }}
+                      </span>
+                     </a>
+                   {% endif %}
+                 
+                   <h1 class="elements--post--blog__title">{{ content.name }}</h1>
+                 
+                   <p class="elements--post2--blog__subtitle">{{ content.meta_description }}</p>
+                   
+                   <div class="row-fluid-wrapper">
+                    <div class="row-fluid">
+                      <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+                        {% if content.blog_post_author.avatar %}
+                          <img alt="{{ content.blog_post_author.display_name }}" class="elements--post2--blog--author__image" src="{{ content.blog_post_author.avatar }}"> 
+                        {% endif %}
+                        <h5 class="elements--post2--blog--author__display__name">{{ content.blog_post_author.display_name }}</h5>
+                      </a>
+                        <span class="elements--post2--blog--author__display__separator"></span>
+                        <p class="elements--post2--blog--author__display__date">{{ content.publish_date|datetimeformat('%b %d, %Y') }}</p>
+                    </div>
+                   </div>
+                   
+                 </div>
+                  
+
+                </div>
+
+            </div>
+        </div>
+
+      </div>
+    </section>
+    {# End 1 Section - blog header #}
+    
+    
+    {# 2 Section - Main Content #}
+    <section class="content-wrapper">
+      <div class="container-fluid elements--post2--blog--main__content">
+          <div class="row-fluid-wrapper">
+              <div class="row-fluid">
+                
+                  {# Body Section #}
+                  <div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="10">
+                    <article>
+                      <div class="elements--post2--blog--body">
+                        {{ content.post_body }}
+                      </div>
+                    </article>
+                  </div>
+                  {# End - Author Section #}
+              </div>
+            
+            <div class="row-fluid-wrapper">
+              <div class="row-fluid">
+                                
+                
+                  {# Author Section #}
+                 {% if content.blog_post_author %}
+                  <div class="span12 widget-span widget-type-cell elements--post--blog--author__container" style="" data-widget-type="cell" data-x="0" data-w="12">
+                    
+                    <div class="cards__card elements--post2--blog--author__card">
+                      <div class="row-fluid-wrapper">
+                        <div class="row-fluid">
+                          
+                          <div class="span3 widget-span widget-type-cell elements--post2--blog--card--author__image--container" data-widget-type="cell" data-x="0" data-w="3">
+                            {% if content.blog_post_author.avatar %}
+                            <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+                              <img alt="{{ content.blog_post_author.display_name }}" class="elements--post2--blog--card--author__image" src="{{ content.blog_post_author.avatar }}"> 
+                            </a> 
+                              {% endif %}
+                          </div>
+                          
+                          <div class="span9 widget-span widget-type-cell" data-widget-type="cell" data-x="3" data-w="9">
+                            
+                              <a class="author-link" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+
+                                <h3 class="elements--post2--blog--card--author__display__name">{{ content.blog_post_author.display_name }}</h3>
+
+                              </a>    
+
+                              <p>{{ content.blog_post_author.bio }}</p>
+
+                              {% if content.blog_post_author.has_social_profiles %}
+                                  <div class="hs-author-social-section">
+                                      <div class="hs-author-social-links">
+                                        <div class="row-fluid-wrapper">
+                                          <div class="row-fluid">
+                                              <div class="span12 widget-span widget-type-cell elements--post2--blog--author__social__icons--container" style="" data-widget-type="cell" data-x="0" data-w="12">
+                                                {% if content.blog_post_author.facebook %}
+                                                  <a href="{{ content.blog_post_author.facebook }}" target="_blank" class="hs-author-social-link hs-social-facebook">
+                                                    <img class="elements--post2--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg" alt="Facebook Author">
+                                                  </a>
+                                                {% endif %}
+                                                {% if content.blog_post_author.twitter %}
+                                                  <a href="{{ content.blog_post_author.twitter }}" target="_blank" class="hs-author-social-link hs-social-twitter">
+                                                    <img class="elements--post2--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg" alt="Twitter Author">
+                                                  </a>
+                                                {% endif %}
+                                                {% if content.blog_post_author.linkedin %}
+                                                  <a href="{{ content.blog_post_author.linkedin }}" target="_blank" class="hs-author-social-link hs-social-linkedin">
+                                                    <img class="elements--post2--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg" alt="Linkedin Author">
+                                                  </a>
+                                                {% endif %}
+                                                {% if content.blog_post_author.website %}
+                                                  <a href="{{ content.blog_post_author.website }}" target="_blank" class="hs-author-social-link hs-social-website">
+                                                    <img class="elements--post2--blog--author__social__icons" src="https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/web.svg" alt="Website Author">
+                                                  </a>
+                                                {% endif %}
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      </div>
+                                  </div>
+                              {% endif %}
+                                                        
+                          </div>
+                          
+                      </div>
+                      
+                   
+                    </div>
+                    
+                  </div>
+                 {% endif %}
+                 {# End - Author Section #}
+              </div>
+            </div>
+          </div>
+      </div>
+     </div>
+    </section>
+    {# End 2 Section - Main Content #}
+    
+    {# 3 Section - CTA Subscribe #}
+    <section class="content-wrapper">
+      {% module "module_161135249798149" path=' ../modules/Aptitute 8 - Section CTA - Form', label="Aptitute 8 - Section Subscribe 2" %} 
+    </section>
+    {# End 3 Section - CTA Subscribe #}
+    
+
+    {# 4 Section - Latest Articles #}
+    <div id="section-articles" style="background-color: {{ theme.global_colors.neutral_colors.neutral_color_200.color }};">
+
+      <section class="content-wrapper">
+        {% module "module_16115901644861" path=' ../modules/Aptitute 8 - Card - Articles', label="Aptitute 8 - Section Article Cards",
+          module_styles =  { background_color =  { 'color': theme.global_colors.neutral_colors.neutral_color_200.color, 'opacity': 100 } }
+          content = { content = '<h2>Latest Articles</h2>' },
+          margins =  { desktop =  { button = { 'top': 0 }, module = { 'bottom' : 0 } } },
+          paddings =  { desktop =  { module = { 'top': 96, 'bottom' : 150 } }, mobile =  { module = { 'top': 80, 'bottom' : 80 } } }
+        %}
+      </section>
+    </div>
+
+    {# End 4 Section - Latest Articles #}
+    
+    
+
+    
+    
+    
+
+  </div>
+</main>
+
+{% endblock body %}

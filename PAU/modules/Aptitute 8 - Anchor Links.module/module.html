@@ -1,0 +1,125 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px !important;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px !important;
+  padding-left:  {{ module.paddings.desktop.module.left }}px !important;
+  padding-right: {{ module.paddings.desktop.module.right }}px !important;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+
+{% endmacro %}
+
+{% macro buildContentStyles() %}
+  padding-top: {{ module.paddings.desktop.content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.content.left }}px;
+  padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+
+
+
+<div {{ buildID() }} class="elements--anchor--links__container_{{ name }} {{ buildClass() }}">
+  {% for item in module.anchor_links %}
+  	{% set href = item.link_field.url.href %}
+	{% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+		{% set href = "mailto:" + href %}
+	{% endif %}
+	{% set rel = [] %}
+	{% if item.link_field.no_follow %}
+		{% do rel.append("nofollow") %}
+	{% endif %}
+	{% if item.link_field.open_in_new_tab %}
+		{% do rel.append("noopener") %}
+	{% endif %}
+	<a href="{{ href }}"
+		{% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+		{% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+  >
+		<button class="blog-tag-filter-item_{{ name }} {{ module.module_styles.class_type }}">{{ item.title }}</button>
+	</a>
+  {% endfor %}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  
+
+  {% if module.module_styles.class_type == "custom" %}
+  
+    .blog-tag-filter-item_{{ name }} {
+
+      {% if module.module_styles.font_field.font %}
+        font-family: {{ module.module_styles.font_field.font }};
+      {% endif %}
+      
+      {{ module.module_styles.font_field.style }}; 
+      
+      color: {{ module.module_styles.font_field.color }}; 
+      
+      {% if module.module_styles.font_field.size %}
+        font-size: {{ module.module_styles.font_field.size }}px !important;
+      {% endif %}
+      
+
+      background-color: {{ module.module_styles.background_color.color }};
+      border: {{ module.module_styles.border_width }}px solid {{ module.module_styles.border_color.color }} !important;
+      border-radius: {{ module.module_styles.border_radius }}px !important;
+    }
+    
+  {% endif %}  
+
+  
+  .elements--anchor--links__container_{{ name }} {
+    text-align: {{ module.module_styles.buttons_align }};
+    margin: -6px;
+  }
+  
+  .elements--anchor--links__container_{{ name }} .blog-tag-filter-item_{{ name }} {
+    margin: 6px;
+  }
+  
+  
+@media(max-width: 767px) {
+  
+  .elements--anchor--links__container_{{ name }} {
+    text-align: {{ module.module_styles.buttons_align_mobile }};
+  }
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    
+    margin-top: {{ module.margins.mobile.module.top }}px;
+    margin-bottom: {{ module.margins.mobile.module.bottom }}px;
+    margin-left: {{ module.margins.mobile.module.left }}px;
+    margin-right: {{ module.margins.mobile.module.right }}px;
+  }
+    
+
+
+}
+  
+</style>
+{% end_require_css %}
+
+
+
+
+
+  

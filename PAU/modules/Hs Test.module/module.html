@@ -1,0 +1,11 @@
+
+
+
+
+{% set query = "in_partnership_with_dropdown=AAFP&limit=100" %} 
+
+{% set items = "name, introduction, page_url, course_image, ce_hours, length,start_time, end_time ,course_type, price__usd_, presented_by, specialty_area, format, certificate, badge_earning, event_start_date, event_end_date, in_partnership_with_dropdown" %}
+
+{% set objects = crm_objects("courses", query , items, "formatting=false") %} 
+
+{{ objects }}

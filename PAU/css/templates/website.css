@@ -1,0 +1,558 @@
+.flex-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.align-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.flex-wrap {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.justify-bw {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.flex-end{
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+
+/* ==================== Typo ========================== */
+.text-uppar {
+    text-transform: uppercase;
+}
+.text-center{
+    text-align:center;
+}
+.p-small{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+}
+.bold-text {
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0px;
+}
+/* ==================== Columns ========================== */
+.m-col-4{
+    width: 33.3333%;
+}
+.m-col-5 {
+    width: 41.666667%;
+}
+.m-col-6 {
+    width: 50%;
+}
+.m-col-7 {
+    width: 58.333333%;
+}
+.m-col-8 {
+    width: 66.6666%;
+}
+.m-col-12 {
+    width: 100%;
+}
+.m-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==================== theme Color ========================== */
+.glacial-blue-ice{
+    color:#2488CD;
+}
+.sunshade{
+    color:#FAA61A;
+}
+.venice-blue{
+    color:#005A9C
+}
+
+.midnight-blue{
+    color: #0B3253;
+}
+.carbon-grey{
+    color:#636466;
+}
+.pale-aqua{
+    color:#C6CFDA;
+}
+.berry-jam{
+    color:#9D1D64
+}
+.white-color{
+    color:#ffffff;
+}
+.PAU-gradient{
+    background: linear-gradient(180deg, #005A9C 2.4%, #2488CD 61.32%);
+}
+
+.white-bg-color{
+    background: #ffffff;
+}
+/* ==================== spacing ========================== */
+.mb-0{
+    margin-bottom:0px
+}
+.mb-5{
+    margin-bottom:5px;
+}
+.mb-16{
+    margin-bottom:16px
+}
+.mb-32{
+    margin-bottom:32px;
+}
+.mb-40{
+    margin-bottom:40px;
+}
+.mb-56{
+    margin-bottom:56px
+}
+.mb-72{
+    margin-bottom:72px
+}
+
+/*======= left ====  */
+.pl-l6 {
+    padding-left: 16px;
+}
+.pl-32{
+    padding-left:32px;
+}
+.pl-40{
+    padding-left:32px;
+}
+.pl-48{
+    padding-left:48px;
+}
+.pl-88{
+    padding-left:88px;
+}
+
+
+/*======= Right ====  */
+.pr-16{
+    padding-right:16px;
+}
+.pr-32{
+    padding-right:32px;
+}
+.pr-88{
+    padding-right:88px;
+}
+
+
+/*======= Top ====  */
+.pt-40{
+    padding-top:40px;
+}
+.pt-56{
+    padding-top:56px;
+}
+.pt-96{
+    padding-top:96px;
+}
+.pt-64{
+    padding-top:64px;
+}
+
+
+/*======= Bottom ====  */
+.pb-30{
+    padding-bottom:30px;
+}
+.pb-40{
+    padding-bottom:40px;
+}
+.pb-60{
+    padding-bottom:60px;
+}
+.pb-72{
+    padding-bottom:72px;
+}
+.pb-64{
+    padding-bottom:64px;
+}
+.pb-96{
+    padding-bottom:96px;
+}
+
+/* ==================== Other ========================== */
+.radius-16{
+    border-radius: 16px;
+}
+
+
+@media(max-width:767px){
+    .m-col-4,
+    .m-col-5,
+    .m-col-6,
+    .m-col-7,
+    .m-col-8{
+        width:100%
+    }
+
+    .m-mb-30{
+        margin-bottom:30px;
+    }
+    .m-pl-0{
+        padding-left:0px;
+    }
+}
+
+
+
+/*=================== Course ============================*/
+.row.course-bi-inst {
+    margin: 0 -14px;
+}
+.course-item {
+    width: 33.333%;
+    padding: 0 14px;
+    margin-bottom: 56px;
+    float:left;
+/*     position:static !important; */
+}
+.course-item .c-inner{
+    box-sizing: border-box;
+    border: 0.5px solid #E7E8F1;
+    box-shadow: 0px 3px 10px rgba(31, 37, 89, 0.04);
+    border-radius: 28px;
+    position: relative;
+    min-height:420px;
+    height:100%;
+    background:#fff;
+}
+.course-item .price {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 37px;
+    letter-spacing: 0.02em;
+}
+.course-item .image,
+.course-item .image img{
+    border-radius: 16px 16px 0 0;
+}
+.course-item h3.title {
+    line-height: 29px;
+    letter-spacing: 0.02em;
+}
+.course-item .image {
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+    min-height: 200px;
+}
+.course-item .image img {
+    min-height: 200px;
+    object-fit: cover;
+}
+.c-content{
+    background:#fff;
+}
+/* .course-item .image:before {
+    content: "";
+    background: linear-gradient(0deg, rgba(11, 50, 83, 0.7), rgba(11, 50, 83, 0.7));
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+} */
+.course-item img.author-img {
+    position: absolute;
+    right: 32px;
+    margin-top: -72px;
+}
+.course-item span.hours {
+    position: absolute;
+    background: #FAA61A;
+    border-radius: 16px;
+    left: 32px;
+    bottom: 20px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0em;
+    color: #fff;
+    padding: 8px 16px;
+    min-width: 0;
+    max-width: 100%;
+}
+.course-item img.author-img {
+    position: absolute;
+    right: 32px;
+    margin-top: -72px;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.course-item h3.title {
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.course-item .instructor-image {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: -20px;
+}
+.course-item img.author-img {
+    position: relative;
+    right: 0;
+}
+
+.lobjectives img.arch {
+    width: 100%;
+    display: block;
+    margin-top: 150px;
+}
+.lobjectives {
+    background: linear-gradient(180deg,#fff 22.7%,rgba(255,255,255,0) 90.87%),#c6cfda;
+    padding-bottom: 0px;
+    position: relative;
+    overflow:hidden;
+}
+.lobjectives .lea-item:last-child {
+    margin-bottom: 60px;
+}
+.lobjectives svg {
+    width: 100%;
+    position: absolute;
+    top: calc(100% - 185px);
+}
+
+/* .lobjectives:after {
+    content: "";
+    background-image: url(https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Arch.svg);
+    width: 100%;
+    height: 25vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: left top;
+} */
+
+.curriculum  .white-color {
+    color: #fff;
+}
+
+.curriculum-item-wrapper {
+    border: 1px solid #c6cfda;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 12px rgb(11 50 83 / 28%);
+    border-radius: 24px;
+    padding: 64px 88px;
+}
+
+.curriculum-item p {
+    padding-left: 30px;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 132%;
+    letter-spacing: .02em;
+    position: relative;
+}
+
+.curriculum-item p span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.row-7 .three-col-content {
+    background-color: rgba(198,207,218,0.24) !important;
+}
+
+.live-page .author-section .atitle strong {
+    display: block;
+}
+
+.hs-course-content h2 {
+    line-height: 132%;
+    letter-spacing: -0.02em;
+    text-shadow: 0px 2px 4px rgba(222, 42, 74, 0.05);
+    margin: 0 0 16px;
+}
+
+.hs-course-content h3{
+    line-height: 132%;
+    letter-spacing: 0.02em;
+    color: #005A9C;
+    text-shadow: 0px 2px 4px rgba(222, 42, 74, 0.05);
+    margin: 16px 0;
+}
+
+.live-page .hs-course-content h2 {
+    color: #636466;
+}
+
+.live-page .presented-by:before {
+    display: none;
+}
+
+.live-page .presented-by .items h2 {
+    line-height: 132%;
+    letter-spacing: -0.02em;
+    color: #2488CD;
+    text-shadow: 0px 2px 4px rgb(222 42 74 / 5%);
+}
+
+.hs-course-content h2 span {
+    text-transform: lowercase;
+}
+@media(max-width:1250px){
+    .row.course-bi-inst{
+        margin:0;
+    }
+}
+@media(max-width:1100px) and (min-width:768px){
+    .course-item .image img {
+        min-height: 200px;
+        object-fit: fill;
+    }
+}
+
+@media(max-width:767px){
+    .course-item {
+        width: 100%;
+    }
+    .course-item + .course-item {
+        margin-top:0px;
+    }
+    .mmb-30{
+        margin-bottom: 30px;
+    }
+    .lobjectives img.arch {
+        MARGIN-TOP: 20PX;
+    }
+/*     .lobjectives {
+        padding-bottom: 120px;
+    } */
+    .curriculum-item-wrapper {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .lobjectives:after {
+        height: 15vh;
+        bottom: 0;
+    }
+    .course-item .c-inner{
+        min-height:0;
+    }
+    .course-item{
+        padding-left:0;
+        padding-right:0
+    }
+}
+
+@media(max-width:479px){
+    .curriculum-item-wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .curriculum .heading-1,
+    .lobjectives .heading-1{
+        font-size: 40px;
+    }
+    .lea-item img {
+        width: 40px;
+    }
+    .lea-item .pl-40 {
+        padding-left: 20px;
+    }
+}
+/*=================== End Course ========================*/
+
+.two-col-image-wrapper {
+    padding: 96px 0;
+}
+
+.two-col-image-wrapper .two-col-image-inner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 -15px;
+}
+
+.two-col-image-wrapper .content-col,
+.two-col-image-wrapper .image-col {
+    width: 50%;
+    padding: 0 15px;
+}
+
+.two-col-image-wrapper .content-col h2 {
+    font-size: 48px;
+    line-height: 116%;
+    letter-spacing: -0.01em;
+    color: #005A9C;
+    text-shadow: 0px 2px 4px rgba(222, 42, 74, 0.05);
+    margin: 0 0 16px 0px;
+}
+
+.two-col-image-wrapper .content-col h3 {
+    line-height: 132%;
+    letter-spacing: 0.02em;
+    margin: 16px 0px;
+}
+
+.two-col-image-wrapper .content-col p {
+    line-height: 160%;
+    margin: 16px 0px;
+}
+
+.two-col-image-wrapper .content-col .button-wrap a {
+    padding: 20px 34px;
+    display: inline-block;
+    background: #2488CD;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -0.3px;
+    color: #FFFFFF;
+    margin: 20px 0;
+}
+
+.two-col-image-wrapper .content-col h5 {
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    text-shadow: 0px 2px 4px rgba(222, 42, 74, 0.05);
+    margin: 0 0 16px;
+}
+
+@media (max-width: 767px){
+    .two-col-image-wrapper .content-col, .two-col-image-wrapper .image-col {
+        width: 100%;
+    }
+
+    .two-col-image-wrapper .content-col {
+        order: 2;
+    }
+
+    .two-col-image-wrapper .image-col {
+        order: 1;
+        margin-bottom: 30px;
+    }
+
+}
+

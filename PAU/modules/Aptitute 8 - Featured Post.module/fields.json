@@ -1,0 +1,188 @@
+[ {
+  "id" : "a843d942-4c75-9a48-4341-f3537aebdd4c",
+  "name" : "article",
+  "display_width" : null,
+  "label" : "Article",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "f662e2bc-25e6-17e9-f755-08492a970330",
+    "name" : "tag",
+    "display_width" : null,
+    "label" : "Tag",
+    "required" : false,
+    "locked" : false,
+    "tag_value" : "SLUG",
+    "type" : "tag",
+    "default" : "social-media"
+  }, {
+    "id" : "7efad8c7-2663-6447-b7d4-9e519b598ab3",
+    "name" : "blog",
+    "display_width" : null,
+    "label" : "Blog",
+    "required" : false,
+    "locked" : false,
+    "type" : "blog",
+    "default" : 37125096733
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "tag" : "social-media",
+    "blog" : 37125096733
+  }
+}, {
+  "id" : "11b7ba4a-67c9-799b-6230-f1d3391329ad",
+  "name" : "card",
+  "display_width" : null,
+  "label" : "Card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e0385089-e865-4dd2-361f-dec0831f06a8",
+    "name" : "badge_color",
+    "display_width" : null,
+    "label" : "Badge Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7ed5003a-33e0-d7d6-cd8e-fb03394cb948",
+    "name" : "font_color",
+    "display_width" : null,
+    "label" : "Font Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "eb5c801c-58d9-9be9-8ccb-33d716a79d49",
+    "name" : "card_background_color",
+    "display_width" : null,
+    "label" : "Card Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "2979a7d8-25b0-0758-67e7-d406cddc4fe7",
+    "name" : "border_width",
+    "display_width" : null,
+    "label" : "Border Width",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number"
+  }, {
+    "id" : "8bf62c98-0952-8504-ae6c-d1d0b6b2eaf5",
+    "name" : "border_color",
+    "display_width" : null,
+    "label" : "Border Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "32e62405-9c78-7e63-340e-59065f4ff410",
+    "name" : "title_color",
+    "display_width" : null,
+    "label" : "Title Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "1b1a983c-196b-7786-da54-7ff83e28f780",
+    "name" : "text_color",
+    "display_width" : null,
+    "label" : "Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "badge_color" : {
+      "color" : null,
+      "opacity" : 100
+    },
+    "font_color" : {
+      "color" : null,
+      "opacity" : 100
+    },
+    "card_background_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "border_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "title_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "text_color" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }
+}, {
+  "id" : "8aa66d11-d1eb-3999-aec7-1bddba5d9466",
+  "name" : "settings",
+  "display_width" : null,
+  "label" : "Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "df5dfcfe-73fe-03c8-82ef-d81dd7f5c337",
+    "name" : "css__id",
+    "display_width" : null,
+    "label" : "CSS ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "9c4551ba-0066-3556-5b5d-aa7ad6c42997",
+    "name" : "css__class",
+    "display_width" : null,
+    "label" : "CSS Class",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

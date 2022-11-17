@@ -1,0 +1,16 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 61976788893,
+  "css_assets" : [ {
+    "url" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/css/slick.css",
+    "autoload" : true,
+    "name" : "slick.css"
+  } ],
+  "js_assets" : [ {
+    "url" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/js/slick.js",
+    "autoload" : true,
+    "name" : "slick.js"
+  } ],
+  "is_available_for_new_content" : true
+}

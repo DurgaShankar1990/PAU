@@ -1,0 +1,97 @@
+<!--
+templateType: global_partial
+label: Footer
+-->
+
+<footer class="footer">
+    <div class="footer__container content-wrapper">
+        <div class="container-fluid footer-top-title">
+            <div class="row-fluid-wrapper">
+                <div class="row-fluid">
+                    <div class="span12 widget-span widget-type-cell" data-widget-type="cell" data-x="0" data-w="12">
+                        {% module "header" path="@hubspot/header" header_tag="h2" value="Practice Lifelong Exellence" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid ">
+            <div class="row-fluid-wrapper">
+                <div class="row-fluid">
+                    <div class="span4 widget-span widget-type-cell footer__left-column" data-widget-type="cell" data-x="0" data-w="4">
+                        <div class="footer__logo">
+                            {% module "footer_logo" path="@hubspot/logo" link="http://concept.paloalotu.edu/" img={ "override_inherited_src": true, "src": "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/footer-logo.svg", "width":256, "alt":"Palo Alto University" } %}
+                        </div>
+                        <div class="footer__form">
+                            {% module "footer__form" path="@hubspot/form", form={ "form_id": "38733fb1-3d4e-48ec-986f-df2980f74dce", "redirect_url": "" }, label="Footer form", title="" %}
+                        </div>
+                    </div>
+                    <div class="span8 widget-span widget-type-cell footer__right-column" data-widget-type="cell" data-x="4" data-w="8">
+                        <div class="footer__columns__grid">
+                            <div class="footer__columns footer__menu">
+                                {% module_block module 'Menu Column 1' path="@hubspot/rich_text", label='Menu Column 1' %}
+                                {% module_attribute 'html'  %}
+                                <h6>CONCEPT | PAU</h6>
+                                <ul>
+                                    <li><a href="/about-us">About Us</a></li>
+                                    <li><a href="/call-for-proposals">Call for Proposals</a></li>
+                                    <li><a href="/ce/cpd-approvals">CE/CPD Approvals</a></li>
+                                    <li><a href="/certifications">Certificates</a></li>
+                                    <li><a href="/course">Courses</a></li>
+                                    <li><a href="/group-training">Group Training</a></li>
+                                    <li><a href="/our-presenters">Our Instructors</a></li>
+                                    <li><a href="/research-opportunities">Research Opportunites</a></li>
+                                </ul>
+                                {% end_module_attribute %}
+                                {% end_module_block %}
+                            </div>
+                            <div class="footer__columns footer__menu">
+                                {% module_block module 'Menu Column 2' path="@hubspot/rich_text", label='Menu Column 2' %}
+                                {% module_attribute 'html'  %}
+                                <h6>Legal</h6>
+                                <ul>
+                                    <li><a href="/terms-conditions">Terms and Conditions</a></li>
+                                    <li><a href="/terms-conditions-0">Grievance Policy</a></li>
+                                    <li><a href="/terms-conditions-0-0">Privcay Policy</a></li>
+                                </ul>
+                                {% end_module_attribute %}
+                                {% end_module_block %}
+                            </div>
+                            <div class="footer__columns footer__menu">
+                                {% module_block module 'Menu Column 3' path="@hubspot/rich_text", label='Menu Column 3' %}
+                                {% module_attribute 'html'  %}
+                                <h6>Support</h6>                            
+                                <ul>
+                                    <li><a href="">Terms and Conditions</a></li>
+                                    <li><a href="">Grievance Policy</a></li>
+                                    <li><a href="">Privcay Policy</a></li>
+                                </ul>
+                                {% end_module_attribute %}
+                                {% end_module_block %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__container-bottom">
+            <div class="container-fluid">
+                <div class="row-fluid-wrapper">
+                    <div class="row-fluid">
+                        <div class="span4 widget-span widget-type-cell footer__social-icons" style="" data-widget-type="cell" data-x="0" data-w="4">
+                            {% module "module_161107835119668" path='../../modules/Aptitute 8 - Social Icons', label="Aptitute 8 - Social Icons" %}
+                        </div>
+                        {# Copyright information section #}
+                        <div class="span8 widget-span widget-type-cell footer__copyright" style="" data-widget-type="cell" data-x="4" data-w="8">
+                            {% module_block module 'footer_copyright_text' path='@hubspot/rich_text', label="Copyright" %}
+                            {% module_attribute 'html' %}
+                            <p>CONCEPT Continuing and Professional Studies at PAU<span style="display:block; color: #0B3253;">1791 Arastradero Road, Palo Alto, CA 94304</span></p>
+                            {% end_module_attribute %}
+                            {% end_module_block %}
+                        </div>
+                        {# End copyright information section #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

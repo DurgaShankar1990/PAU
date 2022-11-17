@@ -1,0 +1,50 @@
+{% set query = "order=event_start_date&is_published=Yes&course_type=Live&limit=1"%}
+{% set items = "name, introduction, page_url, course_image, length, course_type,start_time, price__usd_,end_time, presented_by, specialty_area, ce_hours_dropdown, event_time_zone , format, certificate, badge_earning, event_start_date, event_end_date , product_id,thinkific_course_id" %}
+{% set objects = crm_objects("courses", query , items, "formatting=true" ) %} 
+{% for obj in objects.results %}
+{% set instructor = crm_associations(obj.id, 'USER_DEFINED', 106,"limit=10","name, page_url, headshot_link") %}
+
+<div class="event-banner-wrapper" style="background-image: url('https://f.hubspotusercontent20.net/hubfs/20705724/Course%20Images/Program_Blank_Main_Image.jpg')">
+    <div class="content-wrapper">
+        <div class="event-banner-inner">
+            <div class="event-date">
+                <div class="event-banner-date-inner">
+                    <span class="event-banner-month">{{ obj.event_start_date|datetimeformat('%b') }}</span>
+                    <span class="event-banner-date">{{ obj.event_start_date|datetimeformat('%e') }}</span>
+                </div>
+            </div>
+            <div class="event-banner-description">
+                <div class="event-banner-description-inner">
+                    <h5 class="event-banner-subtitle">Featured Event</h5>
+                    <h1 class="event-banner-title">{{ obj.name }}</h1>
+                    <p class="event-banner-details">{{ obj.start_time }} - {{ obj.end_time }} {{ obj.event_time_zone }} | {{ obj.length }}{% if obj.ce_hours_dropdown %} / {{ obj.ce_hours_dropdown }}{% if obj.ce_hours_dropdown == "1" %} CE{% else %} CEs{% endif %}{% endif %}{% if instructor.results[0].name %} | Presented by: {{ instructor.results[0].name }}{% endif %}</p>
+                    <p class="event-banner-content">{{ obj.introduction }}</p>
+                </div>
+                    <div class="event-banner-button-wrapper">
+                        {% set href = module.register_link.url.href %}
+                        {% if module.register_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        
+<a class="button add-to-cart" href="{{ href }}" data-name="{{ obj.name }}" data-productid="{{ obj.product_id }}" data-thinkificid="{{ obj.thinkific_course_id }}" data-courseid="{{ obj.id }}" data-description="{{ obj.meta_description }}" data-image="{% if obj.course_image %} {{ obj.course_image }}{% else %}https://f.hubspotusercontent20.net/hubfs/20705724/no_image.jpg{% endif %}" data-price="{% if obj.price__usd_ %}{{ obj.price__usd_ }}{% else %}0{% endif %}" class="button add-to-cart">Register | {% if obj.price__usd_ %}{{ obj.price__usd_|format_currency("en-US") }}{% else %}$0{% endif %} USD</a>
+               
+                        
+                       {# <a href="{{ href }}" class="button add-to-cart"
+                           {% if module.register_link.open_in_new_tab %}target="_blank"{% endif %}
+                           {% if module.register_link.rel %}rel="{{ module.register_link.rel }}"{% endif %}
+                           >Register | {{ obj.price__usd_|format_currency("usd") }} USD</a>#}
+                        
+                        {% set href = module.purchase_link.url.href %}
+                        {% if module.purchase_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        <a href="https://concept.paloaltou.edu/group-training" class="button white"
+                           {% if module.purchase_link.open_in_new_tab %}target="_blank"{% endif %}
+                           {% if module.purchase_link.rel %}rel="{{ module.purchase_link.rel }}"{% endif %}
+                           >Purchase for a Group</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

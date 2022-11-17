@@ -1,0 +1,40 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: 404 Not Found - Elements HubSpot Theme - Inbound Elements
+  screenshotPath: ../../images/template-previews/404-not-found.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper">
+  <section class="content-wrapper">
+    <div class="error-page" data-error="404">
+      {% module 'content'
+        path='@hubspot/rich_text',
+        html="<h1>Page not found.</h1><p style='font-size: 25px; line-height: 36px;'>We couldn't find the page<br>you’re looking for.</p>"
+      %}
+      {% module "module_16140933442421" path='/Aptitude 8 Theme/modules/Aptitute 8 - Buttons', label="Elements - Buttons",
+        settings= { 
+          'button_align_desktop': 'center',
+          'button_align_mobile': 'center'
+        },
+      button = 
+        [ 
+          { 
+            "button_text":"Back to Homepage",
+            "class_button": "btn-primary-dark",
+            "link_field": { "url": { "href": "/" } }
+          }
+        ]
+      %}
+
+    </div>
+  </section>
+</main>
+{% endblock body %}

@@ -1,0 +1,28 @@
+<!--
+  templateType: email_subscription_preferences_page
+  isAvailableForNewContent: true
+  label: Subscription Preferences - Elements HubSpot Theme - Inbound Elements
+  screenshotPath: ../../images/template-previews/preferences-subscription.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper elements__password-protected">
+  <section class="content-wrapper">
+    <div class="systems-page cards__card  elements__subscription-preferences--card">
+    {% module "email_subscription_preferences_page_template_subscription_preferences" path="@hubspot/email_subscriptions" label="Subscription Preferences",
+      extra_classes='elements__subscription-preferences',
+      header="<h1>Communication Preferences</h1>",
+      subheader_text= "If you would like to update your communication preferences, please check or uncheck the boxes below.",
+      unsubscribe_single_text = '<h5 style="margin-bottom: 0px;">Uncheck the types of emails you do not want to receive:</h5>',
+      unsubscribe_all_text='<h5 style="margin-bottom: 0px;">Or check here to unsubscribe to all of our email lists:</h5>'
+    %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

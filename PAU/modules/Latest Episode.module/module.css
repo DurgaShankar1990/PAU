@@ -1,0 +1,119 @@
+.latest-episode-wrapper{
+    background: rgba(198, 207, 218, 0.24);
+    padding: 56px 20px 32px;
+}
+
+.latest-episode-wrapper .content-wrapper {
+    padding: 0;
+}
+
+.latest-episode-wrapper .recent-posts-top-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.latest-episode-wrapper .recent-post-title h2 {
+    text-shadow: 0px 2px 4px rgba(222, 42, 74, 0.05);
+    letter-spacing: -0.02em;
+    line-height: 132%;
+    margin: 0;
+}
+
+.latest-episode-wrapper .recent-post-button a {
+    display: inline-block;
+    padding: 20px 28px;
+    background: #FFFFFF;
+    border: 0.5px solid #BDBFD1;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px rgba(31, 37, 89, 0.05);
+    border-radius: 10px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160%;
+    color: #005A9C;
+}
+
+.latest-episode-wrapper .recent-posts-item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 -15px;
+}
+
+.latest-episode-wrapper .post-item .post-item-inner-content h3 a {
+    color: inherit;
+}
+
+.latest-episode-wrapper .post-item .post-item-inner-content h3 a:hover {
+    color: #9d1d64;
+}
+
+.latest-episode-wrapper .post-item .post-item-inner-content h3 {
+    line-height: 132%;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+}
+
+.latest-episode-wrapper .post-item .post-item-content p {
+    margin: 16px 0px;
+}
+
+.latest-episode-wrapper .latest-podcast-audio ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.latest-episode-wrapper .latest-podcast-audio ul li button {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #faa61a;
+}
+
+.latest-episode-wrapper .post-item .post-item-inner-content {
+    border: none;
+}
+
+.latest-episode-wrapper .latest-podcast-audio ul li button .play-icon {
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.latest-episode-wrapper .featured-image {
+    min-height: 220px;
+    background: #9D1D64;
+    border-radius: 16px 16px 0px 0px;
+}
+
+@media (max-width: 767px){
+    .latest-episode-wrapper .recent-posts-top-content {
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .latest-episode-wrapper .recent-post-title h2 {
+        margin: 0 0 15px;
+    }
+}
+
+@media (max-width: 479px){
+    .latest-episode-wrapper .post-item.recent-post-item {
+        width: 100%;
+    }
+
+    .latest-episode-wrapper .recent-posts-item-wrapper {
+        margin: 0;
+    }
+}

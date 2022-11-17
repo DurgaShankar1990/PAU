@@ -1,0 +1,11 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 63594174376,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/isotope.js",
+    "name" : "isotope.js"
+  } ],
+  "is_available_for_new_content" : true
+}

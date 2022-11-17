@@ -1,0 +1,92 @@
+<div class="three-col-content {{ name }}">
+    <div class="container">
+        {% if module.title || module.sub_title %}
+        <div class="top-row text-center">
+            <h2 class="venice-blue mb-16 heading-1">{{ module.title }}</h2>
+            <h3 class="midnight-blue mb-56">{{ module.sub_title }}</h3>
+        </div>
+        {% endif %}
+        <div class="row flex-row flex-wrap">
+            <div class="item m-col-4 pl-l6 pr-16 text-center mmb-30">
+                <div class="inner">
+                    {% if module.item.icon_image.src %}
+                    <div class="img">
+                        {% set sizeAttrs = 'width="{{ module.item.icon_image.width }}" height="{{ module.item.icon_image.height }}"' %}
+                        {% if module.item.icon_image.size_type == 'auto' %}
+                        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                        {% elif module.item.icon_image.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.item.icon_image.max_width }}" height="{{ module.item.icon_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                        {% endif %}
+                        {% set loadingAttr = module.item.icon_image.loading != 'disabled' ? 'loading="{{ module.item.icon_image.loading }}"' : '' %}
+                        <img src="{{ module.item.icon_image.src }}" alt="{{ module.item.icon_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </div>
+                    {% endif %}
+                    <div class="cont">
+                        <h3 class="glacial-blue-ice mb-16">{{ module.item.title }}</h3>
+                        <p>{{ module.item.content }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item m-col-4 pl-l6 pr-16 text-center mmb-30">
+                <div class="inner">
+                    {% if module.col_2_content.icon_image.src %}
+                    <div class="img">
+                        {% set sizeAttrs = 'width="{{ module.col_2_content.icon_image.width }}" height="{{ module.col_2_content.icon_image.height }}"' %}
+                        {% if module.col_2_content.icon_image.size_type == 'auto' %}
+                        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                        {% elif module.col_2_content.icon_image.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.col_2_content.icon_image.max_width }}" height="{{ module.col_2_content.icon_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                        {% endif %}
+                        {% set loadingAttr = module.col_2_content.icon_image.loading != 'disabled' ? 'loading="{{ module.col_2_content.icon_image.loading }}"' : '' %}
+                        <img src="{{ module.col_2_content.icon_image.src }}" alt="{{ module.col_2_content.icon_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </div>
+                    {% endif %}
+                    <div class="cont">
+                        <h3 class="glacial-blue-ice mb-16">{{ module.col_2_content.title }}</h3>
+                        {% if dynamic_page_crm_object  %}
+                        <p>{{dynamic_page_crm_object.cancellation_policy }}</p>
+                        {% else %}                       
+                        <p>{{ module.col_2_content.content }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="item m-col-4 pl-l6 pr-16 text-center mmb-30">
+                <div class="inner">
+                    {% if module.col_3_content.icon_image.src %}
+                    <div class="img">
+                        {% set sizeAttrs = 'width="{{ module.col_3_content.icon_image.width }}" height="{{ module.col_3_content.icon_image.height }}"' %}
+                        {% if module.col_3_content.icon_image.size_type == 'auto' %}
+                        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                        {% elif module.col_3_content.icon_image.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.col_3_content.icon_image.max_width }}" height="{{ module.col_3_content.icon_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                        {% endif %}
+                        {% set loadingAttr = module.col_3_content.icon_image.loading != 'disabled' ? 'loading="{{ module.col_3_content.icon_image.loading }}"' : '' %}
+                        <img src="{{ module.col_3_content.icon_image.src }}" alt="{{ module.col_3_content.icon_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </div>
+                    {% endif %}
+                    <div class="cont">
+                        <h3 class="glacial-blue-ice mb-16">{{ module.col_3_content.title }}</h3>
+                        <p>{{ module.col_3_content.content }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<style>
+    .three-col-content.{{ name }}{
+        background-color:rgba({{ module.style.background_color.color|convert_rgb  }},{{ module.style.background_color.opacity/100 }});
+        {{ module.style.spacing_field.css }}
+    }
+</style>
+
+
+
+
+
+
+

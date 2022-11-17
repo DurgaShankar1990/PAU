@@ -1,0 +1,750 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: About v1 - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/about-v1.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      max_width=560,
+      padding={
+        'default': { 'top': 80, 'bottom': 24 },
+         'mobile': { 'top': 36, 'bottom': 0 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  About the Team
+                </p>
+                <h1 style="text-align: center;">
+                  A great company has a great team behind
+                </h1>
+                <p style="margin-bottom: 15px; text-align: center;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra ullamcorper ac, eget.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 24 },
+           'mobile': { 'top': 16, 'bottom': 24 }
+          } 
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Social Icons', label="Aptitute 8 - Social Icons",
+            settings={ 'align': 'center', 'align_mobile': 'center', 'icon_size': 62, 'border_radius': 18, 'separation': 12, 'hide_left_margin': false, 'zoom_hover_scale': 1.1  },
+            whatsapp={ 'enabled': false }
+          %}
+          {% end_dnd_module %}
+    
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+  
+  
+  {# 2 Section - Stats #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+
+    {% dnd_section
+         padding={
+         'default': { 'top': 32, 'bottom': 72 },
+         'mobile': { 'top': 0, 'bottom': 0 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+    
+      {% dnd_module  path='../modules/Aptitute 8 - Stats', label="Aptitute 8 - Stats",
+        stats=[
+          {
+            number: '325',
+            symbol_type: 'text',
+            symbol: '+',
+            text: '<p>Clients<br>Worldwide</p>',
+            stat_text_align: 'center',
+            symbol_color: { color: '#F4263E' }
+          },
+          {
+            number: '975',
+            symbol_type: 'text',
+            symbol: '+',
+            text: '<p>Projects<br>Completed</p>',
+            stat_text_align: 'center',
+            symbol_color: { color: '#782CE4' }
+          },
+          {
+            number: '50',
+            symbol_type: 'text',
+            symbol: '+',
+            text: '<p>Team<br>Members</p>',
+            stat_text_align: 'center',
+            symbol_color: { color: '#1B76FF' }
+          },
+          {
+            number: '85m',
+            symbol_type: 'text',
+            symbol: '+',
+            text: '<p>Revenue<br>Generated</p>',
+            stat_text_align: 'center',
+            symbol_color: { color: '#FFCD1D' }
+          }
+        ]
+      
+      %}
+      {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - Stats #}
+  
+  
+  
+  {# 3 Section - Our Story #}
+  
+  <section id="section-3">
+     
+  {% dnd_area 'section-3', label='section-3' %}  
+   
+    {% dnd_section
+         label="about-us",
+         padding={
+         'default': { 'top': 48, 'bottom': 16 },
+         'mobile': { 'top': 40, 'bottom': 16 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+  
+     {# Left Content #}
+    
+      {% dnd_column 
+        offset=0, 
+        width=6,
+      %}
+
+        {% dnd_row 
+          margin={
+           'default': { 'top': 0 }
+          }
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Our Story
+                </p>
+                <h2 style="max-width: 484px;">
+                  We started Elements with a big goal in mind
+                </h2>
+                <p style="margin-bottom: 15px; max-width: 484px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in amet elementum aliquam quis sit. 
+                  Tempor, aliquam lectus iaculis tellus cursus magna vel lacus. Aliquet viverra maecenas amet, enim. 
+                  Commodo risus mattis cursus mauris, maecenas vitae eget viverra. 
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'bottom': 24 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            horizontal_alignment='LEFT',
+            button= [
+              { 'button_text':'Join our Team', 'class_button':'btn-secondary-white' }
+            ]
+          %}
+          {% end_dnd_module %}
+    
+        {% end_dnd_row %}
+    
+      {% end_dnd_column %}
+    
+
+      {# Right Content #}
+     
+      {% dnd_module  path='../modules/Aptitute 8 - Image', 
+        horizontal_alignment='LEFT',
+        img={
+          'alt': 'Elements Image',
+          'width': 610,
+          'height': auto,
+          'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/our_story.png',
+          'margin':'0'
+        },
+        offset=6,
+        width=6,
+      %}
+      {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+     
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - Our Story #}
+  
+  
+  
+  {# 4 Section - Our Values #}
+  
+  <section id="section-4">
+    
+  {% dnd_area 'section-4', label='section-4' %}
+  
+    {% dnd_section
+         padding={
+         'default': { 'top': 32, 'bottom': 120 },
+         'mobile': { 'top': 24, 'bottom': 72 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+      {% dnd_column %}
+    
+       {% dnd_row
+          padding={ 
+          'default': { 'top': 65, 'bottom': 112 },
+          'mobile': { 'top': 16, 'bottom': 72 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Divider' %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row 
+          vertical_alignment='BOTTOM'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='LEFT',
+            offset=0,
+            width=6
+          %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Our Values
+                </p>
+                <h2 style="max-width: 460px;">
+                  The core values behind everything we do
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='RIGHT',
+            offset=6,
+            width=6
+          %}
+            {% module_attribute 'html' %} 
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante<br>velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra 
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'left_icon_right_content',
+              'image_full_width': false,
+              'text_align': 'left',
+              'text_align_mobile':'left'
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/growth.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Growth</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/team_work.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Team Work</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  }
+                ]
+              },
+              {
+                card:
+                [  
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/execution.svg",
+                      alt: "Elements Image"
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Execution</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/analytics_8.svg",
+                      alt: "Elements Image",
+                      width: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Accountability</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  }                  
+                ]
+              }            
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+  
+  </section>
+  
+  {# End 4 Section - Our Values #}
+  
+  
+  
+  
+  {# 5 Section - Our Team #}
+  
+  <section id="section-5">
+    
+  {% dnd_area 'section-5' , label='section-5' %} 
+
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 112, 'bottom': 80 },
+        'mobile': { 'top': 64, 'bottom': 48 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+  
+      {% dnd_column %}
+      
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Our Team
+                </p>
+                <h2 style="text-align: center;">
+                  Meet the team behind Elements
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row
+          padding={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 16 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Team Members', label="Aptitute 8 - Team Members",
+            member=[
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/our_team_1.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">John Carter</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">CEO &amp; Co-Founder</span></p>',
+                facebook:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg', alt: 'facebook' } },
+                twitter:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg', alt: 'twitter' } },
+                linkedin:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg', alt: 'linkedin' } },
+                web:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/web.svg', alt: 'web' } }
+              },
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/our_team_2.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">Emily Smith</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>',
+                facebook:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg', alt: 'facebook' } },
+                twitter:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg', alt: 'twitter' } },
+                linkedin:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg', alt: 'linkedin' } },
+                web:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/web.svg', alt: 'web' } }
+              },
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/our_team_3.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">Matt Willson</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Project Management</span></p>',
+                facebook:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg', alt: 'facebook' } },
+                twitter:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg', alt: 'twitter' } },
+                linkedin:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg', alt: 'linkedin' } },
+                web:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/web.svg', alt: 'web' } }
+              },
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/our_team_4.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">Issac Jones</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Support</span></p>',
+                facebook:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/facebook.svg', alt: 'facebook' } },
+                twitter:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/twitter.svg', alt: 'twitter' } },
+                linkedin:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/linkedin.svg', alt: 'linkedin' } },
+                web:{ enabled: true, icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/social/web.svg', alt: 'web' } }
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 32, 'bottom': 54 },
+           'mobile': { 'top': 16, 'bottom': 16 }
+          }
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              horizontal_alignment='CENTER',
+              button= [
+                { 'button_text':'Join our team', 'class_button':'btn-primary-dark' }
+              ]
+            %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+  
+      {% end_dnd_column  %}
+ 
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 5 Section - Our Team #}
+  
+  
+  
+  
+  {# 6 Section - In the Press #}
+  
+  <section id="section-6">
+    
+  {% dnd_area 'section-6', label='section-6' %}
+  
+    {% dnd_section
+         padding={
+         'default': { 'top': 112, 'bottom': 120 },
+         'mobile': { 'top': 64, 'bottom': 72 }
+        },
+        vertical_alignment='TOP'
+    %}
+      {% dnd_column
+        offset=0,
+        width=6,
+        padding={
+         'default': { 'right': 16, },
+         'mobile': { 'right': 0 }
+        }
+      %}
+        {% dnd_row 
+          vertical_alignment='TOP'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='LEFT',
+          %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  In the Press
+                </p>
+                <h2 style="">
+                  Our agency has been featured by great marketing blogs
+                </h2>
+                <p style="margin-bottom: 15px; ">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                  Et amet, vitae ultricies dignissim ut. Turpis quis nibh nulla pell.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row
+          padding={
+            'default': { 'bottom': 24 },
+            'mobile': { 'bottom': 0 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'card_full_width': true,
+              'image_align': 'left',
+              'image_align_mobile': 'left',
+              'text_align': 'left',
+              'text_align_mobile':'left',
+              'image_border_radius': 0
+            },
+            rows= 
+            [
+              {
+                card:
+                [                
+                  {
+                    image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company_8.svg", alt: "Elements Image", size_type:'auto_custom_max', max_width: 205 },
+                    content: '<p style="margin-bottom: 0;">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra cursus nibh eget auctor aliquam quis ipsum nisl. Libero sed facilisis sed tincidunt odio a tellus consequat. Fermentum hac venenatis”</p><p style="margin-bottom: 0;">&nbsp;</p><p style="margin-bottom: 0;"><a href="https://inboundelements.com/" rel="noopener" target="_blank">&gt; <span style="text-decoration: underline;">Read More</span></a></p>',
+                  }
+                ]
+              }          
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+      {% end_dnd_column %}
+    
+    
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+         'default': { 'left': 16, },
+         'mobile': { 'left': 0 }
+        }
+      %}
+        {% dnd_row 
+          vertical_alignment='TOP'
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'card_full_width': true,
+              'image_align': 'left',
+              'image_align_mobile': 'left',
+              'text_align': 'left',
+              'text_align_mobile':'left',
+              'image_border_radius': 0
+            },
+            rows= 
+            [
+              {
+                card:
+                [                
+                  {
+                    image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company_2.svg", alt: "Elements Image", size_type:'auto_custom_max', max_width: 206 },
+                    content: '<p style="margin-bottom: 0;">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra cursus nibh eget auctor aliquam quis ipsum nisl. Libero sed facilisis sed tincidunt odio a tellus consequat. Fermentum hac venenatis”</p><p style="margin-bottom: 0;">&nbsp;</p><p style="margin-bottom: 0;"><a href="https://inboundelements.com/" rel="noopener" target="_blank">&gt; <span style="text-decoration: underline;">Read More</span></a></p>',
+                  }
+                ]
+              }          
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row
+          padding={
+            'default': { 'bottom': 24 },
+            'mobile': { 'bottom': 0 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'card_full_width': true,
+              'image_align': 'left',
+              'image_align_mobile': 'left',
+              'text_align': 'left',
+              'text_align_mobile':'left',
+              'image_border_radius': 0
+            },
+            rows= 
+            [
+              {
+                card:
+                [                
+                  {
+                    image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company_7.svg", alt: "Elements Image", size_type:'auto_custom_max', max_width: 214 },
+                    content: '<p style="margin-bottom: 0;">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra cursus nibh eget auctor aliquam quis ipsum nisl. Libero sed facilisis sed tincidunt odio a tellus consequat. Fermentum hac venenatis”</p><p style="margin-bottom: 0;">&nbsp;</p><p style="margin-bottom: 0;"><a href="https://inboundelements.com/" rel="noopener" target="_blank">&gt; <span style="text-decoration: underline;">Read More</span></a></p>',
+                  }
+                ]
+              }          
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+  
+  </section>
+  
+  {# End 6 Section - In the Press #}
+
+  
+  
+  
+  {# 7 Section - Our Offices #}
+  
+  <section id="section-7">
+    
+  {% dnd_area 'section-7' , label='section-7' %} 
+
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 112, 'bottom': 80 },
+        'mobile': { 'top': 56, 'bottom': 80 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+  
+      {% dnd_column %}
+      
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Our Offices
+                </p>
+                <h2 style="text-align: center; max-width: 440px;">
+                  Come and visit us in one of our offices
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row
+          padding={
+           'default': { 'top': 16, 'bottom': 560 },
+           'mobile': { 'top': 0, 'bottom': 24 }
+          },      
+          background_image = {
+            'backgroundPosition': 'BOTTOM_CENTER',
+            'backgroundSize': 'auto',
+            'imageUrl': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/map_background_1.svg'
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'left_icon_right_content',
+              'image_full_width': false,
+              'text_align': 'left',
+              'text_align_mobile':'left'
+            },
+            paddings={ 
+              desktop: { content:{ top: 16, bottom: 4 }, image:{ top: 24, bottom: 0, left: 8, right: 8 } },
+              mobile: { content:{ top: 8, bottom: 8, left: 8, right: 0 }, image:{ top: 16, bottom: 0, left: 8, right: 24 } }
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/usa_flag.svg",
+                      alt: "Elements Image",
+                      width: 50
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">San Francisco, USA</h3><p style="margin-bottom: 8px;">298 Cumberland St San Francisco, CA 94103</p><p style="margin-bottom: 8px;"><a href="tel:415-203-7468" rel="noopener" target="_blank">(415) 203 - 7468</a></p><p><a href="mailto:sanfrancisco@elements.com" rel="noopener">sanfrancisco@elements.com</a></p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/ca_flag.svg",
+                      alt: "Elements Image",
+                      width: 50
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">San Francisco, USA</h3><p style="margin-bottom: 8px;">298 Cumberland St San Francisco, CA 94103</p><p style="margin-bottom: 8px;"><a href="tel:415-203-7468" rel="noopener" target="_blank">(415) 203 - 7468</a></p><p><a href="mailto:sanfrancisco@elements.com" rel="noopener">sanfrancisco@elements.com</a></p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/uk_flag.svg",
+                      alt: "Elements Image",
+                      width: 50
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">San Francisco, USA</h3><p style="margin-bottom: 8px;">298 Cumberland St San Francisco, CA 94103</p><p style="margin-bottom: 8px;"><a href="tel:415-203-7468" rel="noopener" target="_blank">(415) 203 - 7468</a></p><p><a href="mailto:sanfrancisco@elements.com" rel="noopener">sanfrancisco@elements.com</a></p>',
+                  }
+                ]
+              }            
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+      {% end_dnd_column  %}
+ 
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 7 Section - Our Offices #}
+  
+  
+    
+
+
+  
+</main>
+{% endblock body %}

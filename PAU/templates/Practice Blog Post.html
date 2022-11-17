@@ -1,0 +1,127 @@
+<!--
+templateType: blog_post
+isAvailableForNewContent: true
+label: Practice Blog Post - Aptitute 8 HubSpot Theme
+screenshotPath: ../images/template-previews/blog-post-v1.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper cm-blog-post">
+    <div class="body-container body-container--blog-index">
+        <div class="blog-post-wrapper">
+            <div class="content-wrapper">
+                <div class="blog-post-top-content">
+                    <div class="post-blog-title">{{ group.public_title }}</div>
+                    <h2 class="post-title">{{ content.name }}</h2>
+                    <div class="post-subtitle">{{ content.post_body }}</div>
+                </div>
+                {% if content.featured_image %}
+                <div class="post-featured-image">
+                    <img src="{{ content.featured_image }}" alt="{{ content.name|striptags }}">
+                </div>
+                {% endif %}
+                <div class="post-body">
+                    {% module "content_with_bookmark" path="../modules/Content With Bookmark", label="Content With Bookmark" %}
+                </div>
+                <div class="post-author-section">
+                    <div class="post-author-wrapper {% if not content.blog_post_author.avatar %}no-author-img{% endif %}">
+                        {% if content.blog_post_author.avatar %}
+                        <div class="post-author-image">
+                            <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}"><img src="{{ content.blog_post_author.avatar }}" alt="{{ content.blog_post_author.display_name|striptags }}"></a>
+                        </div>
+                        {% endif %}
+                        <div class="post-author-content">
+                            <h3><a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_post_author.display_name }}</a></h3>
+                            <p>{{ content.blog_post_author.bio }}</p>
+                            <div class="post-author-social">
+                                <ul>
+                                    {% if content.blog_post_author.facebook %}
+                                    <li class="facebook"><a href="{{ content.blog_post_author.facebook }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/facebook1.svg" alt="Facebook"></a></li>
+                                    {% endif %}
+                                    {% if content.blog_post_author.twitter %}
+                                    <li class="twitter"><a href="{{ content.blog_post_author.twitter }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/twitter1.svg" alt="Twitter"></a></li>
+                                    {% endif %}
+                                    {% if content.blog_post_author.linkedin %}
+                                    <li class="linkedin"><a href="{{ content.blog_post_author.linkedin }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/linkedin1.svg" alt="Linkedin"></a></li>
+                                    {% endif %}
+                                    {% if content.blog_post_author.website %}
+                                    <li class="website"><a href="{{ content.blog_post_author.website }}"><img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/website1.svg" alt="Website"></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# Recent Posts#}
+            <div class="recent-posts-wrapper">
+                <div class="content-wrapper">
+                    <div class="recent-posts-top-content">
+                        <div class="recent-post-title">
+                            <h2>Latest Business of Practice posts</h2>
+                        </div>
+                        <div class="recent-post-button">
+                            <a href="{{ group.absolute_url }}">Browse Business of Practice</a>
+                        </div>
+                    </div>
+                    <div class="recent-posts-item-wrapper">
+                        {% set max_posts = 3 %}
+                        {% set rec_posts = [] %}
+                        {% set rec_posts = rec_posts + blog_recent_posts('group.id', max_posts + 1) %}
+                        {% set i = 0 %}
+                        {% for post in rec_posts %}
+                        {% if content.absolute_url != post.absolute_url and i < max_posts %}
+                        <div class="post-item recent-post-item">
+                            <div class="inner">
+                                {% if post.featured_image %}
+                                <div class="featured-image">
+                                    <a href="{{ post.absolute_url }}">
+                                        <img src="{{ post.featured_image }}" alt="{{ post.name|striptags }}">
+                                    </a>
+                                </div>
+                                {% endif %}
+                                <div class="post-item-content">
+                                    <div class="post-item-inner-content">
+                                        <h2><a href="{{ post.absolute_url }}">{{ post.name }}</a></h2>
+                                        {% if post.widgets.listing_summary.body.value %}
+                                        <p>{{ post.widgets.listing_summary.body.value| striptags | truncatehtml(150, '', false) }}</p>
+                                        {% else %}
+                                        <p>{{ post.post_list_content | striptags | truncatehtml(150, '', false) }}</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="post-meta">
+                                        <div class="post-meta-details {% if not post.blog_author.avatar %}no-author-image{% endif %}">
+                                            {% if post.blog_author.avatar %}
+                                            <div class="author-image">
+                                                <a href="{{ blog_author_url(group.id, post.blog_author.slug) }}"><img src="{{ post.blog_author.avatar }}" alt="{{ post.blog_author.display_name|striptags }}"></a> 
+                                            </div>
+                                            {% endif %}
+                                            <div class="author-title-wrapper">
+                                                <p class="author-title"><a href="{{ blog_author_url(group.id, post.blog_author.slug) }}">{{ post.blog_author.display_name }}</a></p>
+                                                <p class="date">{{ post.publish_date_local_time.strftime('%B %e, %Y') }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="post-meta-content">
+                                            <a href="{{ post.absolute_url }}">Content</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>          
+
+                        </div>
+                        {% set i = i + 1 %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {# End Recent Posts#}
+             {% module "module_16397448352382" path="../modules/Training Suggestions", label="Training Suggestions" %}
+            {% module "newsletter" path="../modules/Subscribe Newsletter", label="Subscribe Newsletter" %}
+        </div>
+    </div>
+</main>
+
+{% endblock body %}

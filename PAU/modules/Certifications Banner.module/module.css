@@ -1,0 +1,28 @@
+.banner {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    border-radius: 50px;
+}
+.banner:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: block;
+    background: rgba(0, 90, 156, .64);
+    border-radius: 50px;
+}
+.content-wrapper {
+    position: relative;
+}
+.banner h1 {
+    font-weight: normal;
+    text-align: center;
+}
+.banner h1 b {
+    display: block;
+}

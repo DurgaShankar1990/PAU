@@ -1,0 +1,13 @@
+
+.htmlvid {
+  cursor: pointer;
+}
+
+.youtube {
+  cursor: pointer;
+}
+
+#bp_aud, #bp_container img, #bp_sv, #bp_vid {
+  max-height: auto !important;
+  max-width: 86% !important;
+}

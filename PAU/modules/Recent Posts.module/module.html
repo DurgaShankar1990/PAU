@@ -1,0 +1,70 @@
+<div class="recent-posts-wrapper">
+    <div class="content-wrapper">
+        <div class="recent-posts-top-content">
+            <div class="recent-post-title">
+                {% if module.title %}
+                <h2>{{ module.title }}</h2>
+                {% endif %}
+            </div>
+            <div class="recent-post-button">
+                {% set href = module.button_link.url.href %}
+                {% if module.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                <a href="{{ href }}"
+                   {% if module.button_link.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if module.button_link.rel %}rel="{{ module.button_link.rel }}"{% endif %}
+                   >{{ module.button_text }}</a>
+            </div>
+        </div>
+        <div class="recent-posts-item-wrapper">
+            {% set max_posts = module.post_count %}
+            {% set rec_posts = [] %}
+            {% set rec_posts = rec_posts + blog_recent_posts(module.blog_field, max_posts + 1) %}
+            {% set i = 0 %}
+            {% for post in rec_posts %}
+            {% if content.absolute_url != post.absolute_url and i < max_posts %}
+            <div class="post-item recent-post-item">
+                <div class="inner">
+                    {% if post.featured_image %}
+                    <div class="featured-image">
+                        <a href="{{ post.absolute_url }}">
+                            <img src="{{ post.featured_image }}" alt="{{ post.name|striptags }}">
+                        </a>
+                    </div>
+                    {% endif %}
+                    <div class="post-item-content">
+                        <div class="post-item-inner-content">
+                            <h2><a href="{{ post.absolute_url }}">{{ post.name }}</a></h2>
+                            {% if post.widgets.listing_summary.body.value %}
+                            <p>{{ post.widgets.listing_summary.body.value| striptags | truncatehtml(150, '', false) }}</p>
+                            {% else %}
+                            <p>{{ post.post_list_content | striptags | truncatehtml(150, '', false) }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="post-meta">
+                            <div class="post-meta-details {% if not post.blog_author.avatar %}no-author-image{% endif %}">
+                                {% if post.blog_author.avatar %}
+                                <div class="author-image">
+                                    <a href="{{ blog_author_url(group.id, post.blog_author.slug) }}"><img src="{{ post.blog_author.avatar }}" alt="{{ post.blog_author.display_name|striptags }}"></a> 
+                                </div>
+                                {% endif %}
+                                <div class="author-title-wrapper">
+                                    <p class="author-title"><a href="{{ blog_author_url(group.id, post.blog_author.slug) }}">{{ post.blog_author.display_name }}</a></p>
+                                    <p class="date">{{ post.publish_date_local_time.strftime('%B %e, %Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="post-meta-content">
+                                <a href="{{ post.absolute_url }}">Content</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+
+            </div>
+            {% set i = i + 1 %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

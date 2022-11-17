@@ -1,0 +1,44 @@
+<div class="two-col-image-wrapper">
+    <div class="container">
+        <div class="two-col-image-inner">
+            <div class="content-col">
+                {% if module.top_subtitle %}
+                <h5>{{ module.top_subtitle }}</h5>
+                {% endif %}
+                {% if module.title %}
+                <h2 class="title">{{ module.title }}</h2>
+                {% endif %}
+                {% if module.subtitle %}
+                <h3>{{ module.subtitle }}</h3>
+                {% endif %}
+                {% if module.content %}
+                <p>{{ module.content }}</p>
+                {% endif %}
+                <div class="button-wrap">
+                    {% set href = module.button_link.url.href %}
+                    {% if module.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                    {% endif %}
+                    <a href="{{ href }}"
+                       {% if module.button_link.open_in_new_tab %}target="_blank"{% endif %}
+                       {% if module.button_link.rel %}rel="{{ module.button_link.rel }}"{% endif %}
+                       >
+                        {{ module.button_text }}
+                    </a>
+                </div>
+            </div>
+            <div class="image-col">
+                {% if module.image_field.src %}
+                {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
+                {% if module.image_field.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif module.image_field.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+                <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

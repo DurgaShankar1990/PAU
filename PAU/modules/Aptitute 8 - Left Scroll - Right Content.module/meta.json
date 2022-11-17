@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/module-icons/Elements%20-%20Left%20Scroll%20-%20Right%20Content.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 55277762842,
+  "label" : "Left Scroll - Right Content",
+  "is_available_for_new_content" : true
+}

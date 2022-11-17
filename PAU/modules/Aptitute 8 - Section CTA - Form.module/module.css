@@ -1,0 +1,36 @@
+.elements-form__section__subscribe-2 form {
+  position: relative; 
+}
+
+.cta-form-section  .inputs-list span {
+    color: #fff;
+}
+
+
+
+@media(max-width: 428px) {
+  
+  .elements-form__section__subscribe-2 form input[type=email] {
+    padding-right: 0 !important;
+  }
+  
+  .elements-form__section__subscribe-2 form .hs-submit {
+    position: unset !important;
+    width: 100% !important;
+  }
+  
+  .elements-form__section__subscribe-2 form .hs-button {
+    width: 100% !important;
+    border: 1px solid !important;
+  }
+  
+  
+  .elements-form__section__subscribe-2 form input[type=submit], .elements-form__section__subscribe-2 form .hs-button {
+    height: 68px !important;
+  } 
+  
+  .elements-form__section__subscribe-2 form .hs-error-msg {
+    margin-bottom: 0px !important;
+  }
+  
+}    

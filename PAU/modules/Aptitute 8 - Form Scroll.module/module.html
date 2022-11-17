@@ -1,0 +1,283 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  background-color: {{ module.module_styles.background_color.color }};
+  width: 100%;
+  border-radius: {{ module.module_styles.border_radius }}px;
+{% endmacro %}
+
+{% macro buildLeftContentStyles() %}
+  padding-top: {{ module.paddings.desktop.left_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.left_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.left_content.left }}px;
+  padding-right: {{ module.paddings.desktop.left_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content.right }}px;
+{% endmacro %}
+
+{% macro buildRightContentTextStyles() %}
+  padding-top: {{ module.paddings.desktop.right_content_text.top }}px;
+  padding-bottom: {{ module.paddings.desktop.right_content_text.bottom }}px;
+  padding-left: {{ module.paddings.desktop.right_content_text.left }}px;
+  padding-right: {{ module.paddings.desktop.right_content_text.right }}px;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;
+{% endmacro %}
+
+
+
+{% set linkStyle = "text-align: center; margin-left: 6px; margin-right: 6px; width: 44px; text-decoration: none; border: 0px; border-width: 0px;" %}
+{% set iconStyle = "text-align: center; margin-bottom: 8px; border-radius: 50%; width: 44px !important; height: 44px !important; border:0px; border-width:0px; " %}
+
+{% macro social_icon(network) %}
+	{% set networkIcon = module.right_content.social_card[network] %}
+  {% if  networkIcon.enabled %}
+    {% set logo = network ~'.svg' %}
+    <a href="{{ networkIcon.link }}"  target="_blank" style="{{ linkStyle }}" >
+      <img src="{{ networkIcon.icon.src }}" class="elements-social-links__icon_{{ name }}" style="{{ iconStyle }}" width="44px"  alt='{{ "Visit " ~ network }}' />
+    </a>
+	{% endif %}
+{% endmacro %}
+
+{% macro buildFormContent() %}
+  <div class="cards__card elements-sticky__form-card_{{ name }}">
+              
+    {% if module.right_content.form_card.image_field.src %} 
+      <div class="elements-module-container-image_{{ name }}">
+        {% set loadingAttr = module.right_content.form_card.image_field.loading != 'disabled' ? 'loading="{{ module.right_content.form_card.image_field.loading }}"' : '' %}
+        <img src="{{ module.right_content.form_card.image_field.src }}" class="elements-module-image_{{ name }}" alt="{{ module.right_content.form_card.image_field.alt }}" {{ loadingAttr }} width="{{ module.right_content.form_card.image_field.width }}" height="{{ module.right_content.form_card.image_field.height }}">        
+      </div>  
+    {% endif %}
+               
+    {% inline_rich_text field="right_content.form_card.text" value="{{ module.right_content.form_card.text }}" %}
+              
+    {% form
+      form_to_use="{{ module.right_content.form_card.form_field.form_id }}"
+      response_response_type="{{ module.right_content.form_card.form_field.response_type }}"
+      response_message="{{ module.right_content.form_card.form_field.message }}"
+      response_redirect_id="{{ module.right_content.form_card.form_field.redirect_id }}"
+      response_redirect_url="{{module.right_content.form_card.form_field.redirect_url}}"
+      gotowebinar_webinar_key="{{ module.right_content.form_card.form_field.gotowebinar_webinar_key }}"
+    %}
+    
+  </div>
+            
+  <div class="cards__card elements-sticky__social-card_{{ name }}">
+    {% inline_rich_text field="right_content.social_card.title" value="{{ module.right_content.social_card.title }}" %}
+    <div class="elements-social-links__container_{{ name }}">
+      {{ social_icon('facebook') }}
+      {{ social_icon('twitter') }}
+      {{ social_icon('instagram') }}
+      {{ social_icon('linkedin') }}
+      {{ social_icon('web') }}
+      {{ social_icon('youtube') }}
+      {{ social_icon('telegram') }}
+      {{ social_icon('whatsapp') }}
+      {{ social_icon('pinterest') }}
+      {{ social_icon('tiktok') }}
+    </div>
+  </div>
+ 
+{% endmacro %}
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}"  style="{{ buildModuleStyles() }}">
+  
+     <div class="row-fluid-wrapper">
+        
+          
+          {% if module.module_styles.layout_position == "left_content_right_form" %}
+          <div class="row-fluid">
+            
+            <div class="span8 widget-span widget-type-cell elements-module-content_left_{{ name }}" style="{{ buildLeftContentStyles() }}" data-widget-type="cell" data-x="0" data-w="8" {% if module.animation.left_content.enable_animation %}data-aos="{{ module.animation.left_content.animation }}-{% if module.animation.left_content.animation == "fade" %}{{ module.animation.left_content.direction_fade }}{% elif module.animation.left_content.animation == "flip" %}{{ module.animation.left_content.direction_flip }}{% elif module.animation.left_content.animation == "slide" %}{{ module.animation.left_content.direction_slide }}{% elif module.animation.left_content.animation == "zoom" %}{{ module.animation.left_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.left_content.frecuency }}" data-aos-duration="{{ module.animation.left_content.duration }}" data-aos-delay="{{ module.animation.left_content.delay }}">
+              {% inline_rich_text field="left_content.content" value="{{ module.left_content.content }}" %}
+            </div>
+
+            <div class="span4 widget-span widget-type-cell elements-sticky-div_{{ name }} elements-module-content_right_{{ name }}" style="{{ buildRightContentStyles() }}" data-widget-type="cell" data-x="8" data-w="4" {% if module.animation.right_content.enable_animation %}data-aos="{{ module.animation.right_content.animation }}-{% if module.animation.right_content.animation == "fade" %}{{ module.animation.right_content.direction_fade }}{% elif module.animation.right_content.animation == "flip" %}{{ module.animation.right_content.direction_flip }}{% elif module.animation.right_content.animation == "slide" %}{{ module.animation.right_content.direction_slide }}{% elif module.animation.right_content.animation == "zoom" %}{{ module.animation.right_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.right_content.frecuency }}" data-aos-duration="{{ module.animation.right_content.duration }}" data-aos-delay="{{ module.animation.right_content.delay }}">
+              {{ buildFormContent() }}
+            </div>
+            
+          </div>
+                    
+          {% elif module.module_styles.layout_position == "left_form_right_content" %}
+       
+          <div class="row-fluid elements-reverse">
+            
+            <div class="span4 widget-span widget-type-cell elements-sticky-div_{{ name }} elements-module-content_right_{{ name }}" style="{{ buildRightContentStyles() }}" data-widget-type="cell" data-x="0" data-w="4" {% if module.animation.right_content.enable_animation %}data-aos="{{ module.animation.right_content.animation }}-{% if module.animation.right_content.animation == "fade" %}{{ module.animation.right_content.direction_fade }}{% elif module.animation.right_content.animation == "flip" %}{{ module.animation.right_content.direction_flip }}{% elif module.animation.right_content.animation == "slide" %}{{ module.animation.right_content.direction_slide }}{% elif module.animation.right_content.animation == "zoom" %}{{ module.animation.right_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.right_content.frecuency }}" data-aos-duration="{{ module.animation.right_content.duration }}" data-aos-delay="{{ module.animation.right_content.delay }}">
+              {{ buildFormContent() }}
+            </div>
+
+            <div class="span8 widget-span widget-type-cell elements-module-content_left_{{ name }}" style="{{ buildLeftContentStyles() }}" data-widget-type="cell" data-x="4" data-w="8" {% if module.animation.left_content.enable_animation %}data-aos="{{ module.animation.left_content.animation }}-{% if module.animation.left_content.animation == "fade" %}{{ module.animation.left_content.direction_fade }}{% elif module.animation.left_content.animation == "flip" %}{{ module.animation.left_content.direction_flip }}{% elif module.animation.left_content.animation == "slide" %}{{ module.animation.left_content.direction_slide }}{% elif module.animation.left_content.animation == "zoom" %}{{ module.animation.left_content.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.left_content.frecuency }}" data-aos-duration="{{ module.animation.left_content.duration }}" data-aos-delay="{{ module.animation.left_content.delay }}">
+              {% inline_rich_text field="left_content.content" value="{{ module.left_content.content }}" %}
+            </div>
+            
+          </div>
+
+          {% endif %}
+
+
+        
+
+       
+    </div>
+</div>
+
+{% require_css %}
+<style>
+  
+  
+  .elements-social-links__container_{{ name }} {
+    margin-right: -6px;
+    margin-left: -6px;
+  }
+  
+  .elements-social-links__icon_{{ name }} {
+    transition: 0.3s ease-in-out;
+    -webkit-filter: drop-shadow(0px 16.3381px 22.4666px rgb(31 37 89 / 4%));
+    filter: drop-shadow(0px 16.3381px 22.4666px rgb(31 37 89 / 4%));
+  }
+  
+   .elements-social-links__icon_{{ name }}:hover {
+      transform: scale(1.1);
+    }
+  
+  .elements-sticky__form-card_{{ name }} {
+    border-radius: 20px;
+    padding: 32px 40px 56px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  
+  .elements-sticky__social-card_{{ name }} {
+    margin-top: 24px;
+    border-radius: 20px;
+    padding: 40px 40px 32px;
+    width: 100%;
+  }
+  
+  .elements-module-container-image_{{ name }} {
+    text-align: center; 
+  }
+  
+
+  .elements-module-image_{{ name }} {
+     text-align: center;
+     max-width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  
+@media(min-width: 768px) {
+ 
+  
+  .elements-sticky-div_{{ name }} {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 24px;
+  }
+  
+  
+}
+  
+@media (min-width: 768px) and (max-width: 1080px) {
+  .elements-module-content_left_{{ name }} {
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    width: 55% !important;
+  }
+  
+  .elements-module-content_right_{{ name }} {
+    width: 42% !important;
+  }
+}
+
+@media(max-width: 767px) {
+  
+  .elements-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .elements-module-container-image_{{ name }} {
+    text-align: left;  
+  }
+ 
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    display: table-cell;
+  }
+     
+  .elements-module-content_left_{{ name }} {
+    padding-top: {{ module.paddings.mobile.left_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.left_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.left_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.left_content.right }}px !important;
+  } 
+  
+  .elements-module-content_right_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content.right }}px !important;
+  }
+    
+  .elements-module-image_{{ name }} {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+  
+  .elements-module-content_right_text_{{ name }} {
+    padding-top: {{ module.paddings.mobile.right_content_text.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.right_content_text.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.right_content_text.left }}px !important;
+    padding-right: {{ module.paddings.mobile.right_content_text.right }}px !important;
+  }
+  
+
+}
+  
+@media(max-width: 430px) {
+  
+  .elements-sticky__form-card_{{ name }} form .hs-button {
+    width: 100%;
+  }
+  
+  .elements-module-container-image_{{ name }} {
+    text-align: center;  
+  }
+
+}
+  
+  
+  
+</style>
+{% end_require_css %}

@@ -1,0 +1,386 @@
+{% set instructor = crm_objects("instructors", "limit=100", "name" ) %}
+{% set course = crm_objects("courses", "limit=100", "ce_hours" ) %}
+{% set formate =  crm_property_definition("courses", "course_type") %}
+{% set Partnership =  crm_property_definition("courses", "presented_by") %}
+{% set Certificates =  crm_property_definition("courses", "certificate") %}
+{% set SpecialtyArea =  crm_property_definition("courses", "specialty_area") %}
+
+
+{% set CEHours = [] %}
+{% set Instructors = [] %}
+
+{% if dynamic_page_crm_object_type_fqn %}
+{% set course = crm_objects(dynamic_page_crm_object_type_fqn, "limit=200","ce_hours") %}
+
+<!-- =========================== CEHours =================================== -->
+{% for item in course.results|unique('ce_hours')|sort(False, False, 'ce_hours') %}
+{% if item.ce_hours %}
+{% do CEHours.append(item.ce_hours|regex_replace("[^0-9]", "")) %}
+{% endif %}
+{% endfor %}
+
+
+{% set newArr = [] %}
+{% for item in CEHours %}
+{% do newArr.append(item|int) %}
+{% endfor %}
+
+
+
+
+<!-- =========================== Instructors =================================== -->
+{% for item in instructor.results|unique('name')|sort(False, False, 'name') %}
+{% do Instructors.append(item.name) %}
+{% endfor %}
+
+
+{% endif %}
+<div class="course-filter">
+    <div class="content-wrapper">
+        <div class="flex-row mb-72 flex-end flex-wrap">
+            <div class="m-col-5 m-mb-30">
+                <div class="inner">
+                    <h1 class="white-color">{{ module.title }}</h1>
+                    <p class="white-color">{{ module.content }}</p>
+                </div>
+            </div>
+            <div class="m-col-7">
+                <div class="inner-wrap inst-content">
+                    <p>
+                        <input type="text" class="quicksearch" placeholder="Search your program:" />
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                <path d="M10.5334 20.0668C15.7985 20.0668 20.0668 15.7985 20.0668 10.5334C20.0668 5.26824 15.7985 1 10.5334 1C5.26824 1 1 5.26824 1 10.5334C1 15.7985 5.26824 20.0668 10.5334 20.0668Z" stroke="#C6CFDA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17.2754 17.2739L23.0013 22.9998" stroke="#C6CFDA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid-wrapper" >
+            <div class="classes-filter {% if dynamic_page_crm_object %}hidden{% endif %}">
+                <div class="row-1 row--flex">
+                    <div class="filter-section">
+                        <div class="drop-down">
+                            <div class="filters flex-row ">
+                                <div class="ui-group area">
+                                    <h3>
+                                        <span data-init="Class Type">Specialty Area</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group js-radio-button-group filter_button" data-filter-group="specialty">
+                                        <button class="button all-button" data-filter="*">Select All</button>
+                                        <button class="button" data-filter=".clinicalchildadolescent">Clinical Child &amp; Adolescent</button>
+                                        <button class="button" data-filter=".clinicalneuropsychology">Clinical Neuropsychology</button>
+                                        <button class="button" data-filter=".counselingclinicalpracticeessentials">Counseling &amp; Clinical Practice Essentials</button>
+                                        <button class="button" data-filter=".digitaltelehealth">Digital &amp; Telehealth</button>
+                                        <button class="button" data-filter=".evidencebasedinterventions">Evidence-Based Interventions</button>
+                                        <button class="button" data-filter=".fireservice">Fire Service</button>
+                                        <button class="button" data-filter=".forensic">Forensic</button>
+                                        <button class="button" data-filter=".policepublicsafetypsychology">Police &amp; Public Safety</button>
+                                    </div>
+                                </div>
+                                <div class="ui-group formate">
+                                    <h3>
+                                        <span data-init="Studio">Format</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group js-radio-button-group filter_button" data-filter-group="format">
+                                        <button class="button all-button" data-filter="*">Select All</button>
+                                        {% for item in  formate.options %}
+                                        <button class="button" data-filter=".{{item.label|regex_replace("[^a-zA-Z]", "")|lower}}">{{ item.label }}</button>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="ui-group hours">
+                                    <h3>
+                                        <span data-init="Coach/Organi">CE Hours</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group js-radio-button-group filter_button" data-filter-group="cehours">
+                                        <button class="button all-button" data-filter="*">Select All </button>
+                                        {% for item in newArr|sort(False, False) %}
+                                        <button class="button" data-filter=".{{ item }}">{{ item }}</button>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="ui-group certificate">
+                                    <h3>
+                                        <span data-init="Fees">Certificates</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group js-radio-button-group filter_button" data-filter-group="certificates">
+                                        <button class="button all-button" data-filter="*">Select All</button>
+                                        {% for item in Certificates.options %}
+
+                                        {% if item.label == "Maternal Mental Health" || item.label =="Revised NICHD Interview Protocol" %}
+                                        {% else %}
+                                        <button class="button" data-filter=".{{item.label|regex_replace("[^a-zA-Z^0-9]", "")|lower}}">{{ item.label }}</button>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="ui-group instructor">
+                                    <h3>
+                                        <span data-init="Venue">Presenters</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group js-radio-button-group filter_button" data-filter-group="instructors">
+                                        <button class="button all-button" data-filter="*">Select All</button>
+                                        {% for item in Instructors %}
+                                        <button class="button" data-filter=".{{item|regex_replace("[^a-zA-Z^0-9]", "")|lower }}">{{ item }}</button>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="ui-group partner">
+                                    <h3>
+                                        <span data-init="Venue">In Partnership With</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group js-radio-button-group filter_button" data-filter-group="partnership">
+                                        <button class="button all-button" data-filter="*">Select All</button>
+                                        {% for item in Partnership.options %}
+                                        <button class="button" data-filter=".{{item.label|lower|replace(' ', '-')|lower}}">{{ item.label }}</button>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="ui-group recent">
+                                    <h3>
+                                        <span data-init="Venue">Sort By Most Recent</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M9 1L5.18844 4.91964C5.16371 4.94512 5.13434 4.96533 5.102 4.97911C5.06967 4.9929 5.035 5 5 5C4.965 5 4.93033 4.9929 4.898 4.97911C4.86566 4.96533 4.83629 4.94512 4.81156 4.91964L1 1" stroke="#0B3253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </h3>
+                                    <div class="button-group sort-by-button-group js-radio-button-group" id="sorts">
+                                        <button class="button all-button hidden" data-filter="*">Most Recent</button>
+                                        <button class="button" data-sort-by="original-order">Most Recent</button>
+                                        <button class="button" data-sort-by="price" data-sort-direction="asc">Price (Low to High)</button>
+                                        <button class="button" data-sort-by="price" data-sort-direction="desc">Price (High to Low)</button>
+                                        <button class="button" data-sort-by="number" data-sort-direction="asc" data-sort-by="number" >CE Hours</button>
+                                        <button class="button" data-sort-by="title" data-sort-direction="asc">A-Z</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p><button class="button reset">Reset filters</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{# start record list #}
+
+<div class="filterRecordsApi">
+
+</div>
+{% macro loop_m(value)  %}{% for item in value %} {{ item|regex_replace("[^a-zA-Z]", "") }}{% endfor %}{% endmacro %} 
+{% set items = "name, page_url, course_image, ce_hours, length, course_type,partner_logo_url, price__usd_, presented_by, specialty_area,presenter_s_, start_time, format, certificate, badge_earning, event_start_date, event_end_date, end_time, event_end_date, in_partnership_with__search_" %}
+
+{% set objects = crm_objects("courses") %}
+{% set per_page = 9 %}
+{% set offset_number = 0 %}
+{% set total_pages = objects.total|divide(per_page)|round(0,"ceil") %}
+{% if not request.query_dict.page %}
+{% set page_number = 1 %}
+{% elif request.query_dict.page %}
+{% set page_number = request.query_dict.page %}
+{% set offset_number = (page_number - 1) * per_page %}
+{% endif %}
+
+{#https://api.hubapi.com/crm/v3/objects/2-4344493?archived=false&hs_static_app=developer-docs-ui&limit=1&after=611945328&hs_static_app_version=1.3519#}
+
+
+
+
+
+
+
+
+{% require_css %}
+<style>
+    {% scope_css %}
+    .course-filter{
+        background: {{ module.style.gradient_field.css }};
+        {{ module.style.desktop_spacing.css }}
+        {{ module.style.border_field.css }};
+        {{ module.style.border_field.css }}
+    }
+    @media(max-width:767px){
+        .course-filter{
+            {{ module.style.mobile_spacing.css }}
+        }
+    }
+
+    .course-obj .course-item .c-inner {
+        min-height: 460px;
+    }
+
+    .course-obj .course-item span.hours {
+        left: 12px;
+    }
+
+    .course-obj .instructor-image {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-right: -20px;
+    }
+
+    .course-obj .course-item img.author-img {
+        position: relative;
+        right: 0;
+    }
+
+    .mb-5{
+        margin-bottom: 5px;
+    }
+
+    .course-obj .instructor-title {
+        margin-top: 5px;
+    }
+
+    @media(max-width:1250px){
+
+        .course-obj  .instructor-image {
+            margin-top: 20px;
+        }
+
+        .course-obj .course-item img.author-img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+    @media(max-width:991px) and (min-width:768px){
+        .course-obj .course-item {
+            width: 50%;
+        }
+    }
+
+    @media(max-width:767px){
+        .course-obj .course-item .c-inner {
+            min-height: 00px;
+        }
+
+        .course-obj .instructor-image {
+            margin-top: 0px;
+        }
+    }
+
+    @media(max-width:479px){
+        .course-obj .instructor-image {
+            margin-top: 20px;
+        }
+    }
+    .element-item {
+        transform:translate3d(0,0,0);
+        -webkit-transform:translate3d(0,0,0);
+        -moz-transform:translate3d(0,0,0);
+    }
+
+    {% end_scope_css %}
+
+</style>
+
+{% end_require_css %}
+
+
+{# end start record list #}
+
+
+{% require_css %}
+<style>
+    {% scope_css %}
+    {% set c1 = module.style.background_color.color %}
+    {% set c2 = module.style.background_color_two.color %}
+    .course-filter{
+        background: linear-gradient(180deg, {{ c1 }} 2.4%, {{ c2 }} 61.32%);
+        {{ module.style.desktop.spacing_field.css }};
+        {{ module.style.border_field.css }};
+        {{ module.style.gradient_field.css }}
+    }
+    @media(max-width:767px){
+        .course-filter{
+            {{ module.style.mobile.spacing_field.css }}
+        }
+    }
+
+    {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+
+{% require_js %}
+<script>
+    var apiKey = 'a1f5ca33-70ef-4c86-8d85-36ce9af55f9a';
+    var cutomObjectListApi = 'https://api.hubapi.com/crm/v3/objects/2-4344493';
+
+    // Init render filters
+    fetchData({}, function(data){
+        console.log('hello ');
+        console.log(data);
+        //renderFilters(data);
+    });
+
+
+    //var queryCustomApi = "order=-hs_createdate&limit=" + per_page + "&archived=false";
+    //var queryApi = "order=-hs_createdate&limit=" + per_page + "&offset=" + offset_number;
+
+    function fetchData(options, callback) {
+        console.log('fetchData');
+        var leverUrl = cutomObjectListApi;
+        // if (options.page) {
+        //leverUrl += '&limit=' + '9' + '&skip=' + ((options.page - 1) * pageSize);
+        leverUrl += '&limit=9' ; 
+        // }
+        //         if (options.team) {
+        //             leverUrl += '&team=' + options.team;
+        //         }
+        //         if (options.location) {
+        //             leverUrl += '&location=' + options.location;
+        //         }
+        var url =   'https://api.hubapi.com/crm/v3/objects/2-4344493?hapikey=a1f5ca33-70ef-4c86-8d85-36ce9af55f9a&limit=9';
+        $.ajax({
+            url: url,
+            type: 'get',
+            crossDomain : true,
+            beforeSend: function(request) {
+                //                 request.setRequestHeader("X-Auth-API-Key", '1f685dfe79956705cb3e78679494873c');
+                request.setRequestHeader("Access-Control-Allow-Origin", '*');
+                request.setRequestHeader("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
+                request.setRequestHeader("Content-Type", 'application/json');
+
+            },
+            dataType: "json",
+
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, desc, err) {
+                console.log(xhr);
+                console.log(desc);
+                console.log(err);
+            }
+        }); // end ajax call
+    }
+
+
+</script>
+
+{% end_require_js %}

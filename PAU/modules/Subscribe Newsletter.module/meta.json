@@ -1,0 +1,7 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 61785801656,
+  "label" : "Subscribe Newsletter",
+  "is_available_for_new_content" : true
+}

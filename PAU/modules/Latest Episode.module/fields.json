@@ -1,0 +1,33 @@
+[ {
+  "id" : "5e572854-197d-553e-a300-980f4743cab5",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Latest Episodes"
+}, {
+  "id" : "1f8f6484-6283-4143-b58c-f75c93ffcf18",
+  "name" : "blog_field",
+  "display_width" : null,
+  "label" : "Blog",
+  "required" : false,
+  "locked" : false,
+  "type" : "blog",
+  "default" : 61862295081
+}, {
+  "id" : "96b17df7-be5c-daf2-704b-15a8100ec18f",
+  "name" : "post_count",
+  "display_width" : null,
+  "label" : "Post Count",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 3
+} ]

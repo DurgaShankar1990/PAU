@@ -1,0 +1,147 @@
+[ {
+  "id" : "09be9ed0-4656-dfb5-b47c-245483f2b6db",
+  "name" : "logo",
+  "display_width" : null,
+  "label" : "logo",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 5
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : [ {
+    "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company.svg",
+    "alt" : "Elements Image",
+    "width" : 177,
+    "height" : 29,
+    "max_width" : 178,
+    "max_height" : 29
+  }, {
+    "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company.svg",
+    "alt" : "Elements Image",
+    "width" : 177,
+    "height" : 29,
+    "max_width" : 178,
+    "max_height" : 29
+  }, {
+    "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company.svg",
+    "alt" : "Elements Image",
+    "width" : 177,
+    "height" : 29,
+    "max_width" : 178,
+    "max_height" : 29
+  }, {
+    "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company.svg",
+    "alt" : "Elements Image",
+    "width" : 177,
+    "height" : 29,
+    "max_width" : 178,
+    "max_height" : 29
+  }, {
+    "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/logos/company.svg",
+    "alt" : "Elements Image",
+    "width" : 177,
+    "height" : 29,
+    "max_width" : 178,
+    "max_height" : 29
+  } ]
+}, {
+  "id" : "09aecc9e-15b0-e2b5-1573-855f01414318",
+  "name" : "align_items_desktop",
+  "display_width" : null,
+  "label" : "Align Items (Desktop)",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "7c647f8f-a976-6ced-3da5-d50370082caa",
+    "controlling_value_regex" : "true",
+    "operator" : "NOT_EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "start", "Start" ], [ "center", "Center" ], [ "space-between", "Space Between" ] ],
+  "type" : "choice",
+  "default" : "center"
+}, {
+  "id" : "edae57ce-2cdc-2ce7-78e4-de576e566c0e",
+  "name" : "align_items_mobile",
+  "display_width" : null,
+  "label" : "Align Items (Mobile)",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "7c647f8f-a976-6ced-3da5-d50370082caa",
+    "controlling_value_regex" : "true",
+    "operator" : "NOT_EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "start", "Start" ], [ "center", "Center" ], [ "space-between", "Space Between" ] ],
+  "type" : "choice",
+  "default" : "center"
+}, {
+  "id" : "7c647f8f-a976-6ced-3da5-d50370082caa",
+  "name" : "carousel_mode",
+  "display_width" : null,
+  "label" : "Carousel Mode",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "4475568c-3e9e-84dc-3b0d-cc1551e2322e",
+  "name" : "slider_speed",
+  "display_width" : null,
+  "label" : "Slider Speed",
+  "required" : false,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 100,
+  "max" : 5000,
+  "step" : 1,
+  "type" : "number",
+  "default" : 3000
+}, {
+  "id" : "31d2d042-eea3-8b03-a346-715a93418986",
+  "name" : "settings",
+  "display_width" : null,
+  "label" : "Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "de47fbaf-0998-ced7-7085-a288690e43fb",
+    "name" : "css__id",
+    "display_width" : null,
+    "label" : "CSS ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "d0110c8f-947f-0b47-8f76-65ed27e9245d",
+    "name" : "css__class",
+    "display_width" : null,
+    "label" : "CSS Class",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

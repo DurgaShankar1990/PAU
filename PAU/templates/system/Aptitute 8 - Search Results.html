@@ -1,0 +1,39 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  label: Search Results - Elements HubSpot Theme - Inbound Elements
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper elements__search-results">
+  
+  <div class="elements__search-results-background-absolute"></div>
+  
+  <section class="content-wrapper">
+    <div class="elements__systems-page__search-results systems-page--search-results">
+      {% module_block module 'search_results_content'
+        label='Search results heading',
+        path='@hubspot/rich_text'
+      %}
+        {% module_attribute 'html' %}
+          <h1 style="text-align: center;">Search results for<br>"{{ request.query_dict.term|escape }}"</h1>
+        {% end_module_attribute %}
+      {% end_module_block %}
+      {% module "search_results" path='/Aptitude 8 Theme/modules/Aptitute 8 - Search Result', label="Elements - Search Result",
+        content_types = {
+          website_pages: false,
+          landing_pages: false,
+          blog_posts: false,
+          knowledge_articles: true    
+        }
+      %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

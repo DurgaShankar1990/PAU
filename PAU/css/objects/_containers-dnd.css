@@ -1,0 +1,41 @@
+.content-wrapper,
+.container {
+    margin: 0 auto;
+    max-width: {{ theme.layout.content_width }}px;
+
+}
+
+@media screen and (min-width: 1380px) {
+    .content-wrapper,
+    .container {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .content-wrapper,
+    .container {
+        padding: 0 20px;
+    }
+}
+
+.dnd-section,
+.content-wrapper--vertical-spacing {
+    padding: 80px 20px;
+}
+
+.dnd-section > .row-fluid {
+    margin: 0 auto;
+    max-width: {{ theme.layout.content_width }}px;
+}
+
+.dnd-section .dnd-column {
+    padding: 0px 0px;
+}
+
+@media (max-width: 767px) {
+    .dnd-section .dnd-column {
+        padding: 0;
+    }
+
+}

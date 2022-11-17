@@ -1,0 +1,51 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Full Screen Video Landing Page - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/full-screen-video-landing-page.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block header %}
+  {% global_partial path='./partials/header-no-navigation.html' %}
+{% endblock header %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1' class=' elements-template--card-contact__full-mobile', label='section-1' %}
+  
+    {% dnd_section
+      full_width=true,
+      vertical_alignment='TOP'
+    %}
+
+      {% dnd_module "module_161359457495639" path='../modules/Aptitute 8 - Full Screen Video', label="Aptitute 8 - Full Screen Video",
+        content= { enable_top_text: true, text: '<h2 style="margin-bottom: 12px;">Start Free Trial</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p>' },
+        paddings={ desktop: { content: { top: 24 }, module: { left: 40, right: 40 } } },
+        module_styles= { button_full_width: true } 
+      %}
+      {% end_dnd_module %} 
+
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+  
+
+
+  
+</main>
+{% endblock body %}
+

@@ -1,0 +1,64 @@
+[ {
+  "id" : "5e572854-197d-553e-a300-980f4743cab5",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Latest Case Studies"
+}, {
+  "id" : "b33b0d70-af6d-64d4-9614-dfc3214bd319",
+  "name" : "button_text",
+  "display_width" : null,
+  "label" : "Button Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Browse Case Studies"
+}, {
+  "id" : "b015d4d4-302e-3319-ff3e-b966a2a48b8d",
+  "name" : "button_link",
+  "display_width" : null,
+  "label" : "Button Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "1f8f6484-6283-4143-b58c-f75c93ffcf18",
+  "name" : "blog_field",
+  "display_width" : null,
+  "label" : "Blog",
+  "required" : false,
+  "locked" : false,
+  "type" : "blog",
+  "default" : 61780562454
+}, {
+  "id" : "96b17df7-be5c-daf2-704b-15a8100ec18f",
+  "name" : "post_count",
+  "display_width" : null,
+  "label" : "Post Count",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 3
+} ]

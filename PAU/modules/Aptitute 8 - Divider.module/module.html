@@ -1,0 +1,40 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildStyles() %}
+  width: {{ module.width_divider }}%;
+  border: 0 none;
+  border-bottom-width: {{ module.height }}px;
+  border-bottom-style: {{ module.line_type }};
+  border-bottom-color: rgba({{ module.color.color|convert_rgb }}, {{ module.color.opacity / 100 }});
+  margin-left: {{ "auto" if (module.alignment == "center" or module.alignment == "right") else "0" }};
+  margin-right: {{ "auto" if (module.alignment == "center" or module.alignment == "left") else "0" }};
+  margin-top: {{ module.padding ~ "px" if module.show_padding else "0"}};
+  margin-bottom: {{ module.padding ~ "px" if module.show_padding else "0"}};
+{% endmacro %}
+
+<div {{ buildID() }} style="{{ buildStyles() }}" class="elements--divider__{{ name }} {{ buildClass() }}"></div>
+
+
+{% require_css %}
+<style>
+  
+
+@media(max-width: 767px) {
+
+  {% if !module.show_on_mobile %}
+    .elements--divider__{{ name }} {
+      display: none !important;
+    }
+  {% endif %}
+  
+  
+}
+  
+</style>
+{% end_require_css %}
+
+

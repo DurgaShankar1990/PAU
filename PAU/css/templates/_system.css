@@ -1,0 +1,407 @@
+/* Error pages */
+
+.error-page {
+  padding: 10rem 0;
+  position: relative;
+  text-align: center;
+}
+
+.error-page:before {
+  color: {{ theme.global_colors.neutral_colors.neutral_color_300.color }};
+  content: attr(data-error);
+  font-size: 40vw;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  top: 46%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: -1;
+}
+
+@media screen and (min-width: 1100px) {
+  .error-page:before {
+    font-size: 26rem;
+  }
+}
+
+/* System pages */
+
+
+.systems-page {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 3rem 0;
+}
+
+.elements__systems-page__search-results {
+  padding: 3rem 0;
+}
+
+
+.systems-page .success {
+  background-color: #E3FDDE;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 1.4rem 0;
+  padding: 1.4rem 1.6rem;
+  text-align: center;
+  width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #65C855;
+
+}
+
+.systems-page form input {
+  max-width: 100%;
+}
+
+#email-prefs-form .header {
+  background-color: transparent;
+}
+
+/* Search pages */
+
+.hs-search-field__bar {
+  position: relative;
+}
+
+.hs-search-field__suggestions {
+  background-color: #FFF;
+  max-width: 360px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100%;
+}
+
+.hs-search-results {
+  margin-top: 1.4rem;
+}
+
+ul.hs-search-results__listing li {
+  margin-bottom: 1.4rem;
+}
+
+.hs-search-results__title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 34px;
+  color: {{ theme.typography.global_fonts.headers_font.color }};
+}
+
+.hs-search-results__title:hover {
+  text-decoration: none;
+}
+
+.hs-search-results__description {
+  padding-top: 0.7rem;
+}
+
+.hs-search-highlight {
+  font-weight: bold;
+}
+
+.hs-search-results__pagination a {
+  color: #0270E0;
+}
+
+/* Password prompt */
+
+.elements__password-protected {
+  padding-top: 90px;
+  padding-bottom: 128px;
+  background: {{ theme.global_colors.neutral_colors.neutral_color_200.color }};
+}
+
+.password-prompt input[type=password] {
+  display: block;
+  margin-bottom: 1.6rem;
+  margin-top: 1.8rem !important;
+  border-radius: 10px;
+  height: 62px !important;
+}
+
+.password-prompt form input[type=submit], .password-prompt form .hs-button {
+  padding: 20px 60px 22px;
+  height: auto !important;
+}
+
+.elements__password-prompt--image {
+  text-align: center;
+  margin-bottom: 16px;
+  width: 148px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.elements__password-prompt--card {
+  max-width: 591px;
+  width: 100% !important;
+  padding: 70px 40px;
+ 
+}
+
+/* Subscription Preferentes */
+
+
+.elements__subscription-preferences--card {
+  max-width: 636px;
+  width: 100% !important;
+  padding: 48px 50px 48px;
+}
+
+.elements__subscription-preferences p {
+  /*display: none;*/
+}
+
+
+.elements__subscription-preferences h1 {
+  font-size: 38px;
+  line-height: 48px;
+  margin-bottom: 9px;
+}
+
+.elements__subscription-preferences h2 {
+  font-size: 26px;
+  color: {{ theme.global_colors.neutral_colors.neutral_color_600.color }};
+  font-weight: normal;
+  margin-bottom: -15px;
+}
+
+.elements__subscription-preferences .item-inner p {
+  font-size: 13px;
+}
+
+.elements__subscription-preferences .hs-button {
+  margin-top: 24px; 
+  margin-bottom: 24px;
+}
+
+.elements__subscription-preferences label span {
+  color: {{ theme.global_colors.neutral_colors.neutral_color_600.color }};
+  font-weight: normal;
+}
+
+
+
+
+.elements__subscription-preferences [type="radio"]:checked, 
+.elements__subscription-preferences [type="radio"]:not(:checked), 
+.elements__subscription-preferences [type="checkbox"]:checked, 
+.elements__subscription-preferences [type="checkbox"]:not(:checked) {
+  position: absolute;
+  margin-top: 8px;
+  z-index: 99;
+  left: 0;
+  opacity: 0;
+  height: 28px;
+  width: 100%;
+}
+
+
+.elements__subscription-preferences [type="checkbox"]+span:before {
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 15px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    box-shadow: inset 0px -1px 5px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    width: 22px;
+    height: 22px;
+    transition: all ease .35s !important;
+    border: 1px solid {{ theme.global_colors.neutral_colors.neutral_color_400.color }};
+    cursor: pointer;
+  
+}
+
+.elements__subscription-preferences [type="checkbox"]:checked+span:before {
+    background-color: #f4263e;
+}
+
+.elements__subscription-preferences [type="checkbox"]+span:after, .elements__subscription-preferences [type="checkbox"]+label:after {
+  content: '';
+  transition: border-color ease .35s !important;
+  border-color: #f4263e;
+}
+
+.elements__subscription-preferences [type="checkbox"]:checked+span:after, .elements__subscription-preferences [type="checkbox"]:checked+label:after {
+  content: '';
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 22px;
+  border: 2px solid #fff;
+  border-left: 0;
+  border-top: 0;
+  height: 14px;
+  left: 8px;   
+  top: 7px;
+  transform: rotate(40deg);
+  transition: border-color ease .35s !important;
+  width: 6px;
+}
+
+
+.elements__subscription-preferences [type="checkbox"]:checked+span, .elements__subscription-preferences [type="checkbox"]:not(:checked)+span {
+    position: relative;
+    display: inline-block !important;
+    text-transform: none;
+    transition: all ease .35s !important;
+    cursor: pointer;
+    margin: 7px 0px !important;
+    padding-top: 1px;
+    padding-left: 37px !important;
+}
+
+
+
+@media(max-width: 767px) { 
+  
+  .elements__subscription-preferences h2 {
+    font-size: 22px;
+  }
+  
+  .elements__subscription-preferences--card {
+    padding: 32px 28px 32px;
+  }
+  
+  .elements__subscription-preferences h1 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  
+}
+
+
+
+
+/* Subscription Confirmation */
+
+
+.elements__subscription-preferences-update--card {
+  max-width: 591px;
+  width: 100% !important;
+  padding: 70px 40px 40px;
+  text-align: center;
+}
+
+
+@media(max-width: 767px) { 
+  
+  .elements__subscription-preferences-update--card {
+    padding: 50px 28px 40px;
+  } 
+  
+}
+
+.elements__subscription-preferences-update h1 {
+  font-size: 38px;
+  line-height: 48px;
+}
+
+
+.elements__subscription-preferences-update h2 {
+  font-size: 26px;
+  line-height: 25px;
+  font-style: normal;
+  font-weight: normal;
+  color: {{ theme.global_colors.neutral_colors.neutral_color_600.color }};
+  margin-bottom: 0px;
+}
+
+
+/* Subscription Update Confirm */
+
+.elements__backup-unsubscribe h3 {
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 16px;
+  line-height: 27px;
+  margin-bottom: 12px;
+}
+
+
+.elements__backup-unsubscribe form input[type=submit], .elements__backup-unsubscribe form .hs-button {
+  padding: 20px 52px 22px;
+  height: auto !important;
+}
+
+
+.elements__backup-unsubscribe--card {
+  max-width: 591px;
+  width: 100% !important;
+  padding: 56px 40px 72px;
+ 
+}
+
+@media(max-width: 767px) { 
+  .elements__backup-unsubscribe--card {
+    padding: 40px 32px 60px;
+  }  
+  
+}
+
+
+/* Search Results */
+
+.elements__search-results {
+   position: relative;
+   padding-top: 32px;
+   margin-bottom: 72px;
+}
+
+.elements__search-results-background-absolute {
+  background-color: {{ theme.global_colors.neutral_colors.neutral_color_200.color }};
+  height: 300px;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+@media(max-width: 767px) { 
+  
+  .elements__search-results {
+     margin-top: 4px;
+  }
+  
+  .elements__search-results-background-absolute {
+    height: 247px;
+  }
+  
+  .elements__search-results {
+    padding-top: 16px;
+  }
+  
+  .elements__password-protected {
+    padding-top: 54px;
+    padding-bottom: 72px;
+  }
+  
+  .elements__password-prompt--card {
+    padding: 32px 32px 48px;
+  }
+  
+}
+
+/* Backup unsubscribe */
+
+.backup-unsubscribe #email-prefs-form div {
+  padding-bottom: 0 !important;
+}
+
+.backup-unsubscribe input[type=email] {
+  margin-bottom: 1.4rem;
+  padding: 0.7rem !important;
+}

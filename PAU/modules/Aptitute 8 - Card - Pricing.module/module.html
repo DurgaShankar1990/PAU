@@ -1,0 +1,295 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+{% endmacro %}
+
+
+
+<div {{ buildID() }} class="elements-div-module_{{ name }} {{ buildClass() }}">
+  
+  {% for item in module.columns %}
+  
+    <div class="cards__card elements--pricing__card_{{ name }} elements--pricing__card-{{ item.card_pricing_type }}_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+      
+      <span class="elements--pricing__badge_{{ name }} elements--pricing__badge-{{ item.card_pricing_type }}_{{ name }}">{{ item.product_name }}</span>
+      
+      <div class="elements--pricing__price-container_{{ name }}" style="{% if item.card_pricing_type == "default" or item.card_pricing_type == "featured" %}margin-top: 40px;{% else %}margin-top: 16px;{% endif %}"> 
+        <span class="elements--pricing__price-value_{{ name }}">{{ item.price }}</span> 
+        <span class="elements--pricing__price-frecuency_{{ name }}">/ {{ item.frecuency }}</span>
+      </div>
+      
+      <div class="elements--pricing__description_{{ name }}">
+        {% inline_rich_text field="description" value="{{ item.description }}" %}
+      </div>
+      
+      {% if item.card_pricing_type == "default" or item.card_pricing_type == "featured" %}
+        <div class="elements--pricing__separator_{{ name }}">&nbsp;</div>
+      {% endif %}
+      
+      
+      <h5 class="elements--pricing__features-title_{{ name }}" style="{% if item.card_pricing_type == "default_2" or item.card_pricing_type == "featured_2" %}margin-top: 40px;{% endif %}">
+        {{ item.features_title }}
+      </h5>
+
+      {% for item2 in item.plan_features %}
+
+        <div class="elements--pricing__features-container_{{ name }}">
+          <span class="elements--pricing__features-image_{{ name }}">
+            {% if item.card_pricing_type == "default_2" %}
+              {% if module.module_styles.pricing_styles.default_icon.src %}
+                <img src="{{ module.module_styles.pricing_styles.default_icon.src }}" alt="{{ module.module_styles.pricing_styles.default_icon.alt }}" width="{{ module.module_styles.pricing_styles.default_icon.width }}" height="{{ module.module_styles.pricing_styles.default_icon.height }}">
+              {% endif %}
+            {% else %}
+              {% if module.module_styles.pricing_styles.featured_icon.src %}
+                <img src="{{ module.module_styles.pricing_styles.featured_icon.src }}" alt="{{ module.module_styles.pricing_styles.featured_icon.alt }}" width="{{ module.module_styles.pricing_styles.featured_icon.width }}" height="{{ module.module_styles.pricing_styles.featured_icon.height }}">
+              {% endif %}
+            {% endif %}
+         
+          </span>
+          <span class="elements--pricing__features-name_{{ name }}">{{ item2.featured_name }}</span>
+          
+        </div>
+
+		
+	    {% endfor %}
+
+
+      {# Link #}
+      
+      {% set href = item.link_field.url.href %}
+      {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if item.link_field.no_follow %}
+        {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if item.link_field.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+        {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+        >
+        <div class="elements--pricing__button-container_{{ name }}">
+          <button class="elements--pricing__button-{{ item.card_pricing_type }}_{{ name }} {% if item.card_pricing_type == "featured" or item.card_pricing_type == "featured_2" %} btn-primary-dark{% else %} btn-secondary-white{% endif %}">{{ item.button_text }}</button>
+        </div>
+      </a>
+
+      
+    </div>
+	
+  {% endfor %}
+  
+</div>
+
+
+
+
+
+{% require_css %}
+<style>
+  
+  .elements--pricing__card_{{ name }} {    
+    padding-top: {{ module.paddings.desktop.card.top }}px;
+    padding-bottom: {{ module.paddings.desktop.card.bottom }}px;
+    padding-left:  {{ module.paddings.desktop.card.left }}px;
+    padding-right: {{ module.paddings.desktop.card.right }}px;
+    width: 100%;
+    border-radius: 32px;
+    height: max-content;
+  }
+  
+
+  
+  .elements--pricing__card-featured_{{ name }} {
+    border: 2px solid {{ theme.global_colors.primary_colors.primary_color_1.color }};
+  }
+  
+  .elements--pricing__card-featured_2_{{ name }} {
+    border: 2px solid {{ theme.global_colors.primary_colors.primary_color_1.color }};
+  }
+  
+  .elements--pricing__badge_{{ name }} {
+   
+  }
+
+  
+  .elements--pricing__badge-default_{{ name }} {
+    padding: 6px 19px; 
+    border-radius: 5px;
+    text-transform: lowercase;
+    background-color: {{ theme.global_colors.neutral_colors.neutral_color_300.color }};
+    color: {{ theme.typography.global_fonts.headers_font.color }};
+  }
+   
+  .elements--pricing__badge-default_2_{{ name }} {
+    color: {{ theme.typography.global_fonts.headers_font.color }};
+    font-weight: bold;
+    font-size: 20px;
+  }
+   
+  .elements--pricing__badge-featured_{{ name }} {
+    padding: 6px 19px; 
+    border-radius: 5px;
+    text-transform: lowercase;
+    background-color: {{ theme.global_colors.primary_colors.primary_color_1.color }};
+    color: {{ theme.global_colors.neutral_colors.neutral_color_100.color }};
+  }
+    
+  .elements--pricing__badge-featured_2_{{ name }} {
+    color: {{ theme.typography.global_fonts.headers_font.color }};
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .elements--pricing__price-value_{{ name }} {
+    font-weight: bold;
+    font-size: 48px;
+    color: {{ theme.typography.global_fonts.headers_font.color }};
+  }
+  
+  .elements--pricing__description_{{ name }} {
+    margin-top: 8px;
+  }
+  
+  .elements--pricing__separator_{{ name }} {
+    border-top: 1px solid {{ theme.global_colors.neutral_colors.neutral_color_400.color }};
+    width: 100%;
+    margin: 40px 0 16px;
+  }
+  
+  .elements--pricing__features-title_{{ name }} {
+    font-weight: bold;
+    margin-bottom: 32px;
+  }
+  
+  .elements--pricing__features-container_{{ name }} {
+    display: flex;
+    margin: 10px 0;
+  }
+  
+  .elements--pricing__features-image_{{ name }} {
+    margin-right: 12px; 
+  }
+  
+  .elements--pricing__button-container_{{ name }} {
+    margin-top: 24px;
+  }
+  
+  .elements--pricing__button-default_{{ name }} {
+    width: 100%;
+    box-shadow: none;
+  }
+  
+  .elements--pricing__button-featured_{{ name }} {
+    width: 100%;
+  }
+  
+  .elements--pricing__button-default_2_{{ name }} {
+    width: 100%;
+    box-shadow: none;
+  }
+  
+  .elements--pricing__button-featured_2_{{ name }} {
+    width: 100%;
+  }
+
+
+  
+  .elements-div-module_{{ name }} {
+    display: grid;
+    grid-template-columns: repeat({{ module.module_styles.layout.number_columns_desktop }}, auto);
+    grid-column-gap: {{ module.module_styles.layout.column_gap }}px;
+    grid-row-gap: {{ module.module_styles.layout.row_gap }}px;
+  }
+  
+  .elements-module-text_{{ name }} {
+    padding-top: {{ module.paddings.desktop.content.top }}px;
+    padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+    padding-left: {{ module.paddings.desktop.content.left }}px;
+    padding-right: {{ module.paddings.desktop.content.right }}px;
+    
+    text-align: {{ module.module_styles.text_styles.text_align }};
+  }
+  
+  
+  @media(max-width: 992px) {
+  
+    .elements-div-module_{{ name }} {
+      grid-template-columns: repeat({{ module.module_styles.layout.number_columns_tablet }}, auto);
+    }
+  
+  }
+  
+
+  
+  @media(min-width: 767px) {
+    .elements--pricing__card-default_{{ name }} {
+      margin-top: 24px;
+    }
+  }
+
+  @media(max-width: 767px) {
+    
+    
+
+    .elements-div-module_{{ name }} {
+      
+      grid-template-columns: repeat({{ module.module_styles.layout.number_columns_mobile }}, auto);
+      
+      grid-column-gap: {{ module.module_styles.layout.column_gap_mobile }}px !important;
+      grid-row-gap: {{ module.module_styles.layout.row_gap_mobile }}px !important;
+      
+      padding-top: {{ module.paddings.mobile.module.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.module.left }}px !important;
+      padding-right: {{ module.paddings.mobile.module.right }}px !important;
+
+      margin-top: {{ module.margins.mobile.module.top }}px;
+      margin-bottom: {{ module.margins.mobile.module.bottom }}px;
+      margin-left: {{ module.margins.mobile.module.left }}px;
+      margin-right: {{ module.margins.mobile.module.right }}px;
+    }
+
+
+    .elements-module-text_{{ name }} {
+      padding-top: {{ module.paddings.mobile.content.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.content.left }}px !important;
+      padding-right: {{ module.paddings.mobile.content.right }}px !important;
+      
+      text-align: {{ module.module_styles.text_styles.text_align_mobile }} !important;
+    }
+
+  }
+  
+  @media(max-width: 480px) {
+    .elements-div-module_{{ name }} {
+      grid-template-columns: repeat({{ module.module_styles.layout.number_columns_small_mobile }}, auto);
+    }
+  }
+  
+</style>
+{% end_require_css %}
+
+
+
+
+
+  

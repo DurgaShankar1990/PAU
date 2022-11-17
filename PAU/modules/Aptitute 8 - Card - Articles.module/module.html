@@ -1,0 +1,491 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;
+{% endmacro %}
+
+
+
+{% macro buildButtonStyles() %}
+ {% if module.button.button_style == "elements-btn-custom" %}
+  font-family: {{ module.button.font.font }}; {{ module.button.font.style }};
+  color: {{ module.button.font.color }}; 
+  font-size: {{ module.button.font.size }}{{module.button.font.size_unit }};
+  background-color: {{ module.button.background_color.color }};
+ {% endif %}
+{% endmacro %}
+
+
+
+
+{% macro buildContent() %}
+   <div class="elements-module-content" style="width: 100%;">
+    {% inline_rich_text field="content.content" value="{{ module.content.content }}" %}
+  </div>
+{% endmacro %}
+
+  {% macro buildButton() %}
+  {% set href = module.button.link_field.url.href %}
+  {% if module.button.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+  {% endif %}
+  {% set rel = [] %}
+  {% if module.button.link_field.no_follow %}
+    {% do rel.append("nofollow") %}
+  {% endif %}
+  {% if module.button.link_field.open_in_new_tab %}
+    {% do rel.append("noopener") %}
+  {% endif %}
+  <a href="{{ href }}"
+    {% if module.button.link_field.open_in_new_tab %}target="_blank"{% endif %}
+    {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+    >
+      <button class="{{ module.button.button_class }}" style="{{ buildButtonStyles() }}">{% inline_text field="button.text" value="{{ module.button.text }}" %}</button>
+  </a>
+  
+{% endmacro %}
+
+
+{% if module.articles_settings.select_blog is number %}
+  {% set select_blog = module.articles_settings.select_blog %}
+{% else %}
+  {% set select_blog = 'default' %}
+{% endif %}
+
+{% set itemLimit = module.articles_settings.limit_articles/4|round(0,"ceil") %}
+
+
+{% if module.articles_settings.filter_by_tag %}
+    {% set blog_one_posts = blog_recent_tag_posts(module.articles_settings.select_blog  , module.articles_settings.filter_by_tag, itemLimit) %}
+    {% set blog_two_posts = blog_recent_tag_posts(module.articles_settings.select_blog_2, module.articles_settings.filter_by_tag, itemLimit) %}
+    {% set blog_three_posts = blog_recent_tag_posts(module.articles_settings.select_blog_3, module.articles_settings.filter_by_tag, itemLimit) %}
+    {% set blog_four_posts = blog_recent_tag_posts(module.articles_settings.select_blog_4, module.articles_settings.filter_by_tag, itemLimit) %}
+   
+    {% set posts = (blog_one_posts + blog_two_posts +  blog_three_posts + blog_four_posts ) | sort(true, false, 'publish_date')  %} 
+
+{% else %}
+
+    {% set blog_one_posts = blog_recent_posts(module.articles_settings.select_blog  ,   itemLimit, module.articles_settings.filter_by_tag) %}
+    {% set blog_two_posts = blog_recent_posts(module.articles_settings.select_blog_2,   itemLimit, module.articles_settings.filter_by_tag) %}
+    {% set blog_three_posts = blog_recent_posts(module.articles_settings.select_blog_3, itemLimit, module.articles_settings.filter_by_tag) %}
+    {% set blog_four_posts = blog_recent_posts(module.articles_settings.select_blog_4, itemLimit, module.articles_settings.filter_by_tag) %}
+
+    {% set posts = (blog_one_posts + blog_two_posts +  blog_three_posts + blog_four_posts) | sort(true, false, 'publish_date')  %} 
+
+{% endif %}
+
+{% macro buildCards() %}
+
+
+    <div class="row-fluid">
+      <div class="span12 widget-span widget-type-cell" style="text-align: center;" data-widget-type="cell" data-x="0" data-w="12">
+        <div id="elements-sac-cards" class="cards elements-sac-cards__{{ name }}"> 
+  
+{% for post in posts %}
+
+            <div class="cards__card elements-sac-cards__card">
+              {% if post.featured_image %}
+              <div class="row-fluid-wrapper">
+                <div class="row-fluid">
+                  <div class="span12 widget-span widget-type-cell" style="text-align: center;" data-widget-type="cell" data-x="0" data-w="12" onclick="{{ module.card.open_external_link is truthy ? "window.open('{{ post.absolute_url }}');" : "location.href='{{ post.absolute_url }}';" }}">
+                    <img class="elements-sac-card__image__{{ name }}" src="{{ post.featured_image }}" alt="{{ post.name }}" width="100%" height="auto">
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <div class="elements-sac-card__without-image">
+                
+              </div>
+              {% endif %}
+              
+              <div class="elements-sac-card__text__{{ name }}" onclick="{{ module.card.open_external_link is truthy ? "window.open('{{ post.absolute_url }}');" : "location.href='{{ post.absolute_url }}';" }}">
+                <h4 style="font-size: 20px; margin-bottom: 12px;">{{ post.name }}</h4>
+                <p style="margin-bottom: 12px;">{{ post.meta_description|truncate(139, True, '...') }}</p>
+              </div>
+
+              <div class="elements-sac-card__footer">
+               
+                <div class="row-fluid elements-sac-card__footer_content">
+
+                  <div class="span3 widget-span widget-type-cell elements-sac-card__footer_image-container" style="text-align: left; width: auto;" data-widget-type="cell" data-x="0" data-w="3">
+                     <div  style="{% if post.blog_post_author.avatar %} margin-right: 16px; max-width: 100%; {% else %} padding-bottom: 60px;{% endif %}">
+                      {% if post.blog_post_author.avatar %}
+                        <img src="{{ post.blog_post_author.avatar }}" style="border-radius: 50%; width: 54px; height: 54px;" alt="{{ post.featured_image_alt_text is truthy ? "{{ post.featured_image_alt_text }}" : "{{ post.name }}" }}">
+                       {% else %}
+                        <div class="elements-sac-card__footer--without-image"> </div>
+                       {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="span4 widget-span widget-type-cell elements-sac-card__footer_text-container" style="text-align: left; margin-left: 0px;  width: auto;" data-widget-type="cell" data-x="3" data-w="4">
+                    <h6 style="margin-bottom: 0px;">{{ post.blog_author.display_name }}</h6>
+                    <p style="margin-bottom: 0px; font-size: 14px;">{{ post.publish_date|datetimeformat('%B %d, %Y') }}</p>
+                  </div>
+                  
+                  <div class="span5 widget-span widget-type-cell elements-sac-card__footer_badge-container__{{ name }}" style="text-align: right; margin-left: 0px; float: right; width: auto;" data-widget-type="cell" data-x="7" data-w="5">
+
+                      <a class="blog-tag" href="{{ blog_tag_url(group.id, post.tag_list[0].slug) }}">
+                        {% if post.tag_list[0].name %}
+                          <span class="elements-sac-card__footer_badge" style="background-color: {{ module.card.badge_background_color.color is truthy ? module.card.badge_background_color.color : theme.global_colors.primary_colors.primary_color_1.color }}; padding: 6px 12px 8px; border-radius: 5px; font-family: {{ module.card.badge_font_style.font }}; {{ module.card.badge_font_style.style }}; color: {{ module.card.badge_font_style.color }}; font-size: {{ module.card.badge_font_style.size }}{{module.card.badge_font_style.size_unit }};">
+                            {{ post.tag_list[0].name }}
+                          </span>
+                        {% endif %}
+                      </a>
+
+                  </div>
+
+
+                </div>
+             </div>
+              
+            </div>
+
+
+   {% endfor %}
+     </div>
+      </div>
+    </div>
+
+
+{% endmacro %}
+
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">
+    
+  <div class="row-fluid-wrapper">
+        <div class="row-fluid elements-sac-top-content">
+          <div class="span8 widget-span widget-type-cell elements-sac-content-text" data-widget-type="cell" data-x="0" data-w="8">
+            {{ buildContent() }}
+          </div>
+          <div class="span4 widget-span widget-type-cell elements-sac-content-button"  data-widget-type="cell" data-x="8" data-w="4">
+            {{ buildButton() }}
+          </div>
+        </div>
+    </div>
+  
+    <div class="row-fluid-wrapper">
+      {{ buildCards() }}
+    </div>
+  
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  
+  .elements-sac-card__text__{{ name }} {
+    text-align: left;
+    width: 100%;    
+    margin-bottom: 4px;
+    padding-top: {{ module.paddings.desktop.content.top }}px;
+    padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+    padding-left: {{ module.paddings.desktop.content.left }}px;
+    padding-right: {{ module.paddings.desktop.content.right }}px;
+  }
+  
+  .elements-sac-card__without-image {
+    padding-top: 12px;
+  }
+  
+  .elements-sac-cards__card {
+    
+    text-align: center;
+    
+    width: 100%;
+    padding: 0px;
+    transition: transform 0.3s ease;
+    position: relative;
+    padding-bottom: 100px;
+    
+    {% if module.articles_settings.limit_articles < 3 %}
+      max-width: 385px;
+    {% elif posts.total < 3 %}
+      max-width: 385px;
+    {% else %}
+      max-width: 100%;
+    {% endif %}
+    
+  }
+
+  .elements-sac-cards__{{ name }} {
+    display: grid;
+    
+    {% if module.card.column_style is equalto "two_columns" %}    
+      grid-template-columns: repeat(2, auto);    
+    {% endif %}
+    
+    {% if module.card.column_style is equalto "three_columns" %}    
+      grid-template-columns: repeat(3, auto);        
+    {% endif %}
+    
+    {% if module.card.column_style is equalto "four_columns" %}    
+     grid-template-columns: repeat(4, auto);   
+    
+    {% endif %}
+    
+    {% if posts.total is equalto 1 %}
+      grid-template-columns: repeat(1, 385px);
+    {% endif %}
+
+    grid-column-gap: 27px;
+    grid-row-gap: 27px;
+  }
+  
+  
+   {% if module.card.column_style is equalto "four_columns" %}    
+     .elements-sac-card__footer_badge-container__{{ name }} {
+         float: left !important;
+         text-align: left !important;
+         margin-bottom: 16px;
+         margin-top: 16px;
+         width: 100% !important;
+      }
+   {% endif %}
+  
+  
+ 
+  .elements-sac-content-button {
+    margin-top: {{ module.margins.desktop.button.top }}px;
+    margin-bottom: {{ module.margins.desktop.button.bottom }}px;
+    margin-left: {{ module.margins.desktop.button.left }}px;
+    margin-right: {{ module.margins.desktop.button.right }}px;
+  }
+  
+  .elements-sac-card__image__{{ name }} {
+    border-top-left-radius: {{ theme.cards.border_radius }}px;
+    border-top-right-radius: {{ theme.cards.border_radius }}px;    
+    object-fit: cover;
+    {% if module.card.enable_max_height_image %}
+      max-height: {{ module.card.image_max_height }}px;
+    {% endif %}
+    
+  }
+  
+  @media(max-width: 767px) {
+    
+   .elements-sac-cards__card { 
+    max-width: 100%;
+   }
+    
+  .elements-sac-content-button {
+    margin-top: {{ module.margins.mobile.button.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.button.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.button.left }}px !important;
+    margin-right: {{ module.margins.mobile.button.right }}px !important;
+  }
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    
+    margin-top: {{ module.margins.mobile.module.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.module.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.module.left }}px !important;
+    margin-right: {{ module.margins.mobile.module.right }}px !important;
+  }
+    
+  .elements-module-image {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+    
+   .elements-sac-card__text__{{ name }} {
+    padding-top: {{ module.paddings.mobile.content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.content.right }}px !important;
+  }
+    
+
+
+}
+  
+  
+
+.elements-sac-top-content {
+  margin-bottom: 16px;
+  
+}
+
+
+@media(min-width: 768px) {
+  
+  .elements-sac-top-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  
+  .elements-sac-content-button {
+    text-align: right;
+    float: right;
+  }
+  
+}
+
+
+@media(max-width: 1204px) {
+    
+  .elements-sac-cards__{{ name }} {
+    grid-column-gap: 18px;
+  }
+  
+}
+
+@media(max-width: 1183px) {
+    
+  .elements-sac-cards__{{ name }} {
+    grid-column-gap: 27px;
+    grid-template-columns: repeat(2, auto) !important;
+  }
+}
+
+@media(max-width: 767px) {
+  
+  .elements-sac-content-text {
+    width: 100% !important;
+  }
+  
+  .elements-sac-content-button {
+    width: 100% !important;
+    
+  }
+    
+  .elements-sac-cards__{{ name }} {
+    grid-column-gap: 27px;
+    grid-template-columns: repeat(1, auto) !important;
+  }
+}
+
+
+
+.elements-sac-cards__card:hover {
+  cursor: pointer;
+}
+
+.elements-sac-card__image__{{ name }} {
+  max-width: 100%;
+  margin-right: 8px;
+}
+
+
+
+.elements-sac-card__footer {
+  padding: 0px 24px 16px 24px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+
+.elements-sac-card__footer_content {
+  border-top: 1px solid #E7E8F1;
+  padding-top: 24px;
+}
+
+.elements-module-card-title-content {
+  margin-top: 8px;
+  padding-left: 8px;
+}
+
+.elements-sac-card__footer_text-container {
+  padding-right: 16px;
+  margin-bottom: -15px;
+  margin-top: 4px;
+}
+
+.elements-sac-card__footer_badge-container__{{ name }} {
+  margin-top: 16px;
+}
+
+@media (max-width: 812px) { 
+  
+   .elements-sac-card__footer_badge-container__{{ name }} {
+     float: left !important;
+     text-align: left !important;
+     margin-bottom: 16px;
+     margin-top: 0px;
+     width: 100% !important;
+     padding-left: 72px;
+  }
+  
+  .elements-sac-cards__{{ name }} {
+    grid-column-gap: 18px;
+  }
+  
+
+  
+}
+
+@media(max-width: 767px) {
+  
+  
+  .elements-sac-cards__card {
+    width: 100%;    
+  }
+  
+ .elements-sac-card__footer_badge-container__{{ name }} {
+     float: right !important;
+     text-align: right !important;
+     margin-bottom: 10x;
+     margin-top: 16px;
+     width: auto !important;
+     padding-left: 0px;
+  }
+  
+  
+  
+}
+
+
+
+@media (max-width: 425px) { 
+   .elements-sac-card__footer_badge-container__{{ name }} {
+     float: left !important;
+     text-align: left !important;
+     margin-bottom: 16px;
+     margin-top: 16px;
+     width: 100% !important;
+  }
+    
+  .elements-sac-cards__card {
+    padding-bottom: 120px;
+  }
+  
+}
+
+  
+</style>
+{% end_require_css %}

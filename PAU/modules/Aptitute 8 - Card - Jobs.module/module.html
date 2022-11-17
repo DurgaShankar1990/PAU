@@ -1,0 +1,263 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+  padding-left:  {{ module.paddings.desktop.module.left }}px;
+  padding-right: {{ module.paddings.desktop.module.right }}px;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  background-color: {{ module.module_styles.background_color.color }};
+  width: 100%;
+  border: {{ module.module_styles.border_width }}px solid {{ module.module_styles.border_color.color }};
+  border-radius: {{ module.module_styles.border_radius }}px;
+  
+  position: relative;
+
+  {% if module.module_styles.shadow == "shadow_1" %}
+      box-shadow: 0px 3px 10px rgba(31, 37, 89, 0.04);
+  {% elif module.module_styles.shadow == "shadow_2" %}
+      box-shadow: 0px 4px 12px rgba(8, 15, 52, 0.06);
+  {% elif module.module_styles.shadow == "shadow_3" %}
+      box-shadow: 0px 8px 18px rgba(31, 37, 89, 0.05);
+  {% elif module.module_styles.shadow == "shadow_4" %}
+      box-shadow: 0px 16px 51px rgba(28, 26, 74, 0.04);
+  {% elif module.module_styles.shadow == "shadow_5" %}
+      box-shadow: 0px 24px 75px rgba(21, 16, 152, 0.05);
+  {% elif module.module_styles.shadow == "shadow_6" %}
+      box-shadow: 0px 45px 84px rgba(8, 15, 52, 0.19);
+  {% endif %}
+
+{% endmacro %}
+
+
+{% macro buildContentStyles() %}
+  padding-top: {{ module.paddings.desktop.content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.content.left }}px;
+  padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+{% set faq_columns = module.faq_columns|length %}
+
+
+<div {{ buildID() }} class="elements--container__jobs_{{ name }} {{ buildClass() }}">
+  
+{% if faq_columns == 1 %}
+
+  {% for columns in module.faq_columns %}
+    {% for item in columns.content %}
+      <div class="elements-div-content_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">   
+        <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+          <div class="elements--jobs__accordion {% if item.open_by_default %}elements--jobs__accordion--open_by_default{% endif %}">
+            
+            <p class="elements--jobs__category">
+              {{ item.category }}
+            </p>
+            
+            <h3 class="elements--jobs__title">
+              {{ item.title }}
+            </h3>
+            
+            <p class="elements--jobs__location-type">
+              
+              <span class="elements--jobs__location">
+
+                {% if item.location_icon.src %}
+                  <img src="{{ item.location_icon.src }}" class="elements--jobs__location-icon" alt="{{ item.location_icon.alt }}" width="{{ item.location_icon.width }}" height="{{ item.location_icon.height }}">
+                {% endif %}
+
+                <span class="elements--jobs__location-type-data">{{ item.location }}</span>
+                
+              </span>
+              
+              <span class="elements--jobs__vertical-separator">&nbsp;</span>
+              
+              <span class="elements--jobs__employment_type">
+                {% if item.employment_type_icon.src %}
+                  <img src="{{ item.employment_type_icon.src }}" class="elements--jobs__emplyment-type-icon" alt="{{ item.employment_type_icon.alt }}" width="{{ item.employment_type_icon.width }}" height="{{ item.employment_type_icon.height }}">
+                {% endif %}
+
+                <span class="elements--jobs__employment_type-data">{{ item.employment_type }}</span>
+              </span>
+              
+            </p>
+            
+          </div>
+          
+          <div class="elements--jobs__panel">
+            <div class="elements--jobs__description">
+
+              <div class="elements--jobs__description-text">
+                {% inline_rich_text field="content" value="{{ item.content }}" %}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+
+{% elif faq_columns == 2 %}
+
+<div class="container-fluid">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+            <div class="span6 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="6">
+              
+              
+              {% set faqs_array = module.faq_columns.copy() %}
+              
+              {% do faqs_array.pop(1) %}
+              
+              {% for columns in faqs_array %}
+                
+                {% for item in columns.content %}
+                  <div class="elements-div-content_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">   
+                    <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+                      <h3 class="elements--jobs__accordion {% if item.open_by_default %}elements--jobs__accordion--open_by_default{% endif %}">
+                        {{ item.title }}
+                      </h3>
+                      <div class="elements--jobs__panel">
+                        {% inline_rich_text field="content" value="{{ item.content }}" %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+ 
+            </div>
+            <div class="span6 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="6" data-w="6">
+              
+              {% set faqs_array = module.faq_columns.copy() %}
+              
+              {% do faqs_array.pop(0) %}
+              
+              {% for columns in faqs_array %}
+                
+                {% for item in columns.content %}
+                  <div class="elements-div-content_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}" style="{{ buildModuleStyles() }}">   
+                    <div class="elements-module-content_{{ name }}" style="{{ buildContentStyles() }}">
+                      <h3 class="elements--jobs__accordion {% if item.open_by_default %}elements--jobs__accordion--open_by_default{% endif %}">
+                        {{ item.title }}
+                      </h3>
+
+                      <div class="elements--jobs__panel">
+                        {% inline_rich_text field="content" value="{{ item.content }}" %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+ 
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+</div>
+
+{% require_css %}
+<style>
+  
+  .elements--container__jobs_{{ name }} {
+    margin-top: {{ module.margins.desktop.container.top }}px;
+    margin-bottom: {{ module.margins.desktop.container.bottom }}px;
+    margin-left: {{ module.margins.desktop.container.left }}px;
+    margin-right: {{ module.margins.desktop.container.right }}px;
+  }
+  
+  .elements--jobs__category {
+    color: {{ theme.global_colors.primary_colors.primary_color_1.color }};
+    margin-bottom: 0px;
+    text-transform: lowercase;
+  }
+  
+  .elements-module-content_{{ name }} .elements--jobs__panel:first-child {
+    max-height: 180px;
+  }
+  
+
+  .elements--jobs__accordion:after {
+    display: block;
+    content: ' ';
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="24px" fill="{{ theme.typography.global_fonts.headers_font.color|urlencode }}" viewBox="0 0 451.846 451.847" style="enable-background:new 0 0 451.846 451.847;" xml:space="preserve"> <g> <path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744 L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284 c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"/></g></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 19px;
+    height: 36px;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.4s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    width: 36px;
+    box-shadow: 0px -0.709347px 3.54674px rgb(31 37 89 / 1%), 0px 2.83739px 6.38413px rgb(38 54 200 / 8%);
+    border-radius: 4.96543px;
+    float: right;
+    position: absolute;
+    top: 40px;
+    right: 36px;
+
+  }
+
+  .active:after {
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="24px" fill="{{ theme.global_colors.primary_colors.primary_color_1.color|urlencode }}" viewBox="0 0 451.846 451.847" style="enable-background:new 0 0 451.846 451.847;" xml:space="preserve"> <g> <path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744 L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284 c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"/></g></svg>');
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+
+  
+  
+  @media(max-width: 767px) {
+    
+  .elements--container__jobs_{{ name }} {
+    margin-top: {{ module.margins.mobile.container.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.container.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.container.left }}px !important;
+    margin-right: {{ module.margins.mobile.container.right }}px !important;
+   }
+    
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+    
+    margin-top: {{ module.margins.mobile.module.top }}px !important;
+    margin-bottom: {{ module.margins.mobile.module.bottom }}px !important;
+    margin-left: {{ module.margins.mobile.module.left }}px !important;
+    margin-right: {{ module.margins.mobile.module.right }}px !important;
+  }
+    
+  .elements-module-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.content.right }}px !important;
+  }
+
+}
+  
+</style>
+{% end_require_css %}
+
+
+
+
+
+  

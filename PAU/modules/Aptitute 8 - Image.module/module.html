@@ -1,0 +1,165 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+<div {{ buildID() }} class="{{ buildClass() }}">
+
+  <div id="linked-image-custom_{{ name }}" class="linked-image-custom_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+
+    {% if module.image_link.url.href %}
+      {% set href = module.image_link.url.href %}
+      {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if module.image_link.no_follow %}
+        {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if module.image_link.open_in_new_tab %}
+        {% do rel.append("noopener") %}
+      {% endif %}
+      <a href="{{ href }}" style="text-decoration: none;"
+        {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+        >
+    {% endif %}
+
+      {% if module.img.src %}
+        {% set sizeAttrs = 'style="width:{{ module.img.width }}px; height: {{ module.img.height }}px;"' %}
+        {% if module.img.size_type == 'auto' %}
+          {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif module.img.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'style="width:{{ module.img.max_width }}px; height: {{ module.img.max_height }}px; max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = module.img.loading != 'disabled' ? 'loading="{{ module.img.loading }}"' : '' %}
+        <img src="{{ module.img.src }}" alt="{{ module.img.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+
+    {% if module.image_link.url.href %}
+      </a>
+    {% endif %}
+
+
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  
+
+
+  
+  .linked-image-custom_{{ name }} img {
+    {% if module.height_auto %}
+      height: auto !important;
+    {% endif %}
+    
+    
+    border-radius: {{ module.border_radius }}px;
+    
+    {% if module.shadow == "shadow_1" %}
+      -webkit-filter: drop-shadow(0px 3px 10px rgba(31, 37, 89, 0.04));
+      filter:         drop-shadow(0px 3px 10px rgba(31, 37, 89, 0.04)); 
+    {% elif module.shadow == "shadow_2" %}
+      -webkit-filter: drop-shadow(0px 4px 12px rgba(8, 15, 52, 0.06));
+      filter:         drop-shadow(0px 4px 12px rgba(8, 15, 52, 0.06)); 
+    {% elif module.shadow == "shadow_3" %}
+      -webkit-filter: drop-shadow(0px 8px 18px rgba(31, 37, 89, 0.05));
+      filter:         drop-shadow(0px 8px 18px rgba(31, 37, 89, 0.05)); 
+    {% elif module.shadow == "shadow_4" %}
+      -webkit-filter: drop-shadow(0px 16px 51px rgba(28, 26, 74, 0.04));
+      filter:         drop-shadow(0px 16px 51px rgba(28, 26, 74, 0.04)); 
+    {% elif module.shadow == "shadow_5" %}
+      -webkit-filter: drop-shadow(0px 24px 75px rgba(21, 16, 152, 0.05));
+      filter:         drop-shadow(0px 24px 75px rgba(21, 16, 152, 0.05)); 
+    {% elif module.shadow == "shadow_6" %}
+      -webkit-filter: drop-shadow(0px 45px 84px rgba(8, 15, 52, 0.19));
+      filter:         drop-shadow(0px 45px 84px rgba(8, 15, 52, 0.19)); 
+    {% endif %}
+    
+  }
+
+  .linked-image-custom_{{ name }} {
+    margin-top: {{ module.margins.desktop.top }}px;
+    margin-bottom: {{ module.margins.desktop.bottom }}px;
+    margin-left: {{ module.margins.desktop.left }}px;
+    margin-right: {{ module.margins.desktop.right }}px;
+    
+    {% if module.align %}
+      text-align: {{ module.align }};
+    {% endif %}
+    
+    {% if !module.display_options.show_on_desktop %}
+      display: none;  
+    {% endif %}
+  }
+  
+  #linked-image-custom_{{ name }} img {
+    max-width: 100% !important;
+    max-height: auto !important;
+  }
+  
+  @media (max-width: 961px) {
+    
+    .linked-image-custom_{{ name }} {
+      {% if module.display_options.show_on_tablet %}
+        display: block;  
+      {% else %}
+        display: none;
+      {% endif %}
+    }
+    
+  }
+  
+@media (max-width: 767px) {
+  
+  
+  .linked-image-custom_{{ name }} {
+    margin-top: {{ module.margins.mobile.top }}px;
+    margin-bottom: {{ module.margins.mobile.bottom }}px;
+    margin-left: {{ module.margins.mobile.left }}px;
+    margin-right: {{ module.margins.mobile.right }}px;
+    
+    {% if module.align_mobile %}
+      text-align: {{ module.align_mobile }};
+    {% endif %}
+    
+    {% if module.display_options.show_on_mobile %}
+      display: block;  
+    {% else %}
+      display: none;
+    {% endif %}
+    
+  }
+  
+  .linked-image-custom_{{ name }} img {
+    {% if module.full_width_on_mobile %}
+      width: 100% !important;
+      height: auto !important;
+    {% else %}
+    
+      {% if module.max_width_on_mobile > 0 %}
+        width: {{ module.max_width_on_mobile }}px !important;
+      {% endif %}
+    
+      {% if module.max_height_on_mobile > 0 %}
+        height: {{ module.max_height_on_mobile }}px !important;
+      {% endif %}
+   
+    {% endif %}
+    
+   
+    
+    {% if module.border_radius_mobile %}
+      border-radius: {{ module.border_radius_mobile }}px;
+    {% endif %}
+    
+  }
+
+}
+  
+</style>
+{% end_require_css %}
+

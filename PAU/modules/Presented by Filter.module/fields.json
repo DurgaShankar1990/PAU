@@ -1,0 +1,152 @@
+[ {
+  "id" : "d945360f-8b24-32b9-98c4-d087118ca212",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d05e6533-7b25-3ec8-0493-1b80b4d0a6ce",
+    "name" : "desktop_spacing",
+    "display_width" : null,
+    "label" : "Desktop Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 56,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    }
+  }, {
+    "id" : "c4594671-6fea-61c7-521b-8b0d1ba6cd0d",
+    "name" : "mobile_spacing",
+    "display_width" : null,
+    "label" : "Mobile Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "desktop_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 56,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    },
+    "mobile_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    }
+  }
+}, {
+  "id" : "9bcf08aa-6e60-ec1a-16c3-244ecefdde14",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Looking for training? Here are a few suggestions:"
+}, {
+  "id" : "8e18eade-d0c7-239c-83c4-6ed92faadc85",
+  "name" : "link_field",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "CONTENT",
+      "href" : null,
+      "content_id" : 61885393188
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "4fd95261-c0b6-fefa-7caf-24418a9c838f",
+  "name" : "event_type",
+  "display_width" : null,
+  "label" : "Event type",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "live", "Live" ], [ "Demand", "On Demand" ] ],
+  "type" : "choice",
+  "default" : "live"
+} ]

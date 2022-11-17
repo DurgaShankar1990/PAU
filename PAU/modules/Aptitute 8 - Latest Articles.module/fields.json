@@ -1,0 +1,57 @@
+[ {
+  "id" : "9e501602-b3d8-9399-9122-916028c9c2b4",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h2 style=\"margin-bottom: 0px;\">Latest Articles</h2>"
+}, {
+  "id" : "3cac863e-0272-cc3d-c2df-e40ccace5fbf",
+  "name" : "tags_limit",
+  "display_width" : null,
+  "label" : "Tags Limit",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 0,
+  "max" : 250,
+  "step" : 1,
+  "type" : "number",
+  "default" : 16
+}, {
+  "id" : "c19c920e-7583-667e-f93d-5833879fca4b",
+  "name" : "settings",
+  "display_width" : null,
+  "label" : "Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "f8a04a15-c382-3ffc-3f09-2c2075a86118",
+    "name" : "css__id",
+    "display_width" : null,
+    "label" : "CSS ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "a2ab9fdf-b1ed-a7d4-7c0b-61ae494a7cfa",
+    "name" : "css__class",
+    "display_width" : null,
+    "label" : "CSS Class",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

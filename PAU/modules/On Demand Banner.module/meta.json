@@ -1,0 +1,12 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 61883669548,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/shopping_cart.js",
+    "name" : "Shopping_Cart.js"
+  } ],
+  "label" : "Instructors Banner",
+  "is_available_for_new_content" : true
+}

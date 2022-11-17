@@ -1,0 +1,39 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Shopping CheckOut
+-->
+
+{% extends './layouts/base.html' %}
+{% block header %}
+{% global_partial path='/Aptitude 8 Theme/templates/partials/header_cart.html' %}
+{% endblock header %}
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+    {% dnd_area "shopping_cart", class="Shoppting_card_section_start" %}
+
+    {% dnd_section full_width="true"
+  padding={'top': '0','bottom': '80','left': '0','right': '0'}
+  %}
+    {% dnd_column, width=12 %}
+
+    {% dnd_row %}
+    {% dnd_module = 'Shopping_Checkout' 
+							path='/Aptitude 8 Theme/modules/Shopping_Checkout.module',
+							alignment='center'
+						%}
+    {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% end_dnd_area %}
+
+</main>
+{% endblock body %}
+
+{% block footer %}
+{% global_partial path='/Aptitude 8 Theme/templates/partials/footer_cart.html' %}
+{% endblock footer %}

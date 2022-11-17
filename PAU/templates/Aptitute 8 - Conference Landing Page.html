@@ -1,0 +1,881 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Conference Landing Page - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/conference-landing-page.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block header %}
+  {% global_partial path='./partials/header-no-navigation.html' %}
+{% endblock header %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1' class='elements-template--span6__full-mobile elements-template--card-contact__full-mobile', label='section-1' %}
+  
+    {% dnd_section
+       background_image={
+        'backgroundPosition': 'TOP_CENTER',
+        'backgroundSize': 'contain',
+        'imageUrl': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/background_conference.jpg'
+      },
+      max_width=1003,
+      vertical_alignment='TOP',
+      padding= {
+        default: { top: 80, bottom: 40 },
+        mobile: { bottom: 32 }
+      }
+    %}
+    
+      {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'image_full_width': false,
+              'enable_image': false,
+              'text_align': 'center',
+              'text_align_mobile': 'center',
+              'enable_button': true,
+              button: { 
+                full_width: false,
+                button_class: 'btn-primary-dark'
+              }
+            },
+            paddings = { 
+              desktop:{ content:{ top: 24, bottom: 24, left: 128, right: 128 } },  
+              mobile:{ content:{ top: 24, bottom: 16, left: 0, right: 0 } }
+            },
+            margins = { 
+              desktop:{ module:{ top: 118 } },  
+              mobile:{ module:{ top: -56 } }
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {      
+                    content: '<p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">Marketing Conference 2021</p><h1 style="margin-bottom: 16px; text-align: center;">Assist to the #1 Growth Marketing Conference of 2021</h1><p style="margin-bottom: 15px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam viverra tellus vel arcu pretium orci amet interdum in. Sed felis tellus condimentum non eget.<br><br></p>',
+                    card_button_text: 'Get Tickets'
+                  }
+                  
+                ]
+             }
+                        
+           ]
+        %}
+        {% end_dnd_module %}
+       
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+
+  
+  
+    
+  {# 2 Section - Date #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+   
+  
+    {% dnd_section
+      padding={
+        'default': { 'top': 0, 'bottom': 0 },
+        'mobile': { 'top': 0, 'bottom': 0 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+
+      {% dnd_module "module_161377783920933" path='../modules/Aptitute 8 - Icon Columns', label="Aptitute 8 - Icon Columns",
+        stats=[
+          {
+            icon_image: {
+              src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/location_2.svg',
+              alt: 'Elements Image',
+              width: 70
+            },
+            text: '<h5 style="margin-bottom: 8px;"><strong>Where</strong></h5><p>New York, United States</p>'
+          },
+          {
+            icon_image: {
+              src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/calendar_1.svg',
+              alt: 'Elements Image',
+              width: 70
+            },
+            text: '<h5 style="margin-bottom: 8px;">When</h5><p>December 6, 2021</p>'
+          },
+          {
+            icon_image: {
+              src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/time.svg',
+              alt: 'Elements Image',
+              width: 70
+            },
+            text: '<h5 style="margin-bottom: 8px;"><strong>Time</strong></h5><p>10:00 AM to 8:00 PM</p>'
+          }
+        ]
+      %} 
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - Date #}
+  
+ 
+  
+  {# 3 Section - About the Conference #}
+  
+  <section id="section-3">
+     
+  {% dnd_area 'section-3', label='section-3' %}  
+   
+  
+    {% dnd_section
+         padding={
+         'default': { 'top': 16, 'bottom': 128 },
+         'mobile': { 'top': 64, 'bottom': 56 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+  
+  
+      {# Left Content #} 
+  
+      {% dnd_column 
+        offset=0, 
+        width=6,
+        padding={
+         'default': { 'top': 0 },
+         'mobile': { 'top': 0 }
+        }
+        
+      %}
+    
+          {% dnd_row %}
+            {% dnd_module  path='../modules/Aptitute 8 - Image', 
+              horizontal_alignment='LEFT',
+              img={
+                'alt': 'Elements Image',
+                'width': 560,
+                'height': auto,
+                'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/conference_1.jpg',
+                'margin':'0'
+              },
+              border_radius=29,
+              border_radius_mobile=18,
+              margins= {
+                desktop: { top: 0 },
+                mobile: { top:0 }
+              }
+            %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {% dnd_row 
+          padding={
+           'default': { 'top': 132 },
+           'mobile': { 'top': 0 }
+          }
+  
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  About the conference
+                </p>
+                <h2>
+                  Learn all the latest marketing trends coming in 2021
+                </h2>
+                <p style="margin-bottom: 15px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tortor, nisi mattis dictumst urna. Convallis dolor lacus, malesuada enim vel tortor massa massa. Molestie velit pharetra mauris.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 0 }
+          } 
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              button= [
+                { 'button_text':'Get Tickets', 'class_button':'btn-primary-dark' }
+              ]
+            %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+
+       {% end_dnd_column  %}
+    
+      {# Right Content #}
+    
+      {% dnd_column 
+        offset=6, 
+        width=6
+      %}
+    
+    
+      {% dnd_row 
+          padding={
+           'default': { 'top': 80 },
+           'mobile': { 'top': 24 }
+          }
+  
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  About the conference
+                </p>
+                <h2>
+                  A conference for marketers, by marketers
+                </h2>
+                <p style="margin-bottom: 15px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tortor, nisi mattis dictumst urna. Convallis dolor lacus, malesuada enim vel tortor massa massa. Molestie velit pharetra mauris.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 0 }
+          } 
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+              button= [
+                { 'button_text':'Get Tickets', 'class_button':'btn-primary-dark' }
+              ]
+            %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+         {% dnd_row %}
+            {% dnd_module  path='../modules/Aptitute 8 - Image', 
+              horizontal_alignment='LEFT',
+              img={
+                'alt': 'Elements Image',
+                'width': 559,
+                'height': auto,
+                'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/conference_2.jpg',
+                'margin':'0'
+              },
+              margins={
+                desktop: { 'top': 132 }
+              },
+              border_radius=29,
+              border_radius_mobile=18
+            %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    {% end_dnd_column  %}
+
+  
+       
+  
+       
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - About the Conference #}
+  
+ 
+    
+  
+  {# 4 Section - Speakers #}
+  
+  <section id="section-4">
+    
+  {% dnd_area 'section-4' , label='section-4' %} 
+
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 112, 'bottom': 80 },
+        'mobile': { 'top': 64, 'bottom': 48 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+  
+      {% dnd_column %}
+      
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 24 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Speakers
+                </p>
+                <h2 style="text-align: center;">
+                  Industry Experts Speakers
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row
+          padding={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 16 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Team Members', label="Aptitute 8 - Team Members",
+            module_styles= {
+              image_type: 'rounded'
+            }
+            member=[
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/avatar_28.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">John Carter</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">CEO &amp; Co-Founder</span></p>',
+                facebook:{ enabled: true },
+                twitter:{ enabled: true },
+                linkedin:{ enabled: true },
+                web:{ enabled: true }
+              },
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/avatar_29.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">Emily Smith</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Marketing</span></p>',
+                facebook:{ enabled: true },
+                twitter:{ enabled: true },
+                linkedin:{ enabled: true },
+                web:{ enabled: true }
+              },
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/avatar_30.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">Matt Willson</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Project Management</span></p>',
+                facebook:{ enabled: true },
+                twitter:{ enabled: true },
+                linkedin:{ enabled: true },
+                web:{ enabled: true }
+              },
+              {
+                image: { src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/users/avatar_31.jpg", alt: "Elements Image", size_type:'auto' },
+                text: '<h4 style="margin-bottom: 0px;">Issac Jones</h4><p style="margin-top: 0px; margin-bottom: 6px;"><span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }};">VP of Support</span></p>',
+                facebook:{ enabled: true },
+                twitter:{ enabled: true },
+                linkedin:{ enabled: true },
+                web:{ enabled: true }
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 32, 'bottom': 54 },
+           'mobile': { 'top': 16, 'bottom': 16 }
+          }
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            settings = { button_align_desktop: 'center', button_align_mobile: 'center' }
+           %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+  
+      {% end_dnd_column  %}
+ 
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 4 Section - Speakers #}
+  
+
+  
+  {# 5 Section - Why this Conference #}
+  
+  <section id="section-5">
+    
+  {% dnd_area 'section-5', label='section-5' %}
+
+    {% dnd_section
+
+         padding={
+         'default': { 'top': 110, 'bottom': 96 },
+         'mobile': { 'top': 64, 'bottom': 32 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+  
+      {% dnd_column %}
+  
+        {% dnd_row 
+          vertical_alignment='BOTTOM'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='LEFT',
+            offset=0,
+            width=6
+          %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Why this Conference?
+                </p>
+                <h2 style="max-width: 486px">
+                  Why you should join the best conference?
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            offset=6,
+            width=6,
+            button= [
+              { 'button_text':'Get Tickets', 'class_button':'btn-primary-dark' }
+            ],
+            settings = { button_align_desktop: 'right', button_align_mobile: 'left' },
+            margins={
+              mobile:{ top: 24, bottom: 8 }             
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row
+          padding={
+            'default': { 'top': 16, 'bottom': 16 },
+            'mobile': { 'top': 32 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'left_icon_right_content',
+              'image_full_width': false,
+              'text_align': 'left',
+              'text_align_mobile':'left'
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/mic.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Expert Speakers</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/team_work_2.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">Networking & Community</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  }
+                ]
+              },
+              {
+                card:
+                [  
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/video_2.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">18+ Hours of Content</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  },
+                  {
+                    image:{
+                      src: "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/chat.svg",
+                      alt: "Elements Image",
+                      width: 94,
+                      height: 94
+                    },
+                    content: '<h3 style="margin-bottom: 8px;">1-on-1 Mentorships</h3><p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                  }                  
+                ]
+              }            
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+  
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 5 Section - Why this Conference #}
+  
+  
+    
+  
+  {# 6 Section - Schedule #}
+  
+  <section id="section-6">
+    
+  {% dnd_area 'section-6' , label='section-6' %} 
+
+      
+    {% dnd_section
+        background_color={
+          r: 250,
+          g: 250,
+          b: 252,
+          a: 1.0
+        },
+         max_width=851,
+         padding={
+         'default': { 'top': 128, 'bottom': 80 },
+         'mobile': { 'top': 64, 'bottom': 64 }
+        }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          vertical_alignment='BOTTOM'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='CENTER',
+          %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">
+                  Conference Schedule
+                </p>
+                <h2 style="max-width: 486px; text-align: center;">
+                  A conference packaged with a great agenda
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row 
+          padding={
+            'default': { 'top': 16  },
+            'mobile': { 'top': 16 }
+          }
+        %}
+
+          {% dnd_module "module_16140151474885" path='../modules/Aptitute 8 - Card - Schedule', 
+            label="Aptitute 8 - Card - Schedule",
+            horizontal_alignment='CENTER'
+          %}
+          {% end_dnd_module %}
+
+  
+        {% end_dnd_row %}
+    
+        {% dnd_row 
+          margin={
+           'default': { 'top': 32, 'bottom': 54 },
+           'mobile': { 'top': 16, 'bottom': 16 }
+          }
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            settings = { button_align_desktop: 'center', button_align_mobile: 'center' }
+           %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 6 Section - Schedule #}
+  
+
+  
+  
+  
+  {# 7 Section - Testimonials #}
+  
+  <section id="section-7">
+    
+  {% dnd_area 'section-7' , label='section-7' %} 
+
+      
+    {% dnd_section
+         padding={
+         'default': { 'top': 128, 'bottom': 152 },
+         'mobile': { 'top': 64, 'bottom': 64 }
+        }
+    %}
+      {% dnd_column %}
+        {% dnd_row 
+          vertical_alignment='BOTTOM'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='LEFT',
+            offset=0,
+            width=6
+          %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Testimonials
+                </p>
+                <h2 style="max-width: 614px; margin-bottom: 0px;">
+                  What our past attendees have to say about our Marketing Conf
+                </h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          {% dnd_module path='../modules/Aptitute 8 - Buttons',
+            offset=6,
+            width=6,
+            button= [
+              { 'button_text':'Get Tickets', 'class_button':'btn-primary-dark' }
+            ],
+            settings = { button_align_desktop: 'right', button_align_mobile: 'left' },
+            margins={
+              mobile:{ top: 24, bottom: 8 }             
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        {# Cards #}
+  
+        {% dnd_row 
+          padding={
+            'default': { 'top': 32  },
+            'mobile': { 'top': 16 }
+          }
+        %}
+
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=0,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+            
+          %}
+          {% end_dnd_module %}
+  
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=4,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+          %}
+          {% end_dnd_module %}
+    
+          {% dnd_module path='../modules/Aptitute 8 - Card - Testimonial', 
+            offset=8,
+            width=4,
+            horizontal_alignment='CENTER',
+            settings={ type_of_card: "type_2", enable_icon: false }
+          %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+        {% dnd_row
+          padding={
+            'default': { 'top': 112  },
+            'mobile': { 'top': 72 }
+          }
+        %}
+          {% dnd_module "module_161404201754624" path='../modules/Aptitute 8 - Divider', label="Aptitute 8 - Divider" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+  
+      {% end_dnd_column %}
+  
+    {% end_dnd_section %}
+    
+  {% end_dnd_area %}
+    
+  </section>
+  
+  {# End 7 Section - Testimonials #}
+  
+
+  
+  
+  
+  
+  {# 8 Section - Get your tickets #}
+  
+  <section id="section-8">
+    
+  {% dnd_area 'section-8', label='section-8' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 96, 'bottom': 80 },
+        'mobile': { 'top': 8, 'bottom': 328 }
+      }
+    %}
+    {% dnd_column
+        offset=0,
+        width=6
+      %}
+    {% end_dnd_column  %}
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+          'default': { 'left': 32 },
+          'mobile': { 'left': 0 }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Get your tickets
+                </p>
+                <h2 style="margin-bottom: 16px; max-width: 484px;">
+                  Register today and assist to our event for free!
+                </h2>
+                <p style="margin-bottom: 15px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in amet elementum aliquam quis sit.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+
+       {% end_dnd_column  %}
+       
+  
+  
+
+    {% end_dnd_section %}
+  
+    
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 8 Section - Get your tickets #}
+  
+
+
+  
+  
+  {# 9 Section - Register #}
+  
+  <section id="section-9">
+    
+  {% dnd_area 'section-9' class='elements-template--span6__full-mobile elements-template--card-contact__full-mobile', label='section-9' %}
+  
+    {% dnd_section
+      background_color={
+        r: 31,
+        g: 37,
+        b: 89,
+        a: 1.0
+      },
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 96, 'bottom': 142 },
+        'mobile': { 'top': 16, 'bottom': 80 }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+  
+        {% dnd_row %}
+          {% dnd_module "module_161404193913223" path='../modules/Aptitute 8 - Card - Form', label="Aptitute 8 - Card - Form",
+          margins= {
+              desktop: { 
+                module: { top: -520, bottom: 16 }
+              },
+              mobile: { 
+                module: { top: -296, bottom: 16 }
+              }
+            },
+            paddings= {
+              desktop: { 
+                content: { top: 24 }
+              },
+              mobile: {
+                content: { top: 24 }
+              }
+            },  
+            content= {
+              enable_top_text: true,
+              text: '<h4 style="margin-bottom: 12px;"><strong>Register to the event!</strong></h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor.</p><div style="border-bottom: 1px solid #E7E8F1; width: 100%; height: 2px; margin: 28px 0;">&nbsp;</div>'
+            },
+            module_styles= {
+              button_full_width: true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+       {% end_dnd_column  %}
+       
+  
+  
+
+    {% end_dnd_section %}
+  
+    
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 8 Section - Register #}
+  
+
+  
+</main>
+{% endblock body %}

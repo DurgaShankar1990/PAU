@@ -1,0 +1,873 @@
+[ {
+  "id" : "2df72d67-2340-5f41-fe48-3b3298a4ab1f",
+  "name" : "settings",
+  "display_width" : null,
+  "label" : "Icon Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "3d89d301-d8a3-0fab-4711-a662fa81d70a",
+    "name" : "separation",
+    "display_width" : null,
+    "label" : "Separation",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "max" : 125,
+    "step" : 1,
+    "type" : "number",
+    "default" : 4
+  }, {
+    "id" : "b8ee9f04-3c47-8558-a69b-53cc14861b48",
+    "name" : "icon_size",
+    "display_width" : null,
+    "label" : "Icon Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "max" : 256,
+    "step" : 1,
+    "type" : "number",
+    "default" : 32
+  }, {
+    "id" : "cdc817f1-a1ad-e1e6-c799-67e58f38beaa",
+    "name" : "align",
+    "display_width" : null,
+    "label" : "Align",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "87a42f0e-1699-a058-7274-a0d4011b7c4d",
+    "name" : "align_mobile",
+    "display_width" : null,
+    "label" : "Align (Mobile)",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "f5272727-7fae-7c24-79d8-db75f38f41d1",
+    "name" : "enable_shadow",
+    "display_width" : null,
+    "label" : "Enable Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "7f87113e-b5ea-0f8b-6d06-b248be2d59ca",
+    "name" : "enable_hover",
+    "display_width" : null,
+    "label" : "Enable Hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "97d419a8-c0f5-80ef-55b8-ef2cd97cb3e5",
+    "name" : "zoom_hover_scale",
+    "display_width" : null,
+    "label" : "Zoom Hover Scale",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7f87113e-b5ea-0f8b-6d06-b248be2d59ca",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 3,
+    "step" : 1,
+    "type" : "number",
+    "default" : 1.2
+  }, {
+    "id" : "65819d4f-49fb-d1a6-0e71-4a51dd5c9f97",
+    "name" : "border_radius",
+    "display_width" : null,
+    "label" : "Border Radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "max" : 128,
+    "step" : 1,
+    "type" : "number",
+    "default" : 50
+  }, {
+    "id" : "21a69b47-1d51-d7b1-bc66-dfe2450c7d49",
+    "name" : "shadow_type",
+    "display_width" : null,
+    "label" : "Shadow Type",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "f5272727-7fae-7c24-79d8-db75f38f41d1",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "shadow_1", "Shadow 1" ], [ "shadow_2", "Shadow 2" ] ],
+    "type" : "choice",
+    "default" : "shadow_1"
+  }, {
+    "id" : "a7009a0d-3cfa-bc33-4c7c-9b8d59aeed65",
+    "name" : "hide_left_margin",
+    "display_width" : null,
+    "label" : "Hide Left Margin",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "separation" : 4,
+    "icon_size" : 32,
+    "align" : "left",
+    "align_mobile" : "left",
+    "enable_shadow" : true,
+    "enable_hover" : true,
+    "zoom_hover_scale" : 1.2,
+    "border_radius" : 50,
+    "shadow_type" : "shadow_1",
+    "hide_left_margin" : true
+  }
+}, {
+  "id" : "86ae854a-015f-5887-bcdb-36e8098b0e4c",
+  "name" : "margin",
+  "display_width" : null,
+  "label" : "Margin Module",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "92b26a0f-ff10-65e0-4335-9ed1fb38ab61",
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "0b17cbf4-428c-a0ea-af70-ba711cc0417d",
+      "name" : "top",
+      "display_width" : null,
+      "label" : "Top",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "max" : 128,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "eade1297-692b-074a-41d3-d610c3888d95",
+      "name" : "bottom",
+      "display_width" : null,
+      "label" : "Bottom",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "max" : 128,
+      "step" : 1,
+      "type" : "number",
+      "default" : 8
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "top" : 0,
+      "bottom" : 8
+    }
+  }, {
+    "id" : "892586d2-fe9c-136c-55fd-fb4ee585db92",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e65e9ef0-1e55-e524-77ff-409e76cadf6b",
+      "name" : "top",
+      "display_width" : null,
+      "label" : "Top",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "max" : 128,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "39cc7a74-29ca-0bea-83ff-eac313117a2e",
+      "name" : "bottom",
+      "display_width" : null,
+      "label" : "Bottom",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "max" : 128,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "top" : 0,
+      "bottom" : 0
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "desktop" : {
+      "top" : 0,
+      "bottom" : 8
+    },
+    "mobile" : {
+      "top" : 0,
+      "bottom" : 0
+    }
+  }
+}, {
+  "id" : "4dcb1d5f-d5cc-8aa6-9694-c9bcb6fd8344",
+  "name" : "facebook",
+  "display_width" : null,
+  "label" : "Facebook",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "0b1a65e0-1476-4c9a-8e0f-7ddb5e6a8cdb",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "1a0e0e44-e846-e2b4-f4ee-f919a759adc7",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "0b1a65e0-1476-4c9a-8e0f-7ddb5e6a8cdb",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://www.facebook.com/ConceptContinuingEd"
+  }, {
+    "id" : "34b79b2c-7ffd-ca62-7186-b04ed1ece7db",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "Facebook F",
+      "unicode" : "f39e",
+      "type" : "REGULAR"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "link" : "https://www.facebook.com/ConceptContinuingEd",
+    "icon" : {
+      "name" : "Facebook F",
+      "unicode" : "f39e",
+      "type" : "REGULAR"
+    }
+  }
+}, {
+  "id" : "6a0b1e72-6230-baa0-f0f7-53ac5bd99adf",
+  "name" : "twitter",
+  "display_width" : null,
+  "label" : "Twitter",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d487f9be-b372-8c0e-f1fc-d401cd1bb0f5",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "a187cfed-ce4b-1404-3727-d422919956e1",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "d487f9be-b372-8c0e-f1fc-d401cd1bb0f5",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://twitter.com/CONCEPT_CE"
+  }, {
+    "id" : "45b591d5-3c1b-d38f-a680-5ebd9eeb0e0b",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "Twitter",
+      "unicode" : "f099",
+      "type" : "REGULAR"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "link" : "https://twitter.com/CONCEPT_CE",
+    "icon" : {
+      "name" : "Twitter",
+      "unicode" : "f099",
+      "type" : "REGULAR"
+    }
+  }
+}, {
+  "id" : "3007f2bc-6537-76ae-c2cb-8a403640f83e",
+  "name" : "instagram",
+  "display_width" : null,
+  "label" : "Instagram",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2ed8aaf8-4dea-1e0a-6d93-db9f12dc950f",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "21efff06-78fa-0127-a888-e3e37916063f",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "2ed8aaf8-4dea-1e0a-6d93-db9f12dc950f",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://www.instagram.com/conceptpau/"
+  }, {
+    "id" : "6a0d28a0-9919-3ef5-e4fa-9811d14fac2d",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "Instagram",
+      "unicode" : "f16d",
+      "type" : "REGULAR"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "link" : "https://www.instagram.com/conceptpau/",
+    "icon" : {
+      "name" : "Instagram",
+      "unicode" : "f16d",
+      "type" : "REGULAR"
+    }
+  }
+}, {
+  "id" : "90853bff-4b9e-8f6a-f072-2dbe83a695c5",
+  "name" : "linkedin",
+  "display_width" : null,
+  "label" : "LinkedIn",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "0135f45b-cf8e-1d44-7226-53e7de6a966b",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "7cf0c1e4-5496-0439-6edc-936f66f639b1",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "0135f45b-cf8e-1d44-7226-53e7de6a966b",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://www.linkedin.com/company/concept-ce/"
+  }, {
+    "id" : "54716255-5d34-ea2f-8e88-1da648bc1f80",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "LinkedIn In",
+      "unicode" : "f0e1",
+      "type" : "REGULAR"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "link" : "https://www.linkedin.com/company/concept-ce/",
+    "icon" : {
+      "name" : "LinkedIn In",
+      "unicode" : "f0e1",
+      "type" : "REGULAR"
+    }
+  }
+}, {
+  "id" : "6f407549-5278-e239-fd28-cdc477050802",
+  "name" : "youtube",
+  "display_width" : null,
+  "label" : "YouTube",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e7dab15c-acb7-606d-eb93-f925847e414a",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "f7a08f24-01b4-c624-33f7-6876661d1d56",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "e7dab15c-acb7-606d-eb93-f925847e414a",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://www.youtube.com/user/ConceptContinuingEd"
+  }, {
+    "id" : "20191e27-dabb-93ee-d214-268217c29124",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : {
+      "name" : "YouTube",
+      "unicode" : "f167",
+      "type" : "REGULAR"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : true,
+    "link" : "https://www.youtube.com/user/ConceptContinuingEd",
+    "icon" : {
+      "name" : "YouTube",
+      "unicode" : "f167",
+      "type" : "REGULAR"
+    }
+  }
+}, {
+  "id" : "82d3665c-c936-de7b-528e-b7936fc69a7c",
+  "name" : "web",
+  "display_width" : null,
+  "label" : "Web",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "60ed16c3-b70a-cf99-4233-6eeb8093424a",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "c3c0db27-c731-b415-ee7c-e1fa4163095d",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "60ed16c3-b70a-cf99-4233-6eeb8093424a",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://inboundelements.com/"
+  }, {
+    "id" : "a6bef3ee-99a3-fbe5-2b34-c9c51c7e2e5b",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : false,
+    "link" : "https://inboundelements.com/",
+    "icon" : { }
+  }
+}, {
+  "id" : "8d62ab70-cd77-4904-ad3a-c4b6cd522527",
+  "name" : "telegram",
+  "display_width" : null,
+  "label" : "Telegram",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "1891f7e1-a3e5-cc84-8159-0b49d1c210c5",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "a4c2e6cf-761b-b2b0-7045-478d804258a2",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "1891f7e1-a3e5-cc84-8159-0b49d1c210c5",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://telegram.org"
+  }, {
+    "id" : "6633f37d-9d35-502d-f0a4-fa235440174c",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : false,
+    "link" : "https://telegram.org",
+    "icon" : { }
+  }
+}, {
+  "id" : "8203e660-76d3-3a46-eab9-934998fa3289",
+  "name" : "whatsapp",
+  "display_width" : null,
+  "label" : "WhatsApp",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "0025eaad-be5a-3162-9d23-8835bc7df9d5",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "50589f81-d66a-baaf-a4ce-606e73a1b22b",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "0025eaad-be5a-3162-9d23-8835bc7df9d5",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://whatsapp.com"
+  }, {
+    "id" : "0495247e-eb1f-ca93-abfc-f16f4990754c",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : false,
+    "link" : "https://whatsapp.com",
+    "icon" : { }
+  }
+}, {
+  "id" : "f9c65601-1e89-b7af-2972-df8254ea5735",
+  "name" : "pinterest",
+  "display_width" : null,
+  "label" : "Pinterest",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "0b0a8e7c-07d4-9445-b1a6-27ecec3092d5",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "4db9a26f-7fc7-0953-1eb1-ec7903ca6181",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "0b0a8e7c-07d4-9445-b1a6-27ecec3092d5",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://pinterest.com"
+  }, {
+    "id" : "9d835534-14fd-7bc2-b067-e010c65755a5",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : false,
+    "link" : "https://pinterest.com",
+    "icon" : { }
+  }
+}, {
+  "id" : "00751dcd-4955-8933-c706-72e041a7a8ed",
+  "name" : "tiktok",
+  "display_width" : null,
+  "label" : "TikTok",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "bf37eb9c-b50e-f997-c2bb-9228bbd83995",
+    "name" : "enabled",
+    "display_width" : null,
+    "label" : "Enable",
+    "required" : true,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "d5708271-e169-93af-2839-23c2451dfad5",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "bf37eb9c-b50e-f997-c2bb-9228bbd83995",
+      "controlling_value_regex" : "true",
+      "operator" : "MATCHES_REGEX",
+      "access" : null,
+      "hidden_subfields" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "https://www.tiktok.com/"
+  }, {
+    "id" : "a334c108-020c-4c3f-874b-2ddbaf059b5d",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "enabled" : false,
+    "link" : "https://www.tiktok.com/",
+    "icon" : { }
+  }
+}, {
+  "id" : "6b0c2a92-36f4-184e-999b-b50a9fb8a567",
+  "name" : "main_settings",
+  "display_width" : null,
+  "label" : "Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "6aa66087-9749-1b84-cad8-638464401327",
+    "name" : "css__id",
+    "display_width" : null,
+    "label" : "CSS ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "867698bd-5325-db02-62d1-225ee8040865",
+    "name" : "css__class",
+    "display_width" : null,
+    "label" : "CSS Class",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

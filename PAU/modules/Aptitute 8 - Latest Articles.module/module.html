@@ -1,0 +1,136 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+
+{% set my_tags = blog_tags(content_id, module.tags_limit) %}
+    {% set currentURL = content.absolute_url %}
+    
+    {% macro buildTags() %}
+      <button onclick="location.href='{{ group.absolute_url }}#section-articles'" class="blog-tag-filter-item {% if currentURL == group.absolute_url %}btn-primary-dark{% else %}btn-secondary-white{% endif %}">all</button>
+      {% for item in my_tags %}
+       <button  onclick="location.href='{{ blog_tag_url(group.id, item.slug) }}#section-articles'" class="blog-tag-filter-item {% if currentURL == blog_tag_url(group.id, item.slug) %}btn-primary-dark{% else %}btn-secondary-white{% endif %}">{{ item }}</button>
+      {% endfor %}
+    {% endmacro %} 
+
+        <div {{ buildID() }} class="container-fluid {{ buildClass() }}">
+          <div class="row-fluid-wrapper">
+              <div class="row-fluid">
+
+                  <div class="span4 widget-span widget-type-cell blog-index__section-title" style="" data-widget-type="cell" data-x="0" data-w="4">
+                    {% inline_rich_text field="title" value="{{ module.title }}" %}
+                  </div>
+
+                  <div class="span8 widget-span widget-type-cell blog-index__filter-tags-container" data-widget-type="cell" data-x="4" data-w="8">
+                    {{ buildTags() }} 
+                  </div>
+
+              </div>
+          </div>
+        </div>
+
+      
+      <div style="padding-bottom: 16px;">
+        
+        {# Blog listing section #}
+        <section class="blog-index" data-aos="fade-up">
+          
+          {# Blog listing #}
+          {% for content in contents %}
+            {# On the blog listing page, the first post will be featured above older posts #}         
+         
+              <article class="blog-index__post cards__card" aria-label="Blog post summary: {{ content.name }}">
+                {% if content.featured_image and group.use_featured_image_in_summary %}
+                  <a href="{{ content.absolute_url }}" aria-label="{% if content.featured_image_alt_text %}Featured image: {{ content.featured_image_alt_text }} - {% endif %}Read full post: {{ content.name }}">
+                    <img class="blog-index__post-image" src="{{ content.featured_image }}" style="width: 100%;" loading="lazy" alt="{{ content.featured_image_alt_text }}">
+                  </a>
+                {% endif %}
+                <div class="blog-index__post-content">
+                  <a href="{{ content.absolute_url }}">
+                    <h4 class="blog-header__title">
+                      {{ content.name }}
+                    </h4>
+                  </a>
+                  
+                  <p>
+                    {% if content.meta_description %}
+                      {{ content.meta_description|truncatehtml(131) }}
+                    {% endif %}
+                  </p>
+
+                  
+                 
+                
+                <div class="elements-blog-card__footer">
+
+                  <div class="row-fluid elements-blog-card__footer_content">
+
+                    <div class="span3 widget-span widget-type-cell elements-blog-card__footer_image-container" style="text-align: left; width: auto;" data-widget-type="cell" data-x="0" data-w="3">
+                       <div class="elements-sac-card__footer-image">
+                        {% if content.blog_post_author.avatar %}
+                          <img src="{{ content.blog_post_author.avatar }}" style="border-radius: 50%; width: 54px; height: 54px;" alt="{{ content.featured_image_alt_text is truthy ? "{{ content.featured_image_alt_text }}" : "{{ content.name }}" }}" >
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="span4 widget-span widget-type-cell elements-blog-card__footer_text-container" data-widget-type="cell" data-x="3" data-w="4">
+                      <h6 style="margin-bottom: 0px;">{{ content.blog_author.display_name }}</h6>
+                      <p style="margin-bottom: 0px; font-size: 14px;">{{ content.publish_date|datetimeformat('%B %d, %Y') }}</p>
+                    </div>
+
+                    <div class="span5 widget-span widget-type-cell elements-blog-card__footer_badge-container" data-widget-type="cell" data-x="7" data-w="5">
+             
+                      {% if content.tag_list[0].name %}
+                        <a class="blog-tag" href="{{ blog_tag_url(group.id, content.tag_list[0].slug) }}">
+                          <span class="elements--blog--card__footer__badge" style="padding: 6px 12px; border-radius: 5px;">
+                            {{ content.tag_list[0].name }}
+                          </span>
+                        </a>
+                      {% endif %}
+                    </div>
+
+                    </div>
+                    
+                  </div>
+          
+                </div>
+              </article>
+
+          {% endfor %}
+          {# End blog listing #}
+
+        </section>
+          
+        {# End blog listing section #}
+
+        {# Blog pagination #}
+        {% if contents.total_page_count > 1 %}
+          <div class="blog-pagination">
+            {% set page_list = [-2, -1, 0, 1, 2] %}
+            {% if contents.total_page_count - current_page_num == 1 %}{% set offset = -1 %}
+            {% elif contents.total_page_count - current_page_num == 0 %}{% set offset = -2 %}
+            {% elif current_page_num == 2 %}{% set offset = 1 %}
+            {% elif current_page_num == 1 %}{% set offset = 2 %}
+            {% else %}{% set offset = 0 %}{% endif %}
+
+            <button class="btn-secondary-white blog-pagination__link blog-pagination__prev-link {{ 'blog-pagination__prev-link--disabled' if !last_page_num }}"{% if last_page_num %} onclick="location.href='{% if current_page_num == 2 %}{{ group.absolute_url }}{% else %}{{ blog_page_link(last_page_num) }}{% endif %}#section-articles'"{% endif %}>
+              Previous
+            </button>
+            {% for page in page_list %}
+              {% set this_page = current_page_num + page + offset %}
+              {% if this_page > 0 and this_page <= contents.total_page_count %}
+                <a class="blog-pagination__link blog-pagination__number-link {{ 'blog-pagination__link--active' if this_page == current_page_num }}" href="{% if this_page == 1 %}{{ group.absolute_url }}{% else %}{{ blog_page_link(this_page) }}{% endif %}#section-articles">{{ this_page }}</a>
+              {% endif %}
+            {% endfor %}
+            <button  class="btn-secondary-white blog-pagination__link blog-pagination__next-link {{ 'blog-pagination__next-link--disabled' if !next_page_num }}"{% if next_page_num %} onclick="location.href='{{ blog_page_link(current_page_num + 1) }}#section-articles'"{% endif %}>
+              Next
+            </button>
+          </div>
+        {% endif %}
+        {# End blog pagination #}
+
+      </div>
+
+    {# End 2 Section - Articles #}

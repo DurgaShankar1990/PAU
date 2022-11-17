@@ -1,0 +1,551 @@
+{% macro buildID() %}
+{% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+padding-top: {{ module.paddings.desktop.module.top }}px;
+padding-bottom: {{ module.paddings.desktop.module.bottom }}px;
+padding-left:  {{ module.paddings.desktop.module.left }}px;
+padding-right: {{ module.paddings.desktop.module.right }}px;
+
+margin-top: {{ module.margins.desktop.module.top }}px;
+margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+margin-left: {{ module.margins.desktop.module.left }}px;
+margin-right: {{ module.margins.desktop.module.right }}px;
+
+width: 100%;
+{% endmacro %}
+
+
+{% macro buildImageStyles() %}
+{% if !module.module_styles.image_full_width or module.module_styles.type_of_card == "left_icon_right_content" %}
+padding-left: {{ module.paddings.desktop.image.left }}px;
+padding-right: {{ module.paddings.desktop.image.right }}px;
+padding-top: {{ module.paddings.desktop.image.top }}px;
+
+{% endif %}
+
+padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+
+{% endmacro %}
+
+{% macro buildTextStyles() %}
+padding-top: {{ module.paddings.desktop.content.top }}px;
+padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+padding-left: {{ module.paddings.desktop.content.left }}px;
+padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+
+{% if module.module_styles.type_of_card == "top_icon_bottom_content" %}
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" style="{{ buildModuleStyles() }}">
+
+    <div class="row-fluid-wrapper">
+
+        {# Rows #}
+
+        {% for item in module.rows %}
+
+        <div class="row-fluid">
+
+            <div class="span12 widget-span widget-type-cell" data-widget-type="cell" data-x="0" data-w="12">
+
+                <div id="elements-si-cards_{{ name }}" class="cards elements-si-cards_{{ name }}"> 
+
+                    {# Columns #}
+
+                    {% for card in item.card %}
+
+                    {# Card #}  
+
+                    <div class="cards__card elements-si-cards__card_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+
+
+                        {# Link #}
+                        {% if module.module_styles.link_type == "card" %}
+
+                        {% if card.link.url.href %}
+                        {% set href = card.link.url.href %}
+                        {% if card.link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        {% set rel = [] %}
+                        {% if card.link.no_follow %}
+                        {% do rel.append("nofollow") %}
+                        {% endif %}
+                        {% if card.link.open_in_new_tab %}
+                        {% do rel.append("noopener") %}
+                        {% endif %}
+                        <a href="{{ href }}" {% if card.link.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+                            {% endif %} 
+
+                            {% endif %} 
+
+                            {# Image #}
+
+                            {% if module.module_styles.enable_image %}
+
+                            <div class="elements-module-image_{{ name }}" style="{{ buildImageStyles() }}">
+
+                                {% if module.module_styles.enable_overlay %}
+                                <div class="card-overlay overlay_{{ name }}" style="background:linear-gradient(to {{ module.module_styles.gradient.direction }}, {% for item in module.module_styles.gradient.color %} rgba({{ item.color|convert_rgb  }},{{ item.opacity/100 }}) {% if not loop.last%},{% endif %}{% endfor %})">
+
+                                </div>
+                                {% endif %}
+                                {# Full Width Image #}
+
+                                {% if module.module_styles.image_full_width %}
+                                {% if card.image_full_width.src %}
+                                {% set sizeAttrs = 'width="{{ card.image_full_width.width }}" height="{{ card.image_full_width.height }}"' %}
+                                {% if card.image_full_width.size_type == 'auto' %}
+                                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                                {% elif card.image_full_width.size_type == 'auto_custom_max' %}
+                                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ card.image_full_width.max_width }}px; max-height: {{ card.image_full_width.max_height }}px"' %}
+                                {% endif %}
+                                {% set loadingAttr = card.imaimage_full_widthge.loading != 'disabled' ? 'loading="{{ card.image_full_width.loading }}"' : '' %}
+                                <img src="{{ card.image_full_width.src }}" class="elements-si-card__image_{{ name }}" alt="{{ card.image_full_width.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                                {% endif %}
+
+                                {# No Full Width Image #}
+
+                                {% else %}
+                                {% if card.image.src %}
+                                {% set sizeAttrs = 'width="{{ card.image.width }}" height="{{ card.image.height }}"' %}
+                                {% if card.image.size_type == 'auto' %}
+                                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                                {% elif card.image.size_type == 'auto_custom_max' %}
+                                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ card.image.max_width }}px; max-height: {{ card.image.max_height }}px"' %}
+                                {% endif %}
+                                {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
+                                <img src="{{ card.image.src }}" class="elements-si-card__image_{{ name }}" alt="{{ card.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                                {% endif %}
+                                {% endif %}
+
+                            </div>   
+
+                            {% endif %}
+
+
+
+                            {# Text #}
+
+                            <div class="elements-module-card-text_{{ name }}" style="{{ buildTextStyles() }}">
+                                {% if card.content %}
+                                {% inline_rich_text field="card.content" value="{{ card.content }}" %}
+                                {% endif %}
+
+
+                                {# Button #}
+                                {% if module.module_styles.enable_button %}
+
+                                {# Link #}
+                                {% if module.module_styles.link_type == "button" %}
+
+                                {% if card.link.url.href %}
+                                {% set href = card.link.url.href %}
+                                {% if card.link.url.type is equalto "EMAIL_ADDRESS" %}
+                                {% set href = "mailto:" + href %}
+                                {% endif %}
+                                {% set rel = [] %}
+                                {% if card.link.no_follow %}
+                                {% do rel.append("nofollow") %}
+                                {% endif %}
+                                {% if card.link.open_in_new_tab %}
+                                {% do rel.append("noopener") %}
+                                {% endif %}
+                                <a href="{{ href }}" {% if card.link.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+                                    {% endif %} 
+
+                                    {% endif %} 
+                                    <div class="elements-si-card__button--container_{{ name }}">
+                                        <button class="elements-si-card__button_{{ name }} {{ module.module_styles.button.button_class }}">{{ card.card_button_text }}</button>
+                                    </div>
+                                    {% if module.module_styles.link_type == "button" %}
+                                    {% if card.link.url.href %}
+                                </a>
+                                {% endif %} 
+                                {% endif %} 
+                                {% endif %}
+
+                            </div>
+
+
+                            {# End Link #}  
+
+                            {% if module.module_styles.link_type == "card" %}
+                            {% if card.link.url.href %}
+                        </a>
+                        {% endif %} 
+                        {% endif %}  
+
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% elif module.module_styles.type_of_card == "left_icon_right_content" %}
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" style="{{ buildModuleStyles() }}">
+
+    <div class="row-fluid-wrapper">
+
+        {# Rows #}
+
+        {% for item in module.rows %}
+
+        <div class="row-fluid">
+
+            <div class="span12 widget-span widget-type-cell" data-widget-type="cell" data-x="0" data-w="12">
+
+                <div id="elements-si-cards_{{ name }}" class="cards elements-si-cards_{{ name }}"> 
+
+                    {# Columns #}
+
+                    {% for card in item.card %}
+
+                    {# Card #}
+
+                    <div class="cards__card elements-si-cards__card_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+
+
+                        {# Link #}
+
+                        {% if module.module_styles.link_type == "card" %}
+
+                        {% if card.link.url.href %}
+                        {% set href = card.link.url.href %}
+                        {% if card.link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        {% set rel = [] %}
+                        {% if card.link.no_follow %}
+                        {% do rel.append("nofollow") %}
+                        {% endif %}
+                        {% if card.link.open_in_new_tab %}
+                        {% do rel.append("noopener") %}
+                        {% endif %}
+                        <a href="{{ href }}" {% if card.link.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+                            {% endif %} 
+
+                            {% endif %}
+
+
+                            <div class="row-fluid-wrapper">
+                                <div class="row-fluid">
+
+                                    {# Image #}
+
+                                    {% if module.module_styles.enable_image %}
+
+                                    <div class="span3 widget-span widget-type-cell elements-module-image_{{ name }}" style="{{ buildImageStyles() }}" data-widget-type="cell" data-x="0" data-w="3">
+                                        {% if card.image.src %}
+                                        {% set sizeAttrs = 'width="{{ card.image.width }}" height="{{ card.image.height }}"' %}
+                                        {% if card.image.size_type == 'auto' %}
+                                        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                                        {% elif card.image.size_type == 'auto_custom_max' %}
+                                        {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ card.image.max_width }}px; max-height: {{ card.image.max_height }}px"' %}
+                                        {% endif %}
+                                        {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
+                                        <img src="{{ card.image.src }}" class="elements-si-card__image_{{ name }}" alt="{{ card.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                                        {% endif %}
+                                    </div>
+
+                                    {% endif %}
+
+                                    {# Text #}
+
+                                    <div class="span9 widget-span widget-type-cell elements-module-card-text_{{ name }}" style="{{ buildTextStyles() }}" data-widget-type="cell" data-x="3" data-w="9">
+                                        {% if card.content %}
+                                        {% inline_rich_text field="card.content" value="{{ card.content }}" %}
+                                        {% endif %}
+                                    </div>
+
+
+                                    {# Button #}
+
+                                    {# Button #}
+                                    {% if module.module_styles.enable_button %}
+
+                                    {# Link #}
+                                    {% if module.module_styles.link_type == "button" %}
+
+                                    {% if card.link.url.href %}
+                                    {% set href = card.link.url.href %}
+                                    {% if card.link.url.type is equalto "EMAIL_ADDRESS" %}
+                                    {% set href = "mailto:" + href %}
+                                    {% endif %}
+                                    {% set rel = [] %}
+                                    {% if card.link.no_follow %}
+                                    {% do rel.append("nofollow") %}
+                                    {% endif %}
+                                    {% if card.link.open_in_new_tab %}
+                                    {% do rel.append("noopener") %}
+                                    {% endif %}
+                                    <a href="{{ href }}" {% if card.link.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+                                        {% endif %} 
+
+                                        {% endif %} 
+                                        <div class="elements-si-card__button--container_{{ name }}">
+                                            <button class="elements-si-card__button_{{ name }} {{ module.module_styles.button.button_class }}">
+                                                {{ card.card_button_text }}
+                                            </button>
+                                        </div>
+                                        {% if module.module_styles.link_type == "button" %}
+                                        {% if card.link.url.href %}
+                                    </a>
+                                    {% endif %} 
+                                    {% endif %} 
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            {# End Link #}  
+                            {% if module.module_styles.link_type == "card" %}
+                            {% if card.link.url.href %}
+                        </a>
+                        {% endif %} 
+                        {% endif %} 
+
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}
+
+
+{% require_css %}
+<style>
+
+    .elements-si-card__button--container_{{ name }} {
+        padding-top: {{ module.paddings.desktop.button.top }}px;
+        padding-bottom: {{ module.paddings.desktop.button.bottom }}px;
+        padding-left: {{ module.paddings.desktop.button.left }}px;
+        padding-right: {{ module.paddings.desktop.button.right }}px;
+
+        text-align: {{ module.module_styles.button.button_align }};
+    }
+
+    .elements-si-card__button_{{ name }} {
+
+
+        {% if module.module_styles.button.full_width %}
+        width: 100%;
+        {% endif %}
+
+        {% if module.module_styles.button.button_class == "custom" %}
+        font-family: {{ module.module_styles.button.font_field.font }}; {{ module.module_styles.button.font_field.style }}; 
+        color: {{ module.module_styles.button.font_field.color }}; 
+        font-size: {{ module.module_styles.button.font_field.size }}{{module.module_styles.button.font_field.size_unit }};
+        background-color: {{ module.module_styles.button.background_color.color }};
+        padding: {{ module.module_styles.button.padding }}px;
+        {% endif %}
+
+    }
+
+    .elements-module-image_{{ name }} {
+        text-align: {{ module.module_styles.image_align }};
+    }
+
+    .elements-si-cards_{{ name }} {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: grap;
+        flex-wrap: grap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    }
+
+    #elements-si-cards_{{ name }} > :last-child { 
+        margin-right: 0; 
+    }
+
+    .elements-si-cards__card_{{ name }} {
+        margin-top: 1.5rem;
+        margin-right: 1.5rem;
+        max-width: 100%;
+
+        {% if module.module_styles.card_full_width %}
+        width: 100%;
+        {% else %}
+        width: {{ module.module_styles.card_width }}px;
+        {% endif %}
+
+
+        {% if module.module_styles.image_full_width && module.module_styles.type_of_card != "left_icon_right_content" %}
+        padding: 0px;
+        {% else %}
+        padding: 28px;
+        {% endif %}
+
+        {% if module.module_styles.border_radius || module.module_styles.border_radius == 0 %}
+        border-radius: {{ module.module_styles.border_radius }}px;  
+        {% endif %}
+
+        {% if module.module_styles.background_color.color %}
+        background-color: {{ module.module_styles.background_color.color }};    
+        {% endif %}
+
+    }
+    .overlay_{{ name }} {
+        {% if module.module_styles.border_radius %}
+        border-top-left-radius: {{ module.module_styles.border_radius }}px;
+        border-top-right-radius: {{ module.module_styles.border_radius }}px; 
+        {% else %}
+        border-top-left-radius: {{ theme.cards.border_radius }}px;
+        border-top-right-radius: {{ theme.cards.border_radius }}px; 
+        {% endif %}
+    }
+    .elements-si-card__image_{{ name }} {
+
+        {% if !module.module_styles.image_full_width %}
+        border-radius: {{ module.module_styles.image_border_radius }}px;
+        {% endif %}  
+
+        max-width: 100%;  
+
+        {% if module.module_styles.image_full_width && module.module_styles.type_of_card != "left_icon_right_content" %}
+
+        width: 100%  !important;
+        max-height: 100% !important;
+        height: 100% !important;
+
+        {% if module.module_styles.border_radius %}
+        border-top-left-radius: {{ module.module_styles.border_radius }}px;
+        border-top-right-radius: {{ module.module_styles.border_radius }}px; 
+        {% else %}
+        border-top-left-radius: {{ theme.cards.border_radius }}px;
+        border-top-right-radius: {{ theme.cards.border_radius }}px; 
+        {% endif %}
+
+        {% endif %}
+
+    }
+
+
+
+    .elements-module-card-text_{{ name }} {
+        text-align: {{ module.module_styles.text_align }};
+        margin-top: 0px;
+    }
+
+
+    @media(max-width: 767px) {
+
+        .elements-module-card-text_{{ name }} {
+            {% if module.module_styles.type_of_card == "left_icon_right_content" %}
+            {% if module.module_styles.text_align_mobile == "center" %}
+            width: 100% !important;
+            {% endif %}
+            {% endif %}
+        }
+
+        .elements-module-image_{{ name }} {
+            {% if module.module_styles.type_of_card == "left_icon_right_content" %}
+            {% if module.module_styles.image_align_mobile == "center" %}
+            width: 100% !important;
+            {% endif %}
+            {% endif %}
+        }
+
+        .elements-si-card__button--container_{{ name }} {
+            padding-top: {{ module.paddings.mobile.button.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.button.bottom }}px !important;
+            padding-left: {{ module.paddings.mobile.button.left }}px !important;
+            padding-right: {{ module.paddings.mobile.button.right }}px !important;
+
+            text-align: {{ module.module_styles.button.button_align_mobile }} !important;
+        }
+
+        .elements-si-cards_{{ name }} {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .elements-si-cards__card_{{ name }} {
+            width: 100%;
+
+            {% if !module.module_styles.image_full_width or module.module_styles.type_of_card == "left_icon_right_content" %}
+            padding: 1.7vmax 1.5rem 1.5vmax;
+            {% endif %}
+
+        }
+
+        .elements-div-content_{{ name }} {
+            padding-top: {{ module.paddings.mobile.module.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+            padding-left: {{ module.paddings.mobile.module.left }}px !important;
+            padding-right: {{ module.paddings.mobile.module.right }}px !important;
+
+            margin-top: {{ module.margins.mobile.module.top }}px !important;
+            margin-bottom: {{ module.margins.mobile.module.bottom }}px !important;
+            margin-left: {{ module.margins.mobile.module.left }}px !important;
+            margin-right: {{ module.margins.mobile.module.right }}px !important;
+        }
+
+
+        .elements-module-image_{{ name }} {
+
+            {% if !module.module_styles.image_full_width or module.module_styles.type_of_card == "left_icon_right_content" %}
+            padding-top: {{ module.paddings.mobile.image.top }}px !important;
+            padding-left: {{ module.paddings.mobile.image.left }}px !important;
+            padding-right: {{ module.paddings.mobile.image.right }}px !important;
+            text-align: {{ module.module_styles.image_align_mobile }};
+            {% endif %}
+
+            padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+        }
+
+        .elements-module-card-text_{{ name }} {
+            padding-top: {{ module.paddings.mobile.content.top }}px !important;
+            padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+            padding-left: {{ module.paddings.mobile.content.left }}px !important;
+            padding-right: {{ module.paddings.mobile.content.right }}px !important;
+            text-align: {{ module.module_styles.text_align_mobile }} !important;
+        }
+
+    }
+
+
+    @media(max-width: 432px) {
+        .elements-module-card-text_{{ name }} span {
+            border: none !important;
+            margin: 2px 4px !important;
+        }
+    }
+
+
+</style>
+{% end_require_css %}
+
+
+
+
+
+
+
+
+
+
+
+

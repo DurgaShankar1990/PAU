@@ -1,0 +1,8 @@
+{
+  "global" : true,
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING", "EMAIL" ],
+  "module_id" : 62055550042,
+  "label" : "Newsletter",
+  "is_available_for_new_content" : true
+}

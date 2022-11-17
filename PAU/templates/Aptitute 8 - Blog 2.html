@@ -1,0 +1,94 @@
+<!--
+    templateType: blog_listing
+    isAvailableForNewContent: true
+    label: Blog v2 - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/blog-v2.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper">
+  <div class="body-container body-container--blog-index">
+    
+    {# 1 Section - Blog header #}
+    <section class="content-wrapper">
+      <div class="container-fluid elements--blog-2__header">
+        <div class="row-fluid-wrapper">
+            <div class="row-fluid">
+              
+                <div class="span12 widget-span widget-type-cell" style="" data-widget-type="cell" data-x="0" data-w="12">
+                  {% module_block module 'Rich Text' path="@hubspot/rich_text", label='Hero Content' %}
+                    {% module_attribute 'html'  %}
+                      <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; text-align: center;">
+                        Resource Center
+                      </p>
+                      <h1 style="text-align: center;">
+                        Latest Articles
+                      </h1>
+                    {% end_module_attribute %}
+                  {% end_module_block %}
+                </div>
+
+            </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="content-wrapper">
+      {% module "module_161133305312410" path='../modules/Aptitute 8 - Featured Post', label="Aptitute 8 - Featured Post" %}
+    </section>
+    
+    {# End 1 Section - Blog header #}
+    
+
+    {# 2 Section - Articles #}
+    
+    <div id="section-articles" class="elements--blog-2__latest-articles" style="background-color: {{ theme.global_colors.neutral_colors.neutral_color_200.color }};">
+      <section class="content-wrapper">
+        {% module "module_161133314543111" path='../modules/Aptitute 8 - Latest Articles', label="Aptitute 8 - Latest Articles" %}
+      </section>
+    </div>
+    
+    {# End 2 Section - Articles #}
+    
+    
+    
+    {# 3 Section - CTA Subscribe #}
+    
+    <section class="content-wrapper elements--blog-2__cta-subscribe">
+      {% module "module_161135249798149" path='../modules/Aptitute 8 - Section CTA - Form', label="Aptitute 8 - Section Subscribe 2",
+        content = { 
+          content: '<h2 style="color: #fff;">Subscribe to our newsletter</h2>
+                    <p style="color: #fff;">Lorem ipsum dolor sit amet, consectetur 
+                    adipiscing elit. Semper neque enim rhoncus vestibulum at maecenas.
+                    Ut sociis dignissim.</p>',
+          form: { 
+            form: {
+              form_id: '5b5d666e-a71d-416a-9e77-d87ef25c04e4' 
+            }            
+          }
+        },
+        margins = {
+          desktop: {
+            module: {
+              top: -232
+            }              
+          },
+          mobile: {
+            module: {
+             top: -380
+            }
+          }
+        }
+      %} 
+    </section>
+    
+    {# End 3 Section - CTA Subscribe #}
+    
+    
+
+  </div>
+</main>
+
+{% endblock body %}

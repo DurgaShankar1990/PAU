@@ -1,0 +1,134 @@
+{% set tes =  content.absolute_url|split('/')|last|urlencode %}
+{% set table =  crm_objects("courses", "orderBy=hs_createdate&is_published=Yes&course_type=On Demand&in_partnership_with_dropdown=" ~ tes|upper ) %}
+{% set per_page = 9 %}
+{% set offset_number = 0 %}
+{% set total_pages = table.total|divide(per_page) + 5 %}
+{% if not request.query_dict.page %}
+{% set page_number = 1 %}
+{% elif request.query_dict.page %}
+{% set page_number = request.query_dict.page %}
+{% set offset_number = (page_number - 1) * per_page %}
+{% endif %}
+{# the database query #}
+
+{% set pageLimit = "limit=" ~ per_page ~ "&offset=" ~ offset_number %}
+
+
+
+{% set query = ""%}
+
+{% if module.event_type == "live" %}
+{% set query = "orderBy=event_start_date&is_published=Yes&course_type=Live&limit=3&in_partnership_with_dropdown=" ~ tes|upper %} 
+{% else %}
+{% set query = "orderBy=hs_createdate&is_published=Yes&course_type=On Demand&"~pageLimit~"&in_partnership_with_dropdown=" ~ tes|upper  %} 
+{% endif %}
+{% set items = "name, introduction, page_url, course_image, ce_hours_dropdown, length,start_time, end_time ,course_type, price__usd_, presented_by, specialty_area, format, certificate, badge_earning, event_start_date, event_end_date, in_partnership_with_dropdown" %}
+
+{% set objects = crm_objects("courses", query , items, "formatting=true") %} 
+
+<div class="training-suggestions">
+    <div class="content-wrapper">
+        <div class="title ">
+            <h2 class="heading-1 mb-56 m-col-7">{{ module.title }}</h2>
+        </div>
+
+        <div class="row course-bi-inst">
+            <div class="flex-row flex-wrap grid " {% if module.event_type == "Demand" %}id="Courses"{% endif %}>
+                {% for object in objects.results %}
+
+                {% set instructor = crm_associations(object.id, 'USER_DEFINED', 145,"limit=100","name, page_url, certificates, headshot_link") %} 
+                <div class="element-item course-item {% if module.event_type == "Demand" %}citem{% endif %}">
+                    <div class="c-inner">
+                        
+                        {% set href = module.link_field.url.href %}
+                        {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                        {% endif %}
+                        <a href="{{ href }}/{{ object.page_url }}"
+                           {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                           {% if module.link_field.rel %}rel="{{ module.link_field.rel }}"{% endif %}
+                           >
+                            <div class="image">
+                                {% if object.course_image %}<img src="{{ object.course_image }}" alt=" {{ object.name }}">{% endif %}
+                                {% if object.ce_hours_dropdown or object.length %}
+                        <span class="hours number">{{ object.length }} {% if object.ce_hours_dropdown %}/ {{ object.ce_hours_dropdown }}{% if object.ce_hours_dropdown == "1" %} CE{% else %} CEs{% endif %}{% endif %}</span>
+                        {% endif %}
+                            </div>
+                            <div class="pl-32 pr-32 pb-40 pt-40">
+                                <div class="instructor-image">
+                                    {% for headshot in instructor.results %}
+                                    {% if loop.index <= 3%}
+                                    {% if headshot.headshot_link %}  
+                                    <img class="author-img author-{{loop.index}}" src="{{ headshot.headshot_link}}">
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <div class="instructor-title">
+                                    {% for instructorname in instructor.results %}
+                                    {% if loop.index <= 3%}
+                                    {% if instructorname.name %}
+                                    <h5 class="des berry-jam mb-5">{{ instructorname.name }}</h5>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <h3 class="title midnight-blue mb-16 name">
+                                    {{ object.name }} 
+                                </h3>
+                                <h5 class="event glacial-blue-ice mb-16 p-small">
+                                    {% if object.course_type == "On Demand" %}
+                                    <span>Available On Demand</span>
+                                    {% elif object.course_type == "Live" %}
+                                    {% if object.event_start_date|datetimeformat('%e/%m/%Y') ==  object.event_end_date|datetimeformat('%e/%m/%Y')  %}
+                                    <span>Event Date: {{ object.event_start_date|datetimeformat('%b. %e, %Y') }} | {{ object.start_time }} - {{ object.end_time }}</span>
+                                    {% else %}
+                                    <span>Event Date: {{ object.event_start_date|datetimeformat('%b. %e, %Y') }} - {{ object.event_end_date|datetimeformat('%b. %e, %Y') }}</span>
+                                    <br><span>{{ object.start_time }} - {{ object.end_time }}</span>
+                                    {% endif %}
+                                    {% else %}
+                                    <span>Available On Demand</span>
+                                    {% endif %}
+                                </h5>
+                                <div class="flex-row justify-bw align-center">
+                                    <div class="price glacial-blue-ice price" data-prices="{{ object.price__usd_ }}">{% if object.price__usd_%}{{ object.price__usd_|format_currency("en-US") }}{% else %}$0{% endif %}</div>
+                                    <div class="uni">
+                                        {% if object.badge_earning == "Yes" %}
+                                        <img src="https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/Concept-medallion.svg" alt="PAU">
+                                        {% endif %}
+                                        {% if object.partner_logo_url %}
+                                        <img src="{{ object.partner_logo_url }}" width="48">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% if module.event_type == "Demand" %}
+{% if request.query_dict.page  %}
+{% else %}
+{% for i in range(2, total_pages )%}
+    <a class="courseData" href="{{ content.absolute_url}}?page={{i}}"></a>
+{% endfor %}
+{% endif %}
+{% endif %}
+
+<style>
+    {% scope_css %}
+    .training-suggestions{
+        {{ module.style.desktop_spacing.css }};
+    }
+    @media(max-width:767px){
+        .training-suggestions{
+            {{ module.style.mobile_spacing.css }};
+        }
+    }
+    {% end_scope_css %}
+</style>

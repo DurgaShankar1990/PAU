@@ -1,0 +1,26 @@
+<!--
+  templateType: email_subscriptions_confirmation_page
+  isAvailableForNewContent: true
+  label: Subscription Preferences Update - Elements HubSpot Theme - Inbound Elements
+  screenshotPath: ../../images/template-previews/subscription-preferences-update.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper elements__password-protected">
+  <section class="content-wrapper">
+    <div class="systems-page cards__card elements__subscription-preferences-update--card">
+      {% module 'subscriptions_confirmation'
+        path='@hubspot/email_subscriptions_confirmation',
+        header="Thanks for updating your email preferences",
+        extra_classes="elements__subscription-preferences-update"
+      %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

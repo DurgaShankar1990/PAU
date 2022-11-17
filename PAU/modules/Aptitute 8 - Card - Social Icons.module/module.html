@@ -1,0 +1,221 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.modfule.top }}px !important;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px !important;
+  padding-left:  {{ module.paddings.desktop.module.left }}px !important;
+  padding-right: {{ module.paddings.desktop.module.right }}px !important;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+  border-radius: {{ module.module_styles.border_radius }}px;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.image.image_align }} !important;
+{% endmacro %}
+
+{% macro buildContentStyles() %}
+  padding-top: {{ module.paddings.desktop.content.top }}px;
+  padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+  padding-left: {{ module.paddings.desktop.content.left }}px;
+  padding-right: {{ module.paddings.desktop.content.right }}px;
+{% endmacro %}
+
+{% macro buildButtonStyles() %}
+ {% if module.button.button_style == "elements-btn-custom" %}
+  font-family: {{ module.button.font.font }}; {{ module.button.font.style }};
+  color: {{ module.button.font.color }}; 
+  font-size: {{ module.button.font.size }}{{module.button.font.size_unit }};
+  background-color: {{ module.button.background_color.color }};
+ {% endif %}
+{% endmacro %}
+
+
+
+
+{% macro buildCards() %}
+  {% for item in module.rows %}
+    <div class="row-fluid">
+      <div class="span12 widget-span widget-type-cell" style="text-align: center;" data-widget-type="cell" data-x="0" data-w="12" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+        <div id="elements-si-cards_{{ name }}" class="cards elements-si-cards_{{ name }}"> 
+          {% for card in item.card %}         
+          
+            {% macro buildImageShadowsStyles() %}
+
+              {% if card.image_shadow == "shadow_1" %}
+                -webkit-filter: drop-shadow(0px 3px 10px rgba(31, 37, 89, 0.04));
+                filter:         drop-shadow(0px 3px 10px rgba(31, 37, 89, 0.04)); 
+              {% elif card.image_shadow == "shadow_2" %}
+                -webkit-filter: drop-shadow(0px 4px 12px rgba(8, 15, 52, 0.06));
+                filter:         drop-shadow(0px 4px 12px rgba(8, 15, 52, 0.06)); 
+              {% elif card.image_shadow == "shadow_3" %}
+                -webkit-filter: drop-shadow(0px 8px 18px rgba(31, 37, 89, 0.05));
+                filter:         drop-shadow(0px 8px 18px rgba(31, 37, 89, 0.05)); 
+              {% elif card.image_shadow == "shadow_4" %}
+                -webkit-filter: drop-shadow(0px 16px 51px rgba(28, 26, 74, 0.04));
+                filter:         drop-shadow(0px 16px 51px rgba(28, 26, 74, 0.04)); 
+              {% elif card.image_shadow == "shadow_5" %}
+                -webkit-filter: drop-shadow(0px 24px 75px rgba(21, 16, 152, 0.05));
+                filter:         drop-shadow(0px 24px 75px rgba(21, 16, 152, 0.05)); 
+              {% elif card.image_shadow == "shadow_6" %}
+                -webkit-filter: drop-shadow(0px 45px 84px rgba(8, 15, 52, 0.19));
+                filter:         drop-shadow(0px 45px 84px rgba(8, 15, 52, 0.19)); 
+              {% endif %}
+
+            {% endmacro %}
+          <a href="{{ card.link }}" target="_blank" style="text-decoration: none;">
+         
+            <div class="cards__card elements-si-cards__card_{{ name }}">
+              {% if card.image.src %}
+
+                  <span class="elements-si-card__image__container{{ name }}" style="text-align: {{ card.image_align }};">
+                    <img class="elements-si-card__image_{{ name }}" src="{{ card.image.src }}" alt="{{ card.image.alt }}" width="50" height="50" style="{{ buildImageShadowsStyles() }}">
+                  </span>
+              
+                  <span class="elements-module-card-title-content_{{ name }}" style="text-align: left;">
+                    {% if card.title %}
+                      <h5 class="elements-si-card__title_{{ name }}">{{ card.title }}</h5>
+                    {% endif %}
+                  </span>
+
+              {% endif %}
+            </div>
+          </a>
+          
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endfor %}
+
+{% endmacro %}
+
+
+
+
+<div {{ buildID() }} class="container-fluid elements-div-content_{{ name }} {{ buildClass() }}" style="{{ buildModuleStyles() }}">
+    <div class="row-fluid-wrapper">
+      {{ buildCards() }}
+    </div>
+</div>
+
+
+{% require_css %}
+<style>
+  
+  .elements-si-cards_{{ name }} {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: grap;
+    flex-wrap: grap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  }
+
+  #elements-si-cards_{{ name }} > :last-child { 
+    margin-right: 0; 
+  }
+
+  .elements-si-cards__card_{{ name }} {
+    text-align: center;
+    margin-top: 1.3rem;
+    margin-right: 1.3rem;
+    max-width: 100%;
+    width: 280px;
+    padding: 28px 28px 20px 22px;
+    transition: transform 0.3s ease;
+    border-radius: {{ module.card_styles.border_radius }}px;
+    cursor: pointer;
+  }
+
+  .elements-si-card__image_{{ name }} {
+    max-width: 100%;
+    border-radius: {{ module.card_styles.image_border_radius }}px;
+  }
+
+  .elements-si-card__title_{{ name }} {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2px;
+  }
+
+  .elements-module-card-title-content_{{ name }} {
+    margin-top: 8px;
+    padding-left: 8px;
+  }
+
+  @media(max-width: 904px) {
+    
+   .elements-si-cards__card_{{ name }} {
+      padding: 14px 8px 6px;
+    }
+
+  }
+
+
+  
+@media(max-width: 767px) {
+    
+  .elements-si-cards_{{ name }} {
+      flex-direction: column;
+      justify-content: center;
+   }
+    
+  .elements-si-cards__card_{{ name }} {
+    width: 100%;
+    padding: 2.7vmax 2rem 1.5vmax;
+   }
+     
+  .elements-div-content_{{ name }} {
+    padding-top: {{ module.paddings.mobile.module.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.module.left }}px !important;
+    padding-right: {{ module.paddings.mobile.module.right }}px !important;
+  }
+    
+  .elements-module-image {
+    padding-top: {{ module.paddings.mobile.image.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.image.left }}px !important;
+    padding-right: {{ module.paddings.mobile.image.right }}px !important;
+  }
+    
+  .elements-module-content {
+    padding-top: {{ module.paddings.mobile.content.top }}px !important;
+    padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+    padding-left: {{ module.paddings.mobile.content.left }}px !important;
+    padding-right: {{ module.paddings.mobile.content.right }}px !important;
+  }
+
+}
+  
+@media(max-width: 447px) {
+   .elements-si-card__image__container{{ name }} {
+    width: 33% !important;
+   }
+}
+  
+</style>
+{% end_require_css %}
+
+
+
+
+
+  

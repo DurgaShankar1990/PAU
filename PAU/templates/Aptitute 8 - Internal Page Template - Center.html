@@ -1,0 +1,111 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Internal Page Template - Center - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/internal-page-template-center.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Header #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+     {% dnd_section
+     
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      vertical_alignment='BOTTOM',
+      margin={ 'top': 16 },
+      padding={
+        'default': { 'top': 80, 'bottom': 72 },
+        'mobile': { 'top': 56, 'bottom': 48 }
+      }
+    %}
+      {% dnd_module path='@hubspot/rich_text', 
+        horizontal_alignment='CENTER'
+      %}
+        {% module_attribute 'html' %} 
+          <h1 style="max-width: 490px; margin-bottom: 0; text-align: center;">
+            Internal Page Template - Center
+          </h1>
+          <p style="margin-top: 24px; max-width: 490px; text-align: center;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra.
+          </p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Header #}
+  
+  
+  
+  
+  {# 2 Section - Content #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+
+    {% dnd_section
+      max_width=740,
+      padding={
+        'default': { 'top': 80, 'bottom': 112 },
+        'mobile': { 'top': 56, 'bottom': 64 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+    
+      {% dnd_module path='@hubspot/rich_text'
+      %}
+        {% module_attribute 'html' %} 
+          <h2 style="margin-bottom: 16px;">What is growth marketing?</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. Ac malesuada ipsum, tellus vitae odio nulla sociis. Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. Habitant aenean ut turpis lectus pulvinar mattis fames. Suscipit aliquet pellentesque enim, massa vitae pharetra amet.<br><br></p>
+          <h3 style="margin-bottom: 16px;">It's important to always have a growth marketing plan</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.<br><br></p>
+          <h3 style="margin-bottom: 16px;">If your business is not growing, it's falling</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.</p>
+          <ul>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu laoreet at donec tincidunt</li>
+          <li>Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc</li>
+          </ul>
+          <h4 style="margin-bottom: 16px;"><br>3 tips to build a bulletproof growth marketing plan</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. 
+            Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.<br><br></p>
+          <h4 style="margin-bottom: 16px;">A secret to create a great marketing plan</h4>
+          <p style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Eu vestibulum massa volutpat vitae blandit aliquet rhoncus. Tempor, nunc id aliquam quis. 
+            Eget lobortis massa non, est aliquam vel. Cras proin urna nec metus, faucibus turpis nunc tellus.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Lorem auctor mattis aliquam dictum. A, lobortis sodales aliquet augue aliquet sed nam. Nisl blandit id nunc id nam. Dictum lacus dictumst interdum nibh. Aenean faucibus tellus sed risus erat. Venenatis, nisl fermentum in vel.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - Content #}
+  
+
+
+  
+</main>
+{% endblock body %}

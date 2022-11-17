@@ -1,0 +1,169 @@
+[ {
+  "id" : "634f4ad0-5417-b1ed-7457-76a2e1f15c4d",
+  "name" : "enable_module",
+  "display_width" : null,
+  "label" : "Enable Module",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "716939e0-9e4f-2bed-acda-ac97fc6f5ab2",
+  "name" : "search_placeholder_text",
+  "display_width" : null,
+  "label" : "Search Placeholder Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "visibility" : {
+    "controlling_field" : "634f4ad0-5417-b1ed-7457-76a2e1f15c4d",
+    "controlling_value_regex" : "true",
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Search for resources..."
+}, {
+  "id" : "7d302a70-3674-d8b9-f1b9-a16b0d92f535",
+  "name" : "content_types",
+  "display_width" : null,
+  "label" : "Search results include",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "634f4ad0-5417-b1ed-7457-76a2e1f15c4d",
+    "controlling_value_regex" : "true",
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "children" : [ {
+    "id" : "8a658bbd-eb9a-58f9-9827-95da916a8c41",
+    "name" : "website_pages",
+    "display_width" : null,
+    "label" : "Website pages",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "692e08af-19ec-80d6-805d-712004681f61",
+    "name" : "landing_pages",
+    "display_width" : null,
+    "label" : "Landing pages",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "88c709a2-342d-cdb6-1abd-cc94f17503c1",
+    "name" : "blog_posts",
+    "display_width" : null,
+    "label" : "Blog posts",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "9222529f-af4c-d345-3e68-8f99bdd40554",
+    "name" : "knowledge_articles",
+    "display_width" : null,
+    "label" : "Knowledge articles",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "website_pages" : true,
+    "landing_pages" : true,
+    "blog_posts" : true,
+    "knowledge_articles" : true
+  }
+}, {
+  "id" : "42502249-b40b-2866-0957-a8f704ed94c3",
+  "name" : "icons",
+  "display_width" : null,
+  "label" : "Icons",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "b7fda2ca-78fc-30ef-7aec-c10fd1100bd5",
+    "name" : "search_icon",
+    "display_width" : null,
+    "label" : "Search Input Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/loupe.svg",
+      "alt" : "loupe",
+      "loading" : "lazy",
+      "width" : 41,
+      "height" : 40,
+      "max_width" : 41,
+      "max_height" : 40
+    }
+  }, {
+    "id" : "0b27533b-d871-9deb-ded7-f34d4f7de425",
+    "name" : "close_icon",
+    "display_width" : null,
+    "label" : "Close Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/close.svg",
+      "alt" : "close",
+      "loading" : "disabled",
+      "width" : 29,
+      "height" : 29,
+      "max_width" : 29,
+      "max_height" : 29
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "search_icon" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/loupe.svg",
+      "alt" : "loupe",
+      "loading" : "lazy",
+      "width" : 41,
+      "height" : 40,
+      "max_width" : 41,
+      "max_height" : 40
+    },
+    "close_icon" : {
+      "size_type" : "exact",
+      "src" : "https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/close.svg",
+      "alt" : "close",
+      "loading" : "disabled",
+      "width" : 29,
+      "height" : 29,
+      "max_width" : 29,
+      "max_height" : 29
+    }
+  }
+} ]

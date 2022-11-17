@@ -1,0 +1,326 @@
+<!--
+templateType: "none"
+isAvailableForNewContent: false
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ page_meta.html_title }}</title>
+        {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+        <meta name="description" content="{{ page_meta.meta_description }}">
+        {{ require_css('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap') }}
+        {{ require_css('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap') }}
+        {{ require_css(get_asset_url('../../css/main.css')) }}
+        {{ require_css(get_asset_url('../../css/theme-overrides.css')) }}
+        {{ require_js(get_asset_url('../../js/main.js')) }}
+        {{ require_js(get_asset_url('../../js/shopping_cart.js')) }}
+        {% if theme.animations.enable_transition_effects %}
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        {% endif %}
+        {{ standard_header_includes }}
+    </head>
+    <body data-aos="{{ theme.animations.page_entry_animation }}">
+        <div class="body-wrapper {{ builtin_body_classes }}">
+            {% block header %}
+            {% global_partial path='../partials/header.html' %}
+            {% endblock header %}
+
+            {% block body %}
+            {% endblock body %}
+
+            {% block footer %}
+            {% global_partial path='../partials/footer.html' %}
+            {% endblock footer %}
+        </div>
+
+        {{ require_js(get_asset_url('../../js/jquery.js')) }}
+
+        {{ standard_footer_includes }}
+
+
+        {% if theme.animations.enable_transition_effects %}
+
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+        <script>
+
+            if(document.getElementsByTagName("HTML")[0].getAttribute("class") === 'hs-inline-edit') {
+                AOS.init({disable: true });
+            } else {
+                AOS.init();
+            }
+
+
+            {% if theme.header.sticky_header %}
+
+            window.onscroll = function() {addSticky()};
+
+            var header = document.getElementById("header");
+
+            var sticky = header.offsetTop;
+
+
+            function addSticky() {            
+
+                if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) { 
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+
+            }
+
+
+
+            {% endif %}
+
+        </script>
+
+        {% endif %}
+
+        <script>
+            if ((typeof(ShopifyBuy) !== "undefined") )
+            {
+
+
+                const client = ShopifyBuy.buildClient({
+                    domain: 'palo-alto-u.myshopify.com',
+                    storefrontAccessToken: '47b27d57a1a00252417198bf757bf0a1'
+                });
+
+                var checkoutid = localStorage.getItem('checkoutid');
+                console.log('checkoutid =' + checkoutid);
+                if(checkoutid)
+                {
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const checkoutIdShop = urlParams.get('checkoutId');
+                    const orderNumberShop = urlParams.get('orderNumber');
+                    //console.log('hi');
+                    //console.log(checkoutId,orderNumber);
+                    
+                    client.checkout.fetch(checkoutid).then((checkout) => {
+                        // Do something with the checkout
+                        console.log(checkout);  
+                        var orderStatusURl= checkout.orderStatusUrl;
+                        if(orderStatusURl)
+                        {
+                            var valueorderExist = orderStatusURl.indexOf("key");
+                            if(valueorderExist > -1){
+                                var contactIds = JSON.parse(localStorage.getItem('contactIds'));
+                                var hubspotCoursesIds=  JSON.parse(localStorage.getItem('HubspotContactIds')); 
+
+                                localStorage.removeItem("contactIds");
+                                localStorage.removeItem("checkoutid");
+                                localStorage.removeItem("shoppingCart");
+                                localStorage.removeItem("HubspotContactIds");
+
+                                var check = 0;
+                                contactIds.forEach(async (element,cindex) => {
+                                    var courseId = element.courseId;
+                                    var check = 0;
+                                    element.contacts.forEach(async(contactId) => {
+                                        await enrollCourse(courseId,contactId);
+                                    })
+                                })
+
+                                var updateUser = 0;
+                                hubspotCoursesIds.forEach(async (element,cindex) => {
+                                    var courseId = element.hubspotCourseId;
+                                    var updateUser = 0;
+
+                                    //cars.forEach(car => {});
+                                    element.contacts.forEach(async(contactId) => {
+                                        await updateHubspotContact(courseId,contactId,checkoutIdShop);
+                                    })
+                                })
+
+                                
+
+                                // Will wait for everything on the page to load.
+                                $(window).bind('load', function() {
+                                    $('.page__onload, body').addClass('loaded');
+
+                                    $('.page__onload').css({'display':'none'})
+
+                                });
+
+                                // Will remove page__onload after 1min for users cannnot load properly.
+
+                                $('.page__onload, body').addClass('loaded');
+
+
+
+                            }
+
+                        }
+                        console.log('checkout on thank you');   
+                    });
+                }
+            }
+            function getCookie(cname) {
+                let name = cname + "=";
+                let ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                let user = getCookie("username");
+                if (user != "") {
+                    alert("Welcome again " + user);
+                } else {
+                    user = prompt("Please enter your name:", "");
+                    if (user != "" && user != null) {
+                        setCookie("username", user, 365);
+                    }
+                }
+            }
+            function enrollCourse(courseId, contactId){
+                return new Promise((resolve,reject)=>{
+
+                    var url = 'https://api.thinkific.com/api/public/v1/enrollments';
+                    const d1 = new Date();
+                    var d = new Date();
+                    var year = d.getFullYear();
+                    var month = d.getMonth();
+                    var day = d.getDate();
+                    var c = new Date(year + 1, month, day);
+                    console.log(c);
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        beforeSend: function(request) {
+                            request.setRequestHeader("X-Auth-API-Key", '1f685dfe79956705cb3e78679494873c');
+                            request.setRequestHeader("X-Auth-Subdomain", 'concept');
+                            request.setRequestHeader("Content-Type", 'application/json');
+                        },
+                        dataType: "json",
+                        data:JSON.stringify({
+                            "course_id": courseId,
+                            "user_id": contactId,
+                            "activated_at": d1.toISOString(),
+                            "expiry_date": c.toISOString()
+                        }),
+                        success: function(response) {
+                            resolve();
+                        },
+                        error: function(xhr, desc, err) {
+                            console.log(xhr);
+                            console.log(desc);
+                            console.log(err);
+                            reject();
+                        }
+                    }); // end ajax call
+
+                })
+            }
+
+            function  updateHubspotContact(courseId, contactId ,checkoutid ){
+                return new Promise((resolve,reject)=>{
+
+                    var url = 'https://forms.hubspot.com/uploads/form/v2/20705724/c53869e3-de13-4a9a-88b9-14cbba1343d7';
+                    var hubspotutk;
+                    hubspotutk = (getCookie('hubspotutk'));
+                    //
+                    var hscontext;
+                    hscontext = JSON.stringify({
+                        "hutk": hubspotutk
+
+                    });
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        contentType: "application/x-www-form-urlencoded",
+                        dataType: "json",
+                        data:{
+                            email:contactId.email,
+                            firstname:contactId.firstname,
+                            lastname:contactId.lastname,
+                            //company:contactId.company,
+                            shopify_checkout_id:checkoutid,
+                            course_name:contactId.coursename
+                        },
+                        success: function(response) {
+                            resolve();
+                        },
+                        error: function(xhr, desc, err) {
+                            console.log(xhr);
+                            console.log(desc);
+                            console.log(err);
+                            reject();
+                        }
+                    }); // end ajax call
+
+                })
+            }
+
+            //             function updateHubspotContact(courseId, contactId ,checkoutid ){
+
+
+            //                 console.log('contactId',contactId);
+            //                 var hubspotutk;
+            //                 hubspotutk = (getCookie('hubspotutk'));
+            //                 //
+            //                 var hscontext;
+            //                 hscontext = JSON.stringify({
+            //                     "hutk": hubspotutk
+
+            //                 });
+
+            //                 return new Promise((resolve,reject)=>{
+            //                     $.ajax({
+
+            //                         url: 'https://forms.hubspot.com/uploads/form/v2/20705724/c53869e3-de13-4a9a-88b9-14cbba1343d7',
+            //                         type: 'post',
+            //                         contentType: "application/x-www-form-urlencoded",
+            //                         dataType: "json",
+            //                         data:{
+            //                             hs_context:hscontext,
+            //                             email:contactId.email,
+            //                             firstname:contactId.firstname,
+            //                             lastname:contactId.lastname,
+            //                             //company:contactId.company,
+            //                             shopify_checkout_id:checkoutid,
+            //                             course_name:contactId.coursename
+            //                         },
+
+
+            //                         success: function(response) {
+
+            //                             resolve();
+
+            //                         },
+            //                         complete: function(response) {
+            //                             //console.log(response);
+            //                             resolve();
+
+            //                         },
+            //                         error: function(xhr, desc, err) {
+            //                             console.log(xhr);
+            //                             console.log(desc);
+            //                             console.log(err);
+            //                             reject();
+            //                         }
+            //                     }); // end ajax call
+
+
+
+            //                 })
+            //             }
+
+
+        </script>
+
+
+    </body>
+</html>

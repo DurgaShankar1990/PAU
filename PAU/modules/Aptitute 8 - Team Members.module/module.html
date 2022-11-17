@@ -1,0 +1,251 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+{% macro buildModuleStyles() %}
+  padding-top: {{ module.paddings.desktop.module.top }}px !important;
+  padding-bottom: {{ module.paddings.desktop.module.bottom }}px !important;
+  padding-left:  {{ module.paddings.desktop.module.left }}px !important;
+  padding-right: {{ module.paddings.desktop.module.right }}px !important;
+
+  margin-top: {{ module.margins.desktop.module.top }}px;
+  margin-bottom: {{ module.margins.desktop.module.bottom }}px;
+  margin-left: {{ module.margins.desktop.module.left }}px;
+  margin-right: {{ module.margins.desktop.module.right }}px;
+
+  width: 100%;
+{% endmacro %}
+
+{% macro buildImageStyles() %}
+  padding-top: {{ module.paddings.desktop.image.top }}px;
+  padding-bottom: {{ module.paddings.desktop.image.bottom }}px;
+  padding-left: {{ module.paddings.desktop.image.left }}px;
+  padding-right: {{ module.paddings.desktop.image.right }}px;
+  text-align: {{ module.module_styles.image_align }};
+{% endmacro %}
+
+
+{% set linkStyle = "text-align: center; margin-left: 6px; margin-right: 6px; width: {{ module.module_styles.icon_size }}px; text-decoration: none; border: 0px; border-width: 0px;" %}
+{% set iconStyle = "text-align: center; margin-bottom: 8px; border-radius: {{ module.module_styles.icon_border_radius }}px; width: {{ module.module_styles.icon_size }}px !important; height: {{ module.module_styles.icon_size }}px !important; border:0px; border-width:0px; " %}
+
+
+
+
+<div {{ buildID() }} class="container-fluid elements-div-module_{{ name }} {{ buildClass() }}" style="{{ buildModuleStyles() }}">
+    <div class="row-fluid-wrapper">
+        <div class="row-fluid">
+            <div class="span12 widget-span widget-type-cell" style="" data-widget-type="cell" data-x="0" data-w="12">
+            
+              <div class=" elements-div-container_{{ name }}">
+                {% for item in module.member %}
+                  
+                  {# Members #}
+                
+                  <div class="elements--team-members__member_{{ name }}" {% if module.animation.enable_animation %}data-aos="{{ module.animation.animation }}-{% if module.animation.animation == "fade" %}{{ module.animation.direction_fade }}{% elif module.animation.animation == "flip" %}{{ module.animation.direction_flip }}{% elif module.animation.animation == "slide" %}{{ module.animation.direction_slide }}{% elif module.animation.animation == "zoom" %}{{ module.animation.direction_zoom }}{% endif %}"{% endif %} data-aos-once="{{ module.animation.frecuency }}" data-aos-duration="{{ module.animation.duration }}" data-aos-delay="{{ module.animation.delay }}">
+                    
+                    {# Start Link #}
+                    
+                    {% if item.link_field.url.href %}
+                      {% set href = item.link_field.url.href %}
+                      {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                      {% endif %}
+                      {% set rel = [] %}
+                      {% if item.link_field.no_follow %}
+                        {% do rel.append("nofollow") %}
+                      {% endif %}
+                      {% if item.link_field.open_in_new_tab %}
+                        {% do rel.append("noopener") %}
+                      {% endif %}
+                      <a href="{{ href }}" style="text-decoration: none;"
+                        {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                        {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                        >
+                    {% endif %}
+                        
+
+                      {# Image #}
+
+                      <div class="elements-module-image_{{ name }}">
+                        {% if item.image.src %}
+                          {% set sizeAttrs = 'style=" width: {{ item.image.width }}px; height: {{ item.image.height }}px; "' %}
+                          {% if item.image.size_type == 'auto' %}
+                            {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                          {% elif item.image.size_type == 'auto_custom_max' %}
+                            {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.image.max_width }}px; max-height: {{ item.image.max_height }}px"' %}
+                          {% endif %}
+                          {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+                          <img src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                        {% endif %}
+                      </div>
+
+
+                      {# Text #}
+
+                      <div class="elements-module-text_{{ name }}">
+                        {% inline_rich_text field="text" value="{{ item.text }}" %}
+                      </div>
+                        
+                    
+                    {# End Link #}
+                        
+                    {% if item.link_field.url.href %}
+                      </a>
+                    {% endif %}
+                    
+                    {# Social Icons #}
+                    
+                    {% macro social_icon(network) %}
+                      {% set networkIcon = item[network] %}
+                      {% if  networkIcon.enabled %}
+                        <a href="{{ networkIcon.link }}"  target="_blank" style="{{ linkStyle }}" >
+                          <img src="{{ networkIcon.icon.src }}" class="elements-social-links__icon_{{ name }}" style="{{ iconStyle }}" width="{{ module.module_styles.icon_size }}px"  alt='{{ "Visit " ~ network }}' />
+                        </a>
+                      {% endif %}
+                    {% endmacro %}
+                    
+                    <div class="elements-social-links__container_{{ name }}">                      
+                      {{ social_icon('facebook') }}
+                      {{ social_icon('twitter') }}
+                      {{ social_icon('linkedin') }}
+                      {{ social_icon('web') }}
+                      {{ social_icon('instagram') }}
+                      {{ social_icon('youtube') }}
+                      {{ social_icon('telegram') }}
+                      {{ social_icon('whatsapp') }}
+                      {{ social_icon('pinterest') }}
+                      {{ social_icon('tiktok') }}
+                    </div>
+                    
+                  </div>
+
+                {% endfor %}
+                
+              </div>
+              
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% require_css %}
+<style>
+  
+  
+  .elements-social-links__icon_{{ name }} {
+    transition: 0.2s ease-in-out;
+    -webkit-filter: drop-shadow(0px 11.89px 16.35px rgba(10, 102, 194, 0.15));
+    filter: drop-shadow(0px 11.89px 16.35px rgba(10, 102, 194, 0.15));
+  }
+  
+  .elements-social-links__icon_{{ name }}:hover {
+    transform: scale(1.1);
+  }
+  
+  .elements-social-links__container_{{ name }} {
+    margin-top: 12px;
+  }
+
+  .elements-div-container_{{ name }} {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat({{ module.module_styles.columns_per_row_desktop }}, auto);
+    grid-column-gap: {{ module.module_styles.members_gap }}px;
+    grid-row-gap: {{ module.module_styles.members_gap }}px;
+  }
+
+  .elements--team-members__member_{{ name }}{
+    max-width: 282px;
+    margin: auto;
+  }
+
+  .elements-module-text_{{ name }} {
+    padding-top: {{ module.paddings.desktop.content.top }}px;
+    padding-bottom: {{ module.paddings.desktop.content.bottom }}px;
+    padding-left: {{ module.paddings.desktop.content.left }}px;
+    padding-right: {{ module.paddings.desktop.content.right }}px;
+  }
+  
+  .elements-module-image_{{ name }} img {
+    transition: 0.3s ease-in-out;
+    
+    {% if module.module_styles.image_type == "custom_radius_border" %}
+      border-radius: {{ module.module_styles.border_radius }}px;
+    {% elif module.module_styles.image_type == "rounded" %}
+      border-radius: 50%;
+      max-height: 282px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    {% endif %}
+  }
+  
+  .elements-module-image_{{ name }} img:hover {
+    transform: scale(1.03);
+  }
+  
+  
+  
+  @media(max-width: 992px) {
+  
+    .elements-div-container_{{ name }} {
+      grid-template-columns: repeat({{ module.module_styles.columns_per_row_tablet }}, auto);
+    }
+  
+  }
+  
+  
+  @media(max-width: 767px) {
+    
+    .elements-div-container_{{ name }} {
+      grid-template-columns: repeat({{ module.module_styles.columns_per_row_mobile }}, auto);
+    }
+
+    .elements-div-module_{{ name }} {
+      padding-top: {{ module.paddings.mobile.module.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.module.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.module.left }}px !important;
+      padding-right: {{ module.paddings.mobile.module.right }}px !important;
+
+      margin-top: {{ module.margins.mobile.module.top }}px;
+      margin-bottom: {{ module.margins.mobile.module.bottom }}px;
+      margin-left: {{ module.margins.mobile.module.left }}px;
+      margin-right: {{ module.margins.mobile.module.right }}px;
+    }
+
+    .elements-module-image_{{ name }} {
+      padding-top: {{ module.paddings.mobile.image.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.image.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.image.left }}px !important;
+      padding-right: {{ module.paddings.mobile.image.right }}px !important;
+    }
+
+    .elements-module-text_{{ name }} {
+      padding-top: {{ module.paddings.mobile.content.top }}px !important;
+      padding-bottom: {{ module.paddings.mobile.content.bottom }}px !important;
+      padding-left: {{ module.paddings.mobile.content.left }}px !important;
+      padding-right: {{ module.paddings.mobile.content.right }}px !important;
+    }
+
+  }
+  
+   @media(max-width: 480px) {
+
+    .elements-div-container_{{ name }} {
+      grid-template-columns: repeat({{ module.module_styles.columns_per_row_small_mobile }}, auto);
+    }
+
+  }
+
+</style>
+{% end_require_css %}
+
+
+
+
+
+  

@@ -1,0 +1,420 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Case Study - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/case-study.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Hero #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 80, 'bottom': 80 },
+         'mobile': { 'top': 36, 'bottom': 48 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; font-size: 18px; font-weight: 400;">
+                  <span style="color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; ">YouTube</span>&nbsp; - &nbsp;<span style="color: {{ theme.typography.global_fonts.headers_font.color }}; ">January 2021</span>
+                </p>
+                <h1 style="text-align: center; max-width: 893px;">
+                  How we helped YouTube increase app installs by 24% in less than 30 days
+                </h1>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+         {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 15px; text-align: center; max-width: 590px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean lorem odio morbi vitae. 
+                  Ultricies tempus, imperdiet phasellus porta. Imperdiet et aliquet senectus vel. Amet ornare.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+
+        {% dnd_row
+          margin={ 
+          'default': { 'top': 32, 'bottom': 24 },
+          'mobile': { 'top': 32, 'bottom': 24 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Divider' %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+        {% dnd_row
+          padding={
+            'default': { 'top': 16 },
+            'mobile': { 'top': 16 }
+          }
+        %}
+          {% dnd_module "module_161288866321110" path='../modules/Aptitute 8 - Grid Layout', label="Aptitute 8 - Grid Layout",
+            module_styles={
+              image:{ enable_image: false },
+              text_styles:{ text_align: "left", text_align_mobile: "left" },
+              layout: { column_gap: 128, column_gap_mobile: 24, number_columns_desktop: 4, number_columns_tablet: 4, number_columns_mobile: 2, number_columns_small_mobile: 2 }
+            }, 
+            columns=[
+              { 
+                text: '<h5 style="font-size: 20px; margin-bottom: 16px;">Services</h5><p>Growth Marketing <br>Search Engine Optimization</p>'
+              },
+              { 
+                text: '<h5 style="font-size: 20px; margin-bottom: 16px;">Platforms</h5><p>Google and Bing</p>'
+              },
+              { 
+                text: '<h5 style="font-size: 20px; margin-bottom: 16px;">Result 1</h5><a data-insert="true" style="font-size: 27px;"><strong>24%</strong></a><p style="margin-bottom: -5px;">Increase in App</p><p style="margin-top: 0px;">Downloads</p>'
+              },
+              { 
+                text: '<h5 style="font-size: 20px; margin-bottom: 16px;">Result 2</h5><a data-insert="true" style="font-size: 27px;"><strong>2.5M</strong></a><p style="margin-bottom: -5px;">App</p><p style="margin-top: 0px;">Downloads</p>'
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row
+          margin={
+            'default': { 'top': 24, 'bottom': 64 },
+            'mobile': { 'top': 24, 'bottom': 24 }
+          }
+        %}
+         {% dnd_module  path='../modules/Aptitute 8 - Image', 
+          horizontal_alignment='CENTER',
+            img={
+              'alt': 'Elements Image',
+              'width': 1209,
+              'height': auto,
+              'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/youtube_1.svg',
+              'margin':'0',
+              
+            },
+            border_radius=50,
+            border_radius_mobile=24
+          %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row 
+          vertical_alignment='TOP'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            offset=0,
+            width=5
+          %}
+            {% module_attribute 'html' %} 
+                <h2 style="max-width: 460px;">
+                  Project Overview
+                </h2>
+                <div style="border-top: 4px solid {{ theme.global_colors.primary_colors.primary_color_1.color }}; width: 77px;"> </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          {% dnd_module 
+            path='@hubspot/rich_text',
+            horizontal_alignment='RIGHT',
+            offset=5,
+            width=7
+          %}
+            {% module_attribute 'html' %} 
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam quis tellus ut sem. Ac malesuada ipsum, tellus vitae odio nulla sociis. 
+                  Mauris consectetur ac enim condimentum sagittis nulla sed volutpat imperdiet. Habitant aenean ut turpis lectus pulvinar mattis fames. 
+                  Suscipit aliquet pellentesque enim, massa vitae pharetra amet. Sem neque vitae aliquet odio suspendisse non adipiscing ornare amet.
+                </p>
+                <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc</li>
+                <li>Nunc sed velit dignissim sodales ut. Ut sem viverra aliquet</li>
+                </ul>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Hero #}
+  
+  
+  
+    
+  {# 2 Section - Execution #}
+  
+  <section id="section-2">
+    
+  {% dnd_area 'section-2', label='section-2' %}
+  
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      padding={
+        'default': { 'top': 96, 'bottom': 96 },
+        'mobile': { 'top': 56, 'bottom': 64 }
+      },
+      vertical_alignment='MIDDLE',
+      max_width=870
+    %}
+      {% dnd_module path='../modules/Aptitute 8 - Card', label="Aptitute 8 - Card - Custom",
+            module_styles={
+              'type_of_card': 'top_icon_bottom_content',
+              'image_full_width': false,
+              'enable_image': false,
+              'text_align': 'left',
+              'text_align_mobile': 'left'
+            },
+            paddings = { 
+              desktop:{ content:{ top: 24, bottom: 24, left: 56, right: 56 } },  
+              mobile:{ content:{ top: 32, bottom: 32, left: 16, right: 16 } }
+            },
+            rows= 
+            [
+              {
+                card:
+                [
+                
+                  {      
+                    content: '<h2 style="max-width: 460px;">Execution</h2><div style="border-top: 4px solid {{ theme.global_colors.primary_colors.primary_color_1.color }}; width: 77px;">&nbsp;</div><p>Nulla pharetra diam sit amet nisl suscipit adipiscing. Felis donec et odio pellentesque diam volutpat commodo sed egestas. Sem et tortor consequat id porta. Tellus at urna condimentum mattis. Nec feugiat in fermentum posuere urna nec. <br><br>Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Sed velit dignissim sodales ut eu. Est velit egestas dui id ornare arcu. Dictum at tempor commodo ullamcorper. Quam adipiscing vitae proin sagittis. Risus viverra adipiscing at in tellus.</p><ul><li>Urna neque viverra justo nec ultrices. In egestas erat imperdiet sed euismod</li><li>Empus iaculis urna id volutpat lacus laoreet</li><li>Risus in hendrerit gravida rutrum. Varius quam quisque id diam vel quam elementum</li></ul>',
+                  }
+                  
+                ]
+              }
+                        
+            ]
+          %}
+          {% end_dnd_module %}
+
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+  
+  </section>
+  
+  {# End 2 Section - Execution #}
+  
+
+  
+    
+  {# 3 Section - Results #}
+  
+  <section id="section-3">
+    
+  {% dnd_area 'section-3', label='section-3' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 112, 'bottom': 32 },
+         'mobile': { 'top': 64, 'bottom': 0 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row 
+          vertical_alignment='TOP'
+        %}
+         {% dnd_module 
+            path='@hubspot/rich_text',
+            offset=0,
+            width=5
+          %}
+            {% module_attribute 'html' %} 
+                <h2 style="max-width: 460px;">
+                  Results
+                </h2>
+                <div style="border-top: 4px solid {{ theme.global_colors.primary_colors.primary_color_1.color }}; width: 77px;"> </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+    
+          {% dnd_column
+            offset=5,
+            width=7
+          %}
+            {% dnd_row %}
+              {% dnd_module path='@hubspot/rich_text' %}
+                {% module_attribute 'html' %} 
+                    <p>Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Sed velit dignissim sodales ut eu. Est velit egestas dui id ornare arcu. Dictum at tempor commodo ullamcorper. Quam adipiscing vitae proin sagittis. Risus viverra adipiscing at in tellus. <br><br>Id diam maecenas ultricies mi. Risus in hendrerit gravida rutrum. Varius quam quisque id diam vel quam elementum. Nunc sed velit dignissim sodales ut. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Donec pretium vulputate sapien nec sagittis aliquam malesuada. Tortor vitae purus faucibus ornare suspendisse sed nisi. Rhoncus dolor purus non enim praesent elementum facilisis leo. Orci eu lobortis elementum nibh tellus molestie nunc.</p>
+                    <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                    </ul>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+    
+    
+            {% dnd_row
+              margin={
+                'default': { 'top': 24, 'bottom': 40 },
+                'mobile': { 'top': 16, 'bottom': 0 }
+              }
+            %}
+             {% dnd_module  path='../modules/Aptitute 8 - Image', 
+              horizontal_alignment='CENTER',
+                img={
+                  'alt': 'Elements Image',
+                  'width': 713,
+                  'height': auto,
+                  'src': 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/results.svg',
+                  'margin':'0'
+                }
+              %}
+              {% end_dnd_module %}
+
+            {% end_dnd_row %}
+    
+    
+          {% end_dnd_column  %}
+          
+        {% end_dnd_row %}
+    
+    
+        {% dnd_row
+          margin={ 
+          'default': { 'top': 80, 'bottom': 16 },
+          'mobile': { 'top': 56, 'bottom': 16 }
+          }
+        %}
+          {% dnd_module path='../modules/Aptitute 8 - Divider' %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+    
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - Results #}
+  
+  
+  
+    
+    
+  {# 4 Section - Testimonials #}
+  
+  <section id="section-4">
+    
+  {% dnd_area 'section-4', label='section-4' %}
+  
+    {% dnd_section
+         padding={
+         'default': { 'top': 64, 'bottom': 112 },
+         'mobile': { 'top': 56, 'bottom': 64 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+  
+  
+      {# Left Content #} 
+  
+      {% dnd_column 
+        offset=0, 
+        width=6,
+      %}
+
+        {% dnd_row 
+          margin={
+           'default': { 'top': 0 }
+          },
+          padding={
+           'default': { 'right': 48 },
+           'mobile': { 'right': 0 }
+          } 
+         %}
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='LEFT' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 10px; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400;">
+                  Testimonials
+                </p>
+                <h2>
+                  What our customers are saying
+                </h2>
+                <p style="margin-bottom: 15px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices volutpat vitae augue donec tempus gravida. Sagittis laoreet nunc integer vestibulum. In ut donec facilisis risus elit mi egestas. Commodo, massa, metus consequat sit diam neque blandit nulla faucibus. 
+                  Erat pellentesque porttitor nibh consectetur aliquam iaculis ultrices. Vitae pharetra ut ipsum in quam in sed. Tempor sollicitudin
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+        {% dnd_row 
+          margin={
+           'default': { 'top': 16 },
+           'mobile': { 'top': 0 }
+          } 
+        %}
+           {% dnd_module path='../modules/Aptitute 8 - Buttons'
+              horizontal_alignment='LEFT'
+            %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+  
+
+       {% end_dnd_column  %}
+
+  
+       {# Right Content #}
+  
+       {% dnd_module  path='../modules/Aptitute 8 - Card - Testimonial', 
+        horizontal_alignment='RIGHT',
+        offset=6,
+        width=6,
+        margin={
+         'default': { 'top': 180 },
+         'mobile': { 'top': 180 }
+        }
+       %}
+       {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 4 Section - Testimonials #}
+  
+  
+  
+</main>
+{% endblock body %}

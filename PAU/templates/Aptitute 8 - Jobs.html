@@ -1,0 +1,217 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Jobs - Aptitute 8 HubSpot Theme
+    screenshotPath: ../images/template-previews/jobs.png
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+  
+  {# 1 Section - Header #}
+  
+  <section id="section-1">
+    
+  {% dnd_area 'section-1', label='section-1' %}
+  
+    {% dnd_section
+      vertical_alignment='TOP',
+      padding={
+        'default': { 'top': 80, 'bottom': 128 },
+         'mobile': { 'top': 36, 'bottom': 140 }
+      }
+    %}
+ 
+      {% dnd_column %}
+
+        {% dnd_row %}
+  
+          {% dnd_module path='@hubspot/rich_text', horizontal_alignment='CENTER' %}
+            {% module_attribute 'html' %} 
+                <p style="margin-bottom: 8px; text-align: center; color: {{ theme.global_colors.primary_colors.primary_color_1.color }}; font-size: 18px; font-weight: 400; max-width: 590px;">
+                  Careers
+                </p>
+                <h1 style="text-align: center; max-width: 590px;">
+                  Open Positions
+                </h1>
+                <p style="margin-bottom: 15px; text-align: center; max-width: 590px;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ante velit nunc morbi pretium. Ut nullam dolor, pulvinar proin viverra.
+                </p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+  
+        {% end_dnd_row %}
+  
+       {% end_dnd_column  %}
+  
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 1 Section - Header #}
+  
+  
+  
+  
+  {# 2 Section - Jobs #}
+  
+  <section id="section-2">
+     
+  {% dnd_area 'section-2', label='section-2' %}  
+
+    {% dnd_section
+      background_color={
+        r: 250,
+        g: 250,
+        b: 252,
+        a: 1.0
+      },
+      max_width=774,
+      padding={
+        'default': { 'top': 0, 'bottom': 116 },
+        'mobile': { 'top': 0, 'bottom': 64 }
+      },
+      vertical_alignment='MIDDLE'
+    %}
+    
+      {% dnd_module "module_16129729839393" path='../modules/Aptitute 8 - Card - Jobs', label="Aptitute 8 - Card - Jobs",
+        margins = {
+          desktop: {
+            container: {
+              top: -80
+            }
+          },
+          mobile: {
+            container: {
+              top: -120
+            }
+          }
+        },
+        faq_columns = [
+              {
+                content: [
+                  {
+                    category: 'Design',
+                    location: 'San Francisco, CA',
+                    title: 'Lead Web Designer at Elements',
+                    employment_type: 'Full Time',
+                    content: '<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                    location_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg', alt: 'Elements Image', width: 19, height: 24 },
+                    employment_type_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/suitcase_1.svg', alt: 'Elements Image', width: 27, height: 24 }
+                  },
+                  {
+                    category: 'Marketing',
+                    location: 'New York, NY',
+                    title: 'VP of Inbound Marketing at Elements',
+                    employment_type: 'Remote',
+                    content: '<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                    location_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg', alt: 'Elements Image', width: 19, height: 24 },
+                    employment_type_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/suitcase_1.svg', alt: 'Elements Image', width: 27, height: 24 }
+                  },
+                  {
+                    category: 'Development',
+                    location: 'Manhattan, NY',
+                    title: 'Website Developer at Elements',
+                    employment_type: 'Freelance',
+                    content: '<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                    location_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg', alt: 'Elements Image', width: 19, height: 24 },
+                    employment_type_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/suitcase_1.svg', alt: 'Elements Image', width: 27, height: 24 }
+                  },
+                  {
+                    category: 'Design',
+                    location: 'New York, NY',
+                    title: 'Logo & Brand Designer at Elements',
+                    employment_type: 'Part Time',
+                    content: '<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                    location_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg', alt: 'Elements Image', width: 19, height: 24 },
+                    employment_type_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/suitcase_1.svg', alt: 'Elements Image', width: 27, height: 24 }
+                  },
+                  {
+                    category: 'Marketing',
+                    location: 'San Francisco, CA',
+                    title: 'Lead of SEO & SEM at Elements',
+                    employment_type: 'Full Time',
+                    content: '<p>Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs. Lorem ipsum dolor sit amet, consecteturor adipiscing elit. Tincidunt donec vulputate ipsum erat urna auctor. Eget phasellus ideirs.</p>',
+                    location_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/pin.svg', alt: 'Elements Image', width: 19, height: 24 },
+                    employment_type_icon: { src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/suitcase_1.svg', alt: 'Elements Image', width: 27, height: 24 }
+                  }
+                ]
+              }
+            ]
+      %}
+      {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 2 Section - Jobs #}
+  
+
+  
+  {# 3 Section - Section CTA #}
+  
+  <section id="section-3">
+     
+  {% dnd_area 'section-3', label='section-3' %}  
+
+    {% dnd_section
+        max_width=1000,
+         padding={
+         'default': { 'top': 116, 'bottom': 116 },
+         'mobile': { 'top': 80, 'bottom': 80 }
+        },
+        vertical_alignment='MIDDLE'
+    %}
+    
+      {% dnd_module "module_161290746495735" path='../modules/Aptitute 8 - Section CTA', label="Aptitute 8 - Section CTA",
+        module_styles= { 
+          background_color: { color: '#FFFFFF' },
+          border_top_width: 8,
+          color_field: { color: '#F4263E' },
+          border_radius: 20,
+          enable_flat_top_border: true,
+          border_top_radius: 8
+          
+        },
+        paddings= {
+          desktop: { module: { top: 64 }, content: { top: 24 } },
+          mobile: { module: { top: 24, bottom: 56, left: 24, right: 24 }, content: { top: 16, bottom: 24  } }
+        }
+        settings= { position: 'content_right_image_left' },
+        content= { 
+          content: "<h3>Can't find the perfect position?</h3><p style='margin-bottom: 32px;'>Lorem ipsum dolor sit amet, consecteturor elit. Tincidunt donec vulputate urna auctor. Eget phasellus ideirs.</p>",
+          button: { button_text: 'Contact Us', button_style: 'btn-primary-dark' }  
+        },
+        image= { 
+          image: {
+            src: 'https://f.hubspotusercontent10.net/hubfs/8768169/Elements/Theme/icons/jobs_position.svg',
+            alt: 'Elements Image',
+            size_type:'auto_custom_max', 
+            max_width: 353
+          },
+          image_align: 'left'
+        }
+      %}
+      {% end_dnd_module %}
+    
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+     
+  </section>
+  
+  {# End 3 Section - Section CTA #}
+    
+
+
+  
+</main>
+{% endblock body %}

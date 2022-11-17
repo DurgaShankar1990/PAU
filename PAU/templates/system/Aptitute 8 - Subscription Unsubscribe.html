@@ -1,0 +1,27 @@
+<!--
+  templateType: email_backup_unsubscribe_page
+  isAvailableForNewContent: true
+  label: Subscription Unsubscribe - email backup unsubscribe
+  screenshotPath: ../../images/template-previews/subscription-unsubscription.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block template_stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ get_asset_url('../../css/templates/_system.css') }}">
+{% endblock template_stylesheets %}
+
+{% block body %}
+{# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+<main id="main-content" class="body-container-wrapper elements__password-protected">
+  <section class="content-wrapper">
+    <div class="systems-page cards__card elements__backup-unsubscribe--card">
+      {% module 'backup_unsubscribe'
+        extra_classes='backup-unsubscribe elements__backup-unsubscribe',
+        path='@hubspot/email_simple_subscription',
+        header="<h2>Unsubscribe from our list</h2><p>Sorry to see you go. If you don’t want to be subscribed to our list anymore, please fill the following form with your email.</p>",
+        input_help_text = "Enter your email adress"
+      %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

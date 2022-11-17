@@ -1,0 +1,29 @@
+[ {
+  "id" : "53bbd6cb-2d0b-1f9f-013a-c35661d9c4a2",
+  "name" : "top_content",
+  "display_width" : null,
+  "label" : "Top Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h2>Upcoming Events</h2>"
+}, {
+  "id" : "d85573ff-0e6e-4867-6603-2db457cc7567",
+  "name" : "link_field",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "CONTENT",
+      "href" : null,
+      "content_id" : 61885393188
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+} ]

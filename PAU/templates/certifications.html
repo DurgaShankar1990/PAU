@@ -1,0 +1,58 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Certifications
+-->
+
+{% extends './layouts/base.html' %}
+
+{% block body %}
+
+<main id="main-content" class="body-container-wrapper body-container">
+    <section id="section-1">
+        {% dnd_area 'section-1', label='section-1' %}
+            {% dnd_section  full_width="true" padding={ 'top':0, 'bottom':0, 'left':0 , 'right':0  }%}
+                {% dnd_column  offset=0,  width=12 %}
+                    {% dnd_row %}
+                        {% dnd_module path='../modules/Certifications Banner' %}{% end_dnd_module %}
+                    {% end_dnd_row %}
+                {% end_dnd_column %}
+            {% end_dnd_section %}
+            
+            {% dnd_section  padding={ 'bottom':0, 'left':0 , 'right':0  }%}
+                {% dnd_column  offset=0, width=6 %}
+                    {% dnd_row %}
+                        {% dnd_module horizontal_alignment='CENTER' path="@hubspot/linked_image" img={
+                            "src": "https://concept.paloaltou.edu/wp-content/uploads/2020/09/medallion_highquality.png",
+                            "loading": "lazy",
+                            "width": 410,
+                            } 
+                        %}
+                        {% end_dnd_module %}
+                    {% end_dnd_row %}
+                {% end_dnd_column %}
+                
+                {% dnd_column  offset=6,  width=6 %}
+                    {% dnd_row %}
+                        {% dnd_module path='@hubspot/rich_text' %}
+                            {% module_attribute "html" %}
+                                <h2>Learn specialized skills through one of our eight psychology certificate programs.</h2>
+                                <p>Enroll in and complete all the required, badge-earning courses to earn your psychology certificate, which can be showcased digitally on platforms like LinkedIn.</p>
+                            {% end_module_attribute %}
+                        {% end_dnd_module %}
+                    {% end_dnd_row %}
+                {% end_dnd_column %}
+            {% end_dnd_section %}
+        
+            {% dnd_section padding={ 'top':0, 'bottom':0, 'left':0 , 'right':0  }%}
+                {% dnd_column  offset=0,  width=12 %}
+                    {% dnd_row %}
+                        {% dnd_module path='../modules/Certificates' %}{% end_dnd_module %}
+                    {% end_dnd_row %}
+                {% end_dnd_column %}
+            {% end_dnd_section %}
+        
+        {% end_dnd_area %}
+    </section>
+</main>
+{% endblock body %}

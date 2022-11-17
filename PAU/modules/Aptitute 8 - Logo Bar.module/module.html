@@ -1,0 +1,162 @@
+{% macro buildID() %}
+  {% if module.settings.css__id %} id="{{ module.settings.css__id }}" {% endif %}
+{% endmacro %}
+
+{% macro buildClass() %}{% if module.settings.css__class %}{{ module.settings.css__class }}{% endif %}{% endmacro %}
+
+
+  
+  {% if module.carousel_mode %}
+  
+   <div id="elements-logo-bar_{{ name }}" class="keen-slider elements-logo-bar-carousel">
+     
+     {% for item in module.logo %}
+      <div class="keen-slider__slide">
+   
+            {% if item.src %}
+              {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
+              {% if item.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.max_width }}px; max-height: {{ item.max_height }}px"' %}
+              {% endif %}
+               {% set loadingAttr = item.loading != 'disabled' ? 'loading="{{ item.loading }}"' : '' %}
+              <img class="logo__bar-logo" src="{{ item.src }}" alt="{{ item.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+     
+      </div>
+    {% endfor %}
+     
+      
+   
+    </div>
+  
+	{% else %}
+
+<div {{ buildID() }} class="brand__container {{ buildClass() }}">
+  
+    {% for item in module.logo %}
+      <div class="brand__item">
+          {% if item.src %}
+            {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
+            {% if item.size_type == 'auto' %}
+              {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+            {% elif item.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.max_width }}px; max-height: {{ item.max_height }}px"' %}
+            {% endif %}
+             {% set loadingAttr = item.loading != 'disabled' ? 'loading="{{ item.loading }}"' : '' %}
+            <img class="logo__bar-logo" src="{{ item.src }}" alt="{{ item.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% endif %}
+  
+  
+
+
+
+
+{% require_css %}
+<style>
+  
+  {% if module.carousel_mode %}
+  
+  .elements-logo-bar-carousel {
+    text-align: center !important;
+  }
+  
+  [class^="number-slide"],
+  [class*=" number-slide"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  #elements-logo-bar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+    
+  {% endif %}
+  
+  .brand__container {
+    justify-content: {{ module.align_items_desktop }};
+  }
+  
+  @media(max-width: 767px) {
+    .brand__container {
+      justify-content: {{ module.align_items_mobile }};
+    }
+  }
+  
+</style>
+{% end_require_css %}
+
+
+
+
+{% require_js %}
+<script>
+  
+  {% if module.carousel_mode %}
+  
+var sliderElement2_{{ name }} = document.getElementById("elements-logo-bar_{{ name }}")
+var interval = 0
+function autoplay(run) {
+  clearInterval(interval)
+  interval = setInterval(() => {
+    if (run && slider2_{{ name }}) {
+      slider2_{{ name }}.next()
+    }
+  }, {{ module.slider_speed }})
+}
+
+var slider2_{{ name }} = new KeenSlider(sliderElement2_{{ name }}, {
+  loop: true,
+  slidesPerView: 5,
+  spacing: 20,
+  duration: {{ module.slider_speed }},
+  breakpoints: {
+          "(max-width: 1150px)": {
+            slidesPerView: 4,
+            mode: "free-snap",
+          },
+          "(max-width: 900px)": {
+            slidesPerView: 3,
+            mode: "free-snap",
+          },
+          "(max-width: 768px)": {
+            slidesPerView: 2,
+            mode: "free-snap",
+          },
+          "(max-width: 480px)": {
+            slidesPerView: 1,
+            mode: "free-snap",
+          }
+        },
+  dragStart: () => {
+    autoplay(false)
+  },
+  dragEnd: () => {
+    autoplay(true)
+  },
+})
+
+sliderElement2_{{ name }}.addEventListener("mouseover", () => {
+  autoplay(false)
+})
+sliderElement2_{{ name }}.addEventListener("mouseout", () => {
+  autoplay(true)
+})
+
+autoplay(true)
+  
+   {% endif %}
+  
+</script>
+{% end_require_js %}

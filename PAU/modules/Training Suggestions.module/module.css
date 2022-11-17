@@ -1,0 +1,8 @@
+.training-suggestions .course-item{
+    margin-bottom:0;
+}
+@media(max-width:767px){
+    .training-suggestions .course-item:not(:last-child){
+        margin-bottom:40px;
+    }
+}

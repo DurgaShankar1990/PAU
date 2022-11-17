@@ -1,0 +1,223 @@
+[ {
+  "id" : "2404a7ef-761b-d2ed-3610-383cacc68469",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "defd604c-e69c-1cd1-b279-99426f659ba4",
+    "name" : "gradient_field",
+    "display_width" : null,
+    "label" : "Gradient",
+    "required" : false,
+    "locked" : false,
+    "type" : "gradient",
+    "default" : {
+      "colors" : [ {
+        "color" : {
+          "r" : 0,
+          "g" : 90,
+          "b" : 156,
+          "a" : 1
+        }
+      }, {
+        "color" : {
+          "r" : 36,
+          "g" : 136,
+          "b" : 205,
+          "a" : 1
+        }
+      } ],
+      "side_or_corner" : {
+        "verticalSide" : "TOP",
+        "horizontalSide" : null
+      }
+    }
+  }, {
+    "id" : "c0008cf8-e475-1961-af10-173d65014f43",
+    "name" : "desktop_spacing",
+    "display_width" : null,
+    "label" : "Desktop Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      },
+      "margin" : {
+        "top" : {
+          "value" : null,
+          "units" : null
+        },
+        "bottom" : {
+          "value" : 96,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "aaf5e6f5-eadb-fe20-18ec-1618fb554c48",
+    "name" : "mobile_spacing",
+    "display_width" : null,
+    "label" : "Mobile Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    }
+  }, {
+    "id" : "ba392d67-c200-0bcd-545a-169f81339ead",
+    "name" : "border_field",
+    "display_width" : null,
+    "label" : "Border",
+    "required" : false,
+    "locked" : false,
+    "allow_custom_border_sides" : false,
+    "type" : "border",
+    "default" : {
+      "bottom" : {
+        "style" : "solid",
+        "color" : "#FAA61A",
+        "opacity" : 100,
+        "width" : {
+          "value" : 8,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "gradient_field" : {
+      "colors" : [ {
+        "color" : {
+          "r" : 0,
+          "g" : 90,
+          "b" : 156,
+          "a" : 1
+        }
+      }, {
+        "color" : {
+          "r" : 36,
+          "g" : 136,
+          "b" : 205,
+          "a" : 1
+        }
+      } ],
+      "side_or_corner" : {
+        "verticalSide" : "TOP",
+        "horizontalSide" : null
+      }
+    },
+    "desktop_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 72,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      },
+      "margin" : {
+        "top" : {
+          "value" : null,
+          "units" : null
+        },
+        "bottom" : {
+          "value" : 96,
+          "units" : "px"
+        }
+      }
+    },
+    "mobile_spacing" : {
+      "padding" : {
+        "top" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : null,
+          "units" : null
+        },
+        "right" : {
+          "value" : null,
+          "units" : null
+        }
+      }
+    },
+    "border_field" : {
+      "bottom" : {
+        "style" : "solid",
+        "color" : "#FAA61A",
+        "opacity" : 100,
+        "width" : {
+          "value" : 8,
+          "units" : "px"
+        }
+      }
+    }
+  }
+}, {
+  "id" : "9bcf08aa-6e60-ec1a-16c3-244ecefdde14",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Programs Presented by This Instructor"
+} ]

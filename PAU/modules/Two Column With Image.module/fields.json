@@ -1,0 +1,101 @@
+[ {
+  "id" : "c4f9351a-b43b-c9ec-8ab5-901149058d98",
+  "name" : "top_subtitle",
+  "display_width" : null,
+  "label" : "Top Subtitle",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Looking to train a group?"
+}, {
+  "id" : "917b14dc-56ae-aaf0-6155-b04ac96158e2",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Looking to train a group?"
+}, {
+  "id" : "3bb134da-422d-486a-9b68-40a229528f97",
+  "name" : "subtitle",
+  "display_width" : null,
+  "label" : "Subtitle",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Custom training options for groups of 5 to 500+"
+}, {
+  "id" : "4fc5a4ed-0ed6-9ec1-ee30-a70f734ee5df",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Contact us to talk about group training rates and how we can make annual training and new staff onboarding simple!"
+}, {
+  "id" : "b84ecbe9-32db-a8fd-85b3-ef8efb45e223",
+  "name" : "button_text",
+  "display_width" : null,
+  "label" : "Button Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Find Out More"
+}, {
+  "id" : "0b8c06f7-7c54-9a49-8412-03bf1713bbed",
+  "name" : "button_link",
+  "display_width" : null,
+  "label" : "Button Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "CONTENT",
+      "href" : null,
+      "content_id" : 61477200158
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "4fb0f149-954f-4727-0dfb-f3c0a91c6e62",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent20.net/hubfs/20705724/Palo_2021/images/group_image.svg",
+    "alt" : "group_image",
+    "loading" : "lazy",
+    "width" : 78,
+    "height" : 60,
+    "max_width" : 78,
+    "max_height" : 60
+  }
+} ]
